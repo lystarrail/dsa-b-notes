@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数据结构与算法B Python版｜101-107 复习笔记</title>
+<style>
+:root{
+  --bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:780px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:760px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.code{background:#dbeafe;color:#1d4ed8}.small{font-size:13px;color:#64748b}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}.code-comment{color:#a7f3d0}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.quote{border-left:4px solid var(--green2);padding:8px 12px;background:#f8fafc;color:#334155;border-radius:8px;margin:12px 0}.source-note{font-size:13px;color:#64748b;border-top:1px dashed #cbd5e1;margin-top:20px;padding-top:12px}
+
+/* 嵌入式速记卡：点击翻面 */
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}
+.turing-diagram,.turing-flow-diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:16px 0;overflow:auto}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}
+.turing-diagram-clean svg{display:block;min-width:760px}.turing-diagram-clean{padding:16px 18px}
+@media(max-width:960px){.turing-diagram-clean svg{min-width:760px}.turing-diagram-clean{overflow-x:auto}}
+
+.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}
+.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-btn[disabled]{opacity:.45;cursor:not-allowed}.flash-progress{font-size:14px;color:var(--muted)}
+.study-card{perspective:1200px;min-height:520px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:520px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}
+.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}
+.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}
+.flash-keys{margin-top:12px;font-size:13px;color:#64748b}.flash-keys code{background:#f1f5f9;padding:2px 6px;border-radius:6px}.mastered-star{font-size:18px}
+@media(max-width:960px){.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:620px}.study-front h3,.study-back h3{font-size:21px}.study-face{padding:18px}.study-write textarea{min-height:180px}}
+
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+
+/* 修正版：封面只属于第一页，其他页面不会继承封面样式 */
+@media screen {
+  .main > .notes-page { display:none !important; }
+  .main > .notes-page.active { display:block !important; }
+  .main > .cover-page.active { display:flex !important; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">101-107｜概述、计算、抽象与ADT</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#data-era"><span class="num">03</span><span>数据时代与课程核心</span></a>
+<a href="#problem"><span class="num">04</span><span>问题求解与“计算”</span></a>
+<a href="#turing"><span class="num">05</span><span>图灵机：计算模型</span></a>
+<a href="#algorithm"><span class="num">06</span><span>算法与计算复杂性</span></a>
+<a href="#limit"><span class="num">07</span><span>计算边界与突破思路</span></a>
+<a href="#abstraction"><span class="num">08</span><span>抽象、接口与实现</span></a>
+<a href="#adt"><span class="num">09</span><span>ADT、封装与数据结构</span></a>
+<a href="#code"><span class="num">10</span><span>代码理解：欧几里德算法与ADT</span></a>
+
+<a href="#quick"><span class="num">11</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">12</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-101-107 这一章范围。</div>
+</aside>
+<main class="main">
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>101-107 复习笔记</h1>
+<div class="subtitle">从“数据时代”到“抽象数据类型”的小白友好版</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记只整理 <b>pydsa-101-107 合并版</b>中的内容：概述、问题求解、图灵机、算法与复杂性、计算极限、抽象与实现、为什么学习数据结构与算法。</p>
+<p><b>学习目标：</b>不是死背名词，而是搞懂：为什么要组织数据、什么叫算法、为什么算法有效率差异、什么是抽象、ADT 和数据结构到底是什么关系。</p>
+<p><b>阅读建议：</b>先看每页绿色“核心结论”，再看橙色例子，最后看代码和红色真题应用。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol>
+<li>本章考什么、怎么学</li><li>数据时代与课程核心</li><li>问题求解与“计算”</li><li>图灵机：计算模型</li><li>算法与计算复杂性</li><li>计算边界与突破思路</li><li>抽象、接口与实现</li><li>ADT、封装与数据结构</li><li>代码理解：欧几里德算法与ADT</li><li>嵌入式速记卡与自测</li><li>资料标准与筛选说明</li>
+</ol></div>
+</section>
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>核心结论：</b>这一章是全课程的“世界观”。它不太像后面链表、栈、树、图那样大量写代码，但它会反复影响后面的判断题、选择题和简答题：什么是算法？为什么要分析复杂度？ADT 和数据结构是什么关系？</div>
+<h2>1. 本章知识地图</h2>
+<div class="flow"><span class="step">数据很多</span><span class="arrow">→</span><span class="step">需要组织数据</span><span class="arrow">→</span><span class="step">用算法处理数据</span><span class="arrow">→</span><span class="step">比较算法效率</span><span class="arrow">→</span><span class="step">用抽象降低复杂度</span></div>
+<table><thead><tr><th>模块</th><th>你要懂什么</th><th>常见考法</th></tr></thead><tbody>
+<tr><td>数据时代</td><td>数据结构与算法这门课不是“只学语法”，而是学如何把数据组织起来、有效处理。</td><td>概念理解、课程定位。</td></tr>
+<tr><td>计算与算法</td><td>可计算问题可以用有限、明确、机械执行的步骤解决；算法是解决过程。</td><td>算法性质、可计算/不可计算。</td></tr>
+<tr><td>复杂性</td><td>同一个问题可以有不同算法，效率可能差很多；时间/空间资源有限，所以要分析复杂度。</td><td>选择题、判断题、复杂度直觉。</td></tr>
+<tr><td>抽象与ADT</td><td>先定义“能做什么”（接口），再考虑“怎么做”（实现）。数据结构是ADT的一种具体实现。</td><td>ADT、接口、封装。</td></tr>
+</tbody></table>
+<h2>2. 小白学习法</h2>
+<div class="grid2">
+<div class="card"><h3>先问“它解决什么问题”</h3><p>不要一上来背定义。比如“算法”先理解为：<b>一套解决问题的步骤</b>。再补定义中的“有限、明确、可执行”。</p></div>
+<div class="card"><h3>再问“它和代码有什么关系”</h3><p>算法不是代码本身。算法像菜谱，代码像用 Python 把菜谱写成机器能执行的形式。</p></div>
+<div class="card"><h3>最后问“考试怎么考”</h3><p>本章容易考概念辨析：算法为什么要比较复杂度？抽象、接口、实现之间有什么关系？ADT 为什么能隐藏实现细节？</p></div>
+<div class="card"><h3>把例子记住</h3><p>汽车方向盘=接口，发动机=实现；<code>math.sqrt</code>=过程抽象；栈/队列后面会作为ADT例子。</p></div>
+</div>
+</section>
+<section class="notes-page" id="data-era">
+<h1>二、数据时代与课程核心</h1>
+<h2>1. 为什么说“信息时代就是数据的时代”</h2>
+<p>课件一开始展示大量科学、工程、商业中的数据：地球观测、卫星影像、地形高程、地下岩层、空间气象、交通流量、引力波探测等。它想说明一件事：现代问题往往不是“没有数据”，而是<b>数据太多、太复杂，需要合适的方法处理</b>。</p>
+<div class="example"><b>通俗例子：</b>你手机里有几千张照片。照片本身只是数据；如果没有相册分类、搜索、时间线、地点标签，你很难快速找到“去年在学校拍的那张图”。这些分类、索引、搜索方法就是“组织数据并处理数据”的思路。</div>
+<h2>2. 数据结构与算法这门课到底讲什么</h2>
+<div class="key"><b>一句话：</b>学会把数据组织起来，并用高效算法处理它们，以解决问题。</div>
+<ul>
+<li><b>数据结构：</b>研究数据如何组织、保存、关联。比如一堆学生成绩，可以用列表保存；如果要快速查找学号，也可能用字典/散列表。</li>
+<li><b>算法：</b>研究如何一步步处理这些数据。比如排序成绩、查找某个学生、统计最高分。</li>
+<li><b>Python版：</b>不是只考 Python 语法，而是用 Python 表达这些结构和算法。</li>
+</ul>
+<h2>3. 算法 + 数据结构 = 程序</h2>
+<div class="quote">图灵奖获得者 Niklaus Wirth 的著名公式：<b>算法 + 数据结构 = 程序</b>。</div>
+<div class="explain"><b>怎么理解？</b><br/>程序不是单纯写很多行代码。它至少包含两部分：<br/>① 数据怎么放：用列表、链表、树、图，还是字典？<br/>② 数据怎么处理：遍历、查找、排序、递归、图搜索？<br/>如果数据放得不合适，算法再写也可能很慢；如果算法选错，数据再整齐也可能效率低。</div>
+<h2>4. 本章不要求你掌握的内容</h2>
+<div class="warn">课件中有大量数据时代案例，比如太阳探测器、冥王星探测器、哈勃望远镜等。这些主要是帮助理解背景，考试一般不会要求记设备名称。你要记的是：<b>数据规模巨大 → 需要组织与算法 → 需要效率分析</b>。</div>
+</section>
+<section class="notes-page" id="problem">
+<h1>三、问题求解与“计算”</h1>
+<h2>1. 问题可以大致分为三类</h2>
+<table><thead><tr><th>问题类型</th><th>意思</th><th>例子</th></tr></thead><tbody>
+<tr><td>What：是什么</td><td>判断与分类</td><td>这个数是不是质数？这个字符串是否符合某种模式？</td></tr>
+<tr><td>Why：为什么</td><td>求因与证明</td><td>为什么 √2 是无理数？为什么这个算法一定能得到最短路径？</td></tr>
+<tr><td>How：怎么做</td><td>过程与构建</td><td>怎么求最大公约数？怎么排序？怎么找最短路径？</td></tr>
+</tbody></table>
+<div class="key"><b>本课程重点：</b>How 类问题，也就是“给定输入，怎么一步步得到输出”。这就进入算法和数据结构。</div>
+<h2>2. 什么叫“基于有穷观点的能行方法”</h2>
+<p>这是课件中抽象“计算”概念时给出的核心说法。翻译成小白能懂的话，就是：一个方法如果想被称为计算意义上的“可执行方法”，它要像机器一样能照着做。</p>
+<ul>
+<li><b>有限数量的明确指令：</b>步骤不能含糊，比如“随便处理一下”不算明确指令。</li>
+<li><b>有限步骤后终止：</b>不能永远跑下去。</li>
+<li><b>每次执行都有唯一结果：</b>同样的状态下，下一步该做什么要确定。</li>
+<li><b>原则上可以由人用纸笔完成：</b>不依赖神秘直觉。</li>
+<li><b>每条指令可以机械执行：</b>不需要临场灵感。</li>
+</ul>
+<div class="example"><b>例子：判断一个数是不是偶数</b><br/>步骤：① 输入整数 n；② 计算 n 除以 2 的余数；③ 余数为 0 输出“偶数”，否则输出“奇数”。<br/>这个方法有限、明确、会停，所以是一个可执行的算法思路。</div>
+<div class="warn"><b>反例：</b>“认真想一想这个问题”不是算法，因为它没有明确说明每一步做什么，也不能保证有限步骤后结束。</div>
+</section>
+<section class="notes-page" id="turing">
+<h1>四、图灵机：计算模型</h1>
+<h2>1. 图灵机为什么重要</h2>
+<p>图灵机是 Alan Turing 在 1936 年提出的抽象计算模型。它不是一台具体电脑，而是用来回答“什么样的问题可以被机械计算”的理论工具。</p>
+<div class="explain"><b>小白理解：</b>图灵机就像一台极简电脑：它只有纸带、读写头、状态和规则。虽然简单，但它能刻画“计算”的本质。</div>
+<h2>2. 图灵机由什么组成</h2>
+<div class="turing-diagram turing-diagram-clean">
+<svg viewBox="0 0 920 340" width="100%" role="img" aria-label="图灵机结构示意图">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#166534"></polygon>
+    </marker>
+  </defs>
+
+  <!-- 上方：读写头、状态寄存器、控制规则，互不重叠 -->
+  <rect x="46" y="28" width="210" height="70" rx="14" fill="#ffffff" stroke="#86caa0" stroke-width="2" />
+  <text x="151" y="58" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">读写头</text>
+  <text x="151" y="83" text-anchor="middle" font-size="15" fill="#607266">读当前格、写符号、左右移动</text>
+
+  <rect x="565" y="28" width="270" height="76" rx="14" fill="#ffffff" stroke="#86caa0" stroke-width="2" />
+  <text x="700" y="58" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">状态寄存器</text>
+  <text x="700" y="84" text-anchor="middle" font-size="16" fill="#607266">记录当前状态，如 s0、s1</text>
+
+  <rect x="515" y="126" width="360" height="88" rx="14" fill="#ffffff" stroke="#86caa0" stroke-width="2" />
+  <text x="695" y="154" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">有限控制规则</text>
+  <text x="695" y="181" text-anchor="middle" font-size="16" fill="#365944">当前状态 + 当前符号 → 写什么 / 怎么移动 / 新状态</text>
+  <text x="695" y="203" text-anchor="middle" font-size="15" fill="#607266">例：&lt;s0, a, B, s1, R&gt;</text>
+
+  <!-- 箭头：读写头指向正在读取的格子；状态和符号进入规则 -->
+  <g stroke="#166534" stroke-width="3" fill="none" marker-end="url(#arrowhead)">
+    <path d="M151 104 L151 225" />
+    <path d="M700 110 C700 116 700 120 700 126" />
+    <path d="M151 231 C310 216 438 191 515 172" />
+  </g>
+
+  <!-- 下方：无限长纸带，单独占一行 -->
+  <text x="34" y="232" font-size="18" fill="#607266">无限长纸带：每格记录一个符号</text>
+  <rect x="34" y="242" width="852" height="66" rx="12" fill="#eaf7ef" stroke="#86caa0" stroke-width="2" />
+  <g stroke="#b7d5c4" stroke-width="2">
+    <line x1="112" y1="242" x2="112" y2="308" />
+    <line x1="190" y1="242" x2="190" y2="308" />
+    <line x1="268" y1="242" x2="268" y2="308" />
+    <line x1="346" y1="242" x2="346" y2="308" />
+    <line x1="424" y1="242" x2="424" y2="308" />
+    <line x1="502" y1="242" x2="502" y2="308" />
+    <line x1="580" y1="242" x2="580" y2="308" />
+    <line x1="658" y1="242" x2="658" y2="308" />
+    <line x1="736" y1="242" x2="736" y2="308" />
+  </g>
+  <g font-size="28" font-family="Arial, sans-serif" fill="#14532d" text-anchor="middle">
+    <text x="73" y="283">B</text>
+    <text x="151" y="283">a</text>
+    <text x="229" y="283">a</text>
+    <text x="307" y="283">b</text>
+    <text x="385" y="283">b</text>
+    <text x="463" y="283">B</text>
+    <text x="541" y="283">…</text>
+  </g>
+  <polygon points="151,226 137,242 165,242" fill="#166534"></polygon>
+  <text x="151" y="326" text-anchor="middle" font-size="14" fill="#607266">读写头当前指向这一格</text>
+</svg>
+<div class="diagram-cap">图示理解：图灵机最核心的四部分就是 <b>纸带、读写头、状态寄存器、控制规则</b>。机器每一步都根据“当前状态 + 当前格子里的符号”决定下一步动作。</div>
+</div>
+<table><thead><tr><th>组成部分</th><th>作用</th><th>通俗比喻</th></tr></thead><tbody>
+<tr><td>无限长分格纸带</td><td>每格记录一个符号</td><td>一排无限长的格子本</td></tr>
+<tr><td>读写头</td><td>读取当前格、改写符号、左右移动</td><td>铅笔尖正在看的那一格</td></tr>
+<tr><td>状态寄存器</td><td>记录当前处于哪个状态</td><td>机器脑子里当前的“任务阶段”</td></tr>
+<tr><td>有限控制规则</td><td>规定“当前状态+当前符号”下该写什么、怎么移动、变成什么状态</td><td>操作说明书</td></tr>
+</tbody></table>
+<h2>3. 课件例子：判定 a<sup>m</sup>b<sup>m</sup></h2>
+<p>课件用图灵机判定形如 <span class="formula">a^m b^m</span> 的字符串：左边全是 a，右边全是 b，而且 a 和 b 数量相等。</p>
+<div class="example"><b>能接受：</b><span class="formula">ab</span>、<span class="formula">aabb</span>、<span class="formula">aaaabbbb</span><br/><b>要拒绝：</b><span class="formula">b</span>、<span class="formula">ba</span>、<span class="formula">abb</span></div>
+<div class="key"><b>核心思路：</b>每次消掉最左边一个 a，再去最右边消掉一个 b。这样 a 和 b 能一一配对消完，就接受；否则拒绝。</div>
+<div class="turing-flow-diagram">
+<svg viewBox="0 0 900 180" width="100%" role="img" aria-label="a^m b^m 判定思路示意图">
+  <defs><marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#f97316"></polygon></marker></defs>
+  <rect x="24" y="70" width="150" height="56" rx="14" fill="#fff7ed" stroke="#fdba74" /><text x="99" y="102" text-anchor="middle" font-size="20" fill="#9a3412" font-weight="700">找到最左 a</text>
+  <line x1="174" y1="98" x2="258" y2="98" stroke="#f97316" stroke-width="4" marker-end="url(#arrow2)" />
+  <rect x="258" y="70" width="160" height="56" rx="14" fill="#fff7ed" stroke="#fdba74" /><text x="338" y="102" text-anchor="middle" font-size="20" fill="#9a3412" font-weight="700">把这个 a 划掉</text>
+  <line x1="418" y1="98" x2="502" y2="98" stroke="#f97316" stroke-width="4" marker-end="url(#arrow2)" />
+  <rect x="502" y="70" width="170" height="56" rx="14" fill="#fff7ed" stroke="#fdba74" /><text x="587" y="102" text-anchor="middle" font-size="20" fill="#9a3412" font-weight="700">去右边找一个 b</text>
+  <line x1="672" y1="98" x2="756" y2="98" stroke="#f97316" stroke-width="4" marker-end="url(#arrow2)" />
+  <rect x="756" y="70" width="120" height="56" rx="14" fill="#fff7ed" stroke="#fdba74" /><text x="816" y="102" text-anchor="middle" font-size="20" fill="#9a3412" font-weight="700">也划掉</text>
+  <text x="25" y="34" font-size="18" fill="#64748b">重复执行上面过程：如果 a 和 b 能一一配对消掉，就接受；只要对不上，就拒绝。</text>
+</svg>
+<div class="diagram-cap">这个流程图不是正式规则表，而是帮助小白理解这台图灵机在“干什么”。你可以把它理解成：<b>左边拿一个 a，右边配一个 b，看看能不能完全配平</b>。</div>
+</div>
+<h2>4. 有限控制规则怎么读：以 a<sup>m</sup>b<sup>m</sup> 为例</h2>
+<div class="explain"><b>先看规则格式：</b><span class="formula">&lt;当前状态, 当前符号, 写入符号, 新状态, 移动方向&gt;</span>。例如 <span class="formula">&lt;s0, a, B, s1, R&gt;</span> 的意思是：机器现在处于 <b>s0</b>，读到当前格是 <b>a</b>，就把这个 a 改写成 <b>B</b>，状态改成 <b>s1</b>，读写头向右移动。这里 <b>B</b> 表示空白格，<b>R</b> 表示向右，<b>L</b> 表示向左，<b>N</b> 表示不动。</div>
+<table><thead><tr><th>状态</th><th>可以这样理解</th><th>这一阶段的任务</th></tr></thead><tbody>
+<tr><td><span class="formula">s0</span></td><td>从左边开始检查</td><td>找一个还没有被消掉的 a；如果没有 a 了，就判断是否已经全部配平。</td></tr>
+<tr><td><span class="formula">s1</span></td><td>正在向右走</td><td>越过中间的 a 和 b，一直走到字符串最右端。</td></tr>
+<tr><td><span class="formula">s2</span></td><td>站在右端向左看</td><td>检查右边是否有一个 b 可以和刚才消掉的 a 配对。</td></tr>
+<tr><td><span class="formula">s3</span></td><td>正在向左返回</td><td>回到最左边，准备开始下一轮“一消 a、一消 b”。</td></tr>
+<tr><td><span class="formula">sY / sN</span></td><td>接受 / 拒绝</td><td>sY 表示符合 a<sup>m</sup>b<sup>m</sup>，sN 表示不符合。</td></tr>
+</tbody></table>
+<table><thead><tr><th>规则</th><th>小白解释</th></tr></thead><tbody>
+<tr><td><span class="formula">&lt;s0, a, B, s1, R&gt;</span></td><td>在最左边找到一个 a，把它消成空白 B，然后向右走，去找能配对的 b。</td></tr>
+<tr><td><span class="formula">&lt;s1, a, a, s1, R&gt;</span><br><span class="formula">&lt;s1, b, b, s1, R&gt;</span></td><td>向右走的过程中，遇到 a 或 b 都先不处理，继续向右。</td></tr>
+<tr><td><span class="formula">&lt;s1, B, B, s2, L&gt;</span></td><td>走到右边空白，说明到头了，于是改为 s2，向左退一格。</td></tr>
+<tr><td><span class="formula">&lt;s2, b, B, s3, L&gt;</span></td><td>如果右端确实有 b，就把这个 b 消掉，完成一次 a-b 配对，然后向左返回。</td></tr>
+<tr><td><span class="formula">&lt;s3, b, b, s3, L&gt;</span><br><span class="formula">&lt;s3, a, a, s3, L&gt;</span></td><td>返回过程中，遇到 a 或 b 都不处理，继续向左。</td></tr>
+<tr><td><span class="formula">&lt;s3, B, B, s0, R&gt;</span></td><td>回到最左边空白处，向右一格，开始下一轮。</td></tr>
+<tr><td><span class="formula">&lt;s0, B, B, sY, N&gt;</span></td><td>如果回到 s0 时发现已经没有 a 和 b 了，说明全部一一配平，接受。</td></tr>
+<tr><td><span class="formula">&lt;s0, b, b, sN, R&gt;</span><br><span class="formula">&lt;s2, a, a, sN, R&gt;</span><br><span class="formula">&lt;s2, B, B, sN, R&gt;</span></td><td>这些都是“不对劲”的情况：b 出现在 a 前面、a 多了、或者右边找不到能配对的 b，所以拒绝。</td></tr>
+</tbody></table>
+<div class="key"><b>抓住一句话：</b><span class="formula">s0</span> 负责消左边的 a，<span class="formula">s1/s2</span> 负责去右边找 b，<span class="formula">s3</span> 负责回到左边；能一直配到空白就接受，配不上就拒绝。</div>
+<h2>5. 为什么这个例子重要</h2>
+<p>它不是让你背所有规则，而是让你理解：计算可以被拆成非常机械的动作。后面写程序时，本质也是把大问题拆成机器可执行的清楚步骤。</p>
+</section>
+<section class="notes-page" id="algorithm">
+<h1>五、算法与计算复杂性</h1>
+<h2>1. 什么是算法</h2>
+<div class="key"><b>算法：</b>为解决某个问题而设计的一系列明确步骤。它接收输入，经过有限步骤，得到输出。</div>
+<p>课件中举了世界上最早的算法之一：欧几里德算法，也就是用辗转相除法求最大公约数。</p>
+<h2>2. 为什么算法要讲“复杂性”</h2>
+<p>能算出来不等于算得起。计算复杂性关注：解决问题需要多少时间、多少空间。</p>
+<div class="example"><b>扑克牌排序例子：</b><br/>如果有 n 张牌，普通人可能每次找最小牌，比较次数大概是 <span class="formula">n²</span> 量级。<br/>如果用 Bogo 排序：洗牌，检查是否有序，没排好继续洗，平均需要 <span class="formula">n × n!</span> 量级。<br/>同样是排序，效率差异巨大。</div>
+<h2>3. “问题难度”和“算法效率”不是一回事</h2>
+<table><thead><tr><th>概念</th><th>关心什么</th><th>例子</th></tr></thead><tbody>
+<tr><td>计算复杂性理论</td><td>问题本身到底难不难</td><td>有些问题会爆炸性吞噬资源，如货郎担问题。</td></tr>
+<tr><td>算法分析</td><td>同一个问题的不同解决方案谁更高效</td><td>排序可以用冒泡、归并、快速等不同算法。</td></tr>
+</tbody></table>
+<h2>4. 不可计算问题</h2>
+<p>有些问题定义清楚，但已经证明不存在通用算法。课件举了“停机问题”：判定任何程序在任何输入下是否会停机。</p>
+<div class="warn"><b>考试辨析：</b>“目前不会解”和“根本不可计算”不同。不可计算是理论上不存在通用算法，不是单纯技术还没发展到。</div>
+<h2>5. 真题/样题应用：为什么要比较复杂度</h2><div class="exam"><h2>例题1：为什么算法不能只看能不能运行</h2><p><b>题目思想：</b>同一个问题可能有多种算法，为什么还要比较算法复杂度？</p><p><b>参考答案：</b>因为资源有限。不同算法即使都能得到正确结果，所需时间和空间也可能差很多。排序例子中，普通算法可能是 n² 量级，而 Bogo 排序可能是 n×n! 量级，规模稍大就不可行。</p></div></section>
+<section class="notes-page" id="limit">
+<h1>六、计算边界与突破思路</h1>
+<h2>1. 为什么要讲突破计算极限</h2>
+<p>前面说过：有些问题虽然可计算，但资源消耗太大；有些问题甚至不可计算。于是人们会尝试用新的计算方式或组织方式提高处理能力。</p>
+<h2>2. 课件提到的几类思路</h2>
+<table><thead><tr><th>思路</th><th>核心想法</th><th>你需要记住的程度</th></tr></thead><tbody>
+<tr><td>超大规模分布式计算</td><td>把大任务拆成小数据包，交给大量联网电脑共同处理，如 SETI@home。</td><td>理解即可。</td></tr>
+<tr><td>光子计算</td><td>用光信号代替电信号，提高运算频率、降低能耗。</td><td>知道概念即可。</td></tr>
+<tr><td>DNA计算</td><td>利用 DNA 分子和酶进行逻辑运算和存储。</td><td>知道概念即可。</td></tr>
+<tr><td>量子计算</td><td>利用量子叠加实现某些并行计算。</td><td>知道概念即可。</td></tr>
+<tr><td>众包智慧</td><td>利用大量人的空闲智力协同解决问题，如 Foldit。</td><td>理解“计算力/智力协作”。</td></tr>
+</tbody></table>
+<div class="warn"><b>复习重点：</b>这部分一般不是代码题重点。主要理解：资源有限 → 需要更好的算法/计算方式/协作方式。</div>
+</section>
+<section class="notes-page" id="abstraction">
+<h1>七、抽象、接口与实现</h1>
+<h2>1. 什么是抽象</h2>
+<div class="key"><b>抽象：</b>先关注“这个东西能做什么”，暂时不管“它内部怎么做到”。</div>
+<h2>2. 汽车例子：接口与实现</h2>
+<div class="key"><b>接口（Interface）：</b>外部使用者能看到、能调用的操作入口，也就是“怎么使用它”。</div>
+<div class="key"><b>实现（Implementation）：</b>为了完成接口承诺的功能，内部真正采用的结构、步骤、算法和代码，也就是“它里面怎么做到”。</div>
+<div class="grid2">
+<div class="example"><h3>司机看到的是接口</h3><p>司机只需要知道方向盘控制方向、油门加速、刹车减速。司机不需要知道发动机内部如何燃烧、变速箱如何工作。</p></div>
+<div class="example"><h3>修理工关心的是实现</h3><p>修理工必须知道发动机、变速箱、刹车系统如何配合。这属于更底层的实现细节。</p></div>
+</div>
+<div class="explain"><b>迁移到编程：</b>当你调用 <code>math.sqrt(9)</code> 得到 3 时，你只关心“它能求平方根”，不需要知道库函数内部如何计算。这叫过程抽象。</div>
+<h2>3. 过程抽象：以 math.sqrt 为例</h2>
+<div class="codebox"><div class="code-title">代码解释：过程抽象</div><pre><code>import math
+
+x = math.sqrt(9)   # sqrt 是 square root 的缩写，作用：求平方根
+print(x)           # 输出 3.0
+
+# 你不需要知道 sqrt 内部用了什么数值算法
+# 你只需要知道它的接口：给一个数，返回平方根</code></pre></div>
+<h2>4. 为什么抽象重要</h2>
+<ul>
+<li>让使用者专注于解决问题，不被底层细节淹没。</li>
+<li>让实现者可以优化底层实现，而不改变用户使用方式。</li>
+<li>通过层层抽象降低问题解决复杂度。</li>
+</ul>
+<div class="example"><b>电动车与汽油车：</b>底层动力系统不同，但方向盘、油门、刹车等驾驶接口相似。司机不用重新理解所有底层原理。</div>
+</section>
+<section class="notes-page" id="adt">
+<h1>八、ADT、封装与数据结构</h1>
+<h2>1. 什么是 ADT</h2>
+<div class="key"><b>ADT（Abstract Data Type，抽象数据类型）：</b>对数据及其操作的逻辑描述，只说明“能做什么”，不说明“内部怎么实现”。</div>
+<p>课件说，ADT 不涉及如何实现这些处理。它建立了对数据的封装，把可能的实现细节隐藏起来。</p>
+<h2>2. ADT 和数据结构的关系</h2>
+<table><thead><tr><th>概念</th><th>关注点</th><th>本章应该怎么理解</th></tr></thead><tbody>
+<tr><td>ADT</td><td>逻辑接口：这个数据模型对外承诺能做哪些操作</td><td>站在“使用者”角度，只关心能调用什么操作、这些操作的意义是什么。</td></tr>
+<tr><td>数据结构</td><td>物理实现：用程序语言提供的控制结构和基本数据类型把 ADT 做出来</td><td>站在“实现者”角度，关心内部数据如何保存、操作如何执行、效率如何优化。</td></tr>
+</tbody></table>
+<div class="explain"><b>本章只需要掌握到这里：</b>ADT 是逻辑层次，数据结构是实现层次；同一个 ADT 可以有不同实现。至于线性表、链表、栈、队列等具体结构，后面章节再正式展开。</div>
+<h2>3. 封装是什么意思</h2>
+<p>封装就是把内部细节藏起来，只暴露必要接口。你只需要知道怎么用，不需要每次都看内部代码。</p>
+<div class="example"><b>生活例子：</b>自动售货机就是封装。你按按钮、扫码付款、拿饮料。你不必知道机器内部如何检测库存、如何控制机械臂。</div>
+<h2>4. 真题/样题应用：接口、实现与ADT</h2><div class="exam"><h2>例题2：接口与实现</h2><p><b>题目思想：</b>什么是抽象？为什么 ADT 能降低程序复杂度？</p><p><b>参考答案：</b>抽象是从逻辑层面看问题，先关注对象能做什么，而暂时隐藏内部如何实现。ADT 规定数据和操作的逻辑接口，通过封装隐藏实现细节，使使用者可以专注于问题求解，实现者可以独立优化底层结构。</p></div>
+</section>
+<section class="notes-page" id="code">
+<h1>九、代码理解：欧几里德算法</h1>
+<h2>1. 欧几里德算法：求最大公约数</h2>
+<p>课件把欧几里德算法作为世界上最早的算法之一。它的核心是辗转相除：</p>
+<div class="flow"><span class="step">输入 M,N</span><span class="arrow">→</span><span class="step">R = M mod N</span><span class="arrow">→</span><span class="step">R == 0 ?</span><span class="arrow">→</span><span class="step">输出 N / 继续循环</span></div>
+<div class="codebox"><div class="code-title">Python实现：最大公约数 gcd</div><pre><code>def gcd(M, N):
+    while True:
+        R = M % N          # % 表示取余数，例如 17 % 5 = 2
+        if R == 0:         # 如果余数是 0，说明 N 能整除 M
+            return N       # 此时 N 就是最大公约数
+        M, N = N, R        # 否则把问题变小：原来的 N 和余数 R 继续求 gcd
+
+print(gcd(24, 18))         # 输出 6</code></pre></div>
+<h3>逐步理解 gcd(24,18)</h3>
+<table><thead><tr><th>轮次</th><th>M</th><th>N</th><th>R = M % N</th><th>下一步</th></tr></thead><tbody>
+<tr><td>1</td><td>24</td><td>18</td><td>6</td><td>变成 gcd(18,6)</td></tr>
+<tr><td>2</td><td>18</td><td>6</td><td>0</td><td>返回 6</td></tr>
+</tbody></table>
+<div class="explain"><b>为什么它是算法？</b>它步骤明确、每次问题规模变小、会在有限步骤内结束，并给出确定结果。</div>
+<h2>2. 从代码看“接口”和“实现”</h2>
+<p>当我们写 <code>gcd(24, 18)</code> 时，函数名和参数就是接口；函数内部的循环和取余是实现。</p>
+<div class="grid2">
+<div class="card"><h3>接口</h3><p><code>gcd(M, N)</code>：给两个整数，返回最大公约数。</p></div>
+<div class="card"><h3>实现</h3><p>用 <code>%</code> 取余，并不断把 <code>(M,N)</code> 替换成 <code>(N,R)</code>。</p></div>
+</div>
+</section>
+
+<section class="notes-page" id="quick">
+<h1>十一、考前速记与自测</h1>
+<div class="flash-intro"><b>试用升级版速记卡：</b>参考你发的速记卡网站，这里改成了 <b>浏览 / 默写 / 填空</b> 三种模式；只有适合提关键词的卡片才设置填空，并支持 <b>翻转、上一张、下一张、标记已掌握、重置进度</b>。<br>在这一页里可直接用键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab">
+  <div class="flash-topbar">
+    <div class="flash-modes">
+      <button class="flash-chip active" data-mode="browse" type="button">浏览</button>
+      <button class="flash-chip" data-mode="write" type="button">默写</button>
+      <button class="flash-chip" data-mode="fill" type="button">填空</button>
+    </div>
+    <div class="flash-status">
+      <span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span>
+      <span class="flash-progress" id="flashPosition">1 / 1</span>
+    </div>
+  </div>
+  <div class="study-card" id="studyCard" tabindex="0" aria-live="polite">
+    <div class="study-inner" id="studyInner">
+      <div class="study-face study-front">
+        <div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div>
+        <h3 id="frontTitle">加载中…</h3>
+        <div id="frontBody"></div>
+        <div class="study-help" id="frontHelp">点击卡片或按 Space 翻面</div>
+      </div>
+      <div class="study-face study-back">
+        <div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div>
+        <h3 id="backTitle">参考答案</h3>
+        <div id="backBody"></div>
+        <div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div>
+      </div>
+    </div>
+  </div>
+  <div class="flash-topbar" style="margin-top:14px">
+    <div class="flash-actions">
+      <button class="flash-btn" id="prevCard" type="button">◀ 上一张</button>
+      <button class="flash-btn primary" id="flipCard" type="button">翻转</button>
+      <button class="flash-btn" id="nextCard" type="button">下一张 ▶</button>
+    </div>
+    <div class="flash-actions">
+      <button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button>
+      <button class="flash-btn" id="resetMastery" type="button">重置进度</button>
+    </div>
+  </div>
+  <div class="flash-keys">提示：这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握；离开这一页后，左右键仍然用于整份笔记翻页。</div>
+</div>
+</section>
+<section class="notes-page" id="sources">
+<h1>十二、资料标准与筛选说明</h1>
+<h2>1. 已收入的范围</h2>
+<ul>
+<li>概述：数据时代、数据结构与算法课程定位。</li>
+<li>问题求解：What/Why/How，计算的有限能行方法。</li>
+<li>图灵机计算模型。</li>
+<li>算法和计算复杂性：欧几里德算法、算法效率、不可计算问题。</li>
+<li>突破计算极限：分布式计算、新型计算、众包智慧。</li>
+<li>抽象与实现：接口、过程抽象、编程、控制结构与数据类型。</li>
+<li>ADT：数据抽象、封装、数据结构作为ADT实现。</li>
+</ul>
+<h2>2. 暂未收入的范围</h2>
+<div class="warn">栈、队列、链表、递归、排序、树、图等后续章节会在对应 PDF 中单独总结。本章只保留“ADT 与数据结构的关系”这个总论层面的概念，不提前放入这些后续章节的具体题。</div>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0;
+  const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach((p,k)=>p.classList.toggle('active',k===current));
+    nav.forEach((a,k)=>a.classList.toggle('active',k===current));
+    progress.textContent=(current+1)+' / '+pages.length;
+    buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));});
+    if(hashUpdate) history.replaceState(null,'','#'+pages[current].id);
+    document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  // Flashcards
+  const flashPage = document.getElementById('quick');
+  const cards = [
+    {type:'公式', title:'算法 + 数据结构 = ？', answer:'程序。算法负责“怎么处理”，数据结构负责“数据怎么组织/保存”。', cloze:'算法 + 数据结构 = ____。', fillAnswer:'程序'},
+    {type:'概念', title:'什么是“有限能行方法”？', answer:'由有限数量的明确指令构成；有限步骤后终止；每步结果确定；可以机械执行。', cloze:'有限能行方法要满足：步骤____、会在____步后结束、每一步结果____、可以机械执行。', fillAnswer:'明确；有限；确定'},
+    {type:'概念', title:'图灵机由哪些部分组成？', answer:'无限长分格纸带、读写头、状态寄存器、有限控制规则。', cloze:'图灵机四部分：____、读写头、状态寄存器、____。', fillAnswer:'无限长分格纸带；有限控制规则'},
+    {type:'规则', title:'规则 &lt;s0, a, B, s1, R&gt; 怎么读？', answer:'当前状态是 s0，读到 a，就把当前格改写成 B，状态变成 s1，然后读写头向右移动。B 表示空白，R 表示向右。', cloze:'<s0, a, B, s1, R> 表示：s0 读到 a，写成____，变成____，向____移动。', fillAnswer:'B；s1；右'},
+    {type:'理解', title:'为什么要比较算法复杂度？', answer:'因为资源有限。同一问题不同算法都可能正确，但时间/空间消耗可能差很多。', cloze:'比较复杂度是因为____有限，不同算法的____和____消耗可能差很多。', fillAnswer:'资源；时间；空间'},
+    {type:'概念', title:'什么是不可计算问题？', answer:'定义清楚，但不存在通用算法的问题。例如停机问题。', cloze:'不可计算问题：定义____，但不存在____算法。', fillAnswer:'清楚；通用'},
+    {type:'概念', title:'抽象是什么？', answer:'先关注“能做什么”，暂时隐藏“内部怎么实现”。例如只会用方向盘也能开车。', cloze:'抽象：先关注“能做什么”，隐藏“怎么____”。', fillAnswer:'实现'},
+    {type:'概念', title:'接口与实现的区别？', answer:'接口是外部可调用的操作；实现是内部具体做法。math.sqrt(9) 是接口，内部算法是实现。', cloze:'接口是外部可调用的____；实现是内部具体____。', fillAnswer:'操作；做法'},
+    {type:'概念', title:'ADT 是什么？', answer:'抽象数据类型：对数据和操作的逻辑描述，只说明能做什么，不规定内部怎么实现。', cloze:'ADT = ________，强调“能做什么”，不规定内部如何____。', fillAnswer:'抽象数据类型；实现'},
+    {type:'辨析', title:'ADT 和数据结构的关系？', answer:'ADT 定义逻辑接口；数据结构是 ADT 的具体实现。同一个 ADT 可以有不同的数据结构实现。', cloze:'ADT 定义逻辑____；数据结构是 ADT 的具体____。', fillAnswer:'接口；实现'},
+  ];
+  const storageKey = 'dsa101107_flash_mastered_v2';
+  let mastered = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let cardIndex = 0;
+  let mode = 'browse';
+  const studyCard = document.getElementById('studyCard');
+  const studyInner = document.getElementById('studyInner');
+  const frontType = document.getElementById('frontType');
+  const frontCount = document.getElementById('frontCount');
+  const frontTitle = document.getElementById('frontTitle');
+  const frontBody = document.getElementById('frontBody');
+  const backBody = document.getElementById('backBody');
+  const flashProgress = document.getElementById('flashProgress');
+  const flashPosition = document.getElementById('flashPosition');
+  const masterBtn = document.getElementById('masterCard');
+  function saveMastered(){ localStorage.setItem(storageKey, JSON.stringify([...mastered])); }
+  function updateProgress(){
+    const done = mastered.size, total = cards.length;
+    const pct = total ? Math.round(done*100/total) : 0;
+    flashProgress.textContent = `已掌握 ${done}/${total} · ${pct}%`;
+    flashPosition.textContent = `${cardIndex+1} / ${cards.length}`;
+    masterBtn.innerHTML = mastered.has(cardIndex) ? '⭐ 取消已掌握' : '⭐ 标记已掌握';
+  }
+  function escapeHtml(s){return s.replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function renderCard(){
+    const c = cards[cardIndex];
+    studyCard.classList.remove('flipped');
+    frontType.textContent = c.type;
+    frontCount.textContent = `第 ${cardIndex+1} 题` + (mastered.has(cardIndex) ? ' · 已掌握' : '');
+    frontTitle.innerHTML = c.title;
+    let body = '';
+    if(mode === 'browse'){
+      body = '<p>先自己回忆定义或答案，再翻面核对。</p>';
+    } else if(mode === 'write'){
+      body = '<p><b>默写模式：</b>先在下面自己组织语言，写完后再翻面看答案。</p><div class="study-write"><label>你的答案：</label><textarea rows="5" placeholder="可以直接在这里打字默写，也可以只在脑子里回答。"></textarea></div>';
+    } else {
+      if(c.cloze && c.fillAnswer){
+        body = `<p><b>填空模式：</b>先把关键字补出来，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${escapeHtml(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="把你想到的关键词写在这里" /><div class="fill-feedback" id="fillFeedback"></div></div>`;
+      }else{
+        body = `<p><b>这张卡不强行设置填空关键词。</b></p><p>这类问题更适合用“浏览”或“默写”模式完整理解，不建议只背零散词。</p>`;
+      }
+    }
+    frontBody.innerHTML = body;
+    backBody.innerHTML = `<p>${c.answer}</p>` + (c.fillAnswer ? `<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${c.fillAnswer}</div>` : '');
+    updateProgress();
+    const fillInput = document.getElementById('fillInput');
+    if(fillInput){
+      fillInput.addEventListener('input', ()=>{
+        const feedback = document.getElementById('fillFeedback');
+        const v = fillInput.value.trim();
+        if(!v){ feedback.textContent = ''; return; }
+        const ans = (c.fillAnswer||'').replace(/；/g,';').toLowerCase();
+        const ok = ans.split(/[;；]/).every(part => !part.trim() || v.toLowerCase().includes(part.trim()));
+        feedback.textContent = ok ? '看起来关键词基本对上了，可以翻面核对完整表述。' : '先继续想想关键字，再翻面核对也可以。';
+      });
+    }
+  }
+  function flipCard(){ studyCard.classList.toggle('flipped'); }
+  function shouldIgnoreFlipTarget(target){ return !!(target && target.closest && target.closest('textarea,input,button,label')); }
+  function prevCard(){ cardIndex = (cardIndex - 1 + cards.length) % cards.length; renderCard(); }
+  function nextCard(){ cardIndex = (cardIndex + 1) % cards.length; renderCard(); }
+  function toggleMaster(){ if(mastered.has(cardIndex)) mastered.delete(cardIndex); else mastered.add(cardIndex); saveMastered(); updateProgress(); renderCard(); }
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    mode = btn.dataset.mode;
+    renderCard();
+  }));
+  function isSpaceKey(e){ return e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space'; }
+  function isTypingTarget(target){
+    const tag=(target&&target.tagName||'').toLowerCase();
+    return ['input','textarea','select'].includes(tag) || !!(target&&target.isContentEditable);
+  }
+  if(studyCard){
+    studyCard.addEventListener('click', e=>{ if(shouldIgnoreFlipTarget(e.target)) return; flipCard(); });
+    studyCard.addEventListener('keydown', e=>{ if(e.key==='Enter' || isSpaceKey(e)){ e.preventDefault(); flipCard(); } });
+  }
+  document.getElementById('flipCard')?.addEventListener('click', flipCard);
+  document.getElementById('prevCard')?.addEventListener('click', prevCard);
+  document.getElementById('nextCard')?.addEventListener('click', nextCard);
+  document.getElementById('masterCard')?.addEventListener('click', toggleMaster);
+  document.getElementById('resetMastery')?.addEventListener('click', ()=>{ mastered = new Set(); saveMastered(); updateProgress(); renderCard(); });
+
+  document.addEventListener('keydown',e=>{
+    const onQuick = pages[current] && pages[current].id === 'quick';
+    const typing = isTypingTarget(e.target || document.activeElement);
+    if(onQuick){
+      if(typing) return; // 在默写框/填空框里按空格，要正常输入空格，不翻面
+      if(e.key==='ArrowRight'){ e.preventDefault(); e.stopPropagation(); nextCard(); return; }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); e.stopPropagation(); prevCard(); return; }
+      if(isSpaceKey(e)){ e.preventDefault(); e.stopPropagation(); flipCard(); studyCard?.focus({preventScroll:true}); return; }
+      if(e.key==='m' || e.key==='M'){ e.preventDefault(); e.stopPropagation(); toggleMaster(); return; }
+    }
+    if(typing)return;
+    if(e.key==='PageDown'){e.preventDefault();show(current+1)}
+    if(e.key==='PageUp'){e.preventDefault();show(current-1)}
+    if(!onQuick && (e.key==='ArrowRight')){e.preventDefault();show(current+1)}
+    if(!onQuick && (e.key==='ArrowLeft')){e.preventDefault();show(current-1)}
+  }, true);
+
+  renderCard();
+  show(current,false);
+})();
+</script>
+</body>
+</html>
