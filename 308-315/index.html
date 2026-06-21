@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数据结构与算法B Python版｜308-315 复习笔记</title>
+<style>
+:root{
+  --bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:790px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:780px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}.code-comment{color:#a7f3d0}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.small{font-size:13px;color:#64748b}.diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.diagram svg{display:block;min-width:760px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.stack-mini{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:7px 9px;display:inline-block;margin:2px}.good{color:#166534;font-weight:700}.bad{color:#b91c1c;font-weight:700}
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-progress{font-size:14px;color:var(--muted)}.study-card{perspective:1200px;min-height:540px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:540px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:150px;max-height:220px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}.flash-keys{margin-top:12px;font-size:13px;color:#64748b}.flash-keys code{background:#f1f5f9;padding:2px 6px;border-radius:6px}
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}.diagram{overflow-x:auto}.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:600px}.study-front h3,.study-back h3{font-size:21px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+@media screen{.main>.notes-page{display:none!important}.main>.notes-page.active{display:block!important}.main>.cover-page.active{display:flex!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">308-315｜队列、双端队列、链表与有序表</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#queue"><span class="num">03</span><span>队列 Queue：FIFO 与实现</span></a>
+<a href="#hotpotato"><span class="num">04</span><span>队列应用：热土豆问题</span></a>
+<a href="#deque"><span class="num">05</span><span>双端队列 Deque 与回文词</span></a>
+<a href="#list-adt"><span class="num">06</span><span>无序表 List 与链表思想</span></a>
+<a href="#linked"><span class="num">07</span><span>Node 与 UnorderedList 实现</span></a>
+<a href="#ordered"><span class="num">08</span><span>OrderedList 有序表实现</span></a>
+<a href="#complexity"><span class="num">09</span><span>链表复杂度与试题应用</span></a>
+<a href="#quick"><span class="num">10</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">11</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-308-315 这一章范围。</div>
+</aside>
+<main class="main">
+
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>308-315 复习笔记</h1>
+<div class="subtitle">队列 Queue、双端队列 Deque、无序表、链表与有序表</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记以 <b>pydsa-308-315 合并版</b>为标准，整理队列 ADT、队列应用、双端队列、回文词判定、无序表、链表实现、有序表实现与链表复杂度。</p>
+<p><b>学习目标：</b>不是只背“队列先进先出”，而是理解：为什么有些问题天然适合队列，为什么链表能保持相对位置但不要求连续存储，为什么链表代码题的关键永远是 <code>head/current/previous/next</code> 这些引用怎么改。</p>
+<p><b>阅读建议：</b>先看绿色核心结论，再看图示；代码旁边都有小白解释。红色例题放在相关知识点之后，例题不单独开页。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol>
+<li>本章考什么、怎么学</li><li>队列 Queue</li><li>热土豆问题</li><li>双端队列与回文词</li><li>无序表与链表思想</li><li>Node 与 UnorderedList</li><li>有序表 OrderedList</li><li>链表复杂度与试题应用</li><li>速记卡自测</li><li>资料标准与筛选说明</li>
+</ol></div>
+</section>
+
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>核心结论：</b>这一章继续研究线性结构，但重点从“栈的后进先出”转到“队列的先进先出”和“链表的链接存储”。队列题重在模拟首尾变化；链表题重在理解引用指向。</div>
+<h2>1. 本章知识地图</h2>
+<div class="flow"><span class="step">队列 Queue</span><span class="arrow">→</span><span class="step">热土豆/打印模拟</span><span class="arrow">→</span><span class="step">双端队列 Deque</span><span class="arrow">→</span><span class="step">无序表</span><span class="arrow">→</span><span class="step">链表与有序表</span></div>
+<table><thead><tr><th>模块</th><th>你要懂什么</th><th>常见考法</th></tr></thead><tbody>
+<tr><td>队列 Queue</td><td>一端入队，一端出队，先进先出 FIFO。</td><td>队首队尾、入队出队模拟、操作复杂度。</td></tr>
+<tr><td>队列应用</td><td>热土豆通过“出队再入队”模拟传递，体现队列的循环轮转。</td><td>代码填空、过程模拟。</td></tr>
+<tr><td>双端队列 Deque</td><td>两端都能加入和移除，但本身没有固定 FIFO/LIFO。</td><td>回文词判定、两端比较。</td></tr>
+<tr><td>无序表 List</td><td>数据项按相对位置存放，不要求有序。</td><td>ADT 操作、链表实现。</td></tr>
+<tr><td>链表</td><td>节点包含数据和 next；head 指向第一个节点；遍历靠 next。</td><td>add/search/remove、链表反转、指针修改顺序。</td></tr>
+<tr><td>有序表 OrderedList</td><td>数据项按大小排列，search 可提前停止，add 要找到合适插入位置。</td><td>平均复杂度、插入位置、previous/current。</td></tr>
+</tbody></table>
+<h2>2. 小白学习法</h2>
+<div class="grid2">
+<div class="card"><h3>队列题：画队首和队尾</h3><p>不要只盯代码。把队首 front、队尾 rear 画出来，模拟 enqueue/dequeue 更不容易错。</p></div>
+<div class="card"><h3>链表题：画箭头</h3><p>链表没有下标跳转，所有操作都靠 <code>next</code>。做题时画节点和箭头，改箭头前先保存下一个节点。</p></div>
+<div class="card"><h3>ADT 和实现分开</h3><p>ADT 只说“能做什么”；复杂度取决于怎么实现，比如 Queue 用 list 首端/末端作队首会影响 enqueue/dequeue。</p></div>
+<div class="card"><h3>例题位置跟知识点走</h3><p>链表插入例题放在讲完 Node 和指针修改之后；有序表复杂度例题放在讲完有序表 add 之后。</p></div>
+</div>
+</section>
+
+<section class="notes-page" id="queue">
+<h1>二、队列 Queue：FIFO 与 Python 实现</h1>
+<h2>1. 什么是队列</h2>
+<div class="key"><b>队列 Queue：</b>一种有次序的数据集合。新数据项总从队尾 rear 加入，已有数据项总从队首 front 移除。它的规则是 <b>先进先出 FIFO</b>，也就是先到先服务。</div>
+<div class="diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="队列FIFO示意图">
+  <defs><marker id="qA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <text x="250" y="45" text-anchor="middle" fill="#64748b" font-size="18">队尾 rear：新来的从这里排队</text>
+  <text x="650" y="45" text-anchor="middle" fill="#64748b" font-size="18">队首 front：等待最久的从这里离开</text>
+  <g transform="translate(100,90)">
+    <rect x="0" y="0" width="110" height="66" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="55" y="41" text-anchor="middle" fill="#14532d" font-size="22">8.4</text>
+    <rect x="110" y="0" width="110" height="66" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="165" y="41" text-anchor="middle" fill="#14532d" font-size="22">True</text>
+    <rect x="220" y="0" width="110" height="66" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="275" y="41" text-anchor="middle" fill="#14532d" font-size="22">dog</text>
+    <rect x="330" y="0" width="110" height="66" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="385" y="41" text-anchor="middle" fill="#14532d" font-size="22">4</text>
+    <path d="M-55 33 L0 33" stroke="#166534" stroke-width="4" marker-end="url(#qA)"/><text x="-65" y="85" fill="#64748b" font-size="15">enqueue</text>
+    <path d="M440 33 L515 33" stroke="#f97316" stroke-width="4" marker-end="url(#qA)"/><text x="460" y="85" fill="#64748b" font-size="15">dequeue</text>
+  </g>
+  <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="16">先进入队列的 4 在队首，所以先被 dequeue。</text>
+</svg>
+<div class="diagram-cap">队列只有一个入口和一个出口，不允许从中间插队或移除。</div>
+</div>
+<h2>2. Queue ADT 的操作</h2>
+<table><thead><tr><th>操作</th><th>作用</th><th>是否修改队列</th></tr></thead><tbody>
+<tr><td><code>Queue()</code></td><td>创建空队列</td><td>创建新对象</td></tr>
+<tr><td><code>enqueue(item)</code></td><td>把 item 加入队尾</td><td>会</td></tr>
+<tr><td><code>dequeue()</code></td><td>从队首移除并返回数据项</td><td>会</td></tr>
+<tr><td><code>isEmpty()</code></td><td>判断是否为空队列</td><td>不会</td></tr>
+<tr><td><code>size()</code></td><td>返回队列长度</td><td>不会</td></tr>
+</tbody></table>
+<h2>3. 用 Python list 实现 Queue</h2>
+<p>课程实现中，把 list 的 <b>0 号位置作为队尾</b>，把 list 末端作为队首。这样 <code>dequeue()</code> 可以直接 <code>pop()</code>，通常是 O(1)；但 <code>enqueue()</code> 要 <code>insert(0,item)</code>，需要整体移动元素，通常是 O(n)。</p>
+<div class="codebox"><div class="code-title">代码解释：Queue 的 list 实现</div><pre><code>class Queue:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0, item)   # 在 list 首端插入：队尾 rear
+
+    def dequeue(self):
+        return self.items.pop()      # 从 list 末端弹出：队首 front
+
+    def size(self):
+        return len(self.items)
+
+q = Queue()
+q.enqueue(4)
+q.enqueue('dog')
+q.enqueue(True)
+print(q.dequeue())   # 4，最早进入的先出来</code></pre></div>
+<div class="warn"><b>易错点：</b>不要把“队首/队尾”和 list 的“首端/末端”混在一起。ADT 只规定队列行为；具体实现可以把任意一端设成 front/rear，但复杂度会跟着改变。</div>
+<div class="exam"><h3>例题1：队列操作模拟</h3><p><b>题目思想：</b>依次执行 <code>enqueue(4)</code>、<code>enqueue('dog')</code>、<code>enqueue(True)</code>、<code>dequeue()</code>，返回谁？队列剩什么？</p><p><b>参考答案：</b>返回 <b>4</b>，因为 4 最早进入队列；剩余队列按课程 list 表示为 <span class="formula">[True, 'dog']</span>，其中 <span class="formula">'dog'</span> 更靠近队首。</p></div>
+</section>
+
+<section class="notes-page" id="hotpotato">
+<h1>三、队列应用：热土豆问题</h1>
+<h2>1. 问题怎么理解</h2>
+<p>热土豆问题类似“击鼓传花”：一群人围成圈传土豆，传过固定次数后，当前拿到土豆的人出局。继续传，直到只剩一个人。</p>
+<div class="key"><b>为什么用队列：</b>队首表示当前拿着土豆的人。传一次，就是队首出队，然后马上从队尾入队；传满 num 次后，队首出队且不再入队。</div>
+<div class="diagram">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="热土豆队列模拟">
+  <defs><marker id="hp" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#f97316"/></marker></defs>
+  <rect x="70" y="64" width="190" height="80" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="165" y="96" text-anchor="middle" fill="#1d4ed8" font-size="20" font-weight="700">队首出队</text><text x="165" y="124" text-anchor="middle" fill="#64748b" font-size="16">拿土豆的人离开队首</text>
+  <path d="M260 104 L355 104" stroke="#f97316" stroke-width="4" marker-end="url(#hp)"/>
+  <rect x="355" y="64" width="190" height="80" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="450" y="96" text-anchor="middle" fill="#9a3412" font-size="20" font-weight="700">再入队尾</text><text x="450" y="124" text-anchor="middle" fill="#64748b" font-size="16">相当于传给下一个人</text>
+  <path d="M545 104 L640 104" stroke="#f97316" stroke-width="4" marker-end="url(#hp)"/>
+  <rect x="640" y="64" width="190" height="80" rx="16" fill="#fef2f2" stroke="#fca5a5"/><text x="735" y="96" text-anchor="middle" fill="#b91c1c" font-size="20" font-weight="700">传满 num 次</text><text x="735" y="124" text-anchor="middle" fill="#64748b" font-size="16">队首出局，不再入队</text>
+  <text x="450" y="205" text-anchor="middle" fill="#64748b" font-size="16">不断重复，直到队列 size() == 1，剩下的人就是赢家。</text>
+</svg>
+</div>
+<h2>2. 代码解释</h2>
+<div class="codebox"><div class="code-title">代码解释：热土豆 hotPotato</div><pre><code>def hotPotato(namelist, num):
+    simqueue = Queue()
+    for name in namelist:
+        simqueue.enqueue(name)
+
+    while simqueue.size() &gt; 1:
+        for i in range(num):
+            # 传一次土豆：队首的人出队，马上去队尾
+            simqueue.enqueue(simqueue.dequeue())
+
+        # 传了 num 次后，队首这个人出局
+        simqueue.dequeue()
+
+    return simqueue.dequeue()
+
+print(hotPotato(['Bill','David','Susan','Jane','Kent','Brad'], 7))</code></pre></div>
+<div class="exam"><h3>例题2：热土豆过程怎么模拟</h3><p><b>题目思想：</b>为什么 <code>simqueue.enqueue(simqueue.dequeue())</code> 表示“一次传递”？</p><p><b>参考答案：</b><code>dequeue()</code> 取出当前队首，也就是当前拿土豆的人；随后 <code>enqueue()</code> 把这个人放回队尾，相当于他把土豆传给下一人后排到圈尾等待。传满固定次数后，再执行一次 <code>dequeue()</code>，此时队首的人被淘汰。</p></div>
+</section>
+
+<section class="notes-page" id="deque">
+<h1>四、双端队列 Deque 与回文词判定</h1>
+<h2>1. 什么是双端队列</h2>
+<div class="key"><b>双端队列 Deque：</b>一种有次序的数据集，两端都可以加入数据项，也都可以移除数据项。它集成了栈和队列的一些能力，但本身没有固定的 LIFO 或 FIFO 规则。</div>
+<table><thead><tr><th>操作</th><th>作用</th></tr></thead><tbody>
+<tr><td><code>Deque()</code></td><td>创建空双端队列</td></tr>
+<tr><td><code>addFront(item)</code></td><td>从队首加入</td></tr>
+<tr><td><code>addRear(item)</code></td><td>从队尾加入</td></tr>
+<tr><td><code>removeFront()</code></td><td>从队首移除并返回</td></tr>
+<tr><td><code>removeRear()</code></td><td>从队尾移除并返回</td></tr>
+<tr><td><code>isEmpty()</code> / <code>size()</code></td><td>判断空、返回长度</td></tr>
+</tbody></table>
+<h2>2. Python list 实现 Deque</h2>
+<div class="codebox"><div class="code-title">代码解释：Deque 的一种实现</div><pre><code>class Deque:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def addFront(self, item):
+        self.items.append(item)       # list 末端作为 front
+
+    def addRear(self, item):
+        self.items.insert(0, item)    # list 首端作为 rear
+
+    def removeFront(self):
+        return self.items.pop()
+
+    def removeRear(self):
+        return self.items.pop(0)
+
+    def size(self):
+        return len(self.items)</code></pre></div>
+<div class="warn"><b>易错点：</b>Deque “能两端操作”不等于自动 FIFO 或 LIFO。用它模拟栈/队列时，要由使用者自己统一操作规则。</div>
+<h2>3. 回文词判定</h2>
+<p>回文词正读和反读都一样，比如 <span class="formula">radar</span>、<span class="formula">madam</span>。用双端队列可以把字符从两端取出来比较：首尾相同就继续，不同就失败。</p>
+<div class="diagram">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="回文词双端队列">
+  <text x="75" y="50" fill="#64748b" font-size="18">radar</text>
+  <g transform="translate(160,78)">
+    <rect x="0" y="0" width="90" height="62" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="45" y="39" text-anchor="middle" fill="#14532d" font-size="24">r</text>
+    <rect x="90" y="0" width="90" height="62" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="135" y="39" text-anchor="middle" fill="#14532d" font-size="24">a</text>
+    <rect x="180" y="0" width="90" height="62" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="225" y="39" text-anchor="middle" fill="#14532d" font-size="24">d</text>
+    <rect x="270" y="0" width="90" height="62" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="315" y="39" text-anchor="middle" fill="#14532d" font-size="24">a</text>
+    <rect x="360" y="0" width="90" height="62" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="405" y="39" text-anchor="middle" fill="#14532d" font-size="24">r</text>
+    <text x="0" y="100" fill="#64748b" font-size="16">removeFront()</text><text x="330" y="100" fill="#64748b" font-size="16">removeRear()</text>
+  </g>
+  <text x="450" y="210" text-anchor="middle" fill="#64748b" font-size="16">每次比较最前和最后的字符，直到剩 0 个或 1 个字符。</text>
+</svg>
+</div>
+<div class="codebox"><div class="code-title">代码解释：回文词判定</div><pre><code>def palchecker(aString):
+    chardeque = Deque()
+    for ch in aString:
+        chardeque.addRear(ch)
+
+    stillEqual = True
+    while chardeque.size() &gt; 1 and stillEqual:
+        first = chardeque.removeFront()
+        last = chardeque.removeRear()
+        if first != last:
+            stillEqual = False
+
+    return stillEqual
+
+print(palchecker('radar'))   # True
+print(palchecker('python'))  # False</code></pre></div>
+<div class="exam"><h3>例题3：回文词为什么适合用 Deque？</h3><p><b>题目思想：</b>判断 <span class="formula">radar</span> 是否是回文词，为什么用双端队列方便？</p><p><b>参考答案：</b>回文词需要不断比较最前和最后两个字符。Deque 支持从两端移除，正好能每轮取出首尾字符并比较；<span class="formula">radar</span> 中第一轮 <span class="formula">r=r</span>，第二轮 <span class="formula">a=a</span>，最后只剩 <span class="formula">d</span>，所以是回文词。</p></div>
+</section>
+
+<section class="notes-page" id="list-adt">
+<h1>五、无序表 List 与链表思想</h1>
+<h2>1. 什么是无序表</h2>
+<div class="key"><b>无序表 Unordered List：</b>一种按相对位置存放的数据集。它叫“无序”，不是说没有顺序，而是说数据项不按大小排序，只按存放位置形成第 1 个、第 2 个、最后一个这样的关系。</div>
+<p>比如分数集合 <span class="formula">54, 26, 93, 17, 77, 31</span> 用无序表表示为 <span class="formula">[54, 26, 93, 17, 77, 31]</span>。</p>
+<h2>2. List ADT 的常用操作</h2>
+<table><thead><tr><th>操作</th><th>作用</th></tr></thead><tbody>
+<tr><td><code>List()</code></td><td>创建空列表</td></tr>
+<tr><td><code>add(item)</code></td><td>添加一个数据项，假设原先不存在</td></tr>
+<tr><td><code>remove(item)</code></td><td>移除指定数据项</td></tr>
+<tr><td><code>search(item)</code></td><td>查找数据项是否存在</td></tr>
+<tr><td><code>isEmpty()</code> / <code>size()</code></td><td>判空、求长度</td></tr>
+<tr><td><code>append/index/insert/pop</code></td><td>表尾添加、返回位置、指定位置插入、删除末尾/指定位置</td></tr>
+</tbody></table>
+<h2>3. 为什么可以用链表实现无序表</h2>
+<p>无序表要求保持数据项的相对位置，但不要求它们在内存里连续摆放。链表通过“节点 + 链接”保持前后关系：每个节点保存数据和指向下一个节点的引用。</p>
+<div class="diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="链表保持相对位置">
+  <defs><marker id="li" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <text x="80" y="42" fill="#64748b" font-size="18">内存位置可以不连续，但 next 把它们串起来</text>
+  <g transform="translate(90,78)">
+    <rect x="0" y="0" width="130" height="70" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="65" y="30" text-anchor="middle" fill="#14532d" font-size="20">54</text><text x="65" y="55" text-anchor="middle" fill="#64748b" font-size="14">next</text>
+    <path d="M130 35 L205 35" stroke="#166534" stroke-width="4" marker-end="url(#li)"/>
+    <rect x="205" y="0" width="130" height="70" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="270" y="30" text-anchor="middle" fill="#14532d" font-size="20">26</text><text x="270" y="55" text-anchor="middle" fill="#64748b" font-size="14">next</text>
+    <path d="M335 35 L410 35" stroke="#166534" stroke-width="4" marker-end="url(#li)"/>
+    <rect x="410" y="0" width="130" height="70" rx="12" fill="#ecfdf5" stroke="#86caa0"/><text x="475" y="30" text-anchor="middle" fill="#14532d" font-size="20">93</text><text x="475" y="55" text-anchor="middle" fill="#64748b" font-size="14">next=None</text>
+  </g>
+  <text x="450" y="205" text-anchor="middle" fill="#64748b" font-size="16">head 保存第一个节点的引用；没有 head，就找不到整条链。</text>
+</svg>
+</div>
+<div class="exam"><h3>例题4：哪个属于存储结构？</h3><p><b>题目思想：</b>下列哪个概念属于存储结构？A. 线性表 B. 链表 C. 栈 D. 队列</p><p><b>参考答案：</b><b>B. 链表</b>。线性表、栈、队列主要描述逻辑关系或操作规则；链表描述的是数据在内存中如何通过节点和链接来存放，属于链式存储结构。</p></div>
+</section>
+
+<section class="notes-page" id="linked">
+<h1>六、Node 与 UnorderedList 的链表实现</h1>
+<h2>1. Node 节点是什么</h2>
+<div class="key"><b>链表节点 Node：</b>至少包含两部分：数据项本身 <code>data</code>，以及指向下一个节点的引用 <code>next</code>。当 <code>next is None</code>，表示后面没有节点了。</div>
+<div class="codebox"><div class="code-title">代码解释：Node 类</div><pre><code>class Node:
+    def __init__(self, initdata):
+        self.data = initdata
+        self.next = None
+
+    def getData(self):
+        return self.data
+
+    def getNext(self):
+        return self.next
+
+    def setData(self, newdata):
+        self.data = newdata
+
+    def setNext(self, newnext):
+        self.next = newnext</code></pre></div>
+<h2>2. UnorderedList 为什么要有 head</h2>
+<p>链表不能像 Python list 那样通过下标直接跳到某个位置。要访问所有节点，必须从第一个节点开始沿着 <code>next</code> 一直走，所以无序表对象需要一个 <code>head</code> 保存第一个节点。</p>
+<div class="codebox"><div class="code-title">代码解释：UnorderedList 基础</div><pre><code>class UnorderedList:
+    def __init__(self):
+        self.head = None       # 空表没有第一个节点
+
+    def isEmpty(self):
+        return self.head == None</code></pre></div>
+<h2>3. add：为什么加到表头最快</h2>
+<p>无序表不要求大小顺序，所以新节点放哪里都可以。链表最容易插入的位置是表头，因为只需要修改新节点和 head，不需要遍历到表尾。</p>
+<div class="codebox"><div class="code-title">代码解释：add 到链表表头</div><pre><code>def add(self, item):
+    temp = Node(item)
+    temp.setNext(self.head)    # 第一步：新节点指向原来的第一个节点
+    self.head = temp           # 第二步：head 改为指向新节点</code></pre></div>
+<div class="warn"><b>顺序很重要：</b>必须先让 <code>temp.next</code> 指向原 head，再移动 <code>head</code>。如果先 <code>self.head = temp</code>，原链表入口就丢了。</div>
+<h2>4. size 和 search：遍历整条链</h2>
+<div class="grid2">
+<div class="codebox"><div class="code-title">size：数节点</div><pre><code>def size(self):
+    current = self.head
+    count = 0
+    while current != None:
+        count += 1
+        current = current.getNext()
+    return count</code></pre></div>
+<div class="codebox"><div class="code-title">search：逐个找</div><pre><code>def search(self, item):
+    current = self.head
+    found = False
+    while current != None and not found:
+        if current.getData() == item:
+            found = True
+        else:
+            current = current.getNext()
+    return found</code></pre></div>
+</div>
+<h2>5. remove：为什么需要 previous</h2>
+<p>删除某个节点时，不能只知道当前节点 <code>current</code>，还要知道它前面的节点 <code>previous</code>。因为真正的删除动作是：让 <code>previous.next</code> 跳过 <code>current</code>，指向 <code>current.next</code>。</p>
+<div class="codebox"><div class="code-title">代码解释：remove(item)</div><pre><code>def remove(self, item):
+    current = self.head
+    previous = None
+    found = False
+
+    while not found:
+        if current.getData() == item:
+            found = True
+        else:
+            previous = current
+            current = current.getNext()
+
+    if previous == None:
+        # 删除的是第一个节点
+        self.head = current.getNext()
+    else:
+        # 删除的是中间或尾部节点
+        previous.setNext(current.getNext())</code></pre></div>
+<div class="exam"><h3>例题5：单链表中把 s 插到 p 后面</h3><p><b>题目思想：</b>在单链表中，要将 <span class="formula">s</span> 所指节点插入到 <span class="formula">p</span> 所指节点之后，应该怎样改指针？</p><p><b>参考答案：</b><span class="formula">s.next = p.next; p.next = s</span>。必须先让 <span class="formula">s</span> 接上 <span class="formula">p</span> 原来的后继，再让 <span class="formula">p</span> 指向 <span class="formula">s</span>；否则会丢掉原来的后半段链表。</p></div>
+</section>
+
+<section class="notes-page" id="ordered">
+<h1>七、OrderedList 有序表实现</h1>
+<h2>1. 什么是有序表</h2>
+<div class="key"><b>有序表 OrderedList：</b>数据项按照某种可比较性质决定位置。以整数为例，越小的数据越靠近表头，越大的越靠后。</div>
+<p>例如 <span class="formula">17 → 26 → 31 → 54 → 77 → 93</span> 就是一个按升序排列的有序表。</p>
+<h2>2. 有序表和无序表哪些方法一样</h2>
+<p><code>isEmpty</code>、<code>size</code>、<code>remove</code> 与节点是否有序关系不大，所以实现思路基本和无序表一致。真正变化比较大的是 <code>search</code> 和 <code>add</code>。</p>
+<h2>3. search：可以提前停止</h2>
+<p>无序表找不到一个元素时，通常要搜完整条链。有序表可以更聪明：如果当前节点的数据已经大于目标值，那么后面的数据只会更大，目标不可能再出现，可以提前返回 False。</p>
+<div class="codebox"><div class="code-title">代码解释：OrderedList.search</div><pre><code>def search(self, item):
+    current = self.head
+    found = False
+    stop = False
+
+    while current != None and not found and not stop:
+        if current.getData() == item:
+            found = True
+        else:
+            if current.getData() &gt; item:
+                stop = True        # 后面只会更大，不用继续找
+            else:
+                current = current.getNext()
+    return found</code></pre></div>
+<h2>4. add：找到第一个比 item 大的节点</h2>
+<p>有序表插入必须保持整体顺序。比如在 <span class="formula">17, 26, 54, 77, 93</span> 中插入 <span class="formula">31</span>，要找到第一个比 31 大的节点 54，然后把 31 插到 54 前面。</p>
+<div class="codebox"><div class="code-title">代码解释：OrderedList.add</div><pre><code>def add(self, item):
+    current = self.head
+    previous = None
+    stop = False
+
+    while current != None and not stop:
+        if current.getData() &gt; item:
+            stop = True
+        else:
+            previous = current
+            current = current.getNext()
+
+    temp = Node(item)
+    if previous == None:
+        temp.setNext(self.head)
+        self.head = temp
+    else:
+        temp.setNext(current)
+        previous.setNext(temp)</code></pre></div>
+<div class="exam"><h3>例题6：有序单链表插入的平均复杂度</h3><p><b>题目思想：</b>在一个具有 n 个结点的有序单链表中插入一个新结点并仍保持有序，平均时间复杂度是多少？</p><p><b>参考答案：</b><b>O(n)</b>。因为单链表不能随机跳到插入位置，必须从 head 开始沿 next 向后找第一个比新元素大的节点。平均可能要看大约一半节点，数量级仍是 O(n)。</p></div>
+</section>
+
+<section class="notes-page" id="complexity">
+<h1>八、链表复杂度与试题应用</h1>
+<h2>1. 链表复杂度看什么</h2>
+<div class="key"><b>判断原则：</b>如果一个操作只改 head 或少数几个引用，通常是 O(1)；如果必须从 head 沿 next 遍历，通常是 O(n)。</div>
+<table><thead><tr><th>操作</th><th>复杂度</th><th>原因</th></tr></thead><tbody>
+<tr><td><code>isEmpty()</code></td><td>O(1)</td><td>只检查 <code>head is None</code>。</td></tr>
+<tr><td>无序表 <code>add(item)</code></td><td>O(1)</td><td>直接插入表头，不用找位置。</td></tr>
+<tr><td><code>size()</code></td><td>O(n)</td><td>必须遍历到表尾才能数清节点。</td></tr>
+<tr><td><code>search(item)</code></td><td>O(n)</td><td>最坏要找完整条链。</td></tr>
+<tr><td><code>remove(item)</code></td><td>O(n)</td><td>先要找到 item，同时维护 previous。</td></tr>
+<tr><td>有序表 <code>add(item)</code></td><td>O(n)</td><td>要找到正确插入位置。</td></tr>
+</tbody></table>
+<h2>2. 链表和 Python 内置 list 的区别</h2>
+<div class="explain"><b>不要混淆：</b>这里讲的链表是“节点 + next”的链式存储；Python 内置 <code>list</code> 是顺序存储并做了优化。两者名字都像“列表”，但底层完全不同，所以同名操作复杂度可能不一样。</div>
+<h2>3. 链表反转例题：指针怎么改</h2>
+<div class="exam"><h3>例题7：单链表反转填空</h3><p><b>题目思想：</b>已知单链表用 <code>self.head</code> 直接指向第一个数据节点。现在要把链表原地反转。做法可以理解成：<b>从原链表头部一个个摘节点，再用“头插法”插到新链表表头</b>。请补全下面代码中的 ①②③。</p>
+<div class="codebox"><pre><code>def reverse(self):
+    p = self.head              # p 指向当前要搬运的节点
+    self.head = None           # 先把新链表看成空表
+
+    while p is not None:
+        temp = p               # 暂存当前节点
+        p = ________           # ① 先保存原链表剩余部分入口
+        temp.next = ________   # ② 当前节点接到新链表表头前
+        ________ = temp        # ③ 更新新表头</code></pre></div>
+<p><b>参考答案：</b></p>
+<div class="codebox"><pre><code>def reverse(self):
+    p = self.head
+    self.head = None
+
+    while p is not None:
+        temp = p
+        p = p.next             # ① 先让 p 指向下一个节点，防止后半段链表丢失
+        temp.next = self.head  # ② 当前节点接到新链表表头前
+        self.head = temp       # ③ 当前节点成为新的表头</code></pre></div>
+<p><b>理解：</b>这段代码的本质就是反复做“头插”。<code>p</code> 像搬运工，指向原链表中当前要处理的节点；<code>p = p.next</code> 必须先做，因为拆掉当前节点之前要先记住剩余链表入口；<code>temp.next = self.head</code> 把当前节点接到新链表前面；<code>self.head = temp</code> 再更新表头。核心是：<b>改指针前，先保存后续节点，避免把后半段链表弄丢。</b></p></div>
+<h2>4. 循环单链表例题：只有 tail 怎么找头</h2>
+<div class="exam"><h3>例题8：只带表尾指针的循环单链表表头插入</h3><p><b>题目思想：</b>循环单链表中，<code>tail</code> 指向最后一个节点，最后一个节点的 <code>next</code> 指向第一个节点，也就是 <code>tail.next</code> 是表头。现在要在表头插入新节点 <code>nd</code>，请补全下面代码。</p>
+<div class="codebox"><pre><code>def pushFront(self, data):
+    nd = Node(data)
+    if self.tail is None:
+        self.tail = nd
+        nd.next = ________          # ① 空表时自己指向自己
+    else:
+        nd.next = ________          # ② 新节点先指向原表头
+        ________ = nd               # ③ 尾节点再指向新表头</code></pre></div>
+<p><b>参考答案：</b></p>
+<div class="codebox"><pre><code>def pushFront(self, data):
+    nd = Node(data)
+    if self.tail is None:
+        self.tail = nd
+        nd.next = nd
+    else:
+        nd.next = self.tail.next
+        self.tail.next = nd</code></pre></div>
+<p><b>理解：</b>空表时只有一个节点，所以 <code>nd.next = nd</code> 才能形成循环；非空时，必须先令 <code>nd.next = self.tail.next</code>，让新节点接上原表头，再令 <code>self.tail.next = nd</code>，让尾节点指向新表头。顺序反了就可能丢失原表头入口。</p></div>
+</section>
+
+<section class="notes-page" id="quick">
+<h1>九、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>保留前面章节的 <b>浏览 / 默写 / 填空</b> 三种模式；只有适合提关键词的卡片才设置填空，不强行写关键词。支持翻转、上一张、下一张、标记已掌握、重置进度。<br/>在这一页可直接用键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab">
+  <div class="flash-topbar">
+    <div class="flash-modes"><button class="flash-chip active" data-mode="browse" type="button">浏览</button><button class="flash-chip" data-mode="write" type="button">默写</button><button class="flash-chip" data-mode="fill" type="button">填空</button></div>
+    <div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div>
+  </div>
+  <div class="study-card" id="studyCard" tabindex="0" aria-live="polite">
+    <div class="study-inner" id="studyInner">
+      <div class="study-face study-front"><div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div><h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help">点击卡片或按 Space 翻面</div></div>
+      <div class="study-face study-back"><div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div><h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div></div>
+    </div>
+  </div>
+  <div class="flash-topbar" style="margin-top:14px"><div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div><div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div></div>
+  <div class="flash-keys">提示：这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握；离开这一页后，左右键仍然用于整份笔记翻页。</div>
+</div>
+</section>
+
+
+<section class="notes-page" id="sources">
+<h1>十、资料标准与筛选说明</h1>
+<h2>1. 本章收入内容</h2>
+<ul>
+<li>队列 Queue：FIFO、Queue ADT、Python list 实现及 enqueue/dequeue 复杂度。</li>
+<li>队列应用：保留热土豆问题，用来理解“出队再入队”的循环轮转思想。</li>
+<li>双端队列 Deque：两端加入/移除，以及回文词判定的基本思路。</li>
+<li>无序表、链表 Node、UnorderedList、OrderedList：重点放在 head、current、previous、next 的指针修改。</li>
+<li>链表复杂度与对应试题：只保留和本章链表、队列、双端队列直接相关的题目。</li>
+</ul>
+<h2>2. 本章删减说明</h2>
+<div class="warn">“打印任务模拟”虽然在课件中出现，但没有看到往年题直接考整套 Printer / Task / 等待时间仿真流程，所以当前版本删去了这一整页，也删去了速记卡中的“打印任务模拟中 Task 需要记录什么？”。这里只保留队列 FIFO 及和考试应用更贴近的内容。</div>
+<h2>3. 无关扩展内容</h2>
+<div class="warn">课件或资料中若出现 AI 基础、机器学习基础、深度学习图像处理、AI Racer 大作业介绍等与数据结构与算法核心知识无关的内容，不收入本复习笔记。</div>
+</section>
+
+</main>
+</div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0;
+  const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach((p,k)=>p.classList.toggle('active',k===current));
+    nav.forEach((a,k)=>a.classList.toggle('active',k===current));
+    progress.textContent=(current+1)+' / '+pages.length;
+    buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));});
+    if(hashUpdate) history.replaceState(null,'','#'+pages[current].id);
+    document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [
+    {type:'概念', title:'Queue 的核心规则是什么？', answer:'队列从 rear 端加入，从 front 端移除；等待最久的数据项最先被移除，所以是先进先出 FIFO。', cloze:'Queue 的规则是____，英文缩写是____。', fillAnswer:'先进先出；FIFO'},
+    {type:'操作', title:'enqueue 和 dequeue 分别做什么？', answer:'enqueue(item) 把数据项加入队尾；dequeue() 从队首移除并返回数据项。', cloze:'enqueue 加入____；dequeue 移除____。', fillAnswer:'队尾；队首'},
+    {type:'实现', title:'课程中的 Queue 为什么 enqueue 是 O(n)、dequeue 是 O(1)？', answer:'因为课程实现把 list 首端作为队尾、末端作为队首；enqueue 用 insert(0,item)，需要移动元素，是 O(n)；dequeue 用 pop()，从末端弹出，通常 O(1)。', cloze:null, fillAnswer:null},    {type:'概念', title:'Deque 和 Queue 的区别？', answer:'Queue 只允许一端入队、另一端出队；Deque 两端都能加入和移除，但它本身没有固定 FIFO 或 LIFO 规则。', cloze:'Deque 两端都能____和____。', fillAnswer:'加入；移除'},    {type:'概念', title:'链表节点 Node 至少包含什么？', answer:'至少包含数据项 data 和指向下一个节点的引用 next；next 为 None 表示没有下一个节点。', cloze:'Node 至少包含____和____。', fillAnswer:'data；next'},
+    {type:'实现', title:'UnorderedList.add 为什么通常是 O(1)？', answer:'因为无序表不要求保持大小顺序，新节点可以直接插到表头，只需修改新节点 next 和 head。', cloze:'无序表 add 通常插入____，所以是 O(1)。', fillAnswer:'表头'},
+    {type:'实现', title:'remove(item) 为什么需要 previous？', answer:'删除当前节点时，需要让前一个节点的 next 跳过 current，指向 current.next；所以必须同时维护 previous 和 current。', cloze:'remove 要维护____和____两个引用。', fillAnswer:'previous；current'},
+    {type:'有序表', title:'OrderedList.search 为什么可以提前停止？', answer:'因为链表已经有序。如果当前节点数据大于目标值，后面只会更大，目标不可能再出现。', cloze:'有序表 search 中，当前数据____目标值时可以停止。', fillAnswer:'大于'},  ];
+  const storageKey = 'dsa308315_flash_mastered_v2';
+  let mastered = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let cardIndex = 0; let mode = 'browse';
+  const studyCard=document.getElementById('studyCard'), frontType=document.getElementById('frontType'), frontCount=document.getElementById('frontCount'), frontTitle=document.getElementById('frontTitle'), frontBody=document.getElementById('frontBody'), backBody=document.getElementById('backBody'), flashProgress=document.getElementById('flashProgress'), flashPosition=document.getElementById('flashPosition'), masterBtn=document.getElementById('masterCard');
+  function saveMastered(){ localStorage.setItem(storageKey, JSON.stringify([...mastered])); }
+  function updateProgress(){const done=mastered.size,total=cards.length,pct=total?Math.round(done*100/total):0;flashProgress.textContent=`已掌握 ${done}/${total} · ${pct}%`;flashPosition.textContent=`${cardIndex+1} / ${cards.length}`;masterBtn.innerHTML=mastered.has(cardIndex)?'⭐ 取消已掌握':'⭐ 标记已掌握';}
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function renderCard(){const c=cards[cardIndex];studyCard.classList.remove('flipped');frontType.textContent=c.type;frontCount.textContent=`第 ${cardIndex+1} 题`+(mastered.has(cardIndex)?' · 已掌握':'');frontTitle.innerHTML=c.title;let body='';if(mode==='browse'){body='<p>先自己回忆定义或答案，再翻面核对。</p>';}else if(mode==='write'){body='<p><b>默写模式：</b>先在下面自己组织语言，写完后再翻面看答案。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="可以直接在这里打字默写，也可以只在脑子里回答。"></textarea></div>';}else{if(c.cloze&&c.fillAnswer){body=`<p><b>填空模式：</b>先把关键字补出来，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${escapeHtml(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="把你想到的关键词写在这里" /><div class="fill-feedback" id="fillFeedback"></div></div>`;}else{body='<p><b>这张卡不强行设置填空关键词。</b></p><p>这类问题更适合用“浏览”或“默写”模式完整理解，不建议只背零散词。</p>';}}frontBody.innerHTML=body;backBody.innerHTML=`<p>${c.answer}</p>`+(c.fillAnswer?`<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${c.fillAnswer}</div>`:'');updateProgress();const fillInput=document.getElementById('fillInput');if(fillInput){fillInput.addEventListener('input',()=>{const feedback=document.getElementById('fillFeedback');const v=fillInput.value.trim();if(!v){feedback.textContent='';return;}const ans=(c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase();const ok=ans.split(/[;；]/).some(part=>part.trim()&&v.toLowerCase().includes(part.trim()));feedback.textContent=ok?'关键词有对上的部分，可以翻面核对完整表述。':'先继续想想关键字，再翻面核对也可以。';});}}
+  function flipCard(){studyCard.classList.toggle('flipped');}
+  function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();}
+  function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();}
+  function toggleMaster(){if(mastered.has(cardIndex))mastered.delete(cardIndex);else mastered.add(cardIndex);saveMastered();updateProgress();renderCard();}
+  function isSpaceKey(e){return e.key===' '||e.key==='Spacebar'||e.code==='Space';}
+  function isTypingTarget(target){const tag=(target&&target.tagName||'').toLowerCase();return ['input','textarea','select'].includes(tag)||!!(target&&target.isContentEditable);}
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');mode=btn.dataset.mode;renderCard();}));
+  if(studyCard){studyCard.addEventListener('click',e=>{if(e.target.closest('textarea,input,label,button,.study-write,.study-fill'))return;flipCard();});studyCard.addEventListener('keydown',e=>{if(e.key==='Enter'||isSpaceKey(e)){e.preventDefault();flipCard();}});}
+  document.getElementById('flipCard')?.addEventListener('click',flipCard);document.getElementById('prevCard')?.addEventListener('click',prevCard);document.getElementById('nextCard')?.addEventListener('click',nextCard);document.getElementById('masterCard')?.addEventListener('click',toggleMaster);document.getElementById('resetMastery')?.addEventListener('click',()=>{mastered=new Set();saveMastered();updateProgress();renderCard();});
+  document.addEventListener('keydown',e=>{const onQuick=pages[current]&&pages[current].id==='quick';const typing=isTypingTarget(e.target||document.activeElement);if(onQuick){if(typing)return;if(e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();nextCard();return;}if(e.key==='ArrowLeft'){e.preventDefault();e.stopPropagation();prevCard();return;}if(isSpaceKey(e)){e.preventDefault();e.stopPropagation();flipCard();studyCard?.focus({preventScroll:true});return;}if(e.key==='m'||e.key==='M'){e.preventDefault();e.stopPropagation();toggleMaster();return;}}if(typing)return;if(e.key==='PageDown'){e.preventDefault();show(current+1)}if(e.key==='PageUp'){e.preventDefault();show(current-1)}if(!onQuick&&e.key==='ArrowRight'){e.preventDefault();show(current+1)}if(!onQuick&&e.key==='ArrowLeft'){e.preventDefault();show(current-1)}},true);
+  renderCard();show(current,false);
+})();
+</script>
+</body>
+</html>
