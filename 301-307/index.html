@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数据结构与算法B Python版｜301-307 复习笔记</title>
+<style>
+:root{
+  --bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:780px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:760px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.code{background:#dbeafe;color:#1d4ed8}.small{font-size:13px;color:#64748b}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}.code-comment{color:#a7f3d0}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.quote{border-left:4px solid var(--green2);padding:8px 12px;background:#f8fafc;color:#334155;border-radius:8px;margin:12px 0}.source-note{font-size:13px;color:#64748b;border-top:1px dashed #cbd5e1;margin-top:20px;padding-top:12px}
+
+/* 嵌入式速记卡：点击翻面 */
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}
+.turing-diagram,.turing-flow-diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:16px 0;overflow:auto}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}
+.turing-diagram-clean svg{display:block;min-width:760px}.turing-diagram-clean{padding:16px 18px}
+@media(max-width:960px){.turing-diagram-clean svg{min-width:760px}.turing-diagram-clean{overflow-x:auto}}
+
+.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}
+.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-btn[disabled]{opacity:.45;cursor:not-allowed}.flash-progress{font-size:14px;color:var(--muted)}
+.study-card{perspective:1200px;min-height:500px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:500px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}
+.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}
+.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:150px;max-height:220px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}
+.flash-keys{margin-top:12px;font-size:13px;color:#64748b}.flash-keys code{background:#f1f5f9;padding:2px 6px;border-radius:6px}.mastered-star{font-size:18px}
+@media(max-width:960px){.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:560px}.study-front h3,.study-back h3{font-size:21px}}
+
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+
+/* 修正版：封面只属于第一页，其他页面不会继承封面样式 */
+@media screen {
+  .main > .notes-page { display:none !important; }
+  .main > .notes-page.active { display:block !important; }
+  .main > .cover-page.active { display:flex !important; }
+}
+
+/* 201-206 diagrams */
+.complexity-diagram,.program-diagram,.anagram-diagram,.list-diagram,.dict-diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.complexity-diagram svg,.program-diagram svg,.anagram-diagram svg,.list-diagram svg,.dict-diagram svg{display:block;min-width:760px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.mini-badge{display:inline-block;border-radius:999px;background:#e8f3ed;color:var(--green);padding:2px 8px;font-weight:700;font-size:12px}.rank-list{display:grid;grid-template-columns:repeat(7,minmax(80px,1fr));gap:8px;margin:12px 0}.rank-list div{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;background:#fbfffc}.rank-list b{display:block;color:var(--green)}@media(max-width:960px){.rank-list{grid-template-columns:1fr 1fr}.complexity-diagram,.program-diagram,.anagram-diagram,.list-diagram,.dict-diagram{overflow-x:auto}}
+.study-card,.study-inner{min-height:560px}.study-face{overflow:auto}.study-write textarea{min-height:170px}.study-fill input{position:relative;z-index:2}
+
+/* 301-307 extra diagrams */
+.linear-diagram,.stack-diagram,.paren-diagram,.base-diagram,.expr-diagram,.postfix-diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.linear-diagram svg,.stack-diagram svg,.paren-diagram svg,.base-diagram svg,.expr-diagram svg,.postfix-diagram svg{display:block;min-width:760px}.ops-table td:first-child{white-space:nowrap}.stack-mini{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:7px 9px;display:inline-block;margin:2px}.good{color:#166534;font-weight:700}.bad{color:#b91c1c;font-weight:700}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">301-307｜线性结构、栈与表达式</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#linear"><span class="num">03</span><span>线性结构：有序、两端、前驱后继</span></a>
+<a href="#stack"><span class="num">04</span><span>栈 Stack：LIFO 与 ADT</span></a>
+<a href="#stack-python"><span class="num">05</span><span>Python 实现 Stack 与复杂度</span></a>
+<a href="#parentheses"><span class="num">06</span><span>栈应用：括号匹配</span></a>
+<a href="#base"><span class="num">07</span><span>栈应用：进制转换</span></a>
+<a href="#expr"><span class="num">08</span><span>中缀、前缀、后缀表达式</span></a>
+<a href="#infix-postfix"><span class="num">09</span><span>中缀转后缀算法</span></a>
+<a href="#postfix-eval"><span class="num">10</span><span>后缀表达式求值</span></a>
+<a href="#quick"><span class="num">11</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">12</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-301-307 这一章范围。</div>
+</aside>
+<main class="main">
+
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>301-307 复习笔记</h1>
+<div class="subtitle">线性结构、栈 Stack、括号匹配、进制转换与表达式处理</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记以 <b>pydsa-301-307 合并版</b>为标准，整理线性结构、ADT Stack、Python 实现、括号匹配、十进制转二/多进制、中缀/前缀/后缀表达式、中缀转后缀和后缀求值。</p>
+<p><b>学习目标：</b>不是只背“栈是后进先出”，而是理解：为什么某些问题天然需要“反转次序”，为什么 ADT 和实现要分开，为什么同一个 Stack 接口会因为实现不同而复杂度不同。</p>
+<p><b>阅读建议：</b>先看绿色核心结论，再看图示和代码；红色例题放在相关知识点之后，确保前面已经讲过做题所需知识。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol>
+<li>本章考什么、怎么学</li><li>线性结构</li><li>栈 Stack 与 ADT</li><li>Python 实现 Stack</li><li>括号匹配</li><li>进制转换</li><li>表达式表示法</li><li>中缀转后缀</li><li>后缀表达式求值</li><li>速记卡与资料说明</li>
+</ol></div>
+</section>
+
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>核心结论：</b>这一章的主角是“栈”。栈不是一个孤立概念，它的本质价值是解决“最近出现的东西要最先处理”的问题，比如括号匹配、浏览器后退、进制转换、表达式转换与表达式求值。</div>
+<h2>1. 本章知识地图</h2>
+<div class="flow"><span class="step">线性结构</span><span class="arrow">→</span><span class="step">栈 ADT</span><span class="arrow">→</span><span class="step">Python list 实现</span><span class="arrow">→</span><span class="step">括号匹配</span><span class="arrow">→</span><span class="step">表达式处理</span></div>
+<table><thead><tr><th>模块</th><th>你要懂什么</th><th>常见考法</th></tr></thead><tbody>
+<tr><td>线性结构</td><td>数据项只有先后关系，有两端，每个中间元素有唯一前驱和后继。</td><td>概念判断、和非线性结构区分。</td></tr>
+<tr><td>栈 Stack</td><td>只在同一端加入和移除，后进先出 LIFO。</td><td>出栈序列、栈顶元素、栈的应用。</td></tr>
+<tr><td>Stack ADT 与实现</td><td>ADT 只规定接口；具体用 list 哪一端作栈顶会影响复杂度。</td><td>push/pop/peek 区分，复杂度辨析。</td></tr>
+<tr><td>括号匹配</td><td>最新打开的左括号应该最先被关闭，正好适合栈。</td><td>算法过程、代码填空、最佳数据结构。</td></tr>
+<tr><td>进制转换</td><td>除基取余得到的是低位到高位，栈用于反转输出。</td><td>代码理解、十进制转任意进制。</td></tr>
+<tr><td>表达式转换与求值</td><td>中缀有优先级麻烦；后缀便于用栈求值。</td><td>中缀转后缀、后缀求值、运算符栈状态。</td></tr>
+</tbody></table>
+<h2>2. 本章最重要的学习线索</h2>
+<div class="grid2">
+<div class="card"><h3>看到“最近的先处理”就想到栈</h3><p>最新打开的括号要最先匹配，最近访问的网页最先后退，最近压入的操作数最先参与运算。</p></div>
+<div class="card"><h3>先分清 ADT 和实现</h3><p>ADT Stack 说的是“能 push、pop、peek”；实现才是“内部到底用 list 尾端、list 首端还是链表”。</p></div>
+<div class="card"><h3>代码题重在模拟</h3><p>栈题常常不难，但很容易算错。建议草稿纸画栈：底在左/下，顶在右/上，每一步 push/pop 都写出来。</p></div>
+<div class="card"><h3>表达式题抓住两个栈</h3><p>中缀转后缀主要用操作符栈；后缀求值主要用操作数栈。</p></div>
+</div>
+</section>
+
+<section class="notes-page" id="linear">
+<h1>二、线性结构：有序、两端、前驱后继</h1>
+<h2>1. 什么是线性结构</h2>
+<div class="key"><b>线性结构：</b>一种有序数据项集合。除第一个数据项没有前驱、最后一个没有后继外，每个数据项都有唯一前驱和唯一后继。</div>
+<div class="linear-diagram">
+<svg viewBox="0 0 900 230" width="100%" role="img" aria-label="线性结构示意图">
+  <defs><marker id="linA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <text x="58" y="45" fill="#64748b" font-size="18">前端 / 左端 / 栈顶 / 队首等名称随结构而变</text>
+  <g transform="translate(70,80)">
+    <rect x="0" y="0" width="95" height="60" rx="14" fill="#ecfdf5" stroke="#86caa0"/><text x="48" y="38" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">A</text>
+    <rect x="150" y="0" width="95" height="60" rx="14" fill="#ecfdf5" stroke="#86caa0"/><text x="198" y="38" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">B</text>
+    <rect x="300" y="0" width="95" height="60" rx="14" fill="#ecfdf5" stroke="#86caa0"/><text x="348" y="38" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">C</text>
+    <rect x="450" y="0" width="95" height="60" rx="14" fill="#ecfdf5" stroke="#86caa0"/><text x="498" y="38" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">D</text>
+    <path d="M98 30 L148 30" stroke="#166534" stroke-width="4" marker-end="url(#linA)"/><path d="M248 30 L298 30" stroke="#166534" stroke-width="4" marker-end="url(#linA)"/><path d="M398 30 L448 30" stroke="#166534" stroke-width="4" marker-end="url(#linA)"/>
+    <text x="0" y="105" fill="#64748b" font-size="16">第一个：无前驱</text><text x="435" y="105" fill="#64748b" font-size="16">最后一个：无后继</text>
+  </g>
+  <text x="450" y="205" text-anchor="middle" fill="#64748b" font-size="16">线性结构的关键不是叫“左/右”还是“前/后”，而是数据项之间只有一条顺序链。</text>
+</svg>
+<div class="diagram-cap">图示理解：线性结构像排队、串珠、车厢；数据项只按一个方向排成序列。</div>
+</div>
+<h2>2. 栈、队列、双端队列、列表都属于线性结构</h2>
+<p>它们的共同点是：数据项之间只存在先后次序关系。区别在于：<b>从哪一端加入、从哪一端移除、是否允许从两端操作</b>。</p>
+<table><thead><tr><th>结构</th><th>主要限制</th><th>直觉</th></tr></thead><tbody>
+<tr><td>栈 Stack</td><td>同一端加入和移除</td><td>盘子堆：最后放上去的最先拿走</td></tr>
+<tr><td>队列 Queue</td><td>一端加入，另一端移除</td><td>排队：先来先服务</td></tr>
+<tr><td>双端队列 Deque</td><td>两端都可加入/移除</td><td>两头都能操作的队列</td></tr>
+<tr><td>列表 List</td><td>更一般的线性表，可在指定位置插入、删除、查找</td><td>一串有顺序的数据</td></tr>
+</tbody></table>
+<div class="exam"><h3>例题1：哪个是存储结构？</h3><p><b>题目思想：</b>下列哪个概念属于存储结构？A. 线性表 B. 链表 C. 栈 D. 队列</p><p><b>参考答案：</b><b>B. 链表</b>。链表强调结点和指针如何存放，是存储结构；线性表、栈、队列主要描述逻辑关系或操作规则。</p></div>
+</section>
+
+<section class="notes-page" id="stack">
+<h1>三、栈 Stack：LIFO 与 ADT</h1>
+<h2>1. 什么是栈</h2>
+<div class="key"><b>栈 Stack：</b>一种有次序的数据项集合，数据项的加入和移除都只发生在同一端。这一端叫栈顶 top，另一端叫栈底 base。</div>
+<div class="stack-diagram">
+<svg viewBox="0 0 900 330" width="100%" role="img" aria-label="栈LIFO示意图">
+  <defs><marker id="stkA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#f97316"/></marker></defs>
+  <rect x="150" y="58" width="170" height="55" rx="10" fill="#eff6ff" stroke="#93c5fd"/><text x="235" y="93" text-anchor="middle" font-size="22" fill="#1d4ed8" font-weight="700">push</text>
+  <rect x="580" y="58" width="170" height="55" rx="10" fill="#fff7ed" stroke="#fdba74"/><text x="665" y="93" text-anchor="middle" font-size="22" fill="#9a3412" font-weight="700">pop</text>
+  <path d="M320 86 L400 86" stroke="#f97316" stroke-width="4" marker-end="url(#stkA)"/><path d="M500 86 L580 86" stroke="#f97316" stroke-width="4" marker-end="url(#stkA)"/>
+  <g transform="translate(400,40)">
+    <rect x="0" y="180" width="100" height="48" fill="#dcfce7" stroke="#86caa0"/><text x="50" y="211" text-anchor="middle" font-size="20" fill="#14532d">4</text>
+    <rect x="0" y="132" width="100" height="48" fill="#dcfce7" stroke="#86caa0"/><text x="50" y="163" text-anchor="middle" font-size="20" fill="#14532d">dog</text>
+    <rect x="0" y="84" width="100" height="48" fill="#dcfce7" stroke="#86caa0"/><text x="50" y="115" text-anchor="middle" font-size="20" fill="#14532d">True</text>
+    <rect x="0" y="36" width="100" height="48" fill="#dcfce7" stroke="#86caa0"/><text x="50" y="67" text-anchor="middle" font-size="20" fill="#14532d">8.4</text>
+    <text x="136" y="67" font-size="18" fill="#b91c1c" font-weight="700">栈顶 top</text>
+    <text x="136" y="212" font-size="18" fill="#64748b">栈底 base</text>
+  </g>
+  <text x="450" y="305" text-anchor="middle" fill="#64748b" font-size="16">后放进去的 8.4 离栈顶最近，所以最先出来：Last In First Out。</text>
+</svg>
+</div>
+<h2>2. 栈的核心特性：后进先出 LIFO</h2>
+<p>距离栈底越近的数据项，留在栈中的时间越长；最新加入的数据项在栈顶，会被最先移除。这就是 <b>后进先出</b>，英文叫 <b>Last In First Out</b>，缩写 <b>LIFO</b>。</p>
+<div class="example"><b>生活例子：</b>浏览器“后退”按钮先回到最近访问的网页；Word 的 Undo 先撤销最近一步操作；盘子堆最上面的盘子最先被拿走。</div>
+<h2>3. ADT Stack 的操作</h2>
+<table class="ops-table"><thead><tr><th>操作</th><th>作用</th><th>会不会修改栈</th></tr></thead><tbody>
+<tr><td><code>Stack()</code></td><td>创建一个空栈</td><td>创建新对象</td></tr>
+<tr><td><code>push(item)</code></td><td>把 item 加入栈顶</td><td>会</td></tr>
+<tr><td><code>pop()</code></td><td>移除并返回栈顶数据项</td><td>会</td></tr>
+<tr><td><code>peek()</code></td><td>返回栈顶数据项但不移除</td><td>不会</td></tr>
+<tr><td><code>isEmpty()</code></td><td>判断是否为空栈</td><td>不会</td></tr>
+<tr><td><code>size()</code></td><td>返回栈中元素个数</td><td>不会</td></tr>
+</tbody></table>
+<h2>4. 手动模拟栈操作</h2>
+<div class="example"><p><b>例子：</b></p><p><span class="stack-mini">s=Stack()</span> → <span class="stack-mini">[]</span><br/><span class="stack-mini">push(4)</span> → <span class="stack-mini">[4]</span><br/><span class="stack-mini">push('dog')</span> → <span class="stack-mini">[4,'dog']</span><br/><span class="stack-mini">peek()</span> 返回 <span class="stack-mini">'dog'</span>，但栈仍是 <span class="stack-mini">[4,'dog']</span><br/><span class="stack-mini">pop()</span> 返回 <span class="stack-mini">'dog'</span>，栈变成 <span class="stack-mini">[4]</span></p></div>
+<div class="exam"><h3>例题2：进栈/出栈后栈顶是谁？</h3><p><b>题目思想：</b>空栈 S，待进栈序列为 a,b,c,d,e,f，依次执行：进栈、进栈、出栈、进栈、进栈、出栈。操作完成后，栈顶元素是谁？</p><p><b>过程：</b><span class="stack-mini">push a → [a]</span> <span class="stack-mini">push b → [a,b]</span> <span class="stack-mini">pop → [a]</span> <span class="stack-mini">push c → [a,c]</span> <span class="stack-mini">push d → [a,c,d]</span> <span class="stack-mini">pop → [a,c]</span></p><p><b>参考答案：</b>栈顶是 <b>c</b>。</p></div>
+</section>
+
+<section class="notes-page" id="stack-python">
+<h1>四、Python 实现 Stack 与复杂度</h1>
+<h2>1. 用 class 实现 ADT Stack</h2>
+<p>Python 可以用类来实现用户自定义类型。Stack 是一个数据集，可以用 Python 原生 <code>list</code> 当内部容器。</p>
+<div class="codebox"><div class="code-title">代码解释：list 末端作为栈顶</div><pre><code>class Stack:
+    def __init__(self):
+        self.items = []              # 内部用 list 保存数据；使用者不需要直接操作它
+
+    def isEmpty(self):
+        return self.items == []
+
+    def push(self, item):
+        self.items.append(item)      # 把 list 末端当作栈顶：append 到末端
+
+    def pop(self):
+        return self.items.pop()      # 从 list 末端弹出
+
+    def peek(self):
+        return self.items[len(self.items) - 1]
+
+    def size(self):
+        return len(self.items)
+
+s = Stack()
+s.push(4)
+s.push(&#x27;dog&#x27;)
+print(s.peek())      # dog
+print(s.pop())       # dog
+print(s.size())      # 1</code></pre></div>
+<div class="explain"><b>代码理解：</b><code>self.items</code> 是内部实现；<code>push/pop/peek</code> 是对外接口。使用者调用接口，不需要关心里面到底是不是 list。</div>
+<h2>2. 为什么选择 list 末端作为栈顶</h2>
+<div class="stack-diagram">
+<svg viewBox="0 0 900 280" width="100%" role="img" aria-label="栈顶在list末端和首端的复杂度对比">
+  <rect x="40" y="55" width="370" height="140" rx="18" fill="#ecfdf5" stroke="#86caa0"/>
+  <text x="225" y="90" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">推荐：末端 index=-1 作栈顶</text>
+  <text x="225" y="126" text-anchor="middle" fill="#64748b" font-size="17">push → append(item)</text>
+  <text x="225" y="154" text-anchor="middle" fill="#64748b" font-size="17">pop → pop()</text>
+  <text x="225" y="184" text-anchor="middle" fill="#14532d" font-size="20" font-weight="700">通常 O(1)</text>
+  <rect x="490" y="55" width="370" height="140" rx="18" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="675" y="90" text-anchor="middle" fill="#9a3412" font-size="22" font-weight="700">不推荐：首端 index=0 作栈顶</text>
+  <text x="675" y="126" text-anchor="middle" fill="#64748b" font-size="17">push → insert(0,item)</text>
+  <text x="675" y="154" text-anchor="middle" fill="#64748b" font-size="17">pop → pop(0)</text>
+  <text x="675" y="184" text-anchor="middle" fill="#9a3412" font-size="20" font-weight="700">通常 O(n)</text>
+  <text x="450" y="245" text-anchor="middle" fill="#64748b" font-size="16">ADT 接口一样，但内部实现不同，性能可能完全不同。</text>
+</svg>
+</div>
+<div class="warn"><b>易错点：</b>不要直接说“Stack 的 pop 一定是 O(1)”。严格说，ADT Stack 只规定行为，不规定实现。用 list 末端实现时 <code>pop()</code> 通常是 O(1)；如果用 list 首端实现，<code>pop(0)</code> 通常是 O(n)。</div>
+<div class="exam"><h3>例题3：为什么“ADT Stack 的 pop 一定是 O(1)”不严谨？</h3><p><b>题目思想：</b>栈的接口是固定的，为什么还不能直接断言某个接口一定是什么复杂度？</p><p><b>参考答案：</b>因为复杂度属于具体实现，不属于 ADT 接口本身。若用 list 末端作栈顶，<code>append/pop</code> 通常 O(1)；若用 list 首端作栈顶，<code>insert(0)/pop(0)</code> 会移动元素，通常 O(n)。</p></div>
+</section>
+
+<section class="notes-page" id="parentheses">
+<h1>五、栈应用：括号匹配</h1>
+<h2>1. 为什么括号匹配适合用栈</h2>
+<div class="key"><b>核心结论：</b>最新打开的左括号，应该最先匹配后面遇到的右括号。这种“最近的先处理”正好符合栈的 LIFO。</div>
+<div class="paren-diagram">
+<svg viewBox="0 0 900 240" width="100%" role="img" aria-label="括号匹配示意图">
+  <text x="62" y="50" fill="#64748b" font-size="18">表达式：</text>
+  <text x="155" y="52" fill="#14532d" font-size="28" font-family="monospace">( ( ) ( ( ) ) )</text>
+  <path d="M162 75 C160 135 232 135 230 75" stroke="#f97316" stroke-width="4" fill="none"/>
+  <path d="M202 78 C202 118 234 118 234 78" stroke="#22a36a" stroke-width="4" fill="none"/>
+  <path d="M286 78 C286 150 428 150 428 78" stroke="#2563eb" stroke-width="4" fill="none"/>
+  <path d="M324 78 C324 118 374 118 374 78" stroke="#dc2626" stroke-width="4" fill="none"/>
+  <text x="450" y="178" text-anchor="middle" fill="#64748b" font-size="16">越晚打开的括号，越早被关闭；这就是顺序反转。</text>
+</svg>
+</div>
+<h2>2. 简单圆括号匹配算法</h2>
+<div class="flow"><span class="step">从左到右扫描</span><span class="arrow">→</span><span class="step">遇到 '(' 入栈</span><span class="arrow">→</span><span class="step">遇到 ')' 弹栈</span><span class="arrow">→</span><span class="step">中途不能空弹</span><span class="arrow">→</span><span class="step">最后栈要空</span></div>
+<div class="codebox"><div class="code-title">代码解释：简单括号匹配</div><pre><code>def parChecker(symbolString):
+    s = Stack()
+    balanced = True
+    index = 0
+
+    while index &lt; len(symbolString) and balanced:
+        symbol = symbolString[index]
+        if symbol == &#x27;(&#x27;:
+            s.push(symbol)              # 左括号：先存起来，等待后面匹配
+        else:                           # 这里只考虑 &#x27;)&#x27; 的简单版本
+            if s.isEmpty():
+                balanced = False        # 没有左括号可配，失败
+            else:
+                s.pop()                 # 用一个右括号匹配掉最近的左括号
+        index += 1
+
+    return balanced and s.isEmpty()     # 扫完后不能剩下未匹配的左括号</code></pre></div>
+<h2>3. 通用括号匹配：()、[]、{}</h2>
+<p>如果有三类括号，遇到右括号时不仅要看栈是否为空，还要看栈顶左括号和当前右括号是否属于同一类。</p>
+<div class="codebox"><div class="code-title">代码解释：通用括号匹配</div><pre><code>def matches(open_ch, close_ch):
+    opens = &#x27;([{&#x27;
+    closes = &#x27;)]}&#x27;
+    return opens.index(open_ch) == closes.index(close_ch)
+
+
+def parChecker(symbolString):
+    s = Stack()
+    balanced = True
+    index = 0
+
+    while index &lt; len(symbolString) and balanced:
+        symbol = symbolString[index]
+        if symbol in &#x27;([{&#x27;:
+            s.push(symbol)
+        else:
+            if s.isEmpty():
+                balanced = False
+            else:
+                top = s.pop()
+                if not matches(top, symbol):
+                    balanced = False
+        index += 1
+
+    return balanced and s.isEmpty()</code></pre></div>
+<div class="exam"><h3>例题4：判别左右括号是否配对，最好用什么结构？</h3><p><b>题目思想：</b>设计一个判别表达式中左、右括号是否配对出现的算法，采用哪种数据结构最佳？</p><p><b>参考答案：</b><b>栈</b>。左括号入栈，右括号出现时弹出并匹配栈顶左括号；最后栈空且没有中途失败，则括号配对成功。</p></div>
+</section>
+
+<section class="notes-page" id="base">
+<h1>六、栈应用：十进制转换为二进制/任意进制</h1>
+<h2>1. 为什么进制转换要用栈</h2>
+<p>十进制整数转二进制时，采用“除以 2 求余数”。每次余数是当前最低位，所以得到的顺序是：低位 → 高位。但输出二进制时要从高位 → 低位，所以需要栈来反转顺序。</p>
+<div class="base-diagram">
+<svg viewBox="0 0 900 300" width="100%" role="img" aria-label="十进制转二进制栈反转示意图">
+  <rect x="55" y="50" width="250" height="180" rx="16" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="180" y="85" text-anchor="middle" fill="#9a3412" font-size="22" font-weight="700">233 连续除以 2</text>
+  <text x="180" y="120" text-anchor="middle" fill="#64748b" font-size="17">得到余数：1,0,0,1,0,1,1,1</text>
+  <text x="180" y="150" text-anchor="middle" fill="#64748b" font-size="16">这是低位 → 高位</text>
+  <text x="180" y="190" text-anchor="middle" fill="#9a3412" font-size="20">先入栈</text>
+  <rect x="390" y="50" width="120" height="180" rx="16" fill="#ecfdf5" stroke="#86caa0"/>
+  <text x="450" y="82" text-anchor="middle" fill="#14532d" font-size="20" font-weight="700">栈</text>
+  <g fill="#14532d" font-size="18" text-anchor="middle"><text x="450" y="115">1</text><text x="450" y="135">1</text><text x="450" y="155">1</text><text x="450" y="175">0</text><text x="450" y="195">1</text><text x="450" y="215">0</text></g>
+  <rect x="590" y="50" width="250" height="180" rx="16" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="715" y="85" text-anchor="middle" fill="#1d4ed8" font-size="22" font-weight="700">逐个 pop 输出</text>
+  <text x="715" y="125" text-anchor="middle" fill="#64748b" font-size="17">11101001</text>
+  <text x="715" y="160" text-anchor="middle" fill="#64748b" font-size="16">这是高位 → 低位</text>
+  <text x="715" y="195" text-anchor="middle" fill="#1d4ed8" font-size="20">得到二进制</text>
+</svg>
+</div>
+<h2>2. 十进制转二进制代码</h2>
+<div class="codebox"><div class="code-title">代码解释：除 2 取余 + 栈反转</div><pre><code>def divideBy2(decNumber):
+    remstack = Stack()
+
+    while decNumber &gt; 0:
+        rem = decNumber % 2       # 当前最低位
+        remstack.push(rem)        # 先存起来
+        decNumber = decNumber // 2
+
+    binString = &#x27;&#x27;
+    while not remstack.isEmpty():
+        binString += str(remstack.pop())
+
+    return binString
+
+print(divideBy2(233))     # 11101001</code></pre></div>
+<h2>3. 扩展到 2~16 进制</h2>
+<p>把“除以 2”改成“除以 base”，余数可能是 0~15。为了表示十六进制中的 10~15，需要使用 <code>A B C D E F</code>。</p>
+<div class="codebox"><div class="code-title">代码解释：转换到十六以下任意进制</div><pre><code>def baseConverter(decNumber, base):
+    digits = &#x27;0123456789ABCDEF&#x27;
+    remstack = Stack()
+
+    while decNumber &gt; 0:
+        rem = decNumber % base
+        remstack.push(rem)
+        decNumber = decNumber // base
+
+    newString = &#x27;&#x27;
+    while not remstack.isEmpty():
+        newString += digits[remstack.pop()]
+
+    return newString
+
+print(baseConverter(233, 2))    # 11101001
+print(baseConverter(233, 8))    # 351
+print(baseConverter(233, 16))   # E9</code></pre></div>
+<div class="key"><b>抓住一句话：</b>除基取余得到的顺序和输出顺序相反，栈就是用来完成这个反转。</div>
+</section>
+
+<section class="notes-page" id="expr">
+<h1>七、中缀、前缀、后缀表达式</h1>
+<h2>1. 中缀表达式为什么麻烦</h2>
+<p>我们平常写 <span class="formula">A+B*C</span>，操作符在操作数中间，所以叫中缀。中缀表达式符合人类习惯，但计算机处理时要考虑优先级和括号。</p>
+<table><thead><tr><th>表达式类型</th><th>操作符位置</th><th>例子</th></tr></thead><tbody>
+<tr><td>中缀</td><td>操作符在操作数中间</td><td><span class="formula">A+B</span></td></tr>
+<tr><td>前缀</td><td>操作符在操作数前面</td><td><span class="formula">+AB</span></td></tr>
+<tr><td>后缀</td><td>操作符在操作数后面</td><td><span class="formula">AB+</span></td></tr>
+</tbody></table>
+<div class="expr-diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="前缀中缀后缀对比">
+  <rect x="55" y="54" width="230" height="116" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="170" y="92" text-anchor="middle" fill="#9a3412" font-size="22" font-weight="700">中缀</text><text x="170" y="132" text-anchor="middle" fill="#64748b" font-size="20">A + B * C</text>
+  <rect x="335" y="54" width="230" height="116" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="450" y="92" text-anchor="middle" fill="#1d4ed8" font-size="22" font-weight="700">前缀</text><text x="450" y="132" text-anchor="middle" fill="#64748b" font-size="20">+ A * B C</text>
+  <rect x="615" y="54" width="230" height="116" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="730" y="92" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">后缀</text><text x="730" y="132" text-anchor="middle" fill="#64748b" font-size="20">A B C * +</text>
+  <text x="450" y="222" text-anchor="middle" fill="#64748b" font-size="16">前缀/后缀不需要括号，因为操作符出现的位置已经决定了计算顺序。</text>
+</svg>
+</div>
+<h2>2. 为什么后缀表达式适合计算机</h2>
+<p>在后缀表达式里，操作符出现在需要计算的两个操作数之后。这样从左到右扫描时，只要遇到操作符，就能从栈顶取出最近的两个操作数进行计算，不必再考虑括号和复杂优先级。</p>
+<div class="example"><b>例子：</b><span class="formula">(A+B)*C</span> 的后缀形式是 <span class="formula">A B + C *</span>。先看到 <span class="formula">A B +</span>，知道先算 <span class="formula">A+B</span>，再与 <span class="formula">C</span> 相乘。</div>
+</section>
+
+<section class="notes-page" id="infix-postfix">
+<h1>八、中缀转后缀算法</h1>
+<h2>1. 全括号思路：先理解转换本质</h2>
+<p>如果中缀表达式已经全括号化，比如 <span class="formula">(A+(B*C))</span>，每个右括号都对应一个完整子表达式。把操作符移动到对应右括号的位置，就得到后缀表达式。</p>
+<div class="example"><b>例子：</b><span class="formula">A+B*C</span> 全括号化为 <span class="formula">(A+(B*C))</span>，转成后缀就是 <span class="formula">A B C * +</span>。</div>
+<h2>2. 通用算法：操作符栈 opstack</h2>
+<div class="key"><b>核心结论：</b>操作数直接输出；操作符不能马上确定输出位置时，先放入操作符栈。遇到优先级低/相等的新操作符、右括号或扫描结束时，再把合适的操作符弹出。</div>
+<div class="flow"><span class="step">操作数</span><span class="arrow">→</span><span class="step">直接进输出列表</span><span class="arrow">|</span><span class="step">左括号</span><span class="arrow">→</span><span class="step">入操作符栈</span><span class="arrow">|</span><span class="step">右括号</span><span class="arrow">→</span><span class="step">弹到左括号</span></div>
+<div class="codebox"><div class="code-title">代码解释：中缀转后缀</div><pre><code>def infixToPostfix(infixexpr):
+    prec = {}
+    prec[&#x27;*&#x27;] = 3
+    prec[&#x27;/&#x27;] = 3
+    prec[&#x27;+&#x27;] = 2
+    prec[&#x27;-&#x27;] = 2
+    prec[&#x27;(&#x27;] = 1
+
+    opStack = Stack()
+    postfixList = []
+    tokenList = infixexpr.split()
+
+    for token in tokenList:
+        if token in &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27; or token in &#x27;0123456789&#x27;:
+            postfixList.append(token)       # 操作数：直接输出
+        elif token == &#x27;(&#x27;:
+            opStack.push(token)             # 左括号：先标记起来
+        elif token == &#x27;)&#x27;:
+            topToken = opStack.pop()
+            while topToken != &#x27;(&#x27;:
+                postfixList.append(topToken)
+                topToken = opStack.pop()
+        else:                               # 操作符 + - * /
+            while (not opStack.isEmpty()) and (prec[opStack.peek()] &gt;= prec[token]):
+                postfixList.append(opStack.pop())
+            opStack.push(token)
+
+    while not opStack.isEmpty():
+        postfixList.append(opStack.pop())
+
+    return &#x27; &#x27;.join(postfixList)
+
+print(infixToPostfix(&#x27;A + B * C&#x27;))          # A B C * +
+print(infixToPostfix(&#x27;( A + B ) * C&#x27;))      # A B + C *</code></pre></div>
+<h2>3. 做题时怎么手算</h2>
+<table><thead><tr><th>扫描到</th><th>怎么处理</th><th>原因</th></tr></thead><tbody>
+<tr><td>操作数</td><td>直接写入后缀表达式</td><td>操作数顺序通常不改变。</td></tr>
+<tr><td>左括号</td><td>压入操作符栈</td><td>括号内部运算优先。</td></tr>
+<tr><td>右括号</td><td>弹出操作符直到左括号</td><td>括号内子表达式结束。</td></tr>
+<tr><td>普通操作符</td><td>和栈顶操作符比优先级，必要时弹出</td><td>高优先级/同级左结合的操作符应先输出。</td></tr>
+</tbody></table>
+<div class="exam"><h3>例题5：中缀转后缀过程中操作符栈状态</h3><p><b>题目思想：</b>利用栈将表达式 <span class="formula">3*2^(4+2*2-6*3)-5</span> 转换为后缀表达式过程中，当扫描到 <span class="formula">6</span> 时，运算符栈是什么？</p><p><b>简化过程：</b>扫描到 <span class="formula">3*2^(4+2*2-</span> 后，栈中保留外层 <span class="formula">*</span>、<span class="formula">^</span>、左括号 <span class="formula">(</span> 和当前括号内的 <span class="formula">-</span>。接着扫描到 <span class="formula">6</span> 时，6 是操作数，直接输出，不改变操作符栈。</p><p><b>参考答案：</b><span class="formula">*^(-</span>。</p></div>
+</section>
+
+<section class="notes-page" id="postfix-eval">
+<h1>九、后缀表达式求值</h1>
+<h2>1. 为什么后缀求值适合用栈</h2>
+<div class="key"><b>核心结论：</b>从左到右扫描后缀表达式；操作数先压入栈，遇到操作符时，弹出最近的两个操作数计算，再把结果压回去。</div>
+<div class="postfix-diagram">
+<svg viewBox="0 0 900 270" width="100%" role="img" aria-label="后缀表达式求值示意图">
+  <rect x="45" y="45" width="220" height="135" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="155" y="82" text-anchor="middle" fill="#1d4ed8" font-size="22" font-weight="700">扫描操作数</text><text x="155" y="122" text-anchor="middle" fill="#64748b" font-size="18">4, 5, 6</text><text x="155" y="154" text-anchor="middle" fill="#64748b" font-size="16">先压入栈</text>
+  <rect x="340" y="45" width="220" height="135" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="450" y="82" text-anchor="middle" fill="#9a3412" font-size="22" font-weight="700">扫描到 *</text><text x="450" y="122" text-anchor="middle" fill="#64748b" font-size="18">弹出 6 和 5</text><text x="450" y="154" text-anchor="middle" fill="#64748b" font-size="16">计算 5*6=30</text>
+  <rect x="635" y="45" width="220" height="135" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="745" y="82" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">结果入栈</text><text x="745" y="122" text-anchor="middle" fill="#64748b" font-size="18">栈变成 [4,30]</text><text x="745" y="154" text-anchor="middle" fill="#64748b" font-size="16">继续扫描 +</text>
+  <text x="450" y="230" text-anchor="middle" fill="#64748b" font-size="16">注意：先 pop 出来的是右操作数，后 pop 出来的是左操作数，减法和除法尤其不能反。</text>
+</svg>
+</div>
+<h2>2. 后缀求值代码</h2>
+<div class="codebox"><div class="code-title">代码解释：后缀表达式求值</div><pre><code>def doMath(op, op1, op2):
+    if op == &#x27;*&#x27;:
+        return op1 * op2
+    elif op == &#x27;/&#x27;:
+        return op1 / op2
+    elif op == &#x27;+&#x27;:
+        return op1 + op2
+    else:
+        return op1 - op2
+
+
+def postfixEval(postfixExpr):
+    operandStack = Stack()
+    tokenList = postfixExpr.split()
+
+    for token in tokenList:
+        if token in &#x27;0123456789&#x27;:
+            operandStack.push(int(token))
+        else:
+            operand2 = operandStack.pop()    # 右操作数：先弹出
+            operand1 = operandStack.pop()    # 左操作数：后弹出
+            result = doMath(token, operand1, operand2)
+            operandStack.push(result)
+
+    return operandStack.pop()
+
+print(postfixEval(&#x27;4 5 6 * +&#x27;))    # 34</code></pre></div>
+<h2>3. 为什么 operand2 先弹出</h2>
+<div class="warn"><b>关键易错点：</b>对于 <span class="formula">7 3 -</span>，扫描到 <span class="formula">-</span> 时，先弹出 3，它是右操作数；后弹出 7，它是左操作数。所以计算是 <span class="formula">7-3</span>，不是 <span class="formula">3-7</span>。</div>
+<div class="exam"><h3>例题6：后缀表达式对应的中缀表达式</h3><p><b>题目思想：</b>给定后缀表达式 <span class="formula">ab+-c*d-</span>，其对应的中缀表达式是哪一个？</p><p><b>参考答案：</b><span class="formula">-(a+b)*c-d</span>。这里 <span class="formula">ab+</span> 先形成 <span class="formula">(a+b)</span>，紧接着的 <span class="formula">-</span> 按题目答案理解为一元负号，得到 <span class="formula">-(a+b)</span>，再与 <span class="formula">c</span> 相乘，最后减 <span class="formula">d</span>。</p></div>
+<div class="exam"><h3>例题7：扫描到第二个 + 前，栈里有什么？</h3><p><b>题目思想：</b>使用栈计算后缀表达式 <span class="formula">1 2 3 + 4 * 5 + 3 + −</span>，当扫描到第二个 <span class="formula">+</span> 但还未对该 <span class="formula">+</span> 运算时，栈的内容是什么？要求从栈底到栈顶写。</p><p><b>过程：</b><span class="stack-mini">1 → [1]</span> <span class="stack-mini">2 → [1,2]</span> <span class="stack-mini">3 → [1,2,3]</span> <span class="stack-mini">+ → [1,5]</span> <span class="stack-mini">4 → [1,5,4]</span> <span class="stack-mini">* → [1,20]</span> <span class="stack-mini">5 → [1,20,5]</span>。此时扫描到第二个 <span class="formula">+</span>，还没计算。</p><p><b>参考答案：</b><span class="formula">1, 20, 5</span>。</p></div>
+</section>
+
+<section class="notes-page" id="quick">
+<h1>十、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>保留前面章节的 <b>浏览 / 默写 / 填空</b> 三种模式；只有适合提关键词的卡片才设置填空，不强行写关键词。支持翻转、上一张、下一张、标记已掌握、重置进度。<br/>在这一页可直接用键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab">
+  <div class="flash-topbar">
+    <div class="flash-modes">
+      <button class="flash-chip active" data-mode="browse" type="button">浏览</button>
+      <button class="flash-chip" data-mode="write" type="button">默写</button>
+      <button class="flash-chip" data-mode="fill" type="button">填空</button>
+    </div>
+    <div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div>
+  </div>
+  <div class="study-card" id="studyCard" tabindex="0" aria-live="polite">
+    <div class="study-inner" id="studyInner">
+      <div class="study-face study-front">
+        <div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div>
+        <h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help" id="frontHelp">点击卡片或按 Space 翻面</div>
+      </div>
+      <div class="study-face study-back">
+        <div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div>
+        <h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div>
+      </div>
+    </div>
+  </div>
+  <div class="flash-topbar" style="margin-top:14px">
+    <div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div>
+    <div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div>
+  </div>
+  <div class="flash-keys">提示：这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握；离开这一页后，左右键仍然用于整份笔记翻页。</div>
+</div>
+</section>
+
+<section class="notes-page" id="sources">
+<h1>十一、资料标准与筛选说明</h1>
+<h2>1. 已收入的范围</h2>
+<ul>
+<li>线性结构：有序、两端、唯一前驱/后继。</li>
+<li>栈 Stack：LIFO、反转次序、ADT Stack 操作。</li>
+<li>Stack 的 Python class 实现，以及不同实现方式的复杂度差异。</li>
+<li>栈应用：简单括号匹配、通用括号匹配、十进制到二进制/任意进制转换。</li>
+<li>表达式：中缀、前缀、后缀；中缀转后缀；后缀表达式求值。</li>
+<li>与本章知识直接相关的试题例子：栈顶模拟、括号匹配、操作符栈状态、后缀表达式还原与求值。</li>
+</ul>
+<h2>2. 暂未收入的范围</h2>
+<div class="warn">队列、双端队列、链表、递归、树和图等内容会在后续对应 PDF 中单独总结。本章只在必要位置提到它们，不提前放入需要后续知识才能完整理解的题。</div>
+<h2>3. 关于无关扩展内容</h2>
+<div class="warn">课件或资料中如出现 AI 基础、机器学习基础、深度学习图像处理、AI Racer 大作业介绍等与数据结构与算法核心知识无关的内容，不收入本复习笔记。</div>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0;
+  const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach((p,k)=>p.classList.toggle('active',k===current));
+    nav.forEach((a,k)=>a.classList.toggle('active',k===current));
+    progress.textContent=(current+1)+' / '+pages.length;
+    buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));});
+    if(hashUpdate) history.replaceState(null,'','#'+pages[current].id);
+    document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [{"type": "概念", "title": "线性结构的核心特征是什么？", "answer": "数据项之间只存在先后关系；除第一个无前驱、最后一个无后继外，每个数据项都有唯一前驱和唯一后继。", "cloze": "线性结构中，除两端元素外，每个数据项都有唯一____和唯一____。", "fillAnswer": "前驱；后继"}, {"type": "操作", "title": "push、pop、peek 的区别？", "answer": "push(item) 把元素加入栈顶；pop() 移除并返回栈顶元素，会修改栈；peek() 只查看并返回栈顶元素，不移除。", "cloze": "pop 会____栈顶元素；peek 只____栈顶元素。", "fillAnswer": "移除并返回；查看"}, {"type": "实现", "title": "为什么常用 list 末端作为栈顶？", "answer": "因为 list.append(item) 和 list.pop() 都在末端操作，通常是 O(1)；如果把首端作为栈顶，用 insert(0,item) 和 pop(0)，要移动大量元素，通常是 O(n)。", "cloze": null, "fillAnswer": null}, {"type": "算法", "title": "简单括号匹配为什么适合用栈？", "answer": "因为最新遇到的左括号应该最先匹配后面遇到的右括号，正好符合“后进先出”的顺序反转特性。", "cloze": "括号匹配利用的是栈的____特性。", "fillAnswer": "后进先出/顺序反转"}, {"type": "算法", "title": "中缀转后缀时，操作符栈保存什么？", "answer": "保存暂时不能输出的操作符和左括号。遇到优先级更低或相等的新操作符、右括号、或扫描结束时，再把栈中合适的操作符弹出到输出列表。", "cloze": null, "fillAnswer": null}, {"type": "算法", "title": "后缀表达式求值遇到操作符时怎么做？", "answer": "从操作数栈弹出两个数，先弹出的是右操作数，后弹出的是左操作数，计算后把结果重新压回栈。", "cloze": "后缀求值遇到操作符时，先弹出的是____操作数，后弹出的是____操作数。", "fillAnswer": "右；左"}];
+  const storageKey = 'dsa301307_flash_mastered_v1';
+  let mastered = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let cardIndex = 0;
+  let mode = 'browse';
+  const studyCard = document.getElementById('studyCard');
+  const frontType = document.getElementById('frontType');
+  const frontCount = document.getElementById('frontCount');
+  const frontTitle = document.getElementById('frontTitle');
+  const frontBody = document.getElementById('frontBody');
+  const backBody = document.getElementById('backBody');
+  const flashProgress = document.getElementById('flashProgress');
+  const flashPosition = document.getElementById('flashPosition');
+  const masterBtn = document.getElementById('masterCard');
+  function saveMastered(){ localStorage.setItem(storageKey, JSON.stringify([...mastered])); }
+  function updateProgress(){
+    const done = mastered.size, total = cards.length;
+    const pct = total ? Math.round(done*100/total) : 0;
+    flashProgress.textContent = `已掌握 ${done}/${total} · ${pct}%`;
+    flashPosition.textContent = `${cardIndex+1} / ${cards.length}`;
+    masterBtn.innerHTML = mastered.has(cardIndex) ? '⭐ 取消已掌握' : '⭐ 标记已掌握';
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function renderCard(){
+    const c = cards[cardIndex];
+    studyCard.classList.remove('flipped');
+    frontType.textContent = c.type;
+    frontCount.textContent = `第 ${cardIndex+1} 题` + (mastered.has(cardIndex) ? ' · 已掌握' : '');
+    frontTitle.innerHTML = c.title;
+    let body = '';
+    if(mode === 'browse'){
+      body = '<p>先自己回忆定义或答案，再翻面核对。</p>';
+    } else if(mode === 'write'){
+      body = '<p><b>默写模式：</b>先在下面自己组织语言，写完后再翻面看答案。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="可以直接在这里打字默写，也可以只在脑子里回答。"></textarea></div>';
+    } else {
+      if(c.cloze && c.fillAnswer){
+        body = `<p><b>填空模式：</b>先把关键字补出来，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${escapeHtml(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="把你想到的关键词写在这里" /><div class="fill-feedback" id="fillFeedback"></div></div>`;
+      }else{
+        body = `<p><b>这张卡不强行设置填空关键词。</b></p><p>这类问题更适合用“浏览”或“默写”模式完整理解，不建议只背零散词。</p>`;
+      }
+    }
+    frontBody.innerHTML = body;
+    backBody.innerHTML = `<p>${c.answer}</p>` + (c.fillAnswer ? `<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${c.fillAnswer}</div>` : '');
+    updateProgress();
+    const fillInput = document.getElementById('fillInput');
+    if(fillInput){
+      fillInput.addEventListener('input', ()=>{
+        const feedback = document.getElementById('fillFeedback');
+        const v = fillInput.value.trim();
+        if(!v){ feedback.textContent = ''; return; }
+        const ans = (c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase();
+        const ok = ans.split(/[;；]/).some(part => part.trim() && v.toLowerCase().includes(part.trim()));
+        feedback.textContent = ok ? '关键词有对上的部分，可以翻面核对完整表述。' : '先继续想想关键字，再翻面核对也可以。';
+      });
+    }
+  }
+  function flipCard(){ studyCard.classList.toggle('flipped'); }
+  function prevCard(){ cardIndex = (cardIndex - 1 + cards.length) % cards.length; renderCard(); }
+  function nextCard(){ cardIndex = (cardIndex + 1) % cards.length; renderCard(); }
+  function toggleMaster(){ if(mastered.has(cardIndex)) mastered.delete(cardIndex); else mastered.add(cardIndex); saveMastered(); updateProgress(); renderCard(); }
+  function isSpaceKey(e){ return e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space'; }
+  function isTypingTarget(target){ const tag=(target&&target.tagName||'').toLowerCase(); return ['input','textarea','select'].includes(tag) || !!(target&&target.isContentEditable); }
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    mode = btn.dataset.mode;
+    renderCard();
+  }));
+  if(studyCard){
+    studyCard.addEventListener('click', e=>{ if(e.target.closest('textarea,input,label,button,.study-write,.study-fill')) return; flipCard(); });
+    studyCard.addEventListener('keydown', e=>{ if(e.key==='Enter' || isSpaceKey(e)){ e.preventDefault(); flipCard(); } });
+  }
+  document.getElementById('flipCard')?.addEventListener('click', flipCard);
+  document.getElementById('prevCard')?.addEventListener('click', prevCard);
+  document.getElementById('nextCard')?.addEventListener('click', nextCard);
+  document.getElementById('masterCard')?.addEventListener('click', toggleMaster);
+  document.getElementById('resetMastery')?.addEventListener('click', ()=>{ mastered = new Set(); saveMastered(); updateProgress(); renderCard(); });
+  document.addEventListener('keydown',e=>{
+    const onQuick = pages[current] && pages[current].id === 'quick';
+    const typing = isTypingTarget(e.target || document.activeElement);
+    if(onQuick){
+      if(typing) return;
+      if(e.key==='ArrowRight'){ e.preventDefault(); e.stopPropagation(); nextCard(); return; }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); e.stopPropagation(); prevCard(); return; }
+      if(isSpaceKey(e)){ e.preventDefault(); e.stopPropagation(); flipCard(); studyCard?.focus({preventScroll:true}); return; }
+      if(e.key==='m' || e.key==='M'){ e.preventDefault(); e.stopPropagation(); toggleMaster(); return; }
+    }
+    if(typing)return;
+    if(e.key==='PageDown'){e.preventDefault();show(current+1)}
+    if(e.key==='PageUp'){e.preventDefault();show(current-1)}
+    if(!onQuick && (e.key==='ArrowRight')){e.preventDefault();show(current+1)}
+    if(!onQuick && (e.key==='ArrowLeft')){e.preventDefault();show(current-1)}
+  }, true);
+  renderCard();
+  show(current,false);
+})();
+</script>
+
+</body>
+</html>
