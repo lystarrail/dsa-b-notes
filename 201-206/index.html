@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数据结构与算法B Python版｜201-206 复习笔记</title>
+<style>
+:root{
+  --bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:780px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:760px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.code{background:#dbeafe;color:#1d4ed8}.small{font-size:13px;color:#64748b}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}.code-comment{color:#a7f3d0}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.quote{border-left:4px solid var(--green2);padding:8px 12px;background:#f8fafc;color:#334155;border-radius:8px;margin:12px 0}.source-note{font-size:13px;color:#64748b;border-top:1px dashed #cbd5e1;margin-top:20px;padding-top:12px}
+
+/* 嵌入式速记卡：点击翻面 */
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}
+.turing-diagram,.turing-flow-diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:16px 0;overflow:auto}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}
+.turing-diagram-clean svg{display:block;min-width:760px}.turing-diagram-clean{padding:16px 18px}
+@media(max-width:960px){.turing-diagram-clean svg{min-width:760px}.turing-diagram-clean{overflow-x:auto}}
+
+.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}
+.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-btn[disabled]{opacity:.45;cursor:not-allowed}.flash-progress{font-size:14px;color:var(--muted)}
+.study-card{perspective:1200px;min-height:500px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:500px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}
+.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}
+.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:150px;max-height:220px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}
+.flash-keys{margin-top:12px;font-size:13px;color:#64748b}.flash-keys code{background:#f1f5f9;padding:2px 6px;border-radius:6px}.mastered-star{font-size:18px}
+@media(max-width:960px){.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:560px}.study-front h3,.study-back h3{font-size:21px}}
+
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+
+/* 修正版：封面只属于第一页，其他页面不会继承封面样式 */
+@media screen {
+  .main > .notes-page { display:none !important; }
+  .main > .notes-page.active { display:block !important; }
+  .main > .cover-page.active { display:flex !important; }
+}
+
+/* 201-206 diagrams */
+.complexity-diagram,.program-diagram,.anagram-diagram,.list-diagram,.dict-diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.complexity-diagram svg,.program-diagram svg,.anagram-diagram svg,.list-diagram svg,.dict-diagram svg{display:block;min-width:760px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.mini-badge{display:inline-block;border-radius:999px;background:#e8f3ed;color:var(--green);padding:2px 8px;font-weight:700;font-size:12px}.rank-list{display:grid;grid-template-columns:repeat(7,minmax(80px,1fr));gap:8px;margin:12px 0}.rank-list div{border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;background:#fbfffc}.rank-list b{display:block;color:var(--green)}@media(max-width:960px){.rank-list{grid-template-columns:1fr 1fr}.complexity-diagram,.program-diagram,.anagram-diagram,.list-diagram,.dict-diagram{overflow-x:auto}}
+.study-card,.study-inner{min-height:560px}.study-face{overflow:auto}.study-write textarea{min-height:170px}.study-fill input{position:relative;z-index:2}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">201-206｜算法分析、大O、变位词与Python性能</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#analysis"><span class="num">03</span><span>算法分析：比程序还是比算法</span></a>
+<a href="#time"><span class="num">04</span><span>运行时间检测与局限</span></a>
+<a href="#big-o"><span class="num">05</span><span>大O表示法</span></a>
+<a href="#code-complexity"><span class="num">06</span><span>从代码判断复杂度</span></a>
+<a href="#anagram"><span class="num">07</span><span>变位词判断四种解法</span></a>
+<a href="#list"><span class="num">08</span><span>Python list 的性能</span></a>
+<a href="#dict"><span class="num">09</span><span>Python dict 的性能</span></a>
+<a href="#quick"><span class="num">10</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">11</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-201-206 这一章范围。</div>
+</aside>
+<main class="main">
+
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>201-206 复习笔记</h1>
+<div class="subtitle">算法分析、大O、变位词判断与 Python 内置类型性能</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记只整理 <b>pydsa-201-206 合并版</b>：什么是算法分析、大O表示法、变位词判断问题、Python list/dict 的性能。</p>
+<p><b>学习目标：</b>不是背“哪个是 O(n)”这么简单，而是搞懂：为什么不能只看代码能不能跑、为什么要脱离机器看增长趋势、怎么从代码结构判断复杂度、为什么 list 和 dict 的常用操作速度差很多。</p>
+<p><b>阅读建议：</b>先看绿色“核心结论”，再看图示和代码；红色例题放在相关知识点之后，避免还没学就硬放。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol>
+<li>本章考什么、怎么学</li><li>算法分析：比程序还是比算法</li><li>运行时间检测与局限</li><li>大O表示法</li><li>从代码判断复杂度</li><li>变位词判断四种解法</li><li>Python list 的性能</li><li>Python dict 的性能</li><li>嵌入式速记卡与自测</li><li>资料标准与筛选说明</li>
+</ol></div>
+</section>
+
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>核心结论：</b>这一章是后面所有代码题、复杂度题的地基。你要学会把“程序跑了多久”转换成“随着问题规模 n 变大，操作次数怎么增长”。</div>
+<h2>1. 本章知识地图</h2>
+<div class="flow"><span class="step">同一问题</span><span class="arrow">→</span><span class="step">多种算法</span><span class="arrow">→</span><span class="step">比较资源消耗</span><span class="arrow">→</span><span class="step">抽象成 T(n)</span><span class="arrow">→</span><span class="step">写成大O</span></div>
+<table><thead><tr><th>模块</th><th>你要懂什么</th><th>常见考法</th></tr></thead><tbody>
+<tr><td>算法分析</td><td>比较的是算法的资源消耗，不只是程序写得好不好看。</td><td>概念判断、为什么要分析算法。</td></tr>
+<tr><td>运行时间检测</td><td>可以用 <code>time</code> / <code>timeit</code> 实测，但实测受机器、语言、环境影响。</td><td>代码理解、实验结果解释。</td></tr>
+<tr><td>大O表示法</td><td>忽略常数和低阶项，只看增长最快的主导项。</td><td>给 T(n) 求 O；给代码求 O。</td></tr>
+<tr><td>变位词四种解法</td><td>同一个问题可有 O(n²)、O(n log n)、O(n!)、O(n) 等不同算法。</td><td>算法比较、空间换时间。</td></tr>
+<tr><td>list/dict 性能</td><td>list 按下标访问快；dict 按 key 查找快；list 中部删除/查找值可能慢。</td><td>选择合适数据类型、分析 Python 操作。</td></tr>
+</tbody></table>
+<h2>2. 小白学习法</h2>
+<div class="grid2">
+<div class="card"><h3>先看循环层数</h3><p>一个循环通常先想到 O(n)；两层嵌套循环通常先想到 O(n²)。但要注意循环是否真的都跑满。</p></div>
+<div class="card"><h3>再看隐藏操作</h3><p><code>sort()</code>、<code>in</code>、<code>pop(0)</code>、列表拼接 <code>+</code> 都不是“免费”的。代码短不代表复杂度低。</p></div>
+<div class="card"><h3>最后看主导项</h3><p><span class="formula">T(n)=5n²+27n+1005</span>，当 n 很大时，n² 决定增长速度，所以是 O(n²)。</p></div>
+<div class="card"><h3>例题别提前硬做</h3><p>本章只放“算法分析、复杂度、Python 内置类型性能”相关例题；链表、树、图等后面章节再放。</p></div>
+</div>
+</section>
+
+<section class="notes-page" id="analysis">
+<h1>二、算法分析：比程序，还是比算法？</h1>
+<h2>1. 程序和算法不是一回事</h2>
+<div class="program-diagram">
+<svg viewBox="0 0 920 250" width="100%" role="img" aria-label="算法和程序关系图">
+  <defs><marker id="pa" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="40" y="82" width="210" height="82" rx="16" fill="#ecfdf5" stroke="#86caa0" stroke-width="2"/>
+  <text x="145" y="116" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">问题</text>
+  <text x="145" y="145" text-anchor="middle" font-size="16" fill="#607266">例如：求 1 到 n 的和</text>
+  <path d="M250 123 L340 123" stroke="#166534" stroke-width="4" marker-end="url(#pa)"/>
+  <rect x="340" y="62" width="230" height="122" rx="16" fill="#ffffff" stroke="#86caa0" stroke-width="2"/>
+  <text x="455" y="98" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">算法</text>
+  <text x="455" y="126" text-anchor="middle" font-size="16" fill="#607266">解决问题的分步描述</text>
+  <text x="455" y="152" text-anchor="middle" font-size="15" fill="#607266">循环累加 / 公式计算</text>
+  <path d="M570 123 L660 123" stroke="#166534" stroke-width="4" marker-end="url(#pa)"/>
+  <rect x="660" y="62" width="220" height="122" rx="16" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="770" y="98" text-anchor="middle" font-size="22" fill="#1d4ed8" font-weight="700">程序</text>
+  <text x="770" y="126" text-anchor="middle" font-size="16" fill="#607266">用 Python 写出的实现</text>
+  <text x="770" y="152" text-anchor="middle" font-size="15" fill="#607266">变量名、缩进、语法</text>
+  <text x="460" y="220" text-anchor="middle" font-size="16" fill="#64748b">算法分析主要看“算法本身消耗多少资源”，不是只看代码风格。</text>
+</svg>
+<div class="diagram-cap">图示理解：同一个算法可以被不同人写成不同程序；同一个问题也可以有不同算法。</div>
+</div>
+<div class="key"><b>核心结论：</b>算法是解决问题的步骤；程序是用某种编程语言实现这个算法。算法分析主要比较算法本身的资源消耗。</div>
+<h2>2. 两段代码看起来不同，算法可能一样</h2>
+<p>课件用“从 1 累加到 n”的例子说明：一段代码变量名清楚，另一段代码变量名很怪、还有无用代码，但它们本质上都在做同一个循环累加算法。</p>
+<div class="grid2">
+<div class="codebox"><div class="code-title">写得正常的版本</div><pre><code>def sumOfN(n):
+    theSum = 0
+    for i in range(1, n + 1):
+        theSum = theSum + i
+    return theSum</code></pre></div>
+<div class="codebox"><div class="code-title">变量名很差，但算法本质一样</div><pre><code>def foo(tom):
+    fred = 0
+    for bill in range(1, tom + 1):
+        barney = bill
+        fred = fred + barney
+    return fred</code></pre></div>
+</div>
+<div class="explain"><b>怎么判断？</b>不要被变量名骗了。两段代码都做了 n 次加法，都是循环累加，算法资源消耗属于同一类。</div>
+<h2>3. 什么是算法分析</h2>
+<p>算法分析就是从计算资源消耗角度评判算法。资源主要有两类：<b>时间</b>和<b>空间</b>。在这章中，重点先看时间。</p>
+<div class="warn"><b>易错点：</b>代码风格、可读性很重要，但它不是算法分析最核心的问题。算法分析主要问：问题规模变大时，执行步骤增长得有多快？</div>
+</section>
+
+<section class="notes-page" id="time">
+<h1>三、运行时间检测与它的局限</h1>
+<h2>1. 用 time 模块测运行时间</h2>
+<p>最直接的办法：算法开始前记录时间，结束后再记录时间，相减得到运行时间。</p>
+<div class="codebox"><div class="code-title">代码解释：用 time 计时</div><pre><code>import time
+
+def sumOfN2(n):
+    start = time.time()       # 记录开始时间
+    theSum = 0
+    for i in range(1, n + 1):
+        theSum = theSum + i
+    end = time.time()         # 记录结束时间
+    return theSum, end - start
+
+print(sumOfN2(10000))</code></pre></div>
+<div class="key"><b>观察结论：</b>循环累加中，n 变成 10 倍，循环次数也大约变成 10 倍，运行时间也会大致变长。</div>
+<h2>2. 公式法为什么更快</h2>
+<div class="codebox"><div class="code-title">代码解释：无迭代公式法</div><pre><code>def sumOfN3(n):
+    return n * (n + 1) / 2</code></pre></div>
+<p>这个算法不需要循环，不管 n 是一万、一百万还是一亿，代码都只做固定数量的计算。因此它的运行时间几乎不随 n 变化。</p>
+<div class="program-diagram">
+<svg viewBox="0 0 900 220" width="100%" role="img" aria-label="循环累加与公式法对比图">
+  <rect x="40" y="42" width="330" height="130" rx="16" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+  <text x="205" y="78" text-anchor="middle" font-size="22" fill="#9a3412" font-weight="700">循环累加</text>
+  <text x="205" y="112" text-anchor="middle" font-size="17" fill="#607266">n 有多大，就循环多少次</text>
+  <text x="205" y="146" text-anchor="middle" font-size="20" fill="#9a3412">O(n)</text>
+  <rect x="530" y="42" width="330" height="130" rx="16" fill="#ecfdf5" stroke="#86caa0" stroke-width="2"/>
+  <text x="695" y="78" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">公式计算</text>
+  <text x="695" y="112" text-anchor="middle" font-size="17" fill="#607266">固定几步算完</text>
+  <text x="695" y="146" text-anchor="middle" font-size="20" fill="#14532d">O(1)</text>
+  <text x="450" y="202" text-anchor="middle" font-size="16" fill="#64748b">这就是“同一个问题，不同算法，效率可能差很多”。</text>
+</svg>
+</div>
+<h2>3. 实测运行时间有什么问题</h2>
+<ul>
+<li>同一算法用不同语言写，运行时间不同。</li>
+<li>同一程序在不同机器上跑，运行时间不同。</li>
+<li>同一机器不同时刻负载不同，结果也会波动。</li>
+</ul>
+<div class="key"><b>所以：</b>我们需要一个和机器、语言、运行时段尽量无关的指标，这就引出“大O表示法”。</div>
+</section>
+
+<section class="notes-page" id="big-o">
+<h1>四、大O表示法</h1>
+<h2>1. 问题规模 n 是什么</h2>
+<p><b>问题规模</b>就是影响执行时间的主要输入大小。比如“求 1 到 n 的和”，规模就是 n；“判断两个长度相等的字符串是否为变位词”，规模就是字符串长度 n。</p>
+<h2>2. T(n) 与大O</h2>
+<div class="key"><b>T(n)：</b>基本操作随着问题规模 n 变化的执行次数函数。<br/><b>大O：</b>只保留 T(n) 中增长最快的主导部分，忽略常数和低阶项。</div>
+<div class="complexity-diagram">
+<svg viewBox="0 0 900 390" width="100%" role="img" aria-label="常见复杂度增长趋势">
+  <rect x="42" y="28" width="816" height="314" rx="16" fill="#ffffff" stroke="#d7eadf"/>
+  <line x1="92" y1="302" x2="820" y2="302" stroke="#94a3b8"/>
+  <line x1="92" y1="302" x2="92" y2="58" stroke="#94a3b8"/>
+  <g fill="none" stroke-width="4">
+    <path d="M92 282 L820 282" stroke="#22a36a"/>
+    <path d="M92 300 C180 292 300 276 820 210" stroke="#2563eb"/>
+    <path d="M92 302 L820 90" stroke="#f97316"/>
+    <path d="M92 302 C220 298 370 270 520 210 C650 150 745 82 820 44" stroke="#dc2626"/>
+  </g>
+  <text x="725" y="276" fill="#22a36a" font-weight="700">O(1)</text>
+  <text x="700" y="205" fill="#2563eb" font-weight="700">O(log n)</text>
+  <text x="700" y="116" fill="#f97316" font-weight="700">O(n)</text>
+  <text x="625" y="70" fill="#dc2626" font-weight="700">O(n²) / 更高阶</text>
+  <text x="450" y="370" text-anchor="middle" fill="#64748b" font-size="16">n 越大，不同数量级的差距越明显；大O看的是“增长速度”。</text>
+</svg>
+<div class="diagram-cap">图示不是精确函数图，而是帮助理解：常数、对数、线性、平方的增长速度差异。</div>
+</div>
+<h2>3. 怎么从 T(n) 得到大O</h2>
+<table><thead><tr><th>T(n)</th><th>怎么化简</th><th>大O</th></tr></thead><tbody>
+<tr><td><span class="formula">1+n</span></td><td>常数 1 越来越不重要，保留 n</td><td>O(n)</td></tr>
+<tr><td><span class="formula">5n²+27n+1005</span></td><td>保留最高阶 n²，去掉系数 5</td><td>O(n²)</td></tr>
+<tr><td><span class="formula">2n+26</span></td><td>保留 n，去掉常数和系数</td><td>O(n)</td></tr>
+</tbody></table>
+<h2>4. 常见复杂度从小到大</h2>
+<div class="rank-list"><div><b>O(1)</b>常数</div><div><b>O(log n)</b>对数</div><div><b>O(n)</b>线性</div><div><b>O(n log n)</b>对数线性</div><div><b>O(n²)</b>平方</div><div><b>O(n³)</b>立方</div><div><b>O(2ⁿ)</b>指数</div></div>
+<div class="warn"><b>易错点：</b>大O不是精确运行时间，而是增长趋势。例如 O(n) 不代表一定比 O(1) 慢一秒，只代表 n 变大时它会随 n 线性增长。</div>
+</section>
+
+<section class="notes-page" id="code-complexity">
+<h1>五、从代码判断复杂度</h1>
+<h2>1. 基本方法</h2>
+<div class="key"><b>做题步骤：</b>先确定 n 是什么 → 找最频繁执行的语句 → 数它执行多少次 → 保留最高阶。</div>
+<h2>2. 典型代码：两层嵌套循环</h2>
+<div class="codebox"><div class="code-title">代码解释：从赋值次数得到 T(n)</div><pre><code>a = 5
+b = 6
+c = 10
+
+for i in range(n):
+    for j in range(n):
+        x = i * i
+        y = j * j
+        z = i * j
+
+for k in range(n):
+    w = a * k + 45
+    v = b * b
+
+d = 33</code></pre></div>
+<div class="explain"><b>怎么数：</b>前面 3 个赋值是常数；双重循环里面 3 条赋值，每条执行 n² 次，所以是 3n²；后面单循环 2 条赋值，每条执行 n 次，所以是 2n；最后还有 1 个赋值。<br/>因此 <span class="formula">T(n)=3n²+2n+4</span>，大O是 <b>O(n²)</b>。</div>
+<div class="complexity-diagram">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="代码复杂度拆分示意图">
+  <defs><marker id="ca" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="30" y="50" width="150" height="70" rx="14" fill="#f8fafc" stroke="#cbd5e1"/><text x="105" y="84" text-anchor="middle" font-size="18" fill="#334155" font-weight="700">常数部分</text><text x="105" y="109" text-anchor="middle" font-size="16" fill="#64748b">4</text>
+  <path d="M180 85 L260 85" stroke="#166534" stroke-width="3" marker-end="url(#ca)"/>
+  <rect x="260" y="50" width="190" height="70" rx="14" fill="#fff7ed" stroke="#fdba74"/><text x="355" y="84" text-anchor="middle" font-size="18" fill="#9a3412" font-weight="700">单循环</text><text x="355" y="109" text-anchor="middle" font-size="16" fill="#9a3412">2n</text>
+  <path d="M450 85 L530 85" stroke="#166534" stroke-width="3" marker-end="url(#ca)"/>
+  <rect x="530" y="50" width="210" height="70" rx="14" fill="#fef2f2" stroke="#fca5a5"/><text x="635" y="84" text-anchor="middle" font-size="18" fill="#b91c1c" font-weight="700">双重循环</text><text x="635" y="109" text-anchor="middle" font-size="16" fill="#b91c1c">3n²</text>
+  <text x="450" y="180" text-anchor="middle" font-size="18" fill="#14532d" font-weight="700">主导项是 n²，所以整体是 O(n²)</text>
+</svg>
+</div>
+<h2>3. 最好、最坏、平均情况</h2>
+<p>有些算法的运行时间不仅取决于 n，还取决于数据本身。比如查找一个元素，可能第一下就找到，也可能到最后才找到。</p>
+<table><thead><tr><th>情况</th><th>意思</th><th>做题时怎么用</th></tr></thead><tbody>
+<tr><td>最好情况</td><td>数据刚好很有利，执行次数最少</td><td>通常不是主要评价依据。</td></tr>
+<tr><td>最坏情况</td><td>数据最不利，执行次数最多</td><td>考试常问，表示保守保证。</td></tr>
+<tr><td>平均情况</td><td>考虑一般数据分布下的平均表现</td><td>更接近日常主流性能。</td></tr>
+</tbody></table>
+<h2>4. 例题：从代码判断复杂度</h2>
+<div class="exam"><h3>例题：嵌套循环的时间复杂度</h3><p><b>题目思想：</b>已知一个列表 <span class="formula">a</span> 的长度为 <span class="formula">n</span>，判断下面代码的时间复杂度。</p>
+<div class="codebox"><pre><code>length = 1
+for i in range(n - 1):
+    for j in range(i + 1, n):
+        if a[j - 1] &gt; a[j]:
+            break
+    if length &lt; j - i + 1:
+        length = j - i + 1</code></pre></div>
+<p><b>前面已经学过：</b>问题规模 n、嵌套循环、最坏情况分析、<span class="formula">1+2+...+n</span> 的数量级。</p>
+<p><b>参考答案：</b>最坏情况下内层循环不会很快 <code>break</code>，外层第 1 次内层最多跑 <span class="formula">n-1</span> 次，第 2 次最多跑 <span class="formula">n-2</span> 次……总比较次数约为 <span class="formula">(n-1)+(n-2)+...+1</span>，所以时间复杂度为 <b>O(n²)</b>。</p>
+</div>
+
+</section>
+
+<section class="notes-page" id="anagram">
+<h1>六、变位词判断四种解法</h1>
+<h2>1. 什么是变位词</h2>
+<div class="key"><b>变位词：</b>两个词的字母可以通过重新排列互相得到。例如 <span class="formula">heart</span> 和 <span class="formula">earth</span>，<span class="formula">python</span> 和 <span class="formula">typhon</span>。</div>
+<p>为了简化，课程假设两个词只由小写字母构成，而且长度相等。目标是写一个布尔函数：是变位词返回 True，否则返回 False。</p>
+<div class="anagram-diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="变位词四种解法比较图">
+  <defs><marker id="aa" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#f97316"/></marker></defs>
+  <rect x="36" y="50" width="160" height="100" rx="16" fill="#fef2f2" stroke="#fca5a5"/><text x="116" y="86" text-anchor="middle" fill="#b91c1c" font-weight="700" font-size="20">逐字检查</text><text x="116" y="122" text-anchor="middle" fill="#b91c1c" font-size="18">O(n²)</text>
+  <rect x="258" y="50" width="160" height="100" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="338" y="86" text-anchor="middle" fill="#9a3412" font-weight="700" font-size="20">排序比较</text><text x="338" y="122" text-anchor="middle" fill="#9a3412" font-size="18">O(n log n)</text>
+  <rect x="480" y="50" width="160" height="100" rx="16" fill="#fef2f2" stroke="#fca5a5"/><text x="560" y="86" text-anchor="middle" fill="#b91c1c" font-weight="700" font-size="20">暴力全排列</text><text x="560" y="122" text-anchor="middle" fill="#b91c1c" font-size="18">O(n!)</text>
+  <rect x="702" y="50" width="160" height="100" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="782" y="86" text-anchor="middle" fill="#14532d" font-weight="700" font-size="20">计数比较</text><text x="782" y="122" text-anchor="middle" fill="#14532d" font-size="18">O(n)</text>
+  <text x="450" y="205" text-anchor="middle" fill="#64748b" font-size="16">同一问题的不同思路，复杂度可能差到完全不是一个量级。</text>
+</svg>
+</div>
+<h2>2. 解法1：逐字检查 O(n²)</h2>
+<p>把 s1 的每个字符拿去 s2 中找，找到就标记为 None，避免重复使用同一个字符。</p>
+<div class="codebox"><div class="code-title">代码解释：逐字检查</div><pre><code>def anagramSolution1(s1, s2):
+    alist = list(s2)          # 字符串不可变，先转成列表
+    pos1 = 0
+    stillOK = True
+
+    while pos1 < len(s1) and stillOK:
+        pos2 = 0
+        found = False
+        while pos2 < len(alist) and not found:
+            if s1[pos1] == alist[pos2]:
+                found = True
+            else:
+                pos2 += 1
+        if found:
+            alist[pos2] = None   # 打勾：这个字符已经被配对
+        else:
+            stillOK = False
+        pos1 += 1
+    return stillOK</code></pre></div>
+<div class="explain"><b>为什么是 O(n²)：</b>外层要看 s1 的 n 个字符；每个字符最坏都要在 s2 里找一遍。总比较次数接近 <span class="formula">1+2+...+n</span>，数量级是 O(n²)。</div>
+<h2>3. 解法2：排序比较 O(n log n)</h2>
+<p>把两个字符串都排序，再逐位比较。排序通常是主导步骤。</p>
+<div class="codebox"><div class="code-title">代码解释：排序比较</div><pre><code>def anagramSolution2(s1, s2):
+    alist1 = list(s1)
+    alist2 = list(s2)
+    alist1.sort()
+    alist2.sort()
+
+    pos = 0
+    matches = True
+    while pos < len(s1) and matches:
+        if alist1[pos] == alist2[pos]:
+            pos += 1
+        else:
+            matches = False
+    return matches</code></pre></div>
+<div class="warn"><b>注意：</b>看上去只有一个 while 循环，但前面的 <code>sort()</code> 不是免费的。不能只数自己看得见的循环。</div>
+<h2>4. 解法3：暴力全排列 O(n!)</h2>
+<p>生成 s1 的所有排列，再看 s2 是否在里面。这个思路很直观，但极其慢。长度为 20 的字符串有 20! 种排列，课件指出即使用很快的速度处理，也可能需要近 8 万年。</p>
+<div class="warn"><b>考试判断：</b>暴力法通常可以作为“正确但不可行”的反例，说明算法不能只看思路是否完整，还要看复杂度。</div>
+<h2>5. 解法4：计数比较 O(n)</h2>
+<p>给 26 个小写字母各建一个计数器，分别统计两个词中每个字母出现次数，最后比较两个计数器是否完全一样。</p>
+<div class="codebox"><div class="code-title">代码解释：计数比较</div><pre><code>def anagramSolution4(s1, s2):
+    c1 = [0] * 26
+    c2 = [0] * 26
+
+    for ch in s1:
+        pos = ord(ch) - ord('a')
+        c1[pos] += 1
+
+    for ch in s2:
+        pos = ord(ch) - ord('a')
+        c2[pos] += 1
+
+    return c1 == c2</code></pre></div>
+<div class="key"><b>为什么是 O(n)：</b>前两个循环各扫一遍字符串，共 2n；最后比较 26 个计数，26 是常数。所以 <span class="formula">T(n)=2n+26</span>，大O是 O(n)。</div>
+<div class="explain"><b>空间换时间：</b>计数法要额外用两个计数器列表，所以比前几种方法占用更多空间，但速度更快。这就是常见的时间与空间权衡。</div>
+</section>
+
+<section class="notes-page" id="list">
+<h1>七、Python list 的性能</h1>
+<h2>1. list 的常见操作</h2>
+<p>list 是 Python 最常用的内置数据类型之一。它适合按下标访问元素，比如 <code>a[i]</code>。</p>
+<table><thead><tr><th>操作</th><th>复杂度直觉</th><th>原因</th></tr></thead><tbody>
+<tr><td><code>a[i]</code>、<code>a[i] = v</code></td><td>O(1)</td><td>按下标随机访问，位置可以直接算出来。</td></tr>
+<tr><td><code>append(v)</code></td><td>通常 O(1)</td><td>在末尾追加，最常用，Python 做了优化。</td></tr>
+<tr><td><code>lst = lst + [v]</code></td><td>O(n+k)</td><td>要生成新列表并复制原列表和新列表内容。</td></tr>
+<tr><td><code>pop()</code></td><td>O(1)</td><td>从末尾删，不需要移动前面的元素。</td></tr>
+<tr><td><code>pop(0)</code> 或中间删除</td><td>O(n)</td><td>删掉后，后面的元素要整体往前挪。</td></tr>
+<tr><td><code>x in list</code></td><td>O(n)</td><td>通常要从头到尾一个个找。</td></tr>
+</tbody></table>
+<h2>2. 为什么 append 比 + 快很多</h2>
+<div class="grid2">
+<div class="codebox"><div class="code-title">慢：循环中反复拼接</div><pre><code>lst = []
+for i in range(n):
+    lst = lst + [i]  # 每次都复制旧列表</code></pre></div>
+<div class="codebox"><div class="code-title">快：append 追加</div><pre><code>lst = []
+for i in range(n):
+    lst.append(i)   # 直接在末尾追加</code></pre></div>
+</div>
+<div class="explain"><b>理解：</b><code>+</code> 不是“在原地加一下”，而是创建新列表；循环里不断 <code>+</code> 会反复复制，代价很大。<code>append</code> 是专门为尾部追加优化的。</div>
+<h2>3. pop() 和 pop(0) 为什么差别巨大</h2>
+<div class="list-diagram">
+<svg viewBox="0 0 900 280" width="100%" role="img" aria-label="pop和pop0对比图">
+  <defs><marker id="la" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#dc2626"/></marker></defs>
+  <text x="60" y="36" font-size="20" fill="#14532d" font-weight="700">pop()：删末尾</text>
+  <g transform="translate(60,60)">
+    <rect x="0" y="0" width="560" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/>
+    <g fill="#14532d" font-size="22" text-anchor="middle"><text x="45" y="34">0</text><text x="125" y="34">1</text><text x="205" y="34">2</text><text x="285" y="34">3</text><text x="365" y="34">4</text><text x="445" y="34">5</text><text x="525" y="34">6</text></g>
+    <line x1="525" y1="70" x2="525" y2="54" stroke="#166534" stroke-width="4" marker-end="url(#la)"/><text x="525" y="92" text-anchor="middle" font-size="15" fill="#64748b">直接删最后</text>
+  </g>
+  <text x="60" y="160" font-size="20" fill="#b91c1c" font-weight="700">pop(0)：删开头</text>
+  <g transform="translate(60,184)">
+    <rect x="0" y="0" width="560" height="52" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+    <g fill="#7f1d1d" font-size="22" text-anchor="middle"><text x="45" y="34">0</text><text x="125" y="34">1</text><text x="205" y="34">2</text><text x="285" y="34">3</text><text x="365" y="34">4</text><text x="445" y="34">5</text><text x="525" y="34">6</text></g>
+    <line x1="125" y1="70" x2="70" y2="70" stroke="#dc2626" stroke-width="3" marker-end="url(#la)"/><line x1="205" y1="70" x2="150" y2="70" stroke="#dc2626" stroke-width="3" marker-end="url(#la)"/><line x1="285" y1="70" x2="230" y2="70" stroke="#dc2626" stroke-width="3" marker-end="url(#la)"/><text x="380" y="92" font-size="15" fill="#64748b">后面元素都要向前挪</text>
+  </g>
+  <text x="700" y="104" font-size="24" fill="#14532d" font-weight="700">O(1)</text>
+  <text x="700" y="228" font-size="24" fill="#b91c1c" font-weight="700">O(n)</text>
+</svg>
+<div class="diagram-cap">这张图是本章 list 性能的关键：删末尾不用移动，删开头/中间要搬家。</div>
+</div>
+<h2>4. 例题：list 的中部删除为什么慢</h2>
+<div class="exam"><h3>例题：为什么 <code>pop(0)</code> 比 <code>pop()</code> 慢？</h3><p><b>题目思想：</b>同样是删除一个元素，为什么从末尾删除通常是 O(1)，从开头删除是 O(n)？</p>
+<p><b>前面已经学过：</b>list 按下标存放元素、<code>pop()</code> 删除末尾、<code>pop(0)</code> 删除开头，以及“开头/中间删除会导致后面元素整体前移”。</p>
+<p><b>参考答案：</b><code>pop()</code> 删除列表末尾元素，不需要移动其他元素；<code>pop(0)</code> 删除开头元素后，后面所有元素都要整体向前移动一位，因此元素越多，移动代价越大，时间复杂度是 <b>O(n)</b>。</p></div>
+
+</section>
+
+<section class="notes-page" id="dict">
+<h1>八、Python dict 的性能</h1>
+<h2>1. dict 和 list 的核心差别</h2>
+<div class="key"><b>list：</b>根据位置 index 找元素。<br/><b>dict：</b>根据关键码 key 找元素。</div>
+<div class="dict-diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="list和dict查找方式对比">
+  <defs><marker id="da" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="40" y="52" width="360" height="120" rx="16" fill="#eff6ff" stroke="#93c5fd"/>
+  <text x="220" y="88" text-anchor="middle" fill="#1d4ed8" font-size="22" font-weight="700">list</text>
+  <text x="220" y="120" text-anchor="middle" fill="#64748b" font-size="16">靠下标：a[0], a[1], a[2]</text>
+  <text x="220" y="148" text-anchor="middle" fill="#64748b" font-size="16">查某个值是否存在：可能要一个个扫</text>
+  <rect x="500" y="52" width="360" height="120" rx="16" fill="#ecfdf5" stroke="#86caa0"/>
+  <text x="680" y="88" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">dict</text>
+  <text x="680" y="120" text-anchor="middle" fill="#64748b" font-size="16">靠 key：d['Tom']</text>
+  <text x="680" y="148" text-anchor="middle" fill="#64748b" font-size="16">查 key 是否存在：平均 O(1)</text>
+  <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="16">选数据类型时，要看你最常做的是“按位置取”，还是“按 key 查”。</text>
+</svg>
+</div>
+<h2>2. dict 的常用操作</h2>
+<table><thead><tr><th>操作</th><th>平均复杂度</th><th>解释</th></tr></thead><tbody>
+<tr><td><code>d[key]</code></td><td>O(1)</td><td>根据 key 直接定位。</td></tr>
+<tr><td><code>d[key] = value</code></td><td>O(1)</td><td>插入或更新键值对。</td></tr>
+<tr><td><code>key in d</code></td><td>O(1)</td><td>判断 key 是否存在。</td></tr>
+<tr><td><code>x in list</code></td><td>O(n)</td><td>和 dict 对比：list 查值通常要线性扫描。</td></tr>
+</tbody></table>
+<div class="codebox"><div class="code-title">代码解释：list in 与 dict in</div><pre><code>nums = [10, 20, 30, 40]
+print(30 in nums)       # list：可能从头扫到尾，O(n)
+
+score = {'Tom': 90, 'Ann': 95, 'Bob': 88}
+print('Ann' in score)   # dict：查 key，平均 O(1)
+print(score['Ann'])     # 根据 key 取值，平均 O(1)</code></pre></div>
+<div class="explain"><b>小白理解：</b>list 像排队名单，要找某个名字可能从头看到尾；dict 像带索引的通讯录，知道 key 就能很快定位。</div>
+<h2>3. 为什么 <code>x in list</code> 是 O(n)，而 <code>key in dict</code> 平均是 O(1)</h2>
+<div class="grid2">
+<div class="card"><h3>list 查“某个值”为什么是 O(n)</h3><p>list 主要擅长的是按下标访问，比如 <code>a[3]</code>。但如果你问 <code>30 in nums</code>，Python 通常不知道 30 在第几个位置，只能从 <code>nums[0]</code> 开始一个个比较：第 1 个不是，看第 2 个；第 2 个不是，看第 3 个……</p><p>如果目标值刚好在开头，会很快；如果在最后，或者根本不存在，就要看完整个列表。所以最坏情况是比较 <span class="formula">n</span> 次，平均也会随着 <span class="formula">n</span> 增大而增大，因此记作 <b>O(n)</b>。</p></div>
+<div class="card"><h3>dict 查“key”为什么平均是 O(1)</h3><p>dict 背后使用的是类似“散列表”的思想。查 <code>'Ann' in score</code> 时，Python 不是从第一个键开始挨个找，而是先对 key 做一次哈希计算：<code>hash('Ann')</code>，把 key 转成一个整数，再用这个整数快速定位到内部表中的候选位置。</p><p>定位后再检查那里的 key 是否真的是 <code>'Ann'</code>。如果哈希分布比较均匀，冲突被控制得较好，查找需要检查的位置数量通常近似固定，不会随着字典规模线性增长，所以平均复杂度是 <b>O(1)</b>。</p></div>
+</div>
+<div class="dict-diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="dict哈希查找过程示意图">
+  <defs><marker id="hashArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="36" y="78" width="150" height="70" rx="14" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="111" y="108" text-anchor="middle" fill="#1d4ed8" font-size="19" font-weight="700">key</text>
+  <text x="111" y="132" text-anchor="middle" fill="#64748b" font-size="15">'Ann'</text>
+  <path d="M186 113 L286 113" stroke="#166534" stroke-width="4" marker-end="url(#hashArrow)"/>
+  <rect x="286" y="78" width="180" height="70" rx="14" fill="#ecfdf5" stroke="#86caa0" stroke-width="2"/>
+  <text x="376" y="108" text-anchor="middle" fill="#14532d" font-size="19" font-weight="700">hash(key)</text>
+  <text x="376" y="132" text-anchor="middle" fill="#64748b" font-size="15">算出候选位置</text>
+  <path d="M466 113 L566 113" stroke="#166534" stroke-width="4" marker-end="url(#hashArrow)"/>
+  <rect x="566" y="36" width="282" height="154" rx="14" fill="#ffffff" stroke="#d7eadf" stroke-width="2"/>
+  <text x="707" y="64" text-anchor="middle" fill="#14532d" font-size="18" font-weight="700">内部表</text>
+  <g font-size="15" fill="#334155">
+    <rect x="596" y="78" width="220" height="28" rx="6" fill="#f8fafc" stroke="#e2e8f0"/><text x="706" y="98" text-anchor="middle">空位 / 其他 key</text>
+    <rect x="596" y="112" width="220" height="32" rx="6" fill="#dcfce7" stroke="#86caa0"/><text x="706" y="134" text-anchor="middle">'Ann' → 95</text>
+    <rect x="596" y="150" width="220" height="28" rx="6" fill="#f8fafc" stroke="#e2e8f0"/><text x="706" y="170" text-anchor="middle">空位 / 其他 key</text>
+  </g>
+  <text x="450" y="232" text-anchor="middle" fill="#64748b" font-size="16">dict 的关键优势：先用 hash 直接跳到候选位置，而不是从头顺序扫描。</text>
+</svg>
+<div class="diagram-cap">注意说的是<b>平均 O(1)</b>：如果发生哈希冲突，Python 还需要额外检查；但正常情况下冲突被控制得较好，所以平均查找次数近似常数。</div>
+</div>
+<div class="warn"><b>考试写法：</b><code>x in list</code> 查的是“值”，list 没有值到位置的直接映射，所以通常顺序扫描，O(n)；<code>key in dict</code> 查的是“键”，dict 可通过哈希函数快速定位，平均 O(1)。</div>
+<h2>4. 例题：频繁查找时选 list 还是 dict</h2>
+<div class="exam"><h3>例题：频繁根据 key 查找应该用什么？</h3><p><b>题目思想：</b>如果需要频繁根据学号查找学生信息，是用 list 逐个查，还是用 dict 更合适？</p>
+<p><b>前面已经学过：</b>list 更偏向按位置 index 访问；list 查某个值通常是 O(n)；dict 根据 key 查找、赋值和 <code>key in d</code> 平均是 O(1)。</p>
+<p><b>参考答案：</b>用 <code>dict</code> 更合适。可以把学号作为 key、学生信息作为 value。这样查找时按 key 定位，平均复杂度是 <b>O(1)</b>；如果用 list 逐个找学号，通常需要线性扫描，平均复杂度是 <b>O(n)</b>。</p></div>
+
+</section>
+
+<section class="notes-page" id="quick">
+<h1>九、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>保留 101-107 那种 <b>浏览 / 默写 / 填空</b> 三种模式；只有确实适合填关键词的卡片才设置填空，不强行写关键词。支持 <b>翻转、上一张、下一张、标记已掌握、重置进度</b>。<br>在这一页可直接用键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab">
+  <div class="flash-topbar">
+    <div class="flash-modes">
+      <button class="flash-chip active" data-mode="browse" type="button">浏览</button>
+      <button class="flash-chip" data-mode="write" type="button">默写</button>
+      <button class="flash-chip" data-mode="fill" type="button">填空</button>
+    </div>
+    <div class="flash-status">
+      <span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span>
+      <span class="flash-progress" id="flashPosition">1 / 1</span>
+    </div>
+  </div>
+  <div class="study-card" id="studyCard" tabindex="0" aria-live="polite">
+    <div class="study-inner" id="studyInner">
+      <div class="study-face study-front">
+        <div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div>
+        <h3 id="frontTitle">加载中…</h3>
+        <div id="frontBody"></div>
+        <div class="study-help" id="frontHelp">点击卡片或按 Space 翻面</div>
+      </div>
+      <div class="study-face study-back">
+        <div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div>
+        <h3 id="backTitle">参考答案</h3>
+        <div id="backBody"></div>
+        <div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div>
+      </div>
+    </div>
+  </div>
+  <div class="flash-topbar" style="margin-top:14px">
+    <div class="flash-actions">
+      <button class="flash-btn" id="prevCard" type="button">◀ 上一张</button>
+      <button class="flash-btn primary" id="flipCard" type="button">翻转</button>
+      <button class="flash-btn" id="nextCard" type="button">下一张 ▶</button>
+    </div>
+    <div class="flash-actions">
+      <button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button>
+      <button class="flash-btn" id="resetMastery" type="button">重置进度</button>
+    </div>
+  </div>
+  <div class="flash-keys">提示：这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握；离开这一页后，左右键仍然用于整份笔记翻页。</div>
+</div>
+</section>
+
+<section class="notes-page" id="sources">
+<h1>十、资料标准与筛选说明</h1>
+<h2>1. 已收入的范围</h2>
+<ul>
+<li>算法分析：程序与算法区别、时间/空间资源。</li>
+<li>运行时间检测：<code>time</code>、<code>timeit</code>、实测局限。</li>
+<li>大O表示法：问题规模、T(n)、主导项、常见数量级。</li>
+<li>代码复杂度分析：循环、嵌套循环、最好/最坏/平均情况，并在对应知识点后嵌入例题。</li>
+<li>变位词判断：逐字检查、排序比较、暴力法、计数比较。</li>
+<li>Python list/dict 性能：下标访问、追加、拼接、pop、in、dict key 查找。</li>
+</ul>
+<h2>2. 暂未收入的范围</h2>
+<div class="warn">二分查找、排序算法细节、链表、栈、队列、树、图、分治递归等会在对应章节单独总结。本章只在必要处解释复杂度思想，不提前硬放后续章节题。</div>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0;
+  const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach((p,k)=>p.classList.toggle('active',k===current));
+    nav.forEach((a,k)=>a.classList.toggle('active',k===current));
+    progress.textContent=(current+1)+' / '+pages.length;
+    buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));});
+    if(hashUpdate) history.replaceState(null,'','#'+pages[current].id);
+    document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  // Flashcards
+  const cards = [
+    {type:'概念', title:'算法分析主要比较什么？', answer:'主要比较算法本身的计算资源消耗，尤其是时间和空间，而不是只比较代码风格或变量名。', cloze:'算法分析主要比较算法的____消耗，尤其是____和____。', fillAnswer:'计算资源；时间；空间'},
+    {type:'辨析', title:'算法和程序有什么区别？', answer:'算法是解决问题的分步描述；程序是用某种编程语言对算法的具体实现。同一个算法可以写成很多不同程序。', cloze:'算法是解决问题的____；程序是用编程语言写出的具体____。', fillAnswer:'分步描述；实现'},
+    {type:'概念', title:'为什么不能只用实际运行时间评价算法？', answer:'实际运行时间会受到机器性能、编程语言、运行环境、系统负载等影响，不够独立稳定。', cloze:null, fillAnswer:null},
+    {type:'概念', title:'大O表示法的核心规则是什么？', answer:'只保留增长最快的主导项，忽略常数项、低阶项和最高阶项的系数。', cloze:'大O只保留增长最快的____，忽略____、低阶项和系数。', fillAnswer:'主导项；常数项'},
+    {type:'理解', title:'为什么排序比较法判断变位词不是 O(n)？', answer:'因为前面的 sort() 不是免费操作，排序通常是 O(n log n) 或更高，它主导了整体复杂度。', cloze:null, fillAnswer:null},
+    {type:'Python', title:'list 的 a[i] 和 a[i]=v 通常是什么复杂度？', answer:'O(1)。因为 Python list 支持按下标随机访问，位置可以直接定位。', cloze:'list 的按下标取值/赋值通常是____。', fillAnswer:'O(1)'},
+    {type:'Python', title:'为什么 lst.append(v) 比 lst = lst + [v] 更适合循环追加？', answer:'append 是末尾追加，通常 O(1)；+ 会创建新列表并复制原有元素，循环中反复使用会很慢。', cloze:null, fillAnswer:null},
+    {type:'Python', title:'dict 中 key in d 通常是什么复杂度？', answer:'平均 O(1)。dict 根据 key 查找，通常与字典规模关系不大。', cloze:'dict 中 key in d 平均复杂度是____。', fillAnswer:'O(1)'}
+  ];
+  const storageKey = 'dsa201206_flash_mastered_v1';
+
+  let mastered = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let cardIndex = 0;
+  let mode = 'browse';
+  const studyCard = document.getElementById('studyCard');
+  const frontType = document.getElementById('frontType');
+  const frontCount = document.getElementById('frontCount');
+  const frontTitle = document.getElementById('frontTitle');
+  const frontBody = document.getElementById('frontBody');
+  const backBody = document.getElementById('backBody');
+  const flashProgress = document.getElementById('flashProgress');
+  const flashPosition = document.getElementById('flashPosition');
+  const masterBtn = document.getElementById('masterCard');
+  function saveMastered(){ localStorage.setItem(storageKey, JSON.stringify([...mastered])); }
+  function updateProgress(){
+    const done = mastered.size, total = cards.length;
+    const pct = total ? Math.round(done*100/total) : 0;
+    flashProgress.textContent = `已掌握 ${done}/${total} · ${pct}%`;
+    flashPosition.textContent = `${cardIndex+1} / ${cards.length}`;
+    masterBtn.innerHTML = mastered.has(cardIndex) ? '⭐ 取消已掌握' : '⭐ 标记已掌握';
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function renderCard(){
+    const c = cards[cardIndex];
+    studyCard.classList.remove('flipped');
+    frontType.textContent = c.type;
+    frontCount.textContent = `第 ${cardIndex+1} 题` + (mastered.has(cardIndex) ? ' · 已掌握' : '');
+    frontTitle.innerHTML = c.title;
+    let body = '';
+    if(mode === 'browse'){
+      body = '<p>先自己回忆定义或答案，再翻面核对。</p>';
+    } else if(mode === 'write'){
+      body = '<p><b>默写模式：</b>先在下面自己组织语言，写完后再翻面看答案。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="可以直接在这里打字默写，也可以只在脑子里回答。"></textarea></div>';
+    } else {
+      if(c.cloze && c.fillAnswer){
+        body = `<p><b>填空模式：</b>先把关键字补出来，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${escapeHtml(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="把你想到的关键词写在这里" /><div class="fill-feedback" id="fillFeedback"></div></div>`;
+      }else{
+        body = `<p><b>这张卡不强行设置填空关键词。</b></p><p>这类问题更适合用“浏览”或“默写”模式完整理解，不建议只背零散词。</p>`;
+      }
+    }
+    frontBody.innerHTML = body;
+    backBody.innerHTML = `<p>${c.answer}</p>` + (c.fillAnswer ? `<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${c.fillAnswer}</div>` : '');
+    updateProgress();
+    const fillInput = document.getElementById('fillInput');
+    if(fillInput){
+      fillInput.addEventListener('input', ()=>{
+        const feedback = document.getElementById('fillFeedback');
+        const v = fillInput.value.trim();
+        if(!v){ feedback.textContent = ''; return; }
+        const ans = (c.fillAnswer||'').replace(/；/g,';').toLowerCase();
+        const ok = ans.split(/[;；]/).every(part => !part.trim() || v.toLowerCase().includes(part.trim()));
+        feedback.textContent = ok ? '看起来关键词基本对上了，可以翻面核对完整表述。' : '先继续想想关键字，再翻面核对也可以。';
+      });
+    }
+  }
+  function flipCard(){ studyCard.classList.toggle('flipped'); }
+  function prevCard(){ cardIndex = (cardIndex - 1 + cards.length) % cards.length; renderCard(); }
+  function nextCard(){ cardIndex = (cardIndex + 1) % cards.length; renderCard(); }
+  function toggleMaster(){ if(mastered.has(cardIndex)) mastered.delete(cardIndex); else mastered.add(cardIndex); saveMastered(); updateProgress(); renderCard(); }
+  function isSpaceKey(e){ return e.key === ' ' || e.key === 'Spacebar' || e.code === 'Space'; }
+  function isTypingTarget(target){ const tag=(target&&target.tagName||'').toLowerCase(); return ['input','textarea','select'].includes(tag) || !!(target&&target.isContentEditable); }
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    mode = btn.dataset.mode;
+    renderCard();
+  }));
+  if(studyCard){
+    studyCard.addEventListener('click', e=>{ if(e.target.closest('textarea,input,label,button,.study-write,.study-fill')) return; flipCard(); });
+    studyCard.addEventListener('keydown', e=>{ if(e.key==='Enter' || isSpaceKey(e)){ e.preventDefault(); flipCard(); } });
+  }
+  document.getElementById('flipCard')?.addEventListener('click', flipCard);
+  document.getElementById('prevCard')?.addEventListener('click', prevCard);
+  document.getElementById('nextCard')?.addEventListener('click', nextCard);
+  document.getElementById('masterCard')?.addEventListener('click', toggleMaster);
+  document.getElementById('resetMastery')?.addEventListener('click', ()=>{ mastered = new Set(); saveMastered(); updateProgress(); renderCard(); });
+
+  document.addEventListener('keydown',e=>{
+    const onQuick = pages[current] && pages[current].id === 'quick';
+    const typing = isTypingTarget(e.target || document.activeElement);
+    if(onQuick){
+      if(typing) return;
+      if(e.key==='ArrowRight'){ e.preventDefault(); e.stopPropagation(); nextCard(); return; }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); e.stopPropagation(); prevCard(); return; }
+      if(isSpaceKey(e)){ e.preventDefault(); e.stopPropagation(); flipCard(); studyCard?.focus({preventScroll:true}); return; }
+      if(e.key==='m' || e.key==='M'){ e.preventDefault(); e.stopPropagation(); toggleMaster(); return; }
+    }
+    if(typing)return;
+    if(e.key==='PageDown'){e.preventDefault();show(current+1)}
+    if(e.key==='PageUp'){e.preventDefault();show(current-1)}
+    if(!onQuick && (e.key==='ArrowRight')){e.preventDefault();show(current+1)}
+    if(!onQuick && (e.key==='ArrowLeft')){e.preventDefault();show(current-1)}
+  }, true);
+
+  renderCard();
+  show(current,false);
+})();
+</script>
+
+</body>
+</html>
