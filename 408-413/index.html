@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数据结构与算法B Python版｜408-413 复习笔记</title>
+<style>
+:root{--bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}
+.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}
+h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:790px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:780px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.small{font-size:13px;color:#64748b}
+.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.diagram svg{display:block;min-width:760px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.good{color:#166534;font-weight:700}.bad{color:#b91c1c;font-weight:700}
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-progress{font-size:14px;color:var(--muted)}.study-card{perspective:1200px;min-height:530px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:530px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:150px;max-height:220px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}.flash-keys{margin-top:12px;font-size:13px;color:#64748b}.flash-keys code{background:#f1f5f9;padding:2px 6px;border-radius:6px}
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2,.grid3{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}.diagram{overflow-x:auto}.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:600px}.study-front h3,.study-back h3{font-size:21px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+@media screen{.main>.notes-page{display:none!important}.main>.notes-page.active{display:block!important}.main>.cover-page.active{display:flex!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">408-413｜分治、贪心、记忆化与动态规划</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#divide"><span class="num">03</span><span>分治策略与递归</span></a>
+<a href="#greedy"><span class="num">04</span><span>优化问题与贪心策略</span></a>
+<a href="#rec-change"><span class="num">05</span><span>找零兑换：递归解法</span></a>
+<a href="#memo"><span class="num">06</span><span>记忆化：减少重复计算</span></a>
+<a href="#dp-change"><span class="num">07</span><span>动态规划：找零兑换</span></a>
+<a href="#dp-coins"><span class="num">08</span><span>记录硬币组合与回溯</span></a>
+<a href="#museum"><span class="num">09</span><span>博物馆大盗问题</span></a>
+<a href="#quick"><span class="num">10</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">11</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-408-413 这一章范围。</div>
+</aside>
+<main class="main">
+
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>408-413 复习笔记</h1>
+<div class="subtitle">分治策略、贪心策略、找零兑换、记忆化与动态规划</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记以 <b>pydsa-408-413 合并版</b>为标准，整理分治策略、优化问题、贪心策略、找零兑换的递归/记忆化/动态规划解法，以及博物馆大盗问题。</p>
+<p><b>学习目标：</b>不是只背“动态规划很难”，而是理解：为什么贪心有时会错；为什么朴素递归会重复计算；为什么记忆化和动态规划能把重复子问题变成查表。</p>
+<p><b>阅读建议：</b>先看绿色核心结论，再看图示；代码旁边都有小白解释。红色例题放在对应知识点后，不单独开页。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol>
+<li>本章考什么、怎么学</li><li>分治策略与递归</li><li>贪心策略与找零失效</li><li>找零兑换递归解法</li><li>记忆化与函数值缓存</li><li>动态规划解找零</li><li>记录硬币组合</li><li>博物馆大盗问题</li><li>速记卡与资料说明</li>
+</ol></div>
+</section>
+
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>核心结论：</b>这一章延续递归，但重点从“会写递归”转到“怎样让递归更聪明”。主线是：分治拆问题；贪心试图每步选最好；朴素递归会爆炸；记忆化和动态规划通过记录中间结果避免重复计算。</div>
+<h2>1. 本章知识地图</h2>
+<div class="flow"><span class="step">分治</span><span class="arrow">→</span><span class="step">优化问题</span><span class="arrow">→</span><span class="step">贪心</span><span class="arrow">→</span><span class="step">朴素递归找零</span><span class="arrow">→</span><span class="step">记忆化</span><span class="arrow">→</span><span class="step">动态规划</span></div>
+<table><thead><tr><th>模块</th><th>你要懂什么</th><th>常见考法</th></tr></thead><tbody>
+<tr><td>分治策略</td><td>把大问题拆成小问题，小问题解决后合并。</td><td>判断题、递推式复杂度、和动态规划对比。</td></tr>
+<tr><td>贪心策略</td><td>每一步都选当前看来最好的选择，但不保证全局最优。</td><td>找零反例、局部最优 vs 全局最优。</td></tr>
+<tr><td>找零递归</td><td>尝试每种硬币，递归求剩余金额的最少硬币数，再取最小。</td><td>代码阅读、基本结束条件、为什么低效。</td></tr>
+<tr><td>记忆化</td><td>把已算过的金额最优解存起来，下次直接查表。</td><td>knownResults 表、空间换时间。</td></tr>
+<tr><td>动态规划</td><td>从 1 分钱开始逐步填表，直到目标金额；每一步依赖更小金额的最优解。</td><td>状态转移、填表、最优子结构。</td></tr>
+<tr><td>博物馆大盗</td><td>0/1 背包问题：每件宝物拿或不拿，取最大价值。</td><td>m(i,W) 含义、状态转移式、表格理解。</td></tr>
+</tbody></table>
+<h2>2. 小白学习法</h2>
+<div class="grid2">
+<div class="card"><h3>先分清三种策略</h3><p>贪心：只看当前一步；递归：把剩余问题交给自己；动态规划：先把小问题答案填好，再拼出大问题。</p></div>
+<div class="card"><h3>动态规划不要一上来背代码</h3><p>先问三个问题：状态表示什么？从哪些更小状态转移？表格按什么顺序填？</p></div>
+<div class="card"><h3>找零题是本章核心例子</h3><p>同一个找零问题会经历贪心、朴素递归、记忆化递归、动态规划四种解法，考试最喜欢考对比。</p></div>
+<div class="card"><h3>代码题看“表”</h3><p>动态规划代码看起来长，但核心往往就是一个列表或二维表：记录中间结果，后面直接查。</p></div>
+</div>
+</section>
+
+<section class="notes-page" id="divide">
+<h1>二、分治策略与递归</h1>
+<h2>1. 什么是分治策略</h2>
+<div class="key"><b>分治策略：</b>把一个问题分成若干个规模更小的部分；解决每个小部分；再把小部分的结果汇总成原问题的答案。</div>
+<div class="diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="分治策略图示">
+  <defs><marker id="dva" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="365" y="28" width="170" height="52" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="450" y="62" text-anchor="middle" fill="#14532d" font-size="20" font-weight="700">原问题</text>
+  <path d="M420 82 L270 132" stroke="#166534" stroke-width="4" marker-end="url(#dva)"/><path d="M480 82 L630 132" stroke="#166534" stroke-width="4" marker-end="url(#dva)"/>
+  <rect x="175" y="130" width="190" height="52" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="270" y="164" text-anchor="middle" fill="#1d4ed8" font-size="18" font-weight="700">子问题 A</text>
+  <rect x="535" y="130" width="190" height="52" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="630" y="164" text-anchor="middle" fill="#1d4ed8" font-size="18" font-weight="700">子问题 B</text>
+  <path d="M270 184 L390 220" stroke="#f97316" stroke-width="4" marker-end="url(#dva)"/><path d="M630 184 L510 220" stroke="#f97316" stroke-width="4" marker-end="url(#dva)"/>
+  <rect x="360" y="210" width="180" height="52" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="450" y="244" text-anchor="middle" fill="#9a3412" font-size="18" font-weight="700">合并结果</text>
+</svg>
+<div class="diagram-cap">分治不是某一个具体算法，而是一类解决问题的思路。</div>
+</div>
+<h2>2. 递归为什么常常体现分治</h2>
+<p>递归三定律本身就很像分治：有基本结束条件；每次把问题规模变小；调用自身解决更小的相同问题。许多排序、查找、遍历、求值算法都会用到这一思想。</p>
+<div class="exam"><h3>例题1：分治复杂度判断</h3><p><b>题目思想：</b>若使用分治算法，每次把规模为 n 的问题分解为 2 个规模为 n/2 的子问题，合并开销为 O(n)，总时间复杂度是多少？</p><p><b>参考答案：</b><b>O(n log n)</b>。因为每一层合并总开销约为 O(n)，问题规模每次减半，所以递归树有 log n 层，总计 O(n log n)。</p></div>
+</section>
+
+<section class="notes-page" id="greedy">
+<h1>三、优化问题与贪心策略</h1>
+<h2>1. 什么是优化问题</h2>
+<div class="key"><b>优化问题：</b>目标是找到某种“最优解”，例如最短路径、最少硬币、最大价值、最小集合等。</div>
+<h2>2. 贪心策略怎么想</h2>
+<p>贪心策略的直觉是：每一步都尽量解决“当前最大的一部分”。找零时就是先用最大面值硬币，能用多少用多少，再考虑下一种面值。</p>
+<div class="diagram">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="贪心找零图示">
+  <rect x="60" y="54" width="170" height="92" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="145" y="90" text-anchor="middle" fill="#14532d" font-size="20" font-weight="700">先选最大</text><text x="145" y="122" text-anchor="middle" fill="#64748b" font-size="16">25 分</text>
+  <rect x="265" y="54" width="170" height="92" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="350" y="90" text-anchor="middle" fill="#14532d" font-size="20" font-weight="700">再选最大</text><text x="350" y="122" text-anchor="middle" fill="#64748b" font-size="16">10 分 / 5 分 / 1 分</text>
+  <rect x="470" y="54" width="170" height="92" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="555" y="90" text-anchor="middle" fill="#9a3412" font-size="20" font-weight="700">局部最优</text><text x="555" y="122" text-anchor="middle" fill="#64748b" font-size="16">当前看来最好</text>
+  <rect x="675" y="54" width="170" height="92" rx="16" fill="#fef2f2" stroke="#fca5a5"/><text x="760" y="90" text-anchor="middle" fill="#b91c1c" font-size="20" font-weight="700">不一定全局最优</text><text x="760" y="122" text-anchor="middle" fill="#64748b" font-size="16">可能翻车</text>
+  <text x="450" y="205" text-anchor="middle" fill="#64748b" font-size="16">贪心适合某些硬币体系，但不是万能算法。</text>
+</svg>
+</div>
+<h2>3. 找零兑换中的贪心失效</h2>
+<div class="warn"><b>关键反例：</b>如果硬币有 1、5、10、21、25 分，要找 63 分。贪心先用 25 分，得到 25+25+10+1+1+1，共 6 枚；但真正最优是 21+21+21，共 3 枚。</div>
+
+</section>
+
+<section class="notes-page" id="rec-change">
+<h1>四、找零兑换：递归解法</h1>
+<h2>1. 思路：试所有第一枚硬币</h2>
+<div class="key"><b>递归解法：</b>为了保证找到最优解，不只盯着最大硬币，而是对每一种可用硬币都试一次：先用这一枚硬币，再递归求“剩余金额”的最少硬币数，最后取最小值。</div>
+<p>用公式表达就是：</p>
+<div class="example"><span class="formula">numCoins(change) = min(1 + numCoins(change-c))</span>，其中 <span class="formula">c</span> 遍历所有不超过 <span class="formula">change</span> 的硬币面值。</div>
+<div class="warn"><b>前提说明：</b>课程例子通常默认硬币体系里有 <span class="formula">1</span> 分硬币，所以任何整数金额都能找开。如果没有 <span class="formula">1</span> 分硬币，原来把 <code>minCoins</code> 初始化成 <code>change</code> 的写法会有风险：无解时也可能返回 <code>change</code>。下面统一改成更稳的写法：无解返回 <code>None</code>，动态规划中用 <code>float('inf')</code> 表示暂时不可达。</div>
+<h2>2. 代码解释</h2>
+<div class="codebox"><div class="code-title">代码解释：朴素递归找零</div><pre><code>def recMC(coinValueList, change):
+    # 找零 0 分需要 0 枚硬币
+    if change == 0:
+        return 0
+
+    # 基本结束条件：change 本身就是某种硬币
+    if change in coinValueList:
+        return 1
+
+    minCoins = None   # None 表示目前还没有找到可行方案
+
+    # 尝试每一种不超过 change 的硬币
+    for coin in [c for c in coinValueList if c &lt;= change]:
+        subResult = recMC(coinValueList, change - coin)
+
+        # 如果剩余金额无解，就跳过这种硬币
+        if subResult is not None:
+            numCoins = 1 + subResult
+            if minCoins is None or numCoins &lt; minCoins:
+                minCoins = numCoins
+
+    return minCoins
+
+print(recMC([1, 5, 10, 21, 25], 63))  # 3
+print(recMC([5, 10], 3))              # None，表示无法找零</code></pre></div>
+<div class="explain"><b>小白理解：</b>这段代码不是“猜最大硬币”，而是把所有可能第一步都试一遍。只要某条路最后能凑出目标金额，就参与比较；如果某条路剩余金额无解，就返回 <code>None</code> 并跳过。这样既能找最优解，也不会把“无解”误判成需要 <code>change</code> 枚硬币。</div>
+<h2>3. 为什么它极其低效</h2>
+<div class="diagram">
+<svg viewBox="0 0 900 260" width="100%" role="img" aria-label="递归找零重复计算示意图">
+  <defs><marker id="rc" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="380" y="28" width="140" height="48" rx="14" fill="#ecfdf5" stroke="#86caa0"/><text x="450" y="59" text-anchor="middle" fill="#14532d" font-size="18">change=26</text>
+  <path d="M420 78 L260 122" stroke="#166534" stroke-width="3" marker-end="url(#rc)"/><path d="M450 78 L450 122" stroke="#166534" stroke-width="3" marker-end="url(#rc)"/><path d="M480 78 L640 122" stroke="#166534" stroke-width="3" marker-end="url(#rc)"/>
+  <rect x="190" y="120" width="140" height="48" rx="14" fill="#eff6ff" stroke="#93c5fd"/><text x="260" y="151" text-anchor="middle" fill="#1d4ed8" font-size="18">change=25</text>
+  <rect x="380" y="120" width="140" height="48" rx="14" fill="#fef2f2" stroke="#fca5a5"/><text x="450" y="151" text-anchor="middle" fill="#b91c1c" font-size="18">change=21</text>
+  <rect x="570" y="120" width="140" height="48" rx="14" fill="#eff6ff" stroke="#93c5fd"/><text x="640" y="151" text-anchor="middle" fill="#1d4ed8" font-size="18">change=16</text>
+  <path d="M260 170 L395 215" stroke="#f97316" stroke-width="3" marker-end="url(#rc)"/><path d="M450 170 L450 215" stroke="#f97316" stroke-width="3" marker-end="url(#rc)"/><path d="M640 170 L505 215" stroke="#f97316" stroke-width="3" marker-end="url(#rc)"/>
+  <rect x="390" y="212" width="120" height="42" rx="14" fill="#fff7ed" stroke="#fdba74"/><text x="450" y="239" text-anchor="middle" fill="#9a3412" font-size="18">15 等重复出现</text>
+</svg>
+<div class="diagram-cap">同一个金额可能从不同分支反复被计算，这就是低效的根源。</div>
+</div>
+</section>
+
+<section class="notes-page" id="memo">
+<h1>五、记忆化：减少重复计算</h1>
+<h2>1. 核心思想</h2>
+<div class="key"><b>记忆化 memoization：</b>用一个表保存已经算过的中间结果。递归前先查表；如果表里有，直接返回；如果没有，才递归计算并把结果存入表。</div>
+<div class="diagram">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="记忆化查表图示">
+  <rect x="70" y="62" width="210" height="102" rx="18" fill="#eff6ff" stroke="#93c5fd"/><text x="175" y="98" text-anchor="middle" fill="#1d4ed8" font-size="20" font-weight="700">遇到子问题</text><text x="175" y="130" text-anchor="middle" fill="#64748b" font-size="16">比如 change=15</text>
+  <rect x="345" y="62" width="210" height="102" rx="18" fill="#ecfdf5" stroke="#86caa0"/><text x="450" y="98" text-anchor="middle" fill="#14532d" font-size="20" font-weight="700">先查 knownResults</text><text x="450" y="130" text-anchor="middle" fill="#64748b" font-size="16">有答案就直接返回</text>
+  <rect x="620" y="62" width="210" height="102" rx="18" fill="#fff7ed" stroke="#fdba74"/><text x="725" y="98" text-anchor="middle" fill="#9a3412" font-size="20" font-weight="700">没有才递归</text><text x="725" y="130" text-anchor="middle" fill="#64748b" font-size="16">算完后存进表</text>
+  <text x="450" y="220" text-anchor="middle" fill="#64748b" font-size="16">这就是用存储空间换运行时间。</text>
+</svg>
+</div>
+<h2>2. 改进版代码</h2>
+<div class="codebox"><div class="code-title">代码解释：带记忆化的 recDC</div><pre><code>UNKNOWN = -1
+
+
+def recDC(coinValueList, change, knownResults):
+    # 查表成功：可能是整数，也可能是 None（表示无解）
+    if knownResults[change] != UNKNOWN:
+        return knownResults[change]
+
+    if change == 0:
+        knownResults[change] = 0
+        return 0
+
+    if change in coinValueList:
+        knownResults[change] = 1
+        return 1
+
+    minCoins = None
+
+    for coin in [c for c in coinValueList if c &lt;= change]:
+        subResult = recDC(coinValueList, change - coin, knownResults)
+        if subResult is not None:
+            numCoins = 1 + subResult
+            if minCoins is None or numCoins &lt; minCoins:
+                minCoins = numCoins
+
+    # 所有硬币都尝试完后，统一把最终结果写入记忆表
+    knownResults[change] = minCoins
+    return minCoins
+
+memo = [UNKNOWN] * 64
+print(recDC([1, 5, 10, 21, 25], 63, memo))  # 3
+print(recDC([5, 10], 3, [UNKNOWN] * 4))     # None</code></pre></div>
+<div class="explain"><b>为什么这样写更标准：</b>循环里是在“尝试某一种硬币”。只有把所有可用硬币都试完以后，<code>minCoins</code> 才是当前 <code>change</code> 的最终结果，所以更适合在 <code>for</code> 循环结束后统一写入 <code>knownResults[change]</code>。这里用 <code>UNKNOWN=-1</code> 表示“还没算过”，用 <code>None</code> 表示“已经确认无解”，这样查表时不会混淆。</div>
+<div class="exam"><h3>例题2：记忆化为什么能提速？</h3><p><b>题目思想：</b>朴素递归找零会重复计算许多金额，比如 15 分。记忆化为什么能减少递归调用？</p><p><b>参考答案：</b>因为第一次算出 15 分的最优解后，会把结果存入 <span class="formula">knownResults[15]</span>。下次再遇到 15 分，直接查表返回，不再展开一整棵递归子树。</p></div>
+<h2>3. 它和动态规划还不是一回事</h2>
+<div class="warn"><b>区别：</b>记忆化通常仍然是递归，只是在递归中加缓存；动态规划通常从最小规模开始按顺序填表，是更有条理的自底向上做法。</div>
+</section>
+
+<section class="notes-page" id="dp-change">
+<h1>六、动态规划：找零兑换</h1>
+<h2>1. 动态规划从哪里开始</h2>
+<div class="key"><b>动态规划思路：</b>从最简单的 1 分钱找零开始，逐步计算 2 分、3 分……一直到目标金额。每一步都依赖更小金额的最优解。</div>
+<p>例如要算 11 分，硬币为 1、5、10。可以考虑最后一枚硬币分别是 1、5、10：</p>
+<table><thead><tr><th>最后一枚硬币</th><th>剩余金额</th><th>查表结果</th><th>总硬币数</th></tr></thead><tbody>
+<tr><td>1 分</td><td>10 分</td><td>10 分最优为 1 枚</td><td>1 + 1 = 2</td></tr>
+<tr><td>5 分</td><td>6 分</td><td>6 分最优为 2 枚</td><td>1 + 2 = 3</td></tr>
+<tr><td>10 分</td><td>1 分</td><td>1 分最优为 1 枚</td><td>1 + 1 = 2</td></tr>
+</tbody></table>
+<p>取最小值，所以 11 分至少需要 2 枚硬币。</p>
+<h2>2. 代码解释</h2>
+<div class="codebox"><div class="code-title">代码解释：dpMakeChange</div><pre><code>def dpMakeChange(coinValueList, change, minCoins):
+    INF = float('inf')
+    minCoins[0] = 0
+
+    for cents in range(1, change + 1):
+        coinCount = INF       # 先假设当前金额不可达
+
+        for coin in [c for c in coinValueList if c &lt;= cents]:
+            # 假设最后一枚硬币是 coin
+            if minCoins[cents - coin] + 1 &lt; coinCount:
+                coinCount = minCoins[cents - coin] + 1
+
+        minCoins[cents] = coinCount
+
+    if minCoins[change] == INF:
+        return None           # 没有任何组合能凑出 change
+    return minCoins[change]
+
+amount = 63
+minCoins = [float('inf')] * (amount + 1)
+print(dpMakeChange([1, 5, 10, 21, 25], amount, minCoins))  # 3
+print(dpMakeChange([5, 10], 3, [float('inf')] * 4))        # None</code></pre></div>
+<div class="explain"><b>小白理解：</b><code>minCoins[x]</code> 表示“凑出 x 分最少要几枚硬币”。算 <code>x</code> 时，只需要查更小的 <code>x-coin</code>，这些答案已经在前面算好了。这里用 <code>float('inf')</code> 表示“暂时凑不出来”，最后如果仍然是无穷大，就返回 <code>None</code>。</div>
+<div class="exam"><h3>例题3：分治和动态规划是否都分解子问题？</h3><p><b>题目思想：</b>“分治法和动态规划法都运用了将问题分解为规模较小的子问题的思想。”这句话对吗？</p><p><b>参考答案：</b><b>对。</b>二者都把原问题拆成规模更小的子问题；区别在于，动态规划特别强调<b>记录并复用重叠子问题的答案</b>，避免同一个子问题反复计算。</p></div>
+<div class="exam"><h3>例题4：动态规划为什么要求最优子结构？</h3><p><b>题目思想：</b>为什么找零兑换可以用动态规划？</p><p><b>参考答案：</b>因为一个金额的最优解可以由更小金额的最优解推出。例如最后拿一枚 5 分硬币时，剩余金额 <span class="formula">change-5</span> 必须也用最少硬币，否则原问题就不可能最优。</p></div>
+</section>
+
+<section class="notes-page" id="dp-coins">
+<h1>七、记录硬币组合与回溯</h1>
+<h2>1. 为什么还要记录选择的硬币</h2>
+<p>前面的动态规划只能告诉我们“最少几枚”，但没有告诉我们“是哪几枚”。要输出硬币组合，就需要在填表时同步记录：当前金额最优时选择了哪枚硬币。</p>
+<div class="key"><b>核心做法：</b>用 <code>coinsUsed[cents]</code> 记录凑出 <code>cents</code> 时最后选择的那枚硬币。最后从目标金额开始，不断减去这枚硬币，就能反推出整套组合。</div>
+<div class="codebox"><div class="code-title">代码解释：同时记录 coinsUsed</div><pre><code>def dpMakeChange(coinValueList, change, minCoins, coinsUsed):
+    INF = float('inf')
+    minCoins[0] = 0
+    coinsUsed[0] = 0
+
+    for cents in range(1, change + 1):
+        coinCount = INF
+        newCoin = None
+
+        for coin in [c for c in coinValueList if c &lt;= cents]:
+            if minCoins[cents - coin] + 1 &lt; coinCount:
+                coinCount = minCoins[cents - coin] + 1
+                newCoin = coin
+
+        minCoins[cents] = coinCount
+        coinsUsed[cents] = newCoin
+
+    if minCoins[change] == INF:
+        return None
+    return minCoins[change]
+
+
+def printCoins(coinsUsed, change):
+    if coinsUsed[change] is None:
+        print('无法找零')
+        return
+
+    cents = change       # cents 表示“当前还剩多少金额没凑齐”
+    while cents &gt; 0:
+        thisCoin = coinsUsed[cents]   # thisCoin 才是本轮选择的硬币面值
+        if thisCoin is None:
+            print('无法找零')
+            return
+        print(thisCoin)
+        cents = cents - thisCoin      # 剩余金额减少</code></pre></div>
+<div class="explain"><b>为什么这里不用 <code>coin</code> 当循环变量：</b><code>cents</code> 表示“当前还剩多少金额没凑齐”，<code>thisCoin</code> 才表示“这一步选择的硬币面值”。这样命名更清楚，不会把“剩余金额”和“硬币面值”混在一起。</div>
+<div class="explain"><b>为什么 <code>coinsUsed</code> 也要能记录无解：</b>如果某个金额根本凑不出来，<code>coinsUsed[cents]</code> 就保持为 <code>None</code>。回溯输出硬币组合时，一看到 <code>None</code>，就知道不能继续减，否则会进入错误结果或死循环。</div>
+<div class="diagram">
+<svg viewBox="0 0 900 250" width="100%" role="img" aria-label="硬币组合回溯图示">
+  <rect x="80" y="64" width="170" height="70" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="165" y="105" text-anchor="middle" fill="#14532d" font-size="20">change=63</text>
+  <rect x="320" y="64" width="170" height="70" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="405" y="93" text-anchor="middle" fill="#1d4ed8" font-size="18">coinsUsed[63]</text><text x="405" y="117" text-anchor="middle" fill="#64748b" font-size="16">例如 21</text>
+  <rect x="560" y="64" width="250" height="70" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="685" y="93" text-anchor="middle" fill="#9a3412" font-size="18">63-21=42</text><text x="685" y="117" text-anchor="middle" fill="#64748b" font-size="16">继续查 coinsUsed[42]</text>
+  <text x="450" y="202" text-anchor="middle" fill="#64748b" font-size="16">反复“查表 → 减去硬币”，直到金额变成 0。</text>
+</svg>
+</div>
+</section>
+
+<section class="notes-page" id="museum">
+<h1>八、博物馆大盗问题</h1>
+<h2>1. 问题是什么</h2>
+<p>大盗有一个容量有限的背包，面前有若干宝物，每件宝物有重量和价值。目标是在不超过背包容量的前提下，让总价值最大。</p>
+<table><thead><tr><th>宝物</th><th>重量</th><th>价值</th></tr></thead><tbody>
+<tr><td>1</td><td>2</td><td>3</td></tr><tr><td>2</td><td>3</td><td>4</td></tr><tr><td>3</td><td>4</td><td>8</td></tr><tr><td>4</td><td>5</td><td>8</td></tr><tr><td>5</td><td>9</td><td>10</td></tr>
+</tbody></table>
+<h2>2. 状态 m(i, W) 怎么理解</h2>
+<div class="key"><b>状态定义：</b><code>m(i, W)</code> 表示：只考虑前 <code>i</code> 件宝物，并且背包容量不超过 <code>W</code> 时，能得到的最大价值。</div>
+<p>第 <code>i</code> 件宝物只有两种选择：不拿，或者拿。</p>
+<div class="grid2">
+<div class="card"><h3>不拿第 i 件</h3><p>价值就是 <span class="formula">m(i-1, W)</span>。</p></div>
+<div class="card"><h3>拿第 i 件</h3><p>价值就是 <span class="formula">m(i-1, W-Wi) + vi</span>，前提是容量够。</p></div>
+</div>
+<div class="example"><b>状态转移：</b><span class="formula">m(i,W)=max(m(i-1,W), m(i-1,W-Wi)+vi)</span>。</div>
+<h2>3. 代码思路</h2>
+<div class="codebox"><div class="code-title">代码解释：0/1 背包 DP 思路</div><pre><code>def museum_thief(items, capacity):
+    # items 形如 [(weight, value), ...]
+    n = len(items)
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        weight, value = items[i - 1]
+        for w in range(1, capacity + 1):
+            # 方案1：不拿第 i 件
+            dp[i][w] = dp[i - 1][w]
+
+            # 方案2：拿第 i 件，前提是装得下
+            if weight &lt;= w:
+                dp[i][w] = max(dp[i][w], dp[i - 1][w - weight] + value)
+
+    return dp[n][capacity]
+
+items = [(2,3), (3,4), (4,8), (5,8), (9,10)]
+print(museum_thief(items, 20))</code></pre></div>
+<h2>4. 这类题的答题模板</h2>
+<div class="key"><b>动态规划题常用模板：</b>①定义状态；②写出选择；③写出转移；④说明初始条件；⑤说明填表顺序。</div>
+</section>
+
+<section class="notes-page" id="quick">
+<h1>九、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>保留前面章节的 <b>浏览 / 默写 / 填空</b> 三种模式；只有适合提关键词的卡片才设置填空，不强行写关键词。支持翻转、上一张、下一张、标记已掌握、重置进度。<br/>在这一页可直接用键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab">
+  <div class="flash-topbar">
+    <div class="flash-modes"><button class="flash-chip active" data-mode="browse" type="button">浏览</button><button class="flash-chip" data-mode="write" type="button">默写</button><button class="flash-chip" data-mode="fill" type="button">填空</button></div>
+    <div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div>
+  </div>
+  <div class="study-card" id="studyCard" tabindex="0" aria-live="polite">
+    <div class="study-inner" id="studyInner">
+      <div class="study-face study-front"><div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div><h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help">点击卡片或按 Space 翻面</div></div>
+      <div class="study-face study-back"><div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div><h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div></div>
+    </div>
+  </div>
+  <div class="flash-topbar" style="margin-top:14px"><div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div><div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div></div>
+  <div class="flash-keys">提示：这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握；离开这一页后，左右键仍然用于整份笔记翻页。</div>
+</div>
+</section>
+
+<section class="notes-page" id="sources">
+<h1>十、资料标准与筛选说明</h1>
+<h2>1. 本章收入内容</h2>
+<ul>
+<li>分治策略与递归之间的关系。</li>
+<li>优化问题、贪心策略以及找零兑换中的贪心失效反例。</li>
+<li>找零兑换的朴素递归解法、低效原因、记忆化改进。</li>
+<li>找零兑换的动态规划解法，以及记录硬币组合的扩展思路。</li>
+<li>博物馆大盗问题中的状态定义和转移思路。</li>
+<li>与本章直接相关的 Python 试题：分治复杂度判断、分治和动态规划共同点判断。</li>
+</ul>
+<h2>2. 不作为重点收入的内容</h2>
+<div class="warn">漫画插图、过渡页、只用于趣味说明的内容没有展开。W07 中提到的单词最小编辑距离、铺瓷砖动态规划等没有出现在本 PDF 正文详细讲解中，因此不作为本章正文重点。</div>
+</section>
+
+</main>
+</div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0;
+  const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach((p,k)=>p.classList.toggle('active',k===current));
+    nav.forEach((a,k)=>a.classList.toggle('active',k===current));
+    progress.textContent=(current+1)+' / '+pages.length;
+    buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));});
+    if(hashUpdate) history.replaceState(null,'','#'+pages[current].id);
+    document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [{"type": "概念", "title": "分治策略在做什么？", "answer": "把一个大问题拆成若干规模更小的部分，分别解决这些小问题，再把结果合并成原问题的答案。递归常常是实现分治的一种自然写法。", "cloze": "分治策略：先____，再____，最后____。", "fillAnswer": "拆分；解决子问题；合并结果"}, {"type": "判断", "title": "分治和动态规划有什么共同点？", "answer": "二者都把原问题分解为规模更小的子问题。但分治通常把子问题各自解决后合并；动态规划强调子问题最优解会被反复使用，因此要记录中间结果。", "cloze": "分治和动态规划都利用了把问题分解为____的思想。", "fillAnswer": "规模更小的子问题"}, {"type": "概念", "title": "贪心策略为什么不一定正确？", "answer": "贪心策略每一步都选当前看起来最好的选择，但局部最优不一定能推出全局最优。找零问题中，加入 21 分硬币后，贪心会选 25+25+10+1+1+1 共 6 枚，但 21+21+21 只要 3 枚。", "cloze": "贪心策略的问题是：____最优不一定推出____最优。", "fillAnswer": "局部；全局"}, {"type": "算法", "title": "找零递归解法为什么低效？", "answer": "它会反复计算同一个金额的最优解。例如求 26 分时，15 分等子问题会在不同分支中重复出现；金额越大，重复递归越严重。", "cloze": null, "fillAnswer": null}, {"type": "概念", "title": "记忆化 memoization 的核心思想是什么？", "answer": "把已经算过的子问题答案存进表里。下次遇到同一个子问题时直接查表返回，避免重复递归。它常用空间换时间。", "cloze": "记忆化用一个表保存已经算过的____，避免____。", "fillAnswer": "中间结果；重复计算"}, {"type": "概念", "title": "动态规划和记忆化有什么区别？", "answer": "共同点：二者都利用“把大问题拆成子问题”的思想，也都可以借助表保存子问题结果。区别：记忆化通常是自顶向下（Top-Down），从目标问题开始递归，算到某个子问题才把它记入表；实现方式常是“递归 + 查表”，直觉比较强，但有递归调用开销，也可能有栈溢出风险。动态规划通常是自底向上（Bottom-Up），从最小规模开始按递推顺序循环填表，直到填出目标答案；它一般更快、更稳定，也更容易做空间优化。另外，记忆化只计算递归过程中真正用到的子问题；动态规划往往按表格顺序把相关状态系统地算一遍。", "cloze": "记忆化通常是____向____；动态规划通常是____向____。", "fillAnswer": "自顶向下；自底向上"}, {"type": "概念", "title": "什么样的问题适合动态规划？", "answer": "至少要有最优子结构：原问题的最优解包含更小规模子问题的最优解。很多动态规划题还会有重叠子问题，因此记录中间结果能提升效率。", "cloze": "动态规划的重要条件：问题的最优解包含____的最优解。", "fillAnswer": "更小规模子问题"}];
+  const storageKey = 'dsa408413_flash_mastered_v1';
+  let mastered = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let cardIndex = 0; let mode = 'browse';
+  const studyCard=document.getElementById('studyCard'), frontType=document.getElementById('frontType'), frontCount=document.getElementById('frontCount'), frontTitle=document.getElementById('frontTitle'), frontBody=document.getElementById('frontBody'), backBody=document.getElementById('backBody'), flashProgress=document.getElementById('flashProgress'), flashPosition=document.getElementById('flashPosition'), masterBtn=document.getElementById('masterCard');
+  function saveMastered(){ localStorage.setItem(storageKey, JSON.stringify([...mastered])); }
+  function updateProgress(){const done=mastered.size,total=cards.length,pct=total?Math.round(done*100/total):0;flashProgress.textContent=`已掌握 ${done}/${total} · ${pct}%`;flashPosition.textContent=`${cardIndex+1} / ${cards.length}`;masterBtn.innerHTML=mastered.has(cardIndex)?'⭐ 取消已掌握':'⭐ 标记已掌握';}
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function renderCard(){const c=cards[cardIndex];studyCard.classList.remove('flipped');frontType.textContent=c.type;frontCount.textContent=`第 ${cardIndex+1} 题`+(mastered.has(cardIndex)?' · 已掌握':'');frontTitle.innerHTML=c.title;let body='';if(mode==='browse'){body='<p>先自己回忆定义或答案，再翻面核对。</p>';}else if(mode==='write'){body='<p><b>默写模式：</b>先在下面自己组织语言，写完后再翻面看答案。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="可以直接在这里打字默写，也可以只在脑子里回答。"></textarea></div>';}else{if(c.cloze&&c.fillAnswer){body=`<p><b>填空模式：</b>先把关键字补出来，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${escapeHtml(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="把你想到的关键词写在这里" /><div class="fill-feedback" id="fillFeedback"></div></div>`;}else{body='<p><b>这张卡不强行设置填空关键词。</b></p><p>这类问题更适合用“浏览”或“默写”模式完整理解，不建议只背零散词。</p>';}}frontBody.innerHTML=body;backBody.innerHTML=`<p>${c.answer}</p>`+(c.fillAnswer?`<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${c.fillAnswer}</div>`:'');updateProgress();const fillInput=document.getElementById('fillInput');if(fillInput){fillInput.addEventListener('input',()=>{const feedback=document.getElementById('fillFeedback');const v=fillInput.value.trim();if(!v){feedback.textContent='';return;}const ans=(c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase();const ok=ans.split(/[;；]/).some(part=>part.trim()&&v.toLowerCase().includes(part.trim()));feedback.textContent=ok?'关键词有对上的部分，可以翻面核对完整表述。':'先继续想想关键字，再翻面核对也可以。';});}}
+  function flipCard(){studyCard.classList.toggle('flipped');}
+  function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();}
+  function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();}
+  function toggleMaster(){if(mastered.has(cardIndex))mastered.delete(cardIndex);else mastered.add(cardIndex);saveMastered();updateProgress();renderCard();}
+  function isSpaceKey(e){return e.key===' '||e.key==='Spacebar'||e.code==='Space';}
+  function isTypingTarget(target){const tag=(target&&target.tagName||'').toLowerCase();return ['input','textarea','select'].includes(tag)||!!(target&&target.isContentEditable);}
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');mode=btn.dataset.mode;renderCard();}));
+  if(studyCard){studyCard.addEventListener('click',e=>{if(e.target.closest('textarea,input,label,button,.study-write,.study-fill'))return;flipCard();});studyCard.addEventListener('keydown',e=>{if(e.key==='Enter'||isSpaceKey(e)){e.preventDefault();flipCard();}});}
+  document.getElementById('flipCard')?.addEventListener('click',flipCard);document.getElementById('prevCard')?.addEventListener('click',prevCard);document.getElementById('nextCard')?.addEventListener('click',nextCard);document.getElementById('masterCard')?.addEventListener('click',toggleMaster);document.getElementById('resetMastery')?.addEventListener('click',()=>{mastered=new Set();saveMastered();updateProgress();renderCard();});
+  document.addEventListener('keydown',e=>{const onQuick=pages[current]&&pages[current].id==='quick';const typing=isTypingTarget(e.target||document.activeElement);if(onQuick){if(typing)return;if(e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();nextCard();return;}if(e.key==='ArrowLeft'){e.preventDefault();e.stopPropagation();prevCard();return;}if(isSpaceKey(e)){e.preventDefault();e.stopPropagation();flipCard();studyCard?.focus({preventScroll:true});return;}if(e.key==='m'||e.key==='M'){e.preventDefault();e.stopPropagation();toggleMaster();return;}}if(typing)return;if(e.key==='PageDown'){e.preventDefault();show(current+1)}if(e.key==='PageUp'){e.preventDefault();show(current-1)}if(!onQuick&&e.key==='ArrowRight'){e.preventDefault();show(current+1)}if(!onQuick&&e.key==='ArrowLeft'){e.preventDefault();show(current-1)}},true);
+  renderCard();show(current,false);
+})();
+</script>
+</body>
+</html>
