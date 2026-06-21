@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>数据结构与算法B Python版｜401-407 复习笔记</title>
+<style>
+:root{--bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:790px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:780px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.small{font-size:13px;color:#64748b}.diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.diagram svg{display:block;min-width:760px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.stack-mini{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:7px 9px;display:inline-block;margin:2px}.good{color:#166534;font-weight:700}.bad{color:#b91c1c;font-weight:700}
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-progress{font-size:14px;color:var(--muted)}.study-card{perspective:1200px;min-height:540px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:540px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:150px;max-height:220px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}.flash-keys{margin-top:12px;font-size:13px;color:#64748b}.flash-keys code{background:#f1f5f9;padding:2px 6px;border-radius:6px}
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}.diagram{overflow-x:auto}.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:600px}.study-front h3,.study-back h3{font-size:21px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+@media screen{.main>.notes-page{display:none!important}.main>.notes-page.active{display:block!important}.main>.cover-page.active{display:flex!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">401-407｜递归与递归应用</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#recursion"><span class="num">03</span><span>什么是递归与三定律</span></a>
+<a href="#listsum"><span class="num">04</span><span>初识递归：数列求和</span></a>
+<a href="#base"><span class="num">05</span><span>递归应用：任意进制转换</span></a>
+<a href="#stack"><span class="num">06</span><span>递归调用的实现与深度限制</span></a>
+<a href="#hanoi"><span class="num">07</span><span>递归应用：汉诺塔</span></a>
+<a href="#maze"><span class="num">08</span><span>递归应用：探索迷宫</span></a>
+<a href="#quick"><span class="num">09</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">10</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这一份只总结 pydsa-401-407 这一章范围。</div>
+</aside>
+<main class="main">
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>401-407 复习笔记</h1>
+<div class="subtitle">递归、任意进制转换、调用栈、汉诺塔与迷宫探索</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记以 <b>pydsa-401-407 合并版</b>为标准，整理递归定义、递归三定律、数列求和、递归版进制转换、系统调用栈、递归深度限制、汉诺塔和探索迷宫。</p>
+<p><b>学习目标：</b>不是死背“函数调用自身”，而是理解：递归为什么不会无限套娃，什么时候会出错，递归调用为什么和栈有关，以及如何把复杂问题拆成更小的同类问题。</p>
+<p><b>阅读建议：</b>先看绿色核心结论，再看图示和代码；红色例题放在相关知识点后面，例题不单独开页。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol><li>本章考什么、怎么学</li><li>递归定义与三定律</li><li>数列求和</li><li>任意进制转换</li><li>调用栈与递归深度</li><li>汉诺塔</li><li>探索迷宫</li><li>速记卡与资料说明</li></ol></div>
+</section>
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>核心结论：</b>递归题的关键不是“看见函数自己调自己”，而是看三个问题：有没有结束条件？问题规模有没有变小？变小后是不是同一个类型的问题？</div>
+<h2>1. 本章知识地图</h2>
+<div class="flow"><span class="step">递归三定律</span><span class="arrow">→</span><span class="step">数列求和</span><span class="arrow">→</span><span class="step">进制转换</span><span class="arrow">→</span><span class="step">调用栈</span><span class="arrow">→</span><span class="step">汉诺塔/迷宫</span></div>
+<table><thead><tr><th>模块</th><th>你要懂什么</th><th>常见考法</th></tr></thead><tbody>
+<tr><td>递归概念</td><td>把问题分解为规模更小的相同问题。</td><td>判断是不是递归、找基本结束条件。</td></tr>
+<tr><td>递归三定律</td><td>基本结束条件、向结束条件演进、调用自身。</td><td>代码填空、解释无限递归原因。</td></tr>
+<tr><td>任意进制转换</td><td>递归先处理高位，再接低位。</td><td>写出 <code>toStr</code> 输出，解释 <code>//</code> 和 <code>%</code>。</td></tr>
+<tr><td>调用栈</td><td>每次递归调用都会压入一个栈帧，返回时弹出。</td><td>递归深度、RecursionError、二分查找调用栈容量。</td></tr>
+<tr><td>汉诺塔</td><td>先搬 n-1 个，再搬最大盘，再搬 n-1 个。</td><td>移动次数、递归代码、递推式。</td></tr>
+<tr><td>迷宫探索</td><td>递归尝试四个方向，需要标记已访问。</td><td>基本结束条件、为什么需要“面包屑”。</td></tr>
+</tbody></table>
+<h2>2. 小白学习法</h2>
+<div class="grid2"><div class="card"><h3>递归先找“最小问题”</h3><p>写代码前先问：小到什么程度可以直接返回？比如列表只剩 1 个数、盘子只剩 1 个、到达迷宫出口。</p></div><div class="card"><h3>再找“怎么变小”</h3><p>每次调用必须离最小问题更近。列表变短，整数商变小，汉诺塔盘子数 n-1，迷宫走到新的格子。</p></div><div class="card"><h3>最后看“返回怎么合并”</h3><p>递归不只是向下调用，还要向上返回。比如 <code>toStr(n//base)</code> 返回高位，再拼上当前余数。</p></div><div class="card"><h3>代码题要画调用链</h3><p>递归代码看不懂时，把每一层调用写成一行，标出参数怎么变化、哪一层先返回。</p></div></div>
+</section>
+<section class="notes-page" id="recursion">
+<h1>二、什么是递归与递归三定律</h1>
+<h2>1. 递归是什么</h2>
+<div class="key"><b>递归 Recursion：</b>一种解决问题的方法。它把一个大问题分解为“规模更小的相同问题”，持续分解，直到问题小到可以直接解决；在程序中表现为函数调用自身。</div>
+<div class="diagram"><svg aria-label="递归问题分解" role="img" viewbox="0 0 900 280" width="100%">
+<defs><marker id="ar" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5"><polygon fill="#166534" points="0 0,10 3.5,0 7"></polygon></marker></defs>
+<rect fill="#ecfdf5" height="80" rx="16" stroke="#86caa0" width="190" x="58" y="70"></rect><text fill="#14532d" font-size="20" font-weight="700" text-anchor="middle" x="153" y="105">原问题</text><text fill="#64748b" font-size="15" text-anchor="middle" x="153" y="132">规模 n</text>
+<path d="M248 110 L350 110" marker-end="url(#ar)" stroke="#166534" stroke-width="4"></path>
+<rect fill="#eff6ff" height="80" rx="16" stroke="#93c5fd" width="190" x="350" y="70"></rect><text fill="#1d4ed8" font-size="20" font-weight="700" text-anchor="middle" x="445" y="105">同类小问题</text><text fill="#64748b" font-size="15" text-anchor="middle" x="445" y="132">规模 n-1 或 n//base</text>
+<path d="M540 110 L642 110" marker-end="url(#ar)" stroke="#166534" stroke-width="4"></path>
+<rect fill="#fff7ed" height="80" rx="16" stroke="#fdba74" width="200" x="642" y="70"></rect><text fill="#9a3412" font-size="20" font-weight="700" text-anchor="middle" x="742" y="105">最小问题</text><text fill="#64748b" font-size="15" text-anchor="middle" x="742" y="132">直接返回</text>
+<path d="M720 168 C600 235 310 235 170 168" fill="none" marker-end="url(#ar)" stroke="#f97316" stroke-width="4"></path><text fill="#64748b" font-size="16" text-anchor="middle" x="450" y="242">向下分解，向上返回结果。</text></svg></div>
+<h2>2. 递归三定律</h2>
+<table><thead><tr><th>定律</th><th>意思</th><th>不满足会怎样</th></tr></thead><tbody><tr><td>有基本结束条件</td><td>最小规模问题能直接解决</td><td>没有出口，会无限递归</td></tr><tr><td>向结束条件演进</td><td>每次调用都让问题变小或状态更接近结束</td><td>参数不变，也会无限递归</td></tr><tr><td>调用自身</td><td>用同一个函数解决更小的同类问题</td><td>不是真正的递归</td></tr></tbody></table>
+<div class="warn"><b>判断技巧：</b>看到递归代码，先不要急着逐行运行。先圈出 <b>if 直接 return</b> 的基本结束条件，再看递归调用里的参数有没有变小。</div>
+</section>
+<section class="notes-page" id="listsum">
+<h1>三、初识递归：数列求和</h1>
+<h2>1. 把“求一串数的和”拆成更小问题</h2>
+<p>求 <span class="formula">[1,3,5,7,9]</span> 的和，可以理解成：</p>
+<div class="example"><span class="formula">sum([1,3,5,7,9]) = 1 + sum([3,5,7,9])</span><br/><span class="formula">sum([3,5,7,9]) = 3 + sum([5,7,9])</span><br/>一直拆到列表只剩 1 个数，直接返回。</div>
+<div class="diagram"><svg aria-label="递归求和调用链" role="img" viewbox="0 0 900 270" width="100%"><defs><marker id="sumA" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5"><polygon fill="#166534" points="0 0,10 3.5,0 7"></polygon></marker></defs><g fill="#14532d" font-size="18"><rect fill="#ecfdf5" height="46" rx="12" stroke="#86caa0" width="250" x="80" y="40"></rect><text text-anchor="middle" x="205" y="70">listsum([1,3,5,7,9])</text><path d="M330 63 L410 63" marker-end="url(#sumA)" stroke="#166534" stroke-width="3"></path><rect fill="#eff6ff" height="46" rx="12" stroke="#93c5fd" width="230" x="410" y="40"></rect><text text-anchor="middle" x="525" y="70">1 + listsum([3,5,7,9])</text><path d="M525 92 L525 130" marker-end="url(#sumA)" stroke="#166534" stroke-width="3"></path><rect fill="#fff7ed" height="46" rx="12" stroke="#fdba74" width="350" x="350" y="130"></rect><text text-anchor="middle" x="525" y="160">3 + listsum([5,7,9]) → ... → 9</text></g><text fill="#64748b" font-size="16" text-anchor="middle" x="450" y="230">调用时不断变短；返回时一层层把数字加回来。</text></svg></div>
+<h2>2. 代码解释</h2>
+<div class="codebox"><div class="code-title">代码解释：递归数列求和</div><pre><code>def listsum(numList):
+    if len(numList) == 1:
+        return numList[0]              # 基本结束条件：只剩一个数，直接返回
+    else:
+        return numList[0] + listsum(numList[1:])
+        # 规模变小：从原列表变成去掉第一个元素的列表
+
+print(listsum([1, 3, 5, 7, 9]))        # 25</code></pre></div>
+<div class="exam"><h3>例题1：给 listsum 找递归三定律</h3><p><b>题目：</b>说明 <code>listsum</code> 这个递归函数的基本结束条件、规模减小方式和自身调用分别是什么。</p><p><b>参考答案：</b>基本结束条件是 <code>len(numList)==1</code>；规模减小方式是使用 <code>numList[1:]</code>，列表长度减少；自身调用是 <code>listsum(numList[1:])</code>。</p></div>
+</section>
+<section class="notes-page" id="base">
+<h1>四、递归应用：任意进制转换</h1>
+<h2>1. 进制转换的递归思路</h2>
+<div class="key"><b>核心结论：</b>把整数 <code>n</code> 转成 <code>base</code> 进制时，<code>n % base</code> 得到当前最低位，<code>n // base</code> 是剩下的高位问题。递归先处理高位，再拼最低位。</div>
+<div class="diagram"><svg aria-label="递归进制转换" role="img" viewbox="0 0 900 300" width="100%"><defs><marker id="baseA" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5"><polygon fill="#166534" points="0 0,10 3.5,0 7"></polygon></marker></defs><rect fill="#eff6ff" height="70" rx="14" stroke="#93c5fd" width="180" x="70" y="50"></rect><text fill="#1d4ed8" font-size="20" font-weight="700" text-anchor="middle" x="160" y="82">toStr(1453,16)</text><text fill="#64748b" font-size="15" text-anchor="middle" x="160" y="107">1453//16=90，余13(D)</text><path d="M250 85 L350 85" marker-end="url(#baseA)" stroke="#166534" stroke-width="4"></path><rect fill="#ecfdf5" height="70" rx="14" stroke="#86caa0" width="180" x="350" y="50"></rect><text fill="#14532d" font-size="20" font-weight="700" text-anchor="middle" x="440" y="82">toStr(90,16)</text><text fill="#64748b" font-size="15" text-anchor="middle" x="440" y="107">90//16=5，余10(A)</text><path d="M530 85 L630 85" marker-end="url(#baseA)" stroke="#166534" stroke-width="4"></path><rect fill="#fff7ed" height="70" rx="14" stroke="#fdba74" width="180" x="630" y="50"></rect><text fill="#9a3412" font-size="20" font-weight="700" text-anchor="middle" x="720" y="82">toStr(5,16)</text><text fill="#64748b" font-size="15" text-anchor="middle" x="720" y="107">5&lt;16，直接返回 5</text><path d="M720 142 C650 230 280 230 160 142" fill="none" marker-end="url(#baseA)" stroke="#f97316" stroke-width="4"></path><text fill="#64748b" font-size="17" text-anchor="middle" x="450" y="255">返回时拼接：5 + A + D = 5AD</text></svg></div>
+<h2>2. 代码解释</h2>
+<div class="codebox"><div class="code-title">代码解释：递归版任意进制转换</div><pre><code>def toStr(n, base):
+    convertString = "0123456789ABCDEF"
+    if n &lt; base:
+        return convertString[n]       # 基本结束条件：一位就能表示
+    else:
+        return toStr(n // base, base) + convertString[n % base]
+        # 先递归处理高位，再拼接当前最低位
+
+print(toStr(1453, 16))                # 5AD</code></pre></div>
+
+</section>
+<section class="notes-page" id="stack">
+<h1>五、递归调用的实现与深度限制</h1>
+<h2>1. 递归为什么和栈有关</h2>
+<div class="key"><b>调用栈：</b>每调用一次函数，系统都会把这次调用的“现场”暂时保存起来，形成一个栈帧。这里的“现场”可以理解成：这个函数算到哪一步了、参数是多少、等下一层递归返回后还要继续拼什么。函数返回时，最上面的栈帧先弹出，所以递归是<b>后调用的先返回</b>。</div>
+<div class="explain"><b>先把图读法说清楚：</b>左边不是最终答案，而是“函数一层层调用下去，系统先把还没做完的函数保存起来”；右边才是“最小问题先返回，然后一层层把答案拼回去”。</div>
+<div class="diagram"><svg aria-label="递归调用栈更清晰示意图" role="img" viewBox="0 0 940 430" width="100%">
+  <defs><marker id="recStackArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <text x="470" y="38" text-anchor="middle" fill="#14532d" font-size="22" font-weight="700">例子：toStr(1453, 16) 的调用栈怎么工作</text>
+  <rect x="55" y="70" width="365" height="285" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="237" y="102" text-anchor="middle" fill="#64748b" font-size="19">① 调用阶段：不断压栈</text>
+  <text x="84" y="134" fill="#64748b" font-size="15">栈底：最早调用，最后完成</text>
+  <rect x="105" y="260" width="265" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/>
+  <text x="237" y="282" text-anchor="middle" fill="#14532d" font-size="17">toStr(1453,16)</text>
+  <text x="237" y="304" text-anchor="middle" fill="#64748b" font-size="14">还要等 toStr(90,16) 返回，再拼 D</text>
+  <rect x="105" y="192" width="265" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/>
+  <text x="237" y="214" text-anchor="middle" fill="#14532d" font-size="17">toStr(90,16)</text>
+  <text x="237" y="236" text-anchor="middle" fill="#64748b" font-size="14">还要等 toStr(5,16) 返回，再拼 A</text>
+  <rect x="105" y="124" width="265" height="56" rx="10" fill="#dcfce7" stroke="#22a36a"/>
+  <text x="237" y="146" text-anchor="middle" fill="#14532d" font-size="17">toStr(5,16)</text>
+  <text x="237" y="168" text-anchor="middle" fill="#64748b" font-size="14">5 &lt; 16，触发基本结束条件</text>
+  <text x="84" y="340" fill="#64748b" font-size="15">栈顶：最后调用，最先返回</text>
+  <path d="M430 205 L515 205" stroke="#166534" stroke-width="4" marker-end="url(#recStackArrow)"/>
+  <text x="472" y="188" text-anchor="middle" fill="#64748b" font-size="15">开始返回</text>
+  <rect x="525" y="70" width="360" height="285" rx="18" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="705" y="102" text-anchor="middle" fill="#64748b" font-size="19">② 返回阶段：不断出栈</text>
+  <rect x="585" y="126" width="240" height="46" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="705" y="155" text-anchor="middle" fill="#b91c1c" font-size="17">toStr(5) 返回：5</text>
+  <rect x="585" y="196" width="240" height="46" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="705" y="225" text-anchor="middle" fill="#b91c1c" font-size="17">toStr(90) 返回：5 + A = 5A</text>
+  <rect x="585" y="266" width="240" height="46" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="705" y="295" text-anchor="middle" fill="#b91c1c" font-size="17">toStr(1453) 返回：5A + D = 5AD</text>
+  <text x="470" y="395" text-anchor="middle" fill="#64748b" font-size="16">一句话：递归调用像“先欠账”：先把大问题挂在栈里，等小问题算完，再从栈顶往栈底一层层还账。</text>
+</svg></div>
+<table><thead><tr><th>执行到哪一层</th><th>为什么还不能直接返回</th><th>它在等什么</th><th>返回后做什么</th></tr></thead><tbody>
+<tr><td><code>toStr(1453,16)</code></td><td>1453 不是一位十六进制数</td><td>等 <code>toStr(90,16)</code> 算出高位</td><td>把自己的余数 13 转成 <code>D</code> 拼在后面</td></tr>
+<tr><td><code>toStr(90,16)</code></td><td>90 也不是一位十六进制数</td><td>等 <code>toStr(5,16)</code> 算出高位</td><td>把自己的余数 10 转成 <code>A</code> 拼在后面</td></tr>
+<tr><td><code>toStr(5,16)</code></td><td>5 已经小于 16</td><td>不需要再递归</td><td>直接返回 <code>5</code></td></tr>
+</tbody></table>
+<div class="example"><b>按时间顺序看：</b>先调用 <code>toStr(1453)</code>，它没法立即完成，于是调用 <code>toStr(90)</code>；<code>toStr(90)</code> 也没法立即完成，于是调用 <code>toStr(5)</code>；<code>toStr(5)</code> 到达基本结束条件，先返回 <code>5</code>。然后上一层接着算出 <code>5A</code>，再上一层接着算出 <code>5AD</code>。</div>
+<h2>2. Python 的递归深度限制</h2>
+<div class="warn"><b>RecursionError：</b>直接原因是递归调用层数超过 Python 允许的最大递归深度，也就是系统调用栈装不下了。更根本的原因通常有三类：忘记写基本结束条件；状态没有向基本结束条件靠近，导致无限递归；问题规模太大或递归写法本身不够合适，使得递归层数过深。</div>
+<div class="codebox"><div class="code-title">代码解释：查看和设置递归深度</div><pre><code>import sys
+print(sys.getrecursionlimit())   # 常见默认值约为 1000
+sys.setrecursionlimit(3000)      # 可以调整，但不是万能解法</code></pre></div>
+<div class="exam"><h3>例题2：递归二分查找需要多大的调用栈？</h3><p><b>题目思想：</b>给定 N 个相异元素构成的有序数列，用递归二分查找。递归过程中调用栈容量大约需要多少？</p><p><b>参考答案：</b>数量级是 <b>O(log N)</b>。因为每次二分查找都把问题规模缩小约一半。若把初始调用也算作一层，最大栈帧数通常可理解为 <span class="formula">⌈log₂N⌉ + 1</span> 左右；做选择题时要看选项是否把初始调用算入。</p></div>
+</section>
+<section class="notes-page" id="hanoi">
+<h1>六、递归应用：汉诺塔</h1>
+<h2>1. 问题规则</h2>
+<p>有三根柱子，若干盘子从小到大叠在起始柱上。目标是把所有盘子移到目标柱。规则是：一次只能移动一个盘子；大盘子不能压在小盘子上。</p>
+<div class="key"><b>递归思路：</b>要搬 n 个盘子，先把上面 n-1 个盘子搬到中间柱，再把最大盘搬到目标柱，最后把 n-1 个盘子从中间柱搬到目标柱。</div>
+<div class="diagram"><svg aria-label="汉诺塔三步" role="img" viewbox="0 0 900 300" width="100%"><defs><marker id="ha" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5"><polygon fill="#f97316" points="0 0,10 3.5,0 7"></polygon></marker></defs><rect fill="#eff6ff" height="90" rx="16" stroke="#93c5fd" width="210" x="70" y="70"></rect><text fill="#1d4ed8" font-size="18" font-weight="700" text-anchor="middle" x="175" y="105">1. 搬 n-1 个小盘</text><text fill="#64748b" font-size="15" text-anchor="middle" x="175" y="132">开始柱 → 中间柱</text><path d="M280 115 L345 115" marker-end="url(#ha)" stroke="#f97316" stroke-width="4"></path><rect fill="#fff7ed" height="90" rx="16" stroke="#fdba74" width="210" x="345" y="70"></rect><text fill="#9a3412" font-size="18" font-weight="700" text-anchor="middle" x="450" y="105">2. 搬最大盘</text><text fill="#64748b" font-size="15" text-anchor="middle" x="450" y="132">开始柱 → 目标柱</text><path d="M555 115 L620 115" marker-end="url(#ha)" stroke="#f97316" stroke-width="4"></path><rect fill="#ecfdf5" height="90" rx="16" stroke="#86caa0" width="210" x="620" y="70"></rect><text fill="#14532d" font-size="18" font-weight="700" text-anchor="middle" x="725" y="105">3. 再搬 n-1 个</text><text fill="#64748b" font-size="15" text-anchor="middle" x="725" y="132">中间柱 → 目标柱</text><text fill="#64748b" font-size="17" text-anchor="middle" x="450" y="230">移动次数 T(n)=2T(n-1)+1，所以 T(n)=2^n-1。</text></svg></div>
+<h2>2. 代码解释</h2>
+<div class="codebox"><div class="code-title">代码解释：汉诺塔</div><pre><code>def moveTower(height, fromPole, toPole, withPole):
+    if height &gt;= 1:
+        moveTower(height - 1, fromPole, withPole, toPole)
+        moveDisk(fromPole, toPole)
+        moveTower(height - 1, withPole, toPole, fromPole)
+
+def moveDisk(fp, tp):
+    print("moving disk from", fp, "to", tp)
+
+moveTower(3, "A", "C", "B")</code></pre></div>
+</section>
+<section class="notes-page" id="maze">
+<h1>七、递归应用：探索迷宫</h1>
+<h2>1. 迷宫如何建模</h2>
+<p>迷宫可以看成一个二维矩阵。每个格子有行列坐标，格子内容可能是墙壁 <span class="formula">+</span>、通道、起点 <span class="formula">S</span>、已经走过的位置等。</p>
+<div class="diagram"><svg aria-label="迷宫递归探索" role="img" viewbox="0 0 900 300" width="100%"><g transform="translate(250,45)"><rect fill="#0f172a" height="50" width="50" x="0" y="0"></rect><rect fill="#0f172a" height="50" width="50" x="50" y="0"></rect><rect fill="#0f172a" height="50" width="50" x="100" y="0"></rect><rect fill="#0f172a" height="50" width="50" x="150" y="0"></rect><rect fill="#0f172a" height="50" width="50" x="200" y="0"></rect><rect fill="#0f172a" height="50" width="50" x="0" y="50"></rect><rect fill="#ecfdf5" height="50" stroke="#86caa0" width="50" x="50" y="50"></rect><text fill="#14532d" font-size="20" text-anchor="middle" x="75" y="82">S</text><rect fill="#ecfdf5" height="50" stroke="#86caa0" width="50" x="100" y="50"></rect><rect fill="#0f172a" height="50" width="50" x="150" y="50"></rect><rect fill="#0f172a" height="50" width="50" x="200" y="50"></rect><rect fill="#0f172a" height="50" width="50" x="0" y="100"></rect><rect fill="#ecfdf5" height="50" stroke="#86caa0" width="50" x="50" y="100"></rect><text fill="#f97316" font-size="20" text-anchor="middle" x="75" y="132">.</text><rect fill="#ecfdf5" height="50" stroke="#86caa0" width="50" x="100" y="100"></rect><text fill="#f97316" font-size="20" text-anchor="middle" x="125" y="132">.</text><rect fill="#ecfdf5" height="50" stroke="#86caa0" width="50" x="150" y="100"></rect><rect fill="#0f172a" height="50" width="50" x="200" y="100"></rect><rect fill="#0f172a" height="50" width="50" x="0" y="150"></rect><rect fill="#0f172a" height="50" width="50" x="50" y="150"></rect><rect fill="#0f172a" height="50" width="50" x="100" y="150"></rect><rect fill="#ecfdf5" height="50" stroke="#86caa0" width="50" x="150" y="150"></rect><text fill="#b91c1c" font-size="20" text-anchor="middle" x="175" y="182">E</text><rect fill="#0f172a" height="50" width="50" x="200" y="150"></rect></g><text fill="#64748b" font-size="16" text-anchor="middle" x="450" y="275">每个通道格都可以尝试北、南、西、东；走过的格子要标记，防止来回死循环。</text></svg></div>
+<h2>2. 递归探索思路</h2>
+<div class="flow"><span class="step">当前位置是墙？失败</span><span class="arrow">→</span><span class="step">走过？失败</span><span class="arrow">→</span><span class="step">出口？成功</span><span class="arrow">→</span><span class="step">尝试四个方向</span></div>
+<h2>3. 伪代码理解</h2>
+<div class="codebox"><div class="code-title">代码解释：迷宫搜索的递归骨架</div><pre><code>def searchFrom(maze, row, col):
+    if maze[row][col] == '+':          # 墙壁
+        return False
+    if maze[row][col] == '.':          # 面包屑：走过了
+        return False
+    if maze.isExit(row, col):          # 到达边缘出口
+        return True
+
+    maze[row][col] = '.'               # 撒面包屑，标记已访问
+
+    found = (searchFrom(maze, row-1, col) or
+             searchFrom(maze, row+1, col) or
+             searchFrom(maze, row, col-1) or
+             searchFrom(maze, row, col+1))
+    return found</code></pre></div>
+<div class="exam"><h3>例题3：探索迷宫的基本结束条件</h3><p><b>题目：</b>迷宫递归搜索中，哪些情况可以直接返回，不再继续递归？</p><p><b>参考答案：</b>碰到墙壁返回失败；碰到已经访问过的“面包屑”返回失败；到达边缘出口返回成功；四个方向都失败时返回失败。</p></div>
+</section>
+<section class="notes-page" id="quick">
+<h1>八、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>保留前面章节的 <b>浏览 / 默写 / 填空</b> 三种模式；只有适合提关键词的卡片才设置填空，不强行写关键词。支持翻转、上一张、下一张、标记已掌握、重置进度。<br/>在这一页可直接用键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab"><div class="flash-topbar"><div class="flash-modes"><button class="flash-chip active" data-mode="browse" type="button">浏览</button><button class="flash-chip" data-mode="write" type="button">默写</button><button class="flash-chip" data-mode="fill" type="button">填空</button></div><div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div></div><div aria-live="polite" class="study-card" id="studyCard" tabindex="0"><div class="study-inner" id="studyInner"><div class="study-face study-front"><div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div><h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help">点击卡片或按 Space 翻面</div></div><div class="study-face study-back"><div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div><h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div></div></div></div><div class="flash-topbar" style="margin-top:14px"><div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div><div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div></div><div class="flash-keys">提示：这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握；离开这一页后，左右键仍然用于整份笔记翻页。</div></div>
+</section>
+<section class="notes-page" id="sources">
+<h1>九、资料标准与筛选说明</h1>
+<h2>已收入的范围</h2><ul><li>递归定义、数列求和、递归三定律。</li><li>递归版任意进制转换和 <code>toStr</code> 代码理解。</li><li>递归调用栈、栈帧、递归深度限制和 <code>RecursionError</code>。</li><li>汉诺塔和探索迷宫两类典型递归应用。</li><li>与本章直接相关的试题应用：递归二分查找调用栈容量、迷宫基本结束条件等。</li></ul>
+<h2>未收入或弱化的内容</h2><div class="warn">递归可视化中的海龟作图、分形树、谢尔宾斯基三角形主要用于辅助理解递归图像；未在已参考的往年题中看到直接考查，因此本版删除整页，不作为复习重点展开。电影故事、分形历史背景等趣味材料不收入；动态规划、排序查找、树和图等内容放到后续对应章节，不提前展开。</div>
+<h2>无关扩展内容</h2><div class="warn">若资料中出现 AI 基础、机器学习、深度学习图像处理、AI Racer 介绍等与数据结构与算法核心知识无关的内容，不收入本章笔记。</div>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0;
+  const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){
+    current=Math.max(0,Math.min(pages.length-1,i));
+    pages.forEach((p,k)=>p.classList.toggle('active',k===current));
+    nav.forEach((a,k)=>a.classList.toggle('active',k===current));
+    progress.textContent=(current+1)+' / '+pages.length;
+    buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));});
+    if(hashUpdate) history.replaceState(null,'','#'+pages[current].id);
+    document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [{"type": "概念", "title": "递归的核心思想是什么？", "answer": "把一个大问题拆成规模更小的同类问题，一直拆到能直接解决的最小规模；程序表现为函数调用自身。", "cloze": "递归 = 大问题拆成____的同类小问题，直到遇到____。", "fillAnswer": "规模更小；基本结束条件"}, {"type": "三定律", "title": "递归三定律是哪三条？", "answer": "一要有基本结束条件；二要改变状态并向结束条件演进；三要调用自身。少任何一条都不算可靠递归。", "cloze": "递归三定律：有____；向它____；调用____。", "fillAnswer": "基本结束条件；演进；自身"}, {"type": "实现", "title": "递归调用和栈有什么关系？", "answer": "每次函数调用都会形成一个栈帧压入系统调用栈；返回时从栈顶弹出，所以调用顺序和返回顺序相反。", "cloze": "每次递归调用都会在系统调用栈中压入一个____。", "fillAnswer": "栈帧"}, {"type": "错误", "title": "RecursionError 常见原因是什么？", "answer": "直接原因是递归调用层数超过最大递归深度，调用栈溢出。根本原因通常是：没有写基本结束条件；状态没有向基本结束条件靠近，导致无限递归；或者问题规模太大、递归写法本身不合适，导致递归层数过深。", "cloze": null, "fillAnswer": null}, {"type": "应用", "title": "汉诺塔的递归三步是什么？", "answer": "先把 n-1 个盘从开始柱移到中间柱；再把最大盘从开始柱移到目标柱；最后把 n-1 个盘从中间柱移到目标柱。", "cloze": "汉诺塔：先搬____个小盘，再搬____，最后再搬____个小盘。", "fillAnswer": "n-1；最大盘；n-1"}, {"type": "应用", "title": "迷宫递归为什么要撒“面包屑”？", "answer": "为了记录已经走过的格子，避免从新位置又走回旧位置，造成无限递归。碰到面包屑就应该返回失败，换方向尝试。", "cloze": "迷宫中的“面包屑”表示该格子已经____。", "fillAnswer": "访问过/走过"}];
+  const storageKey = 'dsa401407_flash_mastered_v1';
+  let mastered = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let cardIndex = 0; let mode = 'browse';
+  const studyCard=document.getElementById('studyCard'), frontType=document.getElementById('frontType'), frontCount=document.getElementById('frontCount'), frontTitle=document.getElementById('frontTitle'), frontBody=document.getElementById('frontBody'), backBody=document.getElementById('backBody'), flashProgress=document.getElementById('flashProgress'), flashPosition=document.getElementById('flashPosition'), masterBtn=document.getElementById('masterCard');
+  function saveMastered(){ localStorage.setItem(storageKey, JSON.stringify([...mastered])); }
+  function updateProgress(){const done=mastered.size,total=cards.length,pct=total?Math.round(done*100/total):0;flashProgress.textContent=`已掌握 ${done}/${total} · ${pct}%`;flashPosition.textContent=`${cardIndex+1} / ${cards.length}`;masterBtn.innerHTML=mastered.has(cardIndex)?'⭐ 取消已掌握':'⭐ 标记已掌握';}
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function renderCard(){const c=cards[cardIndex];studyCard.classList.remove('flipped');frontType.textContent=c.type;frontCount.textContent=`第 ${cardIndex+1} 题`+(mastered.has(cardIndex)?' · 已掌握':'');frontTitle.innerHTML=c.title;let body='';if(mode==='browse'){body='<p>先自己回忆定义或答案，再翻面核对。</p>';}else if(mode==='write'){body='<p><b>默写模式：</b>先在下面自己组织语言，写完后再翻面看答案。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="可以直接在这里打字默写，也可以只在脑子里回答。"></textarea></div>';}else{if(c.cloze&&c.fillAnswer){body=`<p><b>填空模式：</b>先把关键字补出来，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${escapeHtml(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="把你想到的关键词写在这里" /><div class="fill-feedback" id="fillFeedback"></div></div>`;}else{body='<p><b>这张卡不强行设置填空关键词。</b></p><p>这类问题更适合用“浏览”或“默写”模式完整理解，不建议只背零散词。</p>';}}frontBody.innerHTML=body;backBody.innerHTML=`<p>${c.answer}</p>`+(c.fillAnswer?`<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${c.fillAnswer}</div>`:'');updateProgress();const fillInput=document.getElementById('fillInput');if(fillInput){fillInput.addEventListener('input',()=>{const feedback=document.getElementById('fillFeedback');const v=fillInput.value.trim();if(!v){feedback.textContent='';return;}const ans=(c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase();const ok=ans.split(/[;；]/).some(part=>part.trim()&&v.toLowerCase().includes(part.trim()));feedback.textContent=ok?'关键词有对上的部分，可以翻面核对完整表述。':'先继续想想关键字，再翻面核对也可以。';});}}
+  function flipCard(){studyCard.classList.toggle('flipped');}
+  function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();}
+  function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();}
+  function toggleMaster(){if(mastered.has(cardIndex))mastered.delete(cardIndex);else mastered.add(cardIndex);saveMastered();updateProgress();renderCard();}
+  function isSpaceKey(e){return e.key===' '||e.key==='Spacebar'||e.code==='Space';}
+  function isTypingTarget(target){const tag=(target&&target.tagName||'').toLowerCase();return ['input','textarea','select'].includes(tag)||!!(target&&target.isContentEditable);}
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');mode=btn.dataset.mode;renderCard();}));
+  if(studyCard){studyCard.addEventListener('click',e=>{if(e.target.closest('textarea,input,label,button,.study-write,.study-fill'))return;flipCard();});studyCard.addEventListener('keydown',e=>{if(e.key==='Enter'||isSpaceKey(e)){e.preventDefault();flipCard();}});}
+  document.getElementById('flipCard')?.addEventListener('click',flipCard);document.getElementById('prevCard')?.addEventListener('click',prevCard);document.getElementById('nextCard')?.addEventListener('click',nextCard);document.getElementById('masterCard')?.addEventListener('click',toggleMaster);document.getElementById('resetMastery')?.addEventListener('click',()=>{mastered=new Set();saveMastered();updateProgress();renderCard();});
+  document.addEventListener('keydown',e=>{const onQuick=pages[current]&&pages[current].id==='quick';const typing=isTypingTarget(e.target||document.activeElement);if(onQuick){if(typing)return;if(e.key==='ArrowRight'){e.preventDefault();e.stopPropagation();nextCard();return;}if(e.key==='ArrowLeft'){e.preventDefault();e.stopPropagation();prevCard();return;}if(isSpaceKey(e)){e.preventDefault();e.stopPropagation();flipCard();studyCard?.focus({preventScroll:true});return;}if(e.key==='m'||e.key==='M'){e.preventDefault();e.stopPropagation();toggleMaster();return;}}if(typing)return;if(e.key==='PageDown'){e.preventDefault();show(current+1)}if(e.key==='PageUp'){e.preventDefault();show(current-1)}if(!onQuick&&e.key==='ArrowRight'){e.preventDefault();show(current+1)}if(!onQuick&&e.key==='ArrowLeft'){e.preventDefault();show(current-1)}},true);
+  renderCard();show(current,false);
+})();
+</script>
+</body>
+</html>
