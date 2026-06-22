@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>数据结构与算法B Python版｜501-507 复习笔记</title>
+<style>
+:root{--bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px;}
+.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:820px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:820px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid #eab308}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.code{background:#dbeafe;color:#1d4ed8}.small{font-size:13px;color:#64748b}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.source-note{font-size:13px;color:#64748b;border-top:1px dashed #cbd5e1;margin-top:20px;padding-top:12px}
+.diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.diagram svg{display:block;min-width:780px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.algo-list{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px;margin:12px 0}.algo-list div{border:1px solid var(--line);background:#fbfffc;border-radius:12px;padding:10px;text-align:center}.algo-list b{display:block;color:var(--green)}
+.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-progress{font-size:14px;color:var(--muted)}.study-card{perspective:1200px;min-height:540px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:540px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:160px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}.flash-keys{margin-top:12px;font-size:13px;color:#64748b}
+@media screen {.main > .notes-page{display:none !important}.main > .notes-page.active{display:block !important}.main > .cover-page.active{display:flex !important}}
+@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2,.grid3{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}.algo-list{grid-template-columns:1fr 1fr}.diagram{overflow-x:auto}.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:580px}}
+@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">501-507｜查找与排序算法</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#seq"><span class="num">03</span><span>顺序查找：从头到尾比</span></a>
+<a href="#binary"><span class="num">04</span><span>二分查找：每次砍半</span></a>
+<a href="#bubble"><span class="num">05</span><span>冒泡排序：相邻交换</span></a>
+<a href="#selection"><span class="num">06</span><span>选择排序：每趟选最大</span></a>
+<a href="#insertion"><span class="num">07</span><span>插入排序：维护有序前缀</span></a>
+<a href="#shell"><span class="num">08</span><span>谢尔排序：分组插入</span></a>
+<a href="#merge"><span class="num">09</span><span>归并排序：分裂与合并</span></a>
+<a href="#quick"><span class="num">10</span><span>快速排序：基准与分区</span></a>
+<a href="#compare"><span class="num">11</span><span>排序查找对比与例题</span></a>
+<a href="#flash"><span class="num">12</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">13</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-501-507 这一章范围。</div>
+</aside>
+<main class="main">
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>501-507 复习笔记</h1>
+<div class="subtitle">顺序查找、二分查找、冒泡/选择/插入/谢尔/归并/快速排序</div>
+<div class="meta"><p><b>适用范围：</b>本份笔记以 <b>pydsa-501-507 合并版</b>为标准，整理查找与排序的核心思想、复杂度、Python 代码和常见题型。</p><p><b>学习目标：</b>不是死背一堆 O(n²)，而是看懂每个算法“每一步到底在干什么”“为什么这样做会更快/更慢”“代码中的循环边界为什么这样写”。</p><p><b>阅读建议：</b>先抓算法动作，再看复杂度。排序题最常考：第几趟结果、稳定性、最好/最坏情况、是否需要额外空间。</p></div>
+<div class="toc"><h2>目录</h2><ol><li>本章考什么</li><li>顺序查找</li><li>二分查找</li><li>冒泡排序</li><li>选择排序</li><li>插入排序</li><li>谢尔排序</li><li>归并排序</li><li>快速排序</li><li>排序查找对比</li><li>速记卡</li></ol></div>
+</section>
+
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>本章主线：</b>查找是在数据里找目标；排序是先把数据整理成有序状态。排序本身也常常是为了让后续查找更快，比如先排序再多次二分查找。</div>
+<div class="algo-list"><div><b>顺序查找</b>O(n)</div><div><b>二分查找</b>O(log n)</div><div><b>简单排序</b>多为 O(n²)</div><div><b>分治排序</b>常见 O(n log n)</div></div>
+<h2>1. 本章知识地图</h2>
+<div class="diagram">
+<svg viewBox="0 0 940 300" width="100%" role="img" aria-label="查找排序知识地图">
+  <defs><marker id="a1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs>
+  <rect x="40" y="55" width="160" height="70" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="120" y="98" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">查找</text>
+  <rect x="310" y="25" width="190" height="70" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="405" y="68" text-anchor="middle" font-size="20" fill="#1d4ed8" font-weight="700">顺序查找 O(n)</text>
+  <rect x="310" y="115" width="190" height="70" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="405" y="158" text-anchor="middle" font-size="20" fill="#1d4ed8" font-weight="700">二分查找 O(log n)</text>
+  <rect x="40" y="190" width="160" height="70" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="120" y="233" text-anchor="middle" font-size="22" fill="#9a3412" font-weight="700">排序</text>
+  <rect x="600" y="65" width="260" height="62" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="730" y="104" text-anchor="middle" font-size="18" fill="#9a3412" font-weight="700">冒泡/选择/插入/谢尔</text>
+  <rect x="600" y="160" width="260" height="62" rx="16" fill="#fef2f2" stroke="#fca5a5"/><text x="730" y="199" text-anchor="middle" font-size="18" fill="#991b1b" font-weight="700">归并/快速：分治思想</text>
+  <path d="M200 90 L305 60" stroke="#166534" stroke-width="3" marker-end="url(#a1)"/><path d="M200 90 L305 150" stroke="#166534" stroke-width="3" marker-end="url(#a1)"/>
+  <path d="M200 225 L594 96" stroke="#166534" stroke-width="3" marker-end="url(#a1)"/><path d="M200 225 L594 190" stroke="#166534" stroke-width="3" marker-end="url(#a1)"/>
+  <text x="470" y="272" text-anchor="middle" fill="#64748b" font-size="16">查找题重在“比几次”；排序题重在“每趟做什么、复杂度、稳定性、空间”。</text>
+</svg>
+</div>
+<h2>2. 常见考点</h2>
+<table><thead><tr><th>类型</th><th>重点</th><th>做题提醒</th></tr></thead><tbody>
+<tr><td>查找分析</td><td>顺序查找有序/无序的最好、最坏、平均比对次数；二分查找 O(log n)。</td><td>二分查找必须建立在“已排序”的前提上。</td></tr>
+<tr><td>排序过程</td><td>冒泡、选择、插入、快速的“一趟/一次划分”结果。</td><td>手算时不要只看最终排序，要看每一趟的中间状态。</td></tr>
+<tr><td>复杂度</td><td>O(n)、O(log n)、O(n²)、O(n log n)。</td><td>快速排序平均 O(n log n)，最坏 O(n²)。</td></tr>
+<tr><td>稳定性与空间</td><td>冒泡、插入、归并通常稳定；选择、希尔、快速通常不稳定；归并需要额外空间。</td><td>“稳定”只讨论相等关键字的相对顺序。</td></tr>
+</tbody></table>
+</section>
+
+<section class="notes-page" id="seq">
+<h1>二、顺序查找：从头到尾逐个比对</h1>
+<h2>1. 什么是顺序查找</h2>
+<div class="key"><b>顺序查找：</b>从列表第一个元素开始，按照下标增长的顺序，一个一个与目标 item 比较；找到就成功，走到最后还没找到就失败。</div>
+<div class="diagram">
+<svg viewBox="0 0 940 230" width="100%" role="img" aria-label="顺序查找示意图">
+  <defs><marker id="seqA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#f97316"/></marker></defs>
+  <text x="70" y="45" fill="#64748b" font-size="18">查找 44：从左到右逐个比对</text>
+  <g transform="translate(70,80)">
+    <rect x="0" y="0" width="70" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="35" y="36" text-anchor="middle" font-size="20" fill="#14532d">54</text>
+    <rect x="75" y="0" width="70" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="110" y="36" text-anchor="middle" font-size="20" fill="#14532d">26</text>
+    <rect x="150" y="0" width="70" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="185" y="36" text-anchor="middle" font-size="20" fill="#14532d">93</text>
+    <rect x="225" y="0" width="70" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="260" y="36" text-anchor="middle" font-size="20" fill="#14532d">17</text>
+    <rect x="300" y="0" width="70" height="56" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="335" y="36" text-anchor="middle" font-size="20" fill="#14532d">77</text>
+    <rect x="375" y="0" width="70" height="56" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/><text x="410" y="36" text-anchor="middle" font-size="20" fill="#14532d" font-weight="700">44</text>
+    <path d="M0 85 C60 110 100 110 145 85" fill="none" stroke="#f97316" stroke-width="3" marker-end="url(#seqA)"/>
+    <path d="M150 85 C205 110 240 110 295 85" fill="none" stroke="#f97316" stroke-width="3" marker-end="url(#seqA)"/>
+    <path d="M300 85 C345 110 370 110 405 85" fill="none" stroke="#f97316" stroke-width="3" marker-end="url(#seqA)"/>
+  </g>
+  <text x="470" y="205" text-anchor="middle" fill="#64748b" font-size="16">顺序查找的“基本步骤”是比对一次：alist[pos] == item。</text>
+</svg>
+</div>
+<h2>2. 无序表顺序查找代码</h2>
+<div class="codebox"><div class="code-title">代码解释：无序表 sequentialSearch</div><pre><code>def sequentialSearch(alist, item):
+    pos = 0
+    found = False
+
+    while pos &lt; len(alist) and not found:
+        if alist[pos] == item:
+            found = True          # 找到了，循环可以停
+        else:
+            pos = pos + 1         # 没找到，看下一个位置
+
+    return found
+
+testlist = [1, 2, 32, 8, 17, 19, 42, 13, 0]
+print(sequentialSearch(testlist, 3))    # False
+print(sequentialSearch(testlist, 13))   # True</code></pre></div>
+<h2>3. 复杂度：为什么是 O(n)</h2>
+<table><thead><tr><th>情况</th><th>最好</th><th>最坏</th><th>平均</th></tr></thead><tbody>
+<tr><td>目标在列表中</td><td>第 1 个就是，1 次</td><td>最后一个才是，n 次</td><td>大约 n/2 次</td></tr>
+<tr><td>目标不在列表中</td><td>n 次</td><td>n 次</td><td>n 次</td></tr>
+</tbody></table>
+<div class="explain"><b>理解：</b>无序表没有办法提前判断“后面一定没有”。所以没找到时必须一路查到最后。</div>
+<h2>4. 有序表顺序查找：可以提前停，但仍是 O(n)</h2>
+<div class="codebox"><div class="code-title">代码解释：有序表 orderedSequentialSearch</div><pre><code>def orderedSequentialSearch(alist, item):
+    pos = 0
+    found = False
+    stop = False
+
+    while pos &lt; len(alist) and not found and not stop:
+        if alist[pos] == item:
+            found = True
+        else:
+            if alist[pos] &gt; item:
+                stop = True       # 当前值已超过目标，后面更不可能有
+            else:
+                pos = pos + 1
+
+    return found</code></pre></div>
+<div class="exam"><h3>例题1：顺序查找平均比较次数</h3><p><b>题目思想：</b>长度为 3 的顺序表，查找第 1、2、3 个元素的概率分别为 1/2、1/4、1/8，另有 1/8 的概率查找失败，平均需要比较多少次？</p><p><b>参考答案：</b><span class="formula">1×1/2 + 2×1/4 + 3×1/8 + 3×1/8 = 7/4</span>。失败时要比较 3 次。</p></div>
+</section>
+
+<section class="notes-page" id="binary">
+<h1>三、二分查找：每次把范围缩小一半</h1>
+<h2>1. 二分查找的前提</h2>
+<div class="key"><b>二分查找必须要求列表有序。</b>没有顺序，就不知道中间项比目标大/小之后该往左找还是往右找。</div>
+<div class="diagram">
+<svg viewBox="0 0 940 260" width="100%" role="img" aria-label="二分查找示意图">
+  <text x="70" y="42" fill="#64748b" font-size="18">查找 31：先看中间，再砍掉不可能的一半</text>
+  <g transform="translate(70,75)">
+    <rect x="0" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="38" y="34" text-anchor="middle" font-size="18">0</text>
+    <rect x="82" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="120" y="34" text-anchor="middle" font-size="18">1</text>
+    <rect x="164" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="202" y="34" text-anchor="middle" font-size="18">2</text>
+    <rect x="246" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="284" y="34" text-anchor="middle" font-size="18">8</text>
+    <rect x="328" y="0" width="76" height="54" rx="10" fill="#fee2e2" stroke="#f87171" stroke-width="3"/><text x="366" y="34" text-anchor="middle" font-size="18" font-weight="700">13</text>
+    <rect x="410" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="448" y="34" text-anchor="middle" font-size="18">17</text>
+    <rect x="492" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="530" y="34" text-anchor="middle" font-size="18">19</text>
+    <rect x="574" y="0" width="76" height="54" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/><text x="612" y="34" text-anchor="middle" font-size="18" font-weight="700">31</text>
+    <rect x="656" y="0" width="76" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="694" y="34" text-anchor="middle" font-size="18">42</text>
+    <text x="366" y="92" text-anchor="middle" fill="#b91c1c" font-size="16">mid=13，小于31，左半边都不要</text>
+    <text x="612" y="145" text-anchor="middle" fill="#14532d" font-size="18" font-weight="700">继续在右半边找，命中31</text>
+  </g>
+</svg>
+<div class="diagram-cap">每次比较都能排除大约一半候选项，所以数量级从 O(n) 降为 O(log n)。</div>
+</div>
+<h2>2. 迭代版二分查找代码</h2>
+<div class="codebox"><div class="code-title">代码解释：不用切片，使用 first / last 索引</div><pre><code>def binarySearch(alist, item):
+    first = 0
+    last = len(alist) - 1
+    found = False
+
+    while first &lt;= last and not found:
+        midpoint = (first + last) // 2
+        if alist[midpoint] == item:
+            found = True
+        else:
+            if item &lt; alist[midpoint]:
+                last = midpoint - 1    # 目标只可能在左半边
+            else:
+                first = midpoint + 1   # 目标只可能在右半边
+
+    return found</code></pre></div>
+<h2>3. 递归版二分查找与切片问题</h2>
+<div class="codebox"><div class="code-title">代码解释：递归版更像“分治”，但切片有额外开销</div><pre><code>def binarySearchRec(alist, item):
+    if len(alist) == 0:
+        return False
+    midpoint = len(alist) // 2
+    if alist[midpoint] == item:
+        return True
+    elif item &lt; alist[midpoint]:
+        return binarySearchRec(alist[:midpoint], item)      # 切片复制左半边
+    else:
+        return binarySearchRec(alist[midpoint+1:], item)    # 切片复制右半边</code></pre></div>
+<div class="warn"><b>易错点：</b>理论上二分查找比较次数是 O(log n)，但如果递归代码频繁使用切片，切片本身要复制列表，会带来额外时间和空间开销。实际写高效代码时更推荐传索引边界。</div>
+<div class="exam"><h3>例题2：二分查找一定比顺序查找划算吗？</h3><p><b>题目思想：</b>二分查找 O(log n)，顺序查找 O(n)，是不是任何情况下都应该先排序再二分查找？</p><p><b>参考答案：</b>不一定。如果数据本来有序，或者一次排序后要查很多次，二分查找很划算；但如果数据经常变化、只查一两次，排序成本可能比直接顺序查找更不经济。</p></div>
+</section>
+
+<section class="notes-page" id="bubble">
+<h1>四、冒泡排序：相邻比较，逆序就交换</h1>
+<h2>1. 冒泡排序在做什么</h2>
+<div class="key"><b>冒泡排序：</b>每一趟从左到右比较相邻元素，若前一个大于后一个就交换。每趟结束后，当前未排序部分的最大值会“冒”到最后。</div>
+<div class="diagram"><svg viewBox="0 0 940 260" width="100%"><text x="70" y="45" fill="#64748b" font-size="18">第一趟：最大值 93 会一路交换到最后</text><g transform="translate(70,80)"><rect x="0" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="35" y="33" text-anchor="middle" font-size="18">54</text><rect x="75" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="110" y="33" text-anchor="middle" font-size="18">26</text><rect x="150" y="0" width="70" height="52" rx="10" fill="#fee2e2" stroke="#f87171"/><text x="185" y="33" text-anchor="middle" font-size="18">93</text><rect x="225" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="260" y="33" text-anchor="middle" font-size="18">17</text><rect x="300" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="335" y="33" text-anchor="middle" font-size="18">77</text><rect x="375" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="410" y="33" text-anchor="middle" font-size="18">31</text><rect x="450" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="485" y="33" text-anchor="middle" font-size="18">44</text><rect x="525" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="560" y="33" text-anchor="middle" font-size="18">55</text><rect x="600" y="0" width="70" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="635" y="33" text-anchor="middle" font-size="18">20</text><path d="M187 65 C260 125 500 125 635 65" stroke="#f97316" stroke-width="4" fill="none"/><text x="410" y="135" text-anchor="middle" fill="#9a3412" font-size="17">93 比后面都大，不断向右交换，最后就位</text></g></svg></div>
+<h2>2. 冒泡排序代码</h2>
+<div class="codebox"><div class="code-title">代码解释：passnum 表示本趟最后要比较到哪里</div><pre><code>def bubbleSort(alist):
+    for passnum in range(len(alist)-1, 0, -1):
+        for i in range(passnum):
+            if alist[i] &gt; alist[i+1]:
+                alist[i], alist[i+1] = alist[i+1], alist[i]
+
+alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+bubbleSort(alist)
+print(alist)</code></pre></div>
+<h2>3. 改进：如果某一趟没有交换，就提前结束</h2>
+<div class="codebox"><div class="code-title">代码解释：短冒泡 shortBubbleSort</div><pre><code>def shortBubbleSort(alist):
+    exchanges = True
+    passnum = len(alist) - 1
+    while passnum &gt; 0 and exchanges:
+        exchanges = False
+        for i in range(passnum):
+            if alist[i] &gt; alist[i+1]:
+                exchanges = True
+                alist[i], alist[i+1] = alist[i+1], alist[i]
+        passnum = passnum - 1</code></pre></div>
+<div class="explain"><b>复杂度：</b>普通冒泡比较次数是 <span class="formula">(n-1)+(n-2)+...+1</span>，所以是 O(n²)。改进版在列表已经有序或接近有序时可能很快，但最坏仍是 O(n²)。</div>
+</section>
+
+<section class="notes-page" id="selection">
+<h1>五、选择排序：每一趟选出最大项，只交换一次</h1>
+<h2>1. 选择排序比冒泡改进在哪里</h2>
+<div class="key"><b>选择排序：</b>每一趟扫描未排序部分，找到最大值的位置，最后把它和本趟末尾交换。它减少的是交换次数，不减少比较次数。</div>
+<table><thead><tr><th>算法</th><th>每趟怎么做</th><th>比较次数</th><th>交换次数</th></tr></thead><tbody><tr><td>冒泡排序</td><td>相邻逆序就交换，最大项一路冒到最后</td><td>O(n²)</td><td>最坏 O(n²)</td></tr><tr><td>选择排序</td><td>先找最大项位置，最后才交换一次</td><td>O(n²)</td><td>O(n)</td></tr></tbody></table>
+<h2>2. 选择排序代码</h2>
+<div class="codebox"><div class="code-title">代码解释：positionOfMax 记录本趟最大值的位置</div><pre><code>def selectionSort(alist):
+    for fillslot in range(len(alist)-1, 0, -1):
+        positionOfMax = 0
+        for location in range(1, fillslot+1):
+            if alist[location] &gt; alist[positionOfMax]:
+                positionOfMax = location
+
+        alist[fillslot], alist[positionOfMax] = alist[positionOfMax], alist[fillslot]</code></pre></div>
+<div class="warn"><b>稳定性提醒：</b>直接选择排序通常不稳定。因为它会把最大/最小元素和某个远处位置交换，可能改变相等关键字的原有相对顺序。</div>
+</section>
+
+<section class="notes-page" id="insertion">
+<h1>六、插入排序：维护一个已排序子表</h1>
+<h2>1. 插入排序像整理扑克牌</h2>
+<div class="key"><b>插入排序：</b>假设列表前部已经排好序，每次拿一个“新项”，从右往左比较，把比它大的元素右移，最后把新项插入空位。</div>
+<div class="diagram"><svg viewBox="0 0 940 250" width="100%"><text x="70" y="45" fill="#64748b" font-size="18">已排序子表在左边；新项向左寻找插入位置</text><g transform="translate(70,85)"><rect x="0" y="0" width="75" height="52" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="38" y="33" text-anchor="middle" font-size="18">17</text><rect x="80" y="0" width="75" height="52" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="118" y="33" text-anchor="middle" font-size="18">26</text><rect x="160" y="0" width="75" height="52" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="198" y="33" text-anchor="middle" font-size="18">54</text><rect x="240" y="0" width="75" height="52" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="278" y="33" text-anchor="middle" font-size="18">77</text><rect x="320" y="0" width="75" height="52" rx="10" fill="#fee2e2" stroke="#f87171" stroke-width="3"/><text x="358" y="33" text-anchor="middle" font-size="18" font-weight="700">31</text><path d="M358 65 C320 120 225 120 210 65" stroke="#f97316" stroke-width="4" fill="none"/><text x="240" y="142" text-anchor="middle" fill="#9a3412" font-size="17">31 应插到 26 和 54 之间，54、77 右移</text></g></svg></div>
+<h2>2. 插入排序代码</h2>
+<div class="codebox"><div class="code-title">代码解释：currentvalue 是“新项”，position 向左移动</div><pre><code>def insertionSort(alist):
+    for index in range(1, len(alist)):
+        currentvalue = alist[index]
+        position = index
+
+        while position &gt; 0 and alist[position-1] &gt; currentvalue:
+            alist[position] = alist[position-1]   # 右移较大的元素
+            position = position - 1
+
+        alist[position] = currentvalue            # 插入新项</code></pre></div>
+<h2>3. 复杂度与特点</h2>
+<ul><li>最坏情况：逆序，每个新项都要一路移到前面，O(n²)。</li><li>最好情况：已经有序，每趟只比较一次，O(n)。</li><li>移动操作只是一条赋值，通常比冒泡中的交换更省。</li></ul>
+<div class="exam"><h3>例题3：插入排序第四趟结果</h3><p><b>题目思想：</b>关键字序列 <span class="formula">(46, 74, 16, 53, 14, 26, 40, 38, 86, 65, 27, 34)</span>，用直接插入排序从小到大排序，写出第四趟后的排列。</p><p><b>参考过程：</b>第 1 趟插入 74；第 2 趟插入 16；第 3 趟插入 53；第 4 趟插入 14。</p><p><b>参考答案：</b><span class="formula">14, 16, 46, 53, 74, 26, 40, 38, 86, 65, 27, 34</span>。</p></div>
+</section>
+
+<section class="notes-page" id="shell">
+<h1>七、谢尔排序：先分组插入，再整体插入</h1>
+<h2>1. 为什么要有谢尔排序</h2>
+<div class="key"><b>谢尔排序：</b>以插入排序为基础，先按较大间隔把列表分成若干子列表，对每个子列表做插入排序；再逐步缩小间隔，最后间隔为 1 时做普通插入排序。</div>
+<div class="diagram"><svg viewBox="0 0 940 250" width="100%"><text x="70" y="45" fill="#64748b" font-size="18">间隔为 3：同色元素属于一个子列表</text><g transform="translate(70,85)"><rect x="0" y="0" width="72" height="52" rx="10" fill="#eff6ff" stroke="#93c5fd"/><text x="36" y="33" text-anchor="middle">54</text><rect x="78" y="0" width="72" height="52" rx="10" fill="#fff7ed" stroke="#fdba74"/><text x="114" y="33" text-anchor="middle">26</text><rect x="156" y="0" width="72" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="192" y="33" text-anchor="middle">93</text><rect x="234" y="0" width="72" height="52" rx="10" fill="#eff6ff" stroke="#93c5fd"/><text x="270" y="33" text-anchor="middle">17</text><rect x="312" y="0" width="72" height="52" rx="10" fill="#fff7ed" stroke="#fdba74"/><text x="348" y="33" text-anchor="middle">77</text><rect x="390" y="0" width="72" height="52" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="426" y="33" text-anchor="middle">31</text><text x="310" y="115" text-anchor="middle" fill="#64748b" font-size="16">先让远距离元素大致归位，整体变得“更接近有序”。</text></g></svg></div>
+<h2>2. 谢尔排序代码</h2>
+<div class="codebox"><div class="code-title">代码解释：gap 逐步变小，gap=1 时就是普通插入排序</div><pre><code>def gapInsertionSort(alist, start, gap):
+    for i in range(start + gap, len(alist), gap):
+        currentvalue = alist[i]
+        position = i
+        while position &gt;= gap and alist[position-gap] &gt; currentvalue:
+            alist[position] = alist[position-gap]
+            position = position - gap
+        alist[position] = currentvalue
+
+
+def shellSort(alist):
+    sublistcount = len(alist) // 2
+    while sublistcount &gt; 0:
+        for startposition in range(sublistcount):
+            gapInsertionSort(alist, startposition, sublistcount)
+        sublistcount = sublistcount // 2</code></pre></div>
+<div class="explain"><b>复杂度：</b>谢尔排序的严格分析较复杂，通常介于 O(n) 和 O(n²) 之间，取决于间隔序列。它的核心价值是：先把表变得接近有序，再让插入排序发挥优势。</div>
+</section>
+
+<section class="notes-page" id="merge">
+<h1>八、归并排序：分裂成小表，再有序合并</h1>
+<h2>1. 归并排序的递归三步</h2>
+<div class="key"><b>归并排序：</b>分裂、排序、归并。先把表不断分成两半，直到每个小表只有 1 个元素；再把两个有序小表合并成更大的有序表。</div>
+<div class="diagram"><svg viewBox="0 0 940 300" width="100%"><text x="470" y="42" text-anchor="middle" fill="#64748b" font-size="18">归并排序：先拆到足够小，再一层层合并</text><g fill="#ecfdf5" stroke="#86caa0"><rect x="370" y="60" width="200" height="44" rx="12"/><rect x="240" y="135" width="160" height="44" rx="12"/><rect x="540" y="135" width="160" height="44" rx="12"/><rect x="120" y="215" width="100" height="44" rx="12"/><rect x="310" y="215" width="100" height="44" rx="12"/><rect x="520" y="215" width="100" height="44" rx="12"/><rect x="710" y="215" width="100" height="44" rx="12"/></g><g font-size="16" text-anchor="middle" fill="#14532d"><text x="470" y="88">[54,26,93,17]</text><text x="320" y="163">[54,26]</text><text x="620" y="163">[93,17]</text><text x="170" y="243">[54]</text><text x="360" y="243">[26]</text><text x="570" y="243">[93]</text><text x="760" y="243">[17]</text></g><path d="M420 104 L340 134" stroke="#166534"/><path d="M520 104 L620 134" stroke="#166534"/><path d="M285 179 L180 215" stroke="#166534"/><path d="M355 179 L360 215" stroke="#166534"/><path d="M585 179 L570 215" stroke="#166534"/><path d="M655 179 L760 215" stroke="#166534"/></svg></div>
+<h2>2. 归并排序代码</h2>
+<div class="codebox"><div class="code-title">代码解释：左右两半各自排好，再“拉链式”合并</div><pre><code>def mergeSort(alist):
+    if len(alist) &gt; 1:
+        mid = len(alist) // 2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+
+        i = j = k = 0
+        while i &lt; len(lefthalf) and j &lt; len(righthalf):
+            if lefthalf[i] &lt;= righthalf[j]:
+                alist[k] = lefthalf[i]
+                i += 1
+            else:
+                alist[k] = righthalf[j]
+                j += 1
+            k += 1
+
+        while i &lt; len(lefthalf):
+            alist[k] = lefthalf[i]
+            i += 1
+            k += 1
+
+        while j &lt; len(righthalf):
+            alist[k] = righthalf[j]
+            j += 1
+            k += 1</code></pre></div>
+<h2>3. 复杂度与空间</h2>
+<ul><li>分裂层数约为 <span class="formula">log n</span>。</li><li>每一层归并时，所有元素都会被处理一次，约 <span class="formula">O(n)</span>。</li><li>总时间复杂度：<span class="formula">O(n log n)</span>。</li><li>需要额外数组空间，空间复杂度约 <span class="formula">O(n)</span>。</li></ul>
+<div class="warn"><b>易错点：</b>归并排序通常稳定，但前提是相等时优先取左半边元素，例如代码里使用 <code>&lt;=</code>。</div>
+</section>
+
+<section class="notes-page" id="quick">
+<h1>九、快速排序：选基准、分区、递归</h1>
+<h2>1. 快速排序在做什么</h2>
+<div class="key"><b>快速排序：</b>选一个基准值 pivot，把比它小的放左边，比它大的放右边，让 pivot 到达最终位置；然后递归排序左右两边。</div>
+<div class="diagram"><svg viewBox="0 0 940 260" width="100%"><text x="70" y="45" fill="#64748b" font-size="18">以第一个数 46 为基准：左边小于46，右边大于46</text><g transform="translate(80,90)"><rect x="0" y="0" width="80" height="54" rx="10" fill="#fee2e2" stroke="#f87171" stroke-width="3"/><text x="40" y="34" text-anchor="middle" font-size="18" font-weight="700">46</text><rect x="95" y="0" width="80" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="135" y="34" text-anchor="middle" font-size="18">70</text><rect x="190" y="0" width="80" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="230" y="34" text-anchor="middle" font-size="18">56</text><rect x="285" y="0" width="80" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="325" y="34" text-anchor="middle" font-size="18">38</text><rect x="380" y="0" width="80" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="420" y="34" text-anchor="middle" font-size="18">40</text><rect x="475" y="0" width="80" height="54" rx="10" fill="#ecfdf5" stroke="#86caa0"/><text x="515" y="34" text-anchor="middle" font-size="18">80</text><text x="275" y="120" text-anchor="middle" fill="#64748b">一次划分后：38,40 | 46 | 56,70,80</text></g></svg></div>
+<h2>2. 快速排序代码框架</h2>
+<div class="codebox"><div class="code-title">代码解释：quickSortHelper 递归处理左右区间</div><pre><code>def quickSort(alist):
+    quickSortHelper(alist, 0, len(alist)-1)
+
+
+def quickSortHelper(alist, first, last):
+    if first &lt; last:
+        splitpoint = partition(alist, first, last)
+        quickSortHelper(alist, first, splitpoint-1)
+        quickSortHelper(alist, splitpoint+1, last)</code></pre></div>
+<div class="codebox"><div class="code-title">代码解释：partition 找到基准值最终位置</div><pre><code>def partition(alist, first, last):
+    pivotvalue = alist[first]
+    leftmark = first + 1
+    rightmark = last
+    done = False
+
+    while not done:
+        while leftmark &lt;= rightmark and alist[leftmark] &lt;= pivotvalue:
+            leftmark += 1
+        while rightmark &gt;= leftmark and alist[rightmark] &gt;= pivotvalue:
+            rightmark -= 1
+
+        if rightmark &lt; leftmark:
+            done = True
+        else:
+            alist[leftmark], alist[rightmark] = alist[rightmark], alist[leftmark]
+
+    alist[first], alist[rightmark] = alist[rightmark], alist[first]
+    return rightmark</code></pre></div>
+<h2>3. 快速排序复杂度</h2>
+<table><thead><tr><th>情况</th><th>原因</th><th>复杂度</th></tr></thead><tbody><tr><td>平均/较好</td><td>每次分区比较均衡，递归深度约 log n，每层扫描 n 个元素</td><td>O(n log n)</td></tr><tr><td>最坏</td><td>每次 pivot 都把表分成一边空、一边 n-1，递归深度接近 n</td><td>O(n²)</td></tr></tbody></table>
+<div class="exam"><h3>例题4：快速排序第一次划分</h3><p><b>题目思想：</b>关键码 <span class="formula">[46,70,56,38,40,80]</span>，利用快速排序，以第一个记录 46 为基准，第一次划分后可以得到什么结果？</p><p><b>参考答案：</b>一种合理结果是 <span class="formula">[38,40,46,56,70,80]</span>。这类题重点是：46 已经被放在分裂点，左边都小于 46，右边都大于 46；不同实现细节可能导致左右内部顺序略有差异。</p></div>
+</section>
+
+<section class="notes-page" id="compare">
+<h1>十、排序查找对比与例题应用</h1>
+<h2>1. 查找算法对比</h2>
+<table><thead><tr><th>算法</th><th>前提</th><th>最好</th><th>最坏</th><th>平均/数量级</th></tr></thead><tbody><tr><td>顺序查找</td><td>无序/有序都可</td><td>O(1)</td><td>O(n)</td><td>O(n)</td></tr><tr><td>有序顺序查找</td><td>有序</td><td>O(1)</td><td>O(n)</td><td>O(n)，失败时平均可少一些</td></tr><tr><td>二分查找</td><td>必须有序，最好可随机访问</td><td>O(1)</td><td>O(log n)</td><td>O(log n)</td></tr></tbody></table>
+<h2>2. 排序算法对比</h2>
+<table><thead><tr><th>算法</th><th>平均时间</th><th>最坏时间</th><th>最好时间</th><th>空间</th><th>稳定性</th><th>一句话记忆</th></tr></thead><tbody>
+<tr><td>冒泡</td><td>O(n²)</td><td>O(n²)</td><td>O(n)（改进版）</td><td>O(1)</td><td>稳定</td><td>相邻比较，最大冒到后面</td></tr>
+<tr><td>选择</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>不稳定</td><td>每趟选最大/最小，交换少</td></tr>
+<tr><td>插入</td><td>O(n²)</td><td>O(n²)</td><td>O(n)</td><td>O(1)</td><td>稳定</td><td>维护有序前缀，适合近乎有序</td></tr>
+<tr><td>希尔</td><td>和间隔有关</td><td>与间隔有关，最坏可到 O(n²)</td><td>可达 O(n)，取决于间隔序列</td><td>O(1)</td><td>不稳定</td><td>分组插入，逐渐接近有序</td></tr>
+<tr><td>归并</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>稳定</td><td>分裂后合并，需要额外空间</td></tr>
+<tr><td>快速</td><td>O(n log n)</td><td>O(n²)</td><td>O(n log n)</td><td>平均 O(log n)，最坏 O(n)</td><td>不稳定</td><td>基准分区，平均快，最坏要防</td></tr>
+</tbody></table>
+<div class="exam"><h3>例题5：哪个排序算法是稳定的？</h3><p><b>题目思想：</b>以下典型排序算法中，具有稳定排序特性的是：A. 冒泡排序 B. 直接选择排序 C. 快速排序 D. 希尔排序。</p><p><b>参考答案：</b><b>A. 冒泡排序</b>。冒泡排序只在相邻元素逆序时交换；相等元素通常不会交换位置，所以稳定。选择、快速、希尔通常不稳定。</p></div>
+<div class="exam"><h3>例题6：最坏情况复杂度相同</h3><p><b>题目思想：</b>哪一组中的两个排序算法最坏情况下时间复杂度的大 O 表示相同？</p><p><b>选项：</b>A. 快速排序和选择排序　B. 归并排序和快速排序　C. 插入排序和归并排序　D. 冒泡排序和归并排序</p><p><b>参考答案：</b><b>A. 快速排序和选择排序</b>。快速排序最坏可退化为 O(n²)，选择排序最坏也是 O(n²)。</p></div>
+<div class="warn"><b>考试提醒：</b>“最快”不是唯一标准。归并稳定但需要额外空间；快速平均很快但最坏 O(n²)；插入排序在接近有序时很强；冒泡排序可通过是否发生交换提前结束。</div>
+</section>
+
+<section class="notes-page" id="flash">
+<h1>十一、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>支持浏览 / 默写 / 填空。只有适合提关键词的卡片才设置填空，不强行挖空。键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab"><div class="flash-topbar"><div class="flash-modes"><button class="flash-chip active" data-mode="browse" type="button">浏览</button><button class="flash-chip" data-mode="write" type="button">默写</button><button class="flash-chip" data-mode="fill" type="button">填空</button></div><div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div></div><div class="study-card" id="studyCard" tabindex="0" aria-live="polite"><div class="study-inner" id="studyInner"><div class="study-face study-front"><div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div><h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help" id="frontHelp">点击卡片或按 Space 翻面</div></div><div class="study-face study-back"><div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div><h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div></div></div></div><div class="flash-topbar" style="margin-top:14px"><div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div><div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div></div><div class="flash-keys">这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握。</div></div>
+</section>
+
+<section class="notes-page" id="sources">
+<h1>十二、资料标准与筛选说明</h1>
+<h2>1. 已收入范围</h2>
+<ul><li>顺序查找、二分查找及其复杂度分析。</li><li>冒泡排序、选择排序、插入排序、谢尔排序、归并排序、快速排序的思想、代码、复杂度和稳定性。</li><li>与 Python 试题直接相关的查找/排序例题：顺序查找平均比较次数、插入排序中间过程、快速排序第一次划分、排序稳定性、最坏复杂度判断。</li></ul>
+<h2>2. 没有收入的内容</h2>
+<div class="warn">散列、二叉搜索树、堆排序、图算法等内容虽然可能在综合试题里出现，但不属于本 PDF 501-507 的核心范围，后续章节再整理。</div>
+<h2>3. 无关扩展处理</h2>
+<div class="warn">如果资料或课件出现 AI 基础、机器学习、深度学习图像处理、AI Racer 大作业介绍等与本章查找排序无关内容，不收入本笔记。</div>
+</section>
+</main></div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0; const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){ current=Math.max(0,Math.min(pages.length-1,i)); pages.forEach((p,k)=>p.classList.toggle('active',k===current)); nav.forEach((a,k)=>a.classList.toggle('active',k===current)); progress.textContent=(current+1)+' / '+pages.length; buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));}); if(hashUpdate) history.replaceState(null,'','#'+pages[current].id); document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'}); }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [{"type": "查找", "title": "顺序查找适合什么情况？", "answer": "适合无序列表或数据量不大、只偶尔查一次的情况。它从头到尾逐个比对，最坏和平均数量级都是 O(n)。", "cloze": "顺序查找的核心动作是逐个____数据项。", "fillAnswer": "比对"}, {"type": "查找", "title": "有序表顺序查找为什么仍然是 O(n)？", "answer": "有序表在查找失败时可以提前停止，例如看到当前值已经大于目标值，就知道后面不可能有目标。但最坏情况下仍可能比到最后，所以数量级仍是 O(n)。", "cloze": null, "fillAnswer": null}, {"type": "查找", "title": "二分查找的前提是什么？", "answer": "列表必须已经按值有序。二分查找每次看中间项，然后把查找范围缩小一半，所以复杂度是 O(log n)。", "cloze": "二分查找的前提是数据表已经____。", "fillAnswer": "有序"}, {"type": "排序", "title": "冒泡排序每一趟保证什么？", "answer": "每一趟通过相邻元素比较和交换，把当前未排序部分中的最大元素送到它的最终位置。", "cloze": "冒泡排序每趟通常让当前未排序部分的____项就位。", "fillAnswer": "最大"}, {"type": "排序", "title": "选择排序和冒泡排序的关键区别是什么？", "answer": "二者比对次数数量级都为 O(n²)，但选择排序每趟只记录最大项位置，最后交换一次；冒泡排序可能在一趟中交换很多次。", "cloze": null, "fillAnswer": null}, {"type": "排序", "title": "插入排序为什么对接近有序的表更快？", "answer": "插入排序维护前部已排序子表。新项若本来就接近正确位置，只需要很少移动；列表已完全有序时，每趟只需一次比较，最好 O(n)。", "cloze": "插入排序维护一个位于表____的已排序子表。", "fillAnswer": "前部"}, {"type": "排序", "title": "快速排序最怕什么？", "answer": "最怕每次选到极端不均衡的基准值（Pivot）。例如固定选第一个元素作基准时，数组已经完全正序或完全逆序，每次分区都只能让一个基准值就位，一边几乎为空、一边还剩 n-1 个元素，递归树退化成单支，最坏复杂度为 O(n²)。", "cloze": "快速排序最坏情况本质上是基准值每次都选得极端____，递归树退化成单支。", "fillAnswer": "不均衡/不称职"}, {"type": "综合", "title": "归并排序和快速排序的核心差别？", "answer": "归并排序先按位置一分为二，递归排序后再合并，稳定但需要额外空间；快速排序先按基准值分区，让基准就位，再递归处理左右部分，通常快且省额外空间，但不稳定且最坏 O(n²)。", "cloze": null, "fillAnswer": null}];
+  const storageKey='dsa501507_flash_mastered_v1'; let mastered=new Set(JSON.parse(localStorage.getItem(storageKey)||'[]')); let cardIndex=0; let mode='browse';
+  const studyCard=document.getElementById('studyCard'), frontType=document.getElementById('frontType'), frontCount=document.getElementById('frontCount'), frontTitle=document.getElementById('frontTitle'), frontBody=document.getElementById('frontBody'), backBody=document.getElementById('backBody'), flashProgress=document.getElementById('flashProgress'), flashPosition=document.getElementById('flashPosition'), masterBtn=document.getElementById('masterCard');
+  function saveMastered(){localStorage.setItem(storageKey,JSON.stringify([...mastered]));}
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function updateProgress(){const done=mastered.size,total=cards.length,pct=total?Math.round(done*100/total):0; flashProgress.textContent=`已掌握 ${done}/${total} · ${pct}%`; flashPosition.textContent=`${cardIndex+1} / ${cards.length}`; masterBtn.textContent=mastered.has(cardIndex)?'⭐ 取消已掌握':'⭐ 标记已掌握';}
+  function renderCard(){const c=cards[cardIndex]; studyCard.classList.remove('flipped'); frontType.textContent=c.type; frontCount.textContent=`第 ${cardIndex+1} 题`+(mastered.has(cardIndex)?' · 已掌握':''); frontTitle.textContent=c.title; let body=''; if(mode==='browse'){body='<p>先自己回忆，再翻面核对。</p>';} else if(mode==='write'){body='<p><b>默写模式：</b>先自己写完整答案，再翻面核对。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="在这里默写。"></textarea></div>';} else { if(c.cloze&&c.fillAnswer){body=`<p><b>填空模式：</b>先补关键词，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${esc(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="写关键词"/><div class="fill-feedback" id="fillFeedback"></div></div>`;} else {body='<p><b>这张卡不强行设置填空。</b></p><p>这类问题更适合用“浏览”或“默写”完整理解。</p>';} } frontBody.innerHTML=body; backBody.innerHTML=`<p>${esc(c.answer)}</p>`+(c.fillAnswer?`<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${esc(c.fillAnswer)}</div>`:''); updateProgress(); const fillInput=document.getElementById('fillInput'); if(fillInput){fillInput.addEventListener('input',()=>{const fb=document.getElementById('fillFeedback'); const v=fillInput.value.trim().toLowerCase(); if(!v){fb.textContent='';return;} const ans=(c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase(); const ok=ans.split(/[;；]/).some(part=>part.trim()&&v.includes(part.trim())); fb.textContent=ok?'关键词有对上的部分，可以翻面核对完整表述。':'先继续想想关键词，再翻面核对也可以。';});} }
+  function flipCard(){studyCard.classList.toggle('flipped');} function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();} function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();} function toggleMaster(){if(mastered.has(cardIndex)) mastered.delete(cardIndex); else mastered.add(cardIndex); saveMastered(); renderCard();}
+  function isSpaceKey(e){return e.key===' '||e.key==='Spacebar'||e.code==='Space';} function isTypingTarget(t){const tag=(t&&t.tagName||'').toLowerCase(); return ['input','textarea','select'].includes(tag)||!!(t&&t.isContentEditable);}
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); mode=btn.dataset.mode; renderCard();}));
+  studyCard?.addEventListener('click',e=>{if(e.target.closest('textarea,input,label,button,.study-write,.study-fill')) return; flipCard();});
+  document.getElementById('flipCard')?.addEventListener('click',flipCard); document.getElementById('prevCard')?.addEventListener('click',prevCard); document.getElementById('nextCard')?.addEventListener('click',nextCard); document.getElementById('masterCard')?.addEventListener('click',toggleMaster); document.getElementById('resetMastery')?.addEventListener('click',()=>{mastered=new Set();saveMastered();renderCard();});
+  document.addEventListener('keydown',e=>{const onFlash=pages[current]&&pages[current].id==='flash'; const typing=isTypingTarget(e.target||document.activeElement); if(onFlash){ if(typing)return; if(e.key==='ArrowRight'){e.preventDefault();nextCard();return;} if(e.key==='ArrowLeft'){e.preventDefault();prevCard();return;} if(isSpaceKey(e)){e.preventDefault();flipCard();return;} if(e.key==='m'||e.key==='M'){e.preventDefault();toggleMaster();return;} } if(typing)return; if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();show(current+1);} if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(current-1);} }, true);
+  renderCard(); show(current,false);
+})();
+</script>
+</body>
+</html>
