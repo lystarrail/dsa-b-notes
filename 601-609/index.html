@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>数据结构与算法B Python版｜601-609 复习笔记</title>
+<style>
+:root{--bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;--yellow:#eab308;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px}.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:820px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:860px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid var(--yellow)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:#e8f3ed;color:var(--green);font-weight:700;margin-left:6px}.tag.hot{background:#fee2e2;color:#b91c1c}.tag.code{background:#dbeafe;color:#1d4ed8}.small{font-size:13px;color:#64748b}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;color:#334155;border-radius:8px;padding:1px 6px}.codebox code{background:transparent;color:inherit;padding:0}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.source-note{font-size:13px;color:#64748b;border-top:1px dashed #cbd5e1;margin-top:20px;padding-top:12px}.diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.diagram svg{display:block;min-width:780px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.algo-list{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:10px;margin:12px 0}.algo-list div{border:1px solid var(--line);background:#fbfffc;border-radius:12px;padding:10px;text-align:center}.algo-list b{display:block;color:var(--green)}.mini-tree{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;line-height:1.35;overflow:auto}.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-progress{font-size:14px;color:var(--muted)}.study-card{perspective:1200px;min-height:540px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:540px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:160px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}.flash-keys{margin-top:12px;font-size:13px;color:#64748b}@media screen {.main > .notes-page{display:none !important}.main > .notes-page.active{display:block !important}.main > .cover-page.active{display:flex !important}}@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2,.grid3{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}.algo-list{grid-template-columns:1fr 1fr}.diagram{overflow-x:auto}.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:580px}}@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">601-609｜树及算法（上）</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav">
+<a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#tree"><span class="num">03</span><span>什么是树：层次结构</span></a>
+<a href="#terms"><span class="num">04</span><span>树结构术语与定义</span></a>
+<a href="#nested"><span class="num">05</span><span>嵌套列表实现</span></a>
+<a href="#linked"><span class="num">06</span><span>节点链接实现</span></a>
+<a href="#parse-build"><span class="num">07</span><span>表达式解析树：建树</span></a>
+<a href="#parse-eval"><span class="num">08</span><span>表达式解析树：求值</span></a>
+<a href="#traversal"><span class="num">09</span><span>树的三种遍历</span></a>
+<a href="#heap-concept"><span class="num">10</span><span>优先队列与二叉堆</span></a>
+<a href="#heap-code"><span class="num">11</span><span>二叉堆 Python 实现</span></a>
+<a href="#oj"><span class="num">12</span><span>OJ 题讲解与应用</span></a>
+<a href="#flash"><span class="num">13</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">14</span><span>资料标准与筛选说明</span></a>
+</nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。这份只总结 pydsa-601-609 这一章范围。</div>
+</aside>
+<main class="main">
+
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>601-609 复习笔记</h1>
+<div class="subtitle">树、树的实现、表达式解析树、树的遍历、优先队列与二叉堆</div>
+<div class="meta"><p><b>适用范围：</b>本份笔记以 <b>pydsa-601-609 含 OJ 题讲解合并版</b>为标准，整理树结构与二叉堆的核心思想、Python 代码和对应 OJ 应用。</p><p><b>学习目标：</b>这章不是只背“前中后序”，而是理解树为什么是层次结构、为什么树天然适合递归、为什么二叉堆可以用一个普通列表高效实现。</p><p><b>阅读建议：</b>先看树的术语和画图，再看代码。代码题最常考：建树、递归遍历、表达式解析、二叉堆上浮/下沉。</p></div>
+<div class="toc"><h2>目录</h2><ol><li>本章考什么</li><li>什么是树</li><li>树结构术语</li><li>嵌套列表实现</li><li>节点链接实现</li><li>表达式解析树建树</li><li>表达式解析树求值</li><li>树的三种遍历</li><li>优先队列与二叉堆</li><li>二叉堆 Python 实现</li><li>OJ 题讲解与应用</li><li>考前速记卡</li><li>资料标准与筛选说明</li></ol></div>
+</section>
+
+<section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+<div class="key"><b>本章主线：</b>树是一种“非线性”的层次结构；二叉树可以递归表示；表达式解析树和树遍历体现递归；二叉堆利用完全二叉树结构实现优先队列。</div>
+<div class="algo-list"><div><b>树结构</b>层次、路径、子树</div><div><b>树实现</b>嵌套列表/节点链接</div><div><b>树遍历</b>前序/中序/后序</div><div><b>二叉堆</b>优先队列 O(log n)</div></div>
+<h2>1. 本章知识地图</h2>
+<div class="diagram"><svg viewBox="0 0 940 330" width="100%" role="img" aria-label="树及算法知识地图"><defs><marker id="m1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs><rect x="390" y="30" width="160" height="64" rx="16" fill="#ecfdf5" stroke="#86caa0"/><text x="470" y="70" text-anchor="middle" font-size="22" fill="#14532d" font-weight="700">树 Tree</text><rect x="70" y="140" width="190" height="62" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="165" y="178" text-anchor="middle" font-size="18" fill="#1d4ed8" font-weight="700">术语与定义</text><rect x="295" y="140" width="190" height="62" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="390" y="178" text-anchor="middle" font-size="18" fill="#1d4ed8" font-weight="700">两种实现</text><rect x="520" y="140" width="190" height="62" rx="16" fill="#fff7ed" stroke="#fdba74"/><text x="615" y="178" text-anchor="middle" font-size="18" fill="#9a3412" font-weight="700">解析树与遍历</text><rect x="745" y="140" width="150" height="62" rx="16" fill="#fef2f2" stroke="#fca5a5"/><text x="820" y="178" text-anchor="middle" font-size="18" fill="#991b1b" font-weight="700">二叉堆</text><rect x="295" y="245" width="190" height="50" rx="14" fill="#fbfffc" stroke="#d7eadf"/><text x="390" y="276" text-anchor="middle" font-size="16" fill="#14532d">嵌套列表 / 链表类</text><rect x="520" y="245" width="190" height="50" rx="14" fill="#fbfffc" stroke="#d7eadf"/><text x="615" y="276" text-anchor="middle" font-size="16" fill="#14532d">前中后序 / 递归</text><rect x="745" y="245" width="150" height="50" rx="14" fill="#fbfffc" stroke="#d7eadf"/><text x="820" y="276" text-anchor="middle" font-size="16" fill="#14532d">上浮 / 下沉</text><path d="M430 94 L185 138" stroke="#166534" stroke-width="3" marker-end="url(#m1)"/><path d="M455 94 L405 138" stroke="#166534" stroke-width="3" marker-end="url(#m1)"/><path d="M500 94 L600 138" stroke="#166534" stroke-width="3" marker-end="url(#m1)"/><path d="M532 94 L805 138" stroke="#166534" stroke-width="3" marker-end="url(#m1)"/><path d="M390 202 L390 242" stroke="#166534" stroke-width="2" marker-end="url(#m1)"/><path d="M615 202 L615 242" stroke="#166534" stroke-width="2" marker-end="url(#m1)"/><path d="M820 202 L820 242" stroke="#166534" stroke-width="2" marker-end="url(#m1)"/></svg><div class="diagram-cap">树的所有代码都离不开两个字：递归。二叉堆则是“逻辑上像树，物理上用列表”。</div></div>
+<h2>2. 常见考点</h2>
+<table><thead><tr><th>考点</th><th>要会什么</th><th>做题提醒</th></tr></thead><tbody><tr><td>树的术语</td><td>节点、边、根、路径、父子、兄弟、子树、叶、层级、高度。</td><td>高度看“最大层级”，层级从根开始为 0。</td></tr><tr><td>树的实现</td><td>嵌套列表 <code>[root,left,right]</code>；链表类 <code>key/leftChild/rightChild</code>。</td><td>插入新左/右子节点时，已有子树不能丢。</td></tr><tr><td>表达式解析树</td><td>全括号表达式建树；栈记录父节点；递归求值。</td><td>操作数是叶节点，操作符是内部节点。</td></tr><tr><td>遍历</td><td>前序/中序/后序的递归顺序和应用。</td><td>后序适合表达式求值；中序适合恢复中缀表达式。</td></tr><tr><td>二叉堆</td><td>完全二叉树、堆次序、上浮、下沉、buildHeap。</td><td>下标公式默认列表第 0 位空着。</td></tr></tbody></table>
+</section>
+
+<section class="notes-page" id="tree">
+<h1>二、什么是树：非线性的层次结构</h1>
+<h2>1. 从线性结构到树结构</h2>
+<div class="grid2"><div class="card"><h3>线性结构</h3><p>像排队、链条、列表：一个接一个。一般每个数据项只有一个前驱和一个后继，首尾比较明显。</p></div><div class="card"><h3>树结构</h3><p>像文件夹、网页标签、家谱：一层套一层。每个节点有唯一父节点，但可以有多个子节点。</p></div></div>
+<div class="diagram"><svg viewBox="0 0 940 320" width="100%"><text x="120" y="35" font-size="18" fill="#64748b">线性结构：一条线</text><circle cx="80" cy="90" r="24" fill="#ecfdf5" stroke="#86caa0"/><circle cx="160" cy="90" r="24" fill="#ecfdf5" stroke="#86caa0"/><circle cx="240" cy="90" r="24" fill="#ecfdf5" stroke="#86caa0"/><path d="M104 90 L136 90 M184 90 L216 90" stroke="#166534" stroke-width="3"/><text x="470" y="35" font-size="18" fill="#64748b">树结构：一层分出多层</text><circle cx="470" cy="85" r="26" fill="#dcfce7" stroke="#16a34a"/><text x="470" y="92" text-anchor="middle" font-weight="700">根</text><circle cx="390" cy="170" r="24" fill="#ecfdf5" stroke="#86caa0"/><text x="390" y="176" text-anchor="middle">B</text><circle cx="550" cy="170" r="24" fill="#ecfdf5" stroke="#86caa0"/><text x="550" y="176" text-anchor="middle">C</text><circle cx="335" cy="255" r="22" fill="#eff6ff" stroke="#93c5fd"/><text x="335" y="261" text-anchor="middle">D</text><circle cx="445" cy="255" r="22" fill="#eff6ff" stroke="#93c5fd"/><text x="445" y="261" text-anchor="middle">E</text><circle cx="550" cy="255" r="22" fill="#eff6ff" stroke="#93c5fd"/><text x="550" y="261" text-anchor="middle">F</text><path d="M454 106 L405 150 M486 106 L535 150 M381 192 L345 235 M400 192 L435 235 M550 195 L550 232" stroke="#166534" stroke-width="3"/></svg><div class="diagram-cap">树最关键的直觉：不是“左右排队”，而是“上级—下级”的层次关系。</div></div>
+<h2>2. 树的三个重要特征</h2>
+<div class="grid3"><div class="key"><b>层次化</b><br/>越靠近顶部越普遍，越靠近底部越具体。例如生物分类的界、门、纲、目、科、属、种。</div><div class="key"><b>子节点相互隔离</b><br/>一个节点下面的子树，和另一个节点下面的子树互不影响。</div><div class="key"><b>根到节点路径唯一</b><br/>可以用“从根到叶”的完整路径唯一标识一个对象，例如文件路径。</div></div>
+<div class="example"><h3>生活例子</h3><p>文件系统就是树：<code>C:\</code> 是根，下面有不同文件夹；每个文件有唯一的路径。HTML 文档也是树：<code>html</code> 下面有 <code>head</code> 和 <code>body</code>，标签一层层嵌套。</p></div>
+</section>
+
+<section class="notes-page" id="terms">
+<h1>三、树结构术语与两个定义</h1>
+<h2>1. 术语表：考试最容易直接考</h2>
+<table><thead><tr><th>术语</th><th>通俗解释</th><th>例子</th></tr></thead><tbody><tr><td>节点 Node</td><td>树里的一个数据单位，可以保存 key 或其它数据。</td><td>文件夹、HTML 标签、表达式中的数字/符号。</td></tr><tr><td>边 Edge</td><td>连接两个节点，表示父子关系。</td><td>根到子节点的一条连线。</td></tr><tr><td>根 Root</td><td>唯一没有父节点/入边的节点。</td><td>文件系统中的根目录。</td></tr><tr><td>路径 Path</td><td>由一串边连接起来的有序节点列表。</td><td><code>HTML → BODY → UL → LI</code>。</td></tr><tr><td>子节点 / 父节点</td><td>一个节点向下连出去的是子节点；这个节点是它们的父节点。</td><td>B、C 是根的子节点。</td></tr><tr><td>兄弟节点 Sibling</td><td>拥有同一个父节点的节点。</td><td>B 和 C 是兄弟。</td></tr><tr><td>子树 Subtree</td><td>某个节点及其所有后代节点组成的小树。</td><td>以 B 为根的整块结构。</td></tr><tr><td>叶节点 Leaf</td><td>没有子节点的节点。</td><td>D、E、F。</td></tr><tr><td>层级 Level</td><td>从根到该节点经过的边数。</td><td>根为 0，根的孩子为 1。</td></tr><tr><td>高度 Height</td><td>整棵树中最大的层级。</td><td>如果最深叶节点在第 3 层，高度为 3。</td></tr></tbody></table>
+<h2>2. 树的定义：两种说法，其实是一回事</h2>
+<div class="grid2"><div class="card"><h3>结构定义</h3><ul><li>树由节点和边组成。</li><li>有一个节点被指定为根。</li><li>除根外，每个节点恰好有一个父节点。</li><li>从根到每个节点的路径唯一。</li></ul></div><div class="card"><h3>递归定义</h3><ul><li>树可以是空集。</li><li>也可以由一个根节点和若干棵子树构成。</li><li>每棵子树本身仍然是树。</li></ul></div></div>
+<div class="warn"><b>二叉树：</b>如果每个节点最多有两个子节点，这棵树就叫二叉树。这里的“最多两个”不是“必须两个”，可以只有左孩子、只有右孩子，也可以没有孩子。</div>
+</section>
+
+<section class="notes-page" id="nested">
+<h1>四、树的嵌套列表实现</h1>
+<h2>1. 用 Python list 表示二叉树</h2>
+<div class="key"><b>核心表示：</b><code>[根节点值, 左子树, 右子树]</code>。因为左子树和右子树也是树，所以它们也可以继续写成同样的三元列表。</div>
+<div class="grid2"><div><div class="mini-tree">      a
+     / \
+    b   c
+   / \   \
+  d   e   f</div></div><div class="codebox"><div class="code-title">对应的嵌套列表</div><pre><code>myTree = ['a',
+          ['b', ['d', [], []], ['e', [], []]],
+          ['c', [], ['f', [], []]]]</code></pre></div></div>
+<h2>2. 基本操作代码</h2>
+<div class="codebox"><div class="code-title">代码解释：三元列表法</div><pre><code>def BinaryTree(r):
+    # 创建只有根节点 r 的二叉树，左右子树先为空列表
+    return [r, [], []]
+
+
+def insertLeft(root, newBranch):
+    # root[1] 是原来的左子树
+    t = root.pop(1)
+    if len(t) > 1:
+        # 如果原来有左子树，新节点插在中间，旧左子树变成新节点的左子树
+        root.insert(1, [newBranch, t, []])
+    else:
+        root.insert(1, [newBranch, [], []])
+    return root
+
+
+def insertRight(root, newBranch):
+    t = root.pop(2)
+    if len(t) > 1:
+        root.insert(2, [newBranch, [], t])
+    else:
+        root.insert(2, [newBranch, [], []])
+    return root
+
+
+def getRootVal(root):
+    return root[0]
+
+
+def setRootVal(root, newVal):
+    root[0] = newVal
+
+
+def getLeftChild(root):
+    return root[1]
+
+
+def getRightChild(root):
+    return root[2]</code></pre></div>
+<div class="explain"><b>理解 insertLeft：</b>如果当前位置本来就有左子树，直接覆盖会把旧数据弄丢。所以新节点要“插队”到当前位置和旧左子树之间，旧左子树被推下一层。</div>
+<div class="exam"><h3>例题1：嵌套列表读树</h3><p><b>题目：</b><code>t = ['a', ['b', [], []], ['c', [], []]]</code>，<code>getRootVal(t)</code>、<code>getLeftChild(t)[0]</code> 分别是什么？</p><p><b>答案：</b><code>getRootVal(t)</code> 是 <code>'a'</code>；<code>getLeftChild(t)[0]</code> 是左子树根节点 <code>'b'</code>。</p></div>
+</section>
+
+<section class="notes-page" id="linked">
+<h1>五、树的节点链接实现</h1>
+<h2>1. 用类表示节点</h2>
+<div class="key"><b>节点链接法：</b>每个节点是一个对象，对象里保存自己的值 <code>key</code>，以及指向左子树、右子树的引用 <code>leftChild</code> 和 <code>rightChild</code>。</div>
+<div class="codebox"><div class="code-title">代码解释：BinaryTree 类</div><pre><code>class BinaryTree:
+    def __init__(self, rootObj):
+        self.key = rootObj
+        self.leftChild = None
+        self.rightChild = None
+
+    def insertLeft(self, newNode):
+        if self.leftChild is None:
+            self.leftChild = BinaryTree(newNode)
+        else:
+            t = BinaryTree(newNode)
+            t.leftChild = self.leftChild
+            self.leftChild = t
+
+    def insertRight(self, newNode):
+        if self.rightChild is None:
+            self.rightChild = BinaryTree(newNode)
+        else:
+            t = BinaryTree(newNode)
+            t.rightChild = self.rightChild
+            self.rightChild = t
+
+    def getRightChild(self):
+        return self.rightChild
+
+    def getLeftChild(self):
+        return self.leftChild
+
+    def setRootVal(self, obj):
+        self.key = obj
+
+    def getRootVal(self):
+        return self.key</code></pre></div>
+<h2>2. 嵌套列表法 vs 节点链接法</h2>
+<table><thead><tr><th>实现方式</th><th>优点</th><th>更适合</th></tr></thead><tbody><tr><td>嵌套列表</td><td>结构简单，直接体现递归；看小例子很直观。</td><td>教学、表达式解析树的小规模实现。</td></tr><tr><td>节点链接类</td><td>更像真正的数据结构；可以给节点添加更多方法和属性。</td><td>复杂树结构、OJ 题、后续二叉查找树等。</td></tr></tbody></table>
+<div class="exam"><h3>例题2：画出代码生成的树</h3><p><b>题目：</b>执行下面代码后树长什么样？</p><div class="codebox"><pre><code>r = BinaryTree('a')
+r.insertLeft('b')
+r.insertRight('c')
+r.getLeftChild().insertLeft('d')</code></pre></div><p><b>答案：</b></p><div class="mini-tree">      a
+     / \
+    b   c
+   /
+  d</div></div>
+</section>
+
+<section class="notes-page" id="parse-build">
+<h1>六、表达式解析树：从全括号表达式建树</h1>
+<h2>1. 为什么表达式可以变成树</h2>
+<div class="key"><b>表达式解析树：</b>叶节点保存操作数，内部节点保存操作符。每棵子树都代表一个子表达式。</div>
+<div class="grid2"><div><p>全括号表达式：</p><p><code>((7 + 3) * (5 - 2))</code></p><p>因为有括号，所以 <code>7+3</code> 和 <code>5-2</code> 必须先算，最后再算乘法。树的层次正好表达了这种优先级。</p></div><div class="mini-tree">        *
+      /   \
+     +     -
+    / \   / \
+   7   3 5   2</div></div>
+<h2>2. 建树规则</h2>
+<table><thead><tr><th>读到的 token</th><th>动作</th><th>为什么</th></tr></thead><tbody><tr><td><code>(</code></td><td>创建左子节点，当前节点下降到左子节点。</td><td>一个新的子表达式开始了。</td></tr><tr><td>操作符 <code>+ - * /</code></td><td>把当前节点值设为操作符，创建右子节点，当前节点下降到右子节点。</td><td>操作符需要左、右两个操作数。</td></tr><tr><td>操作数</td><td>把当前节点值设为数字，当前节点上升到父节点。</td><td>叶节点填完了，可以回到上一层。</td></tr><tr><td><code>)</code></td><td>当前节点上升到父节点。</td><td>一个子表达式结束了。</td></tr></tbody></table>
+<div class="warn"><b>为什么要用栈？</b>下降到子节点很容易，但普通树节点没有“回到父节点”的方法。下降前把当前节点压入栈，上升时弹出栈顶，就能找回父节点。</div>
+<h2>3. 建树代码</h2>
+<div class="codebox"><div class="code-title">代码解释：用栈跟踪父节点</div><pre><code>class Stack:
+    def __init__(self):
+        self.items = []
+    def push(self, item):
+        self.items.append(item)
+    def pop(self):
+        return self.items.pop()
+
+
+def buildParseTree(fpexp):
+    fplist = fpexp.split()
+    pStack = Stack()
+    eTree = BinaryTree('')
+    pStack.push(eTree)
+    currentTree = eTree
+
+    for i in fplist:
+        if i == '(':
+            currentTree.insertLeft('')
+            pStack.push(currentTree)
+            currentTree = currentTree.getLeftChild()
+        elif i in ['+', '-', '*', '/']:
+            currentTree.setRootVal(i)
+            currentTree.insertRight('')
+            pStack.push(currentTree)
+            currentTree = currentTree.getRightChild()
+        elif i == ')':
+            currentTree = pStack.pop()
+        else:
+            # i 是操作数
+            currentTree.setRootVal(int(i))
+            currentTree = pStack.pop()
+
+    return eTree
+
+pt = buildParseTree('( 3 + ( 4 * 5 ) )')</code></pre></div>
+<div class="exam"><h3>例题3：建树动作判断</h3><p><b>题目：</b>扫描 <code>( 3 + ( 4 * 5 ) )</code>，读到 <code>+</code> 时应该做什么？</p><p><b>答案：</b>把当前节点设为 <code>+</code>，创建右子节点，把当前节点下降到这个右子节点；同时把原当前节点压入栈，方便之后上升回来。</p></div>
+</section>
+
+<section class="notes-page" id="parse-eval">
+<h1>七、表达式解析树：递归求值与恢复表达式</h1>
+<h2>1. 求值为什么天然递归</h2>
+<div class="key"><b>递归思路：</b>如果是叶节点，值就是节点里的数字；如果是内部节点，就先递归算左子树和右子树，再用根节点的操作符把两个结果合起来。</div>
+<div class="flow"><span class="step">算左子树</span><span class="arrow">→</span><span class="step">算右子树</span><span class="arrow">→</span><span class="step">用根操作符合并</span></div>
+<h2>2. 求值代码</h2>
+<div class="codebox"><div class="code-title">代码解释：evaluate</div><pre><code>import operator
+
+
+def evaluate(parseTree):
+    opers = {'+': operator.add,
+             '-': operator.sub,
+             '*': operator.mul,
+             '/': operator.truediv}
+
+    leftC = parseTree.getLeftChild()
+    rightC = parseTree.getRightChild()
+
+    if leftC and rightC:
+        fn = opers[parseTree.getRootVal()]
+        return fn(evaluate(leftC), evaluate(rightC))
+    else:
+        # 没有左右子节点，说明是叶节点，也就是操作数
+        return parseTree.getRootVal()</code></pre></div>
+<div class="explain"><b>为什么这是后序思想？</b>求值顺序是先算左子树，再算右子树，最后处理根节点操作符，正好是“左—右—根”。</div>
+<h2>3. 从解析树恢复表达式</h2>
+<div class="codebox"><div class="code-title">代码解释：用中序遍历生成全括号中缀表达式</div><pre><code>def printexp(tree):
+    sVal = ''
+    if tree:
+        if tree.getLeftChild() or tree.getRightChild():
+            sVal = '('
+        sVal = sVal + printexp(tree.getLeftChild())
+        sVal = sVal + str(tree.getRootVal())
+        sVal = sVal + printexp(tree.getRightChild())
+        if tree.getLeftChild() or tree.getRightChild():
+            sVal = sVal + ')'
+    return sVal</code></pre></div>
+<div class="exam"><h3>例题4：表达式树求值</h3><p><b>题目：</b>表达式解析树根为 <code>*</code>，左子树是 <code>7+3</code>，右子树是 <code>5-2</code>，求整棵树的值。</p><p><b>答案：</b>左子树值为 10，右子树值为 3，根节点做乘法，结果为 <code>10 * 3 = 30</code>。</p></div>
+</section>
+
+<section class="notes-page" id="traversal">
+<h1>八、树的三种遍历</h1>
+<h2>1. 什么是遍历</h2>
+<div class="key"><b>遍历 Traversal：</b>把树中所有节点都访问一遍。线性表按顺序走就行，但树有分支，所以必须规定访问顺序。</div>
+<h2>2. 三种遍历顺序</h2>
+<table><thead><tr><th>遍历方式</th><th>顺序</th><th>一句话记忆</th><th>常见用途</th></tr></thead><tbody><tr><td>前序 preorder</td><td>根 → 左 → 右</td><td>根在最前面，左在右前面</td><td>复制树、打印章节目录。</td></tr><tr><td>中序 inorder</td><td>左 → 根 → 右</td><td>根在中间，左在右前面</td><td>二叉搜索树有序输出；表达式恢复为中缀。</td></tr><tr><td>后序 postorder</td><td>左 → 右 → 根</td><td>根在最后，左在右前面</td><td>表达式求值、删除树。</td></tr></tbody></table>
+<div class="grid2"><div class="mini-tree">      A
+     / \
+    B   C
+   / \   \
+  D   E   F</div><div class="card"><p><b>前序：</b>A B D E C F</p><p><b>中序：</b>D B E A C F</p><p><b>后序：</b>D E B F C A</p></div></div>
+<h2>3. 遍历代码</h2>
+<div class="codebox"><div class="code-title">代码解释：只需要调整“访问根节点”的位置</div><pre><code>def preorder(tree):
+    if tree:
+        print(tree.getRootVal())
+        preorder(tree.getLeftChild())
+        preorder(tree.getRightChild())
+
+
+def inorder(tree):
+    if tree:
+        inorder(tree.getLeftChild())
+        print(tree.getRootVal())
+        inorder(tree.getRightChild())
+
+
+def postorder(tree):
+    if tree:
+        postorder(tree.getLeftChild())
+        postorder(tree.getRightChild())
+        print(tree.getRootVal())</code></pre></div>
+<div class="exam"><h3>例题5：给树写遍历序列</h3><p><b>题目：</b>对上面的 A-B-C-D-E-F 二叉树写出后序遍历。</p><p><b>答案：</b><code>D E B F C A</code>。后序规则是先左子树、再右子树、最后根。</p></div>
+</section>
+
+<section class="notes-page" id="heap-concept">
+<h1>九、优先队列与二叉堆</h1>
+<h2>1. 什么是优先队列</h2>
+<div class="grid2"><div class="card"><h3>普通队列</h3><p>按进入顺序排队，先进入的先出来，叫 FIFO。</p></div><div class="card"><h3>优先队列</h3><p>不是谁先进谁先出，而是谁优先级高谁先出。例如 VIP、操作系统重要任务。</p></div></div>
+<div class="key"><b>二叉堆：</b>实现优先队列的经典数据结构。它可以让插入 <code>insert</code> 和删除最小项 <code>delMin</code> 都保持在 <code>O(log n)</code>。</div>
+<h2>2. 二叉堆的两个性质</h2>
+<table><thead><tr><th>性质</th><th>意思</th><th>作用</th></tr></thead><tbody><tr><td>结构性质：完全二叉树</td><td>叶子最多只在最底层和次底层，最底层节点从左到右连续排列。</td><td>让树接近平衡，高度约为 <code>log n</code>。</td></tr><tr><td>次序性质：堆次序</td><td>最小堆中，父节点 key 小于等于子节点 key。</td><td>保证根节点永远是最小项。</td></tr></tbody></table>
+<div class="diagram"><svg viewBox="0 0 940 330" width="100%"><text x="470" y="35" text-anchor="middle" font-size="18" fill="#64748b">最小堆：父节点 ≤ 子节点，最小值在根</text><circle cx="470" cy="80" r="28" fill="#dcfce7" stroke="#16a34a"/><text x="470" y="87" text-anchor="middle" font-weight="700">5</text><circle cx="350" cy="165" r="26" fill="#ecfdf5" stroke="#86caa0"/><text x="350" y="172" text-anchor="middle">9</text><circle cx="590" cy="165" r="26" fill="#ecfdf5" stroke="#86caa0"/><text x="590" y="172" text-anchor="middle">11</text><circle cx="290" cy="250" r="24" fill="#eff6ff" stroke="#93c5fd"/><text x="290" y="257" text-anchor="middle">14</text><circle cx="410" cy="250" r="24" fill="#eff6ff" stroke="#93c5fd"/><text x="410" y="257" text-anchor="middle">18</text><circle cx="530" cy="250" r="24" fill="#eff6ff" stroke="#93c5fd"/><text x="530" y="257" text-anchor="middle">19</text><circle cx="650" cy="250" r="24" fill="#eff6ff" stroke="#93c5fd"/><text x="650" y="257" text-anchor="middle">21</text><path d="M450 101 L370 145 M490 101 L570 145 M340 187 L300 230 M360 187 L400 230 M580 187 L540 230 M600 187 L640 230" stroke="#166534" stroke-width="3"/></svg></div>
+<h2>3. 完全二叉树为什么能放进列表</h2>
+<div class="key"><b>下标公式：</b>列表第 0 项空着不用。若某节点下标是 <code>p</code>，左子节点下标是 <code>2p</code>，右子节点是 <code>2p+1</code>，父节点是 <code>p//2</code>。</div>
+<div class="codebox"><div class="code-title">列表形式</div><pre><code># 下标:  0  1  2   3   4   5   6   7
+heap = [0, 5, 9, 11, 14, 18, 19, 21]
+# 0 号位置不用，是为了让父子下标公式更简单</code></pre></div>
+</section>
+
+<section class="notes-page" id="heap-code">
+<h1>十、二叉堆的 Python 实现</h1>
+<h2>1. BinaryHeap 类框架</h2>
+<div class="codebox"><div class="code-title">代码解释：最小堆</div><pre><code>class BinaryHeap:
+    def __init__(self):
+        self.heapList = [0]   # 第 0 项不用
+        self.currentSize = 0
+
+    def isEmpty(self):
+        return self.currentSize == 0
+
+    def size(self):
+        return self.currentSize
+
+    def findMin(self):
+        if self.currentSize == 0:
+            return None
+        return self.heapList[1]</code></pre></div>
+<h2>2. insert：先放末尾，再上浮</h2>
+<div class="flow"><span class="step">新 key 加到列表末尾</span><span class="arrow">→</span><span class="step">与父节点比较</span><span class="arrow">→</span><span class="step">比父节点小就交换上浮</span></div>
+<div class="codebox"><div class="code-title">代码解释：percUp + insert</div><pre><code>def percUp(self, i):
+    while i // 2 > 0:
+        if self.heapList[i] < self.heapList[i // 2]:
+            self.heapList[i], self.heapList[i // 2] = self.heapList[i // 2], self.heapList[i]
+        i = i // 2
+
+
+def insert(self, k):
+    self.heapList.append(k)
+    self.currentSize += 1
+    self.percUp(self.currentSize)</code></pre></div>
+<h2>3. delMin：移走根，再让新根下沉</h2>
+<div class="flow"><span class="step">保存堆顶最小值</span><span class="arrow">→</span><span class="step">最后一项移到根</span><span class="arrow">→</span><span class="step">沿较小孩子方向下沉</span></div>
+<div class="codebox"><div class="code-title">代码解释：percDown + minChild + delMin</div><pre><code>def minChild(self, i):
+    if i * 2 + 1 > self.currentSize:
+        return i * 2
+    else:
+        if self.heapList[i * 2] < self.heapList[i * 2 + 1]:
+            return i * 2
+        else:
+            return i * 2 + 1
+
+
+def percDown(self, i):
+    while (i * 2) <= self.currentSize:
+        mc = self.minChild(i)
+        if self.heapList[i] > self.heapList[mc]:
+            self.heapList[i], self.heapList[mc] = self.heapList[mc], self.heapList[i]
+        i = mc
+
+
+def delMin(self):
+    retval = self.heapList[1]
+    self.heapList[1] = self.heapList[self.currentSize]
+    self.currentSize -= 1
+    self.heapList.pop()
+    if self.currentSize > 0:
+        self.percDown(1)
+    return retval</code></pre></div>
+<h2>4. buildHeap：从无序表一次建堆</h2>
+<div class="codebox"><div class="code-title">代码解释：从最后一个非叶节点开始下沉</div><pre><code>def buildHeap(self, alist):
+    i = len(alist) // 2
+    self.currentSize = len(alist)
+    self.heapList = [0] + alist[:]
+    while i > 0:
+        self.percDown(i)
+        i = i - 1</code></pre></div>
+<div class="explain"><b>复杂度结论：</b><code>insert</code> 和 <code>delMin</code> 每次只沿一条从叶到根或从根到叶的路径移动，路径长度约为树高，所以单次都是 <code>O(log n)</code>。建堆要区分两种方法：逐个 <code>insert</code> 建堆是 <code>O(n log n)</code>；从中间往前调用 <code>percDown</code> 的 <code>buildHeap</code> 可以做到 <code>O(n)</code>。</div>
+<h3>5. 逐个 <code>insert</code> 建堆：为什么是 <code>O(n log n)</code>？</h3>
+<div class="card"><p>想象现在有 <code>n</code> 个乱序数字，要一个一个塞进原本为空的最小堆。每插入一个数字，先把它放到堆的最后一个位置，然后让它不断和父节点比较，必要时一路上浮。</p><ul><li>插入第 1 个元素：树高为 0，不需要移动。</li><li>插入第 2 个元素：最多上浮 1 步。</li><li>当堆已经接近完整时，后面大量新插入的节点都在底层，最多可能一路上浮到根，单次代价接近 <code>log n</code>。</li></ul><p>严格地说，第 <code>k</code> 次插入的最坏代价是 <code>O(log k)</code>，所以总成本是 <code>log 1 + log 2 + ... + log n = O(n log n)</code>。可以把它理解成：很多靠后的节点都可能走一条接近树高的路。</p><p class="formula" style="text-align:center;font-size:20px">n 次插入 × 每次最多 log n 步 ≈ O(n log n)</p></div>
+<h3>6. 从中间往前 <code>buildHeap</code>：为什么能做到 <code>O(n)</code>？</h3>
+<div class="card"><p><code>buildHeap</code> 用的是反过来的思路：先把所有数字直接放进列表，形成一棵“结构已经完整”的完全二叉树，然后从最后一个非叶节点 <code>n//2</code> 开始，往前逐个调用 <code>percDown</code> 下沉。</p><ol><li><b>最底层叶子节点：</b>数量最多，约占整棵树的一半，但它们已经在底层，不需要下沉，移动 0 步。</li><li><b>倒数第二层节点：</b>数量约 <code>n/4</code>，最多下沉 1 步。</li><li><b>再往上一层节点：</b>数量约 <code>n/8</code>，最多下沉 2 步。</li><li><b>越靠近根：</b>单个节点可能下沉更多步，但这样的节点数量越来越少，根节点虽然最多下沉 <code>log n</code> 步，但只有 1 个。</li></ol><p>所以总步数不是 <code>n</code> 个节点都走 <code>log n</code> 步，而是“很多节点走很少步，少数节点走较多步”。</p><p class="formula" style="text-align:center;font-size:20px">总步数 ≈ n/4×1 + n/8×2 + n/16×3 + ... + 1×log n = O(n)</p><p>这就是 Floyd 建堆算法的核心优势：从下往上局部调整，整体只需要线性时间。</p></div>
+<div class="exam"><h3>例题6：二叉堆下标</h3><p><b>题目：</b>堆中某节点下标为 5，它的父节点下标是多少？如果它有孩子，左右孩子下标是多少？</p><p><b>答案：</b>父节点是 <code>5//2 = 2</code>；左孩子是 <code>10</code>，右孩子是 <code>11</code>。</p></div>
+</section>
+
+<section class="notes-page" id="oj">
+<h1>十一、OJ 题讲解与应用</h1>
+<h2>1. OJ 901：二叉树复原 + 中序遍历</h2>
+<div class="exam"><h3>题目思想</h3><p>给出层序列表，例如 <code>[5, 4, 7, 3, None, 2, None, -1, None, 9]</code>，要求恢复二叉树，然后进行中序遍历。</p><p><b>核心：</b>建树用队列；中序遍历用递归。</p></div>
+<div class="codebox"><div class="code-title">代码解释：层序列表建树</div><pre><code>from collections import deque
+
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
+def build_tree_level(data):
+    if not data or data[0] is None:
+        return None
+
+    root = TreeNode(data[0])
+    q = deque([root])
+    i = 1
+
+    while q and i < len(data):
+        node = q.popleft()
+
+        if i < len(data) and data[i] is not None:
+            node.left = TreeNode(data[i])
+            q.append(node.left)
+        i += 1
+
+        if i < len(data) and data[i] is not None:
+            node.right = TreeNode(data[i])
+            q.append(node.right)
+        i += 1
+
+    return root
+
+
+def inorder_node(root, ans=None):
+    if ans is None:
+        ans = []
+    if root:
+        inorder_node(root.left, ans)
+        ans.append(root.val)
+        inorder_node(root.right, ans)
+    return ans</code></pre></div>
+<h2>2. OJ 902：翻转二叉树</h2>
+<div class="exam"><h3>题目思想</h3><p>把每个节点的左子树和右子树交换。例：根 4 的左右子树 2 和 7 交换，下面所有节点也递归交换。</p><p><b>核心：</b>翻转二叉树用递归；建树和中序遍历方法与前题相同。</p></div>
+<div class="codebox"><div class="code-title">代码解释：递归翻转</div><pre><code>def invert_tree(root):
+    if root is None:
+        return None
+
+    # 先递归翻转左右子树，再交换
+    left = invert_tree(root.left)
+    right = invert_tree(root.right)
+    root.left, root.right = right, left
+    return root</code></pre></div>
+<h2>3. OJ 903：多叉树后序遍历</h2>
+<div class="exam"><h3>题目思想</h3><p>多叉树不是每个节点最多两个孩子，而是可以有多个孩子。可以用嵌套列表表示：<code>[节点值, [子树1, 子树2, ...]]</code>。</p><p><b>核心：</b>后序遍历仍然是递归：先遍历所有子树，最后访问根节点。</p></div>
+<div class="codebox"><div class="code-title">代码解释：多叉树后序遍历</div><pre><code>def postorder_nary(tree):
+    # tree = [value, children]
+    value, children = tree[0], tree[1]
+    ans = []
+    for child in children:
+        ans.extend(postorder_nary(child))
+    ans.append(value)
+    return ans
+
+# 示例：1 的孩子是 2、7、8
+root = [1, [[2, []], [7, []], [8, []]]]
+print(postorder_nary(root))  # [2, 7, 8, 1]</code></pre></div>
+<h2>4. 自主练习思路</h2>
+<table><thead><tr><th>题型</th><th>核心方法</th><th>一句话思路</th></tr></thead><tbody><tr><td>合并二叉树</td><td>递归</td><td>两个节点都存在就相加；只有一个存在就返回那个节点。</td></tr><tr><td>对称二叉树</td><td>递归/层序</td><td>判断左子树的左与右子树的右、左子树的右与右子树的左是否相等。</td></tr><tr><td>前序 + 中序推理二叉树</td><td>递归</td><td>前序第一个是根；在中序中找到根，左边是左子树，右边是右子树，然后递归。</td></tr></tbody></table>
+<div class="codebox"><div class="code-title">代码解释：由前序和中序复原二叉树</div><pre><code>def build_from_pre_in(preorder, inorder):
+    if not preorder:
+        return None
+
+    root_val = preorder[0]
+    root = TreeNode(root_val)
+    mid = inorder.index(root_val)
+
+    root.left = build_from_pre_in(preorder[1:1+mid], inorder[:mid])
+    root.right = build_from_pre_in(preorder[1+mid:], inorder[mid+1:])
+    return root</code></pre></div>
+</section>
+
+<section class="notes-page" id="flash">
+<h1>十二、考前速记与自测</h1>
+<div class="flash-intro"><b>速记卡：</b>支持浏览 / 默写 / 填空。只有适合提关键词的卡片才设置填空，不强行挖空。键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab"><div class="flash-topbar"><div class="flash-modes"><button class="flash-chip active" data-mode="browse" type="button">浏览</button><button class="flash-chip" data-mode="write" type="button">默写</button><button class="flash-chip" data-mode="fill" type="button">填空</button></div><div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div></div><div class="study-card" id="studyCard" tabindex="0" aria-live="polite"><div class="study-inner" id="studyInner"><div class="study-face study-front"><div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div><h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help" id="frontHelp">点击卡片或按 Space 翻面</div></div><div class="study-face study-back"><div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div><h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div></div></div></div><div class="flash-topbar" style="margin-top:14px"><div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div><div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div></div><div class="flash-keys">这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握。</div></div>
+</section>
+
+<section class="notes-page" id="sources">
+<h1>十三、资料标准与筛选说明</h1>
+<h2>1. 整理依据</h2>
+<ul><li>以用户提供的 <b>pydsa-601-609-含OJ题讲解-合并版.pdf</b> 为本章知识点标准。</li><li>收入范围覆盖：树的概念、树结构术语、嵌套列表实现、节点链接实现、表达式解析树、树遍历、优先队列、二叉堆及 Python 实现。</li><li>PDF 后部的 OJ 题讲解也属于本章范围，因此将二叉树复原、翻转二叉树、多叉树遍历等作为对应知识点后的应用例题。</li></ul>
+<h2>2. 内容压缩与取舍</h2>
+<div class="warn">树的例子如生物分类、文件系统、HTML 文档、域名体系只保留用于理解“层次结构”的部分，不展开成额外专题。</div>
+<h2>3. 暂不收入内容</h2>
+<div class="warn">二叉查找树、AVL 树、树结构小结等属于后续 610-615 范围，本章只在必要处提到“后续会用到树的思想”，不提前展开。</div>
+<h2>4. 例题放置原则</h2>
+<div class="key">例题和 OJ 应用放在对应知识点后面：建树题放在层序建树与队列之后，翻转题放在递归树操作之后，多叉树遍历放在遍历知识之后，避免还没学完概念就先看到题。</div>
+</section>
+
+</main></div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0; const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){ current=Math.max(0,Math.min(pages.length-1,i)); pages.forEach((p,k)=>p.classList.toggle('active',k===current)); nav.forEach((a,k)=>a.classList.toggle('active',k===current)); progress.textContent=(current+1)+' / '+pages.length; buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));}); if(hashUpdate) history.replaceState(null,'','#'+pages[current].id); document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'}); }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [{"type": "概念", "title": "树和线性结构最大的区别是什么？", "answer": "线性结构像一条线：每个数据项通常只有一个前驱和一个后继。树是层次结构：除根节点外，每个节点只有一个父节点，但可以有多个子节点，从根到任意节点的路径是唯一的。", "cloze": "树结构中，除根节点外，每个节点恰有一个____节点。", "fillAnswer": "父"}, {"type": "术语", "title": "层级和高度怎么区分？", "answer": "层级 Level 是从根到某个节点经过的边数，根的层级是 0。高度 Height 是整棵树里所有节点层级的最大值。", "cloze": "树的高度是所有节点____的最大值。", "fillAnswer": "层级"}, {"type": "实现", "title": "嵌套列表法怎样表示一棵二叉树？", "answer": "用三元列表 [root, left, right] 表示。第 0 项是根节点值，第 1 项是左子树，第 2 项是右子树；左右子树本身也用同样结构表示，所以天然递归。", "cloze": "嵌套列表法中，myTree[0] 是根，myTree[1] 是____，myTree[2] 是____。", "fillAnswer": "左子树；右子树"}, {"type": "实现", "title": "insertLeft 遇到已有左子树时怎么办？", "answer": "新节点不能直接覆盖旧左子树。正确做法是让新节点成为当前节点的左孩子，并把原来的左子树挂到新节点的左孩子位置，相当于把旧子树向下推一层。", "cloze": null, "fillAnswer": null}, {"type": "解析树", "title": "为什么建立表达式解析树需要栈？", "answer": "建树时向左/右子节点下降很容易，但普通 BinaryTree 节点没有指向父节点的引用。栈用来记录下降前的父节点，需要上升时 pop 出父节点即可。", "cloze": "建立表达式解析树时，栈用来记录____节点。", "fillAnswer": "父"}, {"type": "解析树", "title": "表达式解析树中操作数和操作符分别放在哪里？", "answer": "操作数放在叶节点，操作符放在内部节点。这样每棵子树都表示一个子表达式，先算底层子树，再逐层向上得到总表达式结果。", "cloze": "表达式解析树中，操作数通常在____节点，操作符通常在____节点。", "fillAnswer": "叶；内部"}, {"type": "遍历", "title": "前序、中序、后序遍历顺序分别是什么？", "answer": "前序：根、左、右。中序：左、根、右。后序：左、右、根。记忆关键是“根”出现的位置：根在前就是前序，根在中间就是中序，根在最后就是后序。", "cloze": "后序遍历的顺序是左、右、____。", "fillAnswer": "根"}, {"type": "堆", "title": "优先队列和普通队列有什么区别？", "answer": "普通队列按进入时间先后出队，遵循 FIFO；优先队列按优先级出队，优先级高的数据项先出来。二叉堆是实现优先队列的经典结构。", "cloze": "普通队列按 FIFO 出队，优先队列按____出队。", "fillAnswer": "优先级"}, {"type": "堆", "title": "完全二叉树为什么适合用列表存？", "answer": "因为完全二叉树从上到下、从左到右几乎没有空洞。若节点下标为 p，则左孩子是 2p，右孩子是 2p+1，父节点是 p//2。", "cloze": "堆列表中节点 p 的左孩子下标是____，右孩子下标是____。", "fillAnswer": "2p；2p+1"}, {"type": "堆", "title": "最小堆的堆次序是什么？", "answer": "任意节点的 key 都不小于父节点的 key，也就是父节点 ≤ 子节点。因此最小 key 一定在根节点。", "cloze": "最小堆中，根节点保存整棵堆的____ key。", "fillAnswer": "最小"}, {"type": "代码", "title": "insert 和 delMin 为什么都是 O(log n)？", "answer": "insert 只沿着从新节点到根的一条路径上浮，delMin 只沿着从根到叶的一条路径下沉。完全二叉树高度约为 log n，所以两个操作都是 O(log n)。", "cloze": null, "fillAnswer": null}];
+  const storageKey='dsa601609_flash_mastered_v1'; let mastered=new Set(JSON.parse(localStorage.getItem(storageKey)||'[]')); let cardIndex=0; let mode='browse';
+  const studyCard=document.getElementById('studyCard'), frontType=document.getElementById('frontType'), frontCount=document.getElementById('frontCount'), frontTitle=document.getElementById('frontTitle'), frontBody=document.getElementById('frontBody'), backBody=document.getElementById('backBody'), flashProgress=document.getElementById('flashProgress'), flashPosition=document.getElementById('flashPosition'), masterBtn=document.getElementById('masterCard');
+  function saveMastered(){localStorage.setItem(storageKey,JSON.stringify([...mastered]));}
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function updateProgress(){const done=mastered.size,total=cards.length,pct=total?Math.round(done*100/total):0; flashProgress.textContent=`已掌握 ${done}/${total} · ${pct}%`; flashPosition.textContent=`${cardIndex+1} / ${cards.length}`; masterBtn.textContent=mastered.has(cardIndex)?'⭐ 取消已掌握':'⭐ 标记已掌握';}
+  function renderCard(){const c=cards[cardIndex]; studyCard.classList.remove('flipped'); frontType.textContent=c.type; frontCount.textContent=`第 ${cardIndex+1} 题`+(mastered.has(cardIndex)?' · 已掌握':''); frontTitle.textContent=c.title; let body=''; if(mode==='browse'){body='<p>先自己回忆，再翻面核对。</p>';} else if(mode==='write'){body='<p><b>默写模式：</b>先自己写完整答案，再翻面核对。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="在这里默写。"></textarea></div>';} else { if(c.cloze&&c.fillAnswer){body=`<p><b>填空模式：</b>先补关键词，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${esc(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="写关键词"/><div class="fill-feedback" id="fillFeedback"></div></div>`;} else {body='<p><b>这张卡不强行设置填空。</b></p><p>这类问题更适合用“浏览”或“默写”完整理解。</p>';} } frontBody.innerHTML=body; backBody.innerHTML=`<p>${esc(c.answer)}</p>`+(c.fillAnswer?`<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${esc(c.fillAnswer)}</div>`:''); updateProgress(); const fillInput=document.getElementById('fillInput'); if(fillInput){fillInput.addEventListener('input',()=>{const fb=document.getElementById('fillFeedback'); const v=fillInput.value.trim().toLowerCase(); if(!v){fb.textContent='';return;} const ans=(c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase(); const ok=ans.split(/[;；]/).some(part=>part.trim()&&v.includes(part.trim())); fb.textContent=ok?'关键词有对上的部分，可以翻面核对完整表述。':'先继续想想关键词，再翻面核对也可以。';});} }
+  function flipCard(){studyCard.classList.toggle('flipped');} function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();} function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();} function toggleMaster(){if(mastered.has(cardIndex)) mastered.delete(cardIndex); else mastered.add(cardIndex); saveMastered(); renderCard();}
+  function isSpaceKey(e){return e.key===' '||e.key==='Spacebar'||e.code==='Space';} function isTypingTarget(t){const tag=(t&&t.tagName||'').toLowerCase(); return ['input','textarea','select'].includes(tag)||!!(t&&t.isContentEditable);}
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); mode=btn.dataset.mode; renderCard();}));
+  studyCard?.addEventListener('click',e=>{if(e.target.closest('textarea,input,label,button,.study-write,.study-fill')) return; flipCard();});
+  document.getElementById('flipCard')?.addEventListener('click',flipCard); document.getElementById('prevCard')?.addEventListener('click',prevCard); document.getElementById('nextCard')?.addEventListener('click',nextCard); document.getElementById('masterCard')?.addEventListener('click',toggleMaster); document.getElementById('resetMastery')?.addEventListener('click',()=>{mastered=new Set();saveMastered();renderCard();});
+  document.addEventListener('keydown',e=>{const onFlash=pages[current]&&pages[current].id==='flash'; const typing=isTypingTarget(e.target||document.activeElement); if(onFlash){ if(typing)return; if(e.key==='ArrowRight'){e.preventDefault();nextCard();return;} if(e.key==='ArrowLeft'){e.preventDefault();prevCard();return;} if(isSpaceKey(e)){e.preventDefault();flipCard();return;} if(e.key==='m'||e.key==='M'){e.preventDefault();toggleMaster();return;} } if(typing)return; if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();show(current+1);} if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(current-1);} }, true);
+  renderCard(); show(current,false);
+})();
+</script>
+</body>
+</html>
