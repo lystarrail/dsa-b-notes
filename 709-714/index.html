@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>数据结构与算法B Python版｜709-714 复习笔记</title>
+<style>
+:root{--bg:#edf5f0;--paper:#ffffff;--ink:#17251c;--muted:#607266;--green:#166534;--green2:#22a36a;--soft:#eaf7ef;--line:#d7eadf;--orange:#f97316;--blue:#2563eb;--red:#dc2626;--code:#0f172a;--yellow:#eab308;}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",Arial,sans-serif;color:var(--ink);line-height:1.78;font-size:16px}.app{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,#fff,#f8fcfa);border-right:1px solid var(--line);box-shadow:6px 0 22px rgba(20,83,45,.08);padding:20px 16px;z-index:5}.brand{padding:10px 10px 16px;border-bottom:2px solid var(--line);margin-bottom:12px}.brand-title{font-size:22px;font-weight:800;color:var(--green);line-height:1.3}.brand-sub{font-size:13px;color:var(--muted);margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}.controls button{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:12px;padding:8px 9px;cursor:pointer;font:inherit;font-size:14px}.controls button:hover{background:var(--soft)}.controls button:disabled{opacity:.45;cursor:not-allowed}.progress{text-align:center;color:var(--muted);font-size:14px}.nav{display:flex;flex-direction:column;gap:6px;margin-top:14px}.nav a{display:grid;grid-template-columns:34px 1fr;gap:9px;align-items:start;padding:10px;border-radius:13px;color:#244434;text-decoration:none;border:1px solid transparent;line-height:1.38}.nav a:hover{background:#eef8f2;border-color:#d2e6da}.nav a.active{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:24px;border-radius:999px;background:#e8f3ed;color:var(--green);font-size:12px;font-weight:800}.nav a.active .num{background:#16a34a;color:white}.tip{margin:18px 4px 4px;padding:12px;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;border-radius:12px;font-size:13px;line-height:1.55}.main{max-width:1140px;width:100%;margin:0 auto;padding:34px 44px 54px}.notes-page{display:none;background:var(--paper);border-radius:18px;box-shadow:0 8px 28px rgba(20,83,45,.08);padding:34px 42px;margin:0 auto}.notes-page.active{display:block}.cover-page{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#e8f4ee,#fff)}h1{font-size:32px;line-height:1.35;color:var(--green);border-bottom:3px solid var(--line);padding-bottom:10px;margin:0 0 22px}h2{font-size:23px;color:var(--green);margin:26px 0 10px;line-height:1.45}h3{font-size:19px;color:#1f4f36;margin:18px 0 8px}p{margin:8px 0 11px}ul,ol{margin:8px 0 14px 1.5em;padding:0}li{margin:6px 0}.muted{color:var(--muted)}.subtitle{font-size:22px;color:#365944;margin:10px 0 20px}.meta{max-width:820px;border-top:2px solid #a7c4b5;padding-top:18px;color:#4b5563}.toc{width:100%;max-width:860px;text-align:left;background:#ffffffd6;border:1px solid var(--line);border-radius:18px;padding:20px 28px;margin-top:24px}.toc ol{columns:2;column-gap:36px}.card,.explain,.example,.codebox,.exam,.warn,.key{border-radius:14px;padding:15px 17px;margin:14px 0;border:1px solid var(--line);background:#fbfffc}.explain{background:#eff6ff;border-left:5px solid var(--blue);color:#14315f}.example{background:#fff7ed;border-left:5px solid var(--orange)}.exam{background:#fef2f2;border-left:5px solid var(--red)}.key{background:#ecfdf5;border-left:5px solid var(--green2)}.warn{background:#fff7ed;border-left:5px solid var(--yellow)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.small{font-size:13px;color:#64748b}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;border-radius:8px;padding:2px 6px}.codebox{background:#0f172a;color:#e5e7eb;border-color:#111827;overflow:auto}.codebox pre{margin:0;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;line-height:1.65}.code-title{color:#93c5fd;font-weight:700;margin-bottom:8px}code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;color:#334155;border-radius:8px;padding:1px 6px}.codebox code{background:transparent;color:inherit;padding:0}table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:15px;line-height:1.6}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}th{background:#e9f5ee;color:#17472f}.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}.step{background:#ecfdf5;border:1px solid #b7e4c7;border-radius:999px;padding:7px 12px;color:#14532d;font-weight:700}.arrow{color:#64748b;font-weight:800}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;border:1px solid #cbd5e1;border-bottom-width:3px;border-radius:6px;padding:1px 6px;background:#fff}.diagram{background:#fbfffc;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0;overflow:auto}.diagram svg{display:block;min-width:780px}.diagram-cap{font-size:13px;color:#64748b;margin-top:6px}.algo-list{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:10px;margin:12px 0}.algo-list div{border:1px solid var(--line);background:#fbfffc;border-radius:12px;padding:10px;text-align:center}.algo-list b{display:block;color:var(--green)}.mini-tree{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px;line-height:1.35;overflow:auto}.flash-intro{background:#ecfdf5;border-left:5px solid var(--green2);border-radius:14px;padding:14px 16px;margin:14px 0;color:#17472f}.flash-lab{border:1px solid var(--line);background:#fbfffc;border-radius:18px;padding:18px;margin:18px 0 24px;box-shadow:0 6px 18px rgba(20,83,45,.06)}.flash-topbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px}.flash-modes,.flash-actions,.flash-status{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.flash-chip,.flash-btn{border:1px solid #b7d5c4;background:#fff;color:var(--green);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit;font-size:14px}.flash-chip.active,.flash-btn.primary{background:#dcfce7;border-color:#86caa0;color:#0f3f25;font-weight:700}.flash-progress{font-size:14px;color:var(--muted)}.study-card{perspective:1200px;min-height:540px;cursor:pointer;outline:none}.study-inner{position:relative;width:100%;min-height:540px;transition:transform .55s;transform-style:preserve-3d}.study-card.flipped .study-inner{transform:rotateY(180deg)}.study-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(20,83,45,.08);display:flex;flex-direction:column;justify-content:flex-start;overflow:auto}.study-front{background:linear-gradient(135deg,#fff,#ecfdf5)}.study-back{background:linear-gradient(135deg,#0f3f25,#166534);color:#fff;transform:rotateY(180deg)}.study-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px;font-size:13px}.study-badge{display:inline-flex;align-items:center;gap:6px;background:#e8f3ed;color:#166534;border-radius:999px;padding:4px 10px;font-weight:700}.study-back .study-badge{background:rgba(255,255,255,.16);color:#fff}.study-count{color:#64748b}.study-back .study-count{color:rgba(255,255,255,.8)}.study-front h3,.study-back h3{margin:6px 0 10px;border:0;color:inherit;font-size:24px;line-height:1.4}.study-front p,.study-back p,.study-front li,.study-back li{font-size:16px;line-height:1.72}.study-help{margin-top:auto;padding-top:12px;font-size:13px;color:#64748b}.study-back .study-help{color:rgba(255,255,255,.82)}.study-write,.study-fill{margin-top:12px;border-top:1px dashed #cfe2d6;padding-top:12px}.study-write textarea,.study-fill input{width:100%;margin-top:8px;border:1px solid #cbd5e1;border-radius:12px;padding:12px;font:inherit;font-size:15px;background:#fff;color:#17251c}.study-write textarea{min-height:160px;resize:vertical}.fill-feedback{margin-top:8px;font-size:14px;color:#14532d;min-height:24px}.flash-keys{margin-top:12px;font-size:13px;color:#64748b}@media screen {.main > .notes-page{display:none !important}.main > .notes-page.active{display:block !important}.main > .cover-page.active{display:flex !important}}@media(max-width:960px){.app{grid-template-columns:1fr}.side{height:auto;max-height:44vh;border-right:none;border-bottom:1px solid var(--line)}.main{padding:22px 14px 34px}.notes-page{padding:24px 20px}.toc ol{columns:1}.grid2,.grid3{grid-template-columns:1fr}.cover-page{min-height:auto}h1{font-size:27px}h2{font-size:21px}h3{font-size:18px}.algo-list{grid-template-columns:1fr 1fr}.diagram{overflow-x:auto}.flash-topbar{flex-direction:column;align-items:flex-start}.study-card,.study-inner{min-height:580px}}@media print{body{background:white}.app{display:block}.side{display:none}.main{max-width:none;padding:0}.notes-page{display:block!important;box-shadow:none;border-radius:0;page-break-after:always}a{text-decoration:none;color:inherit}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="brand"><div class="brand-title">DSA(B) Python版</div><div class="brand-sub">709-714｜图及算法（下）</div></div>
+<div class="controls"><button data-action="prev">上一页</button><span class="progress" id="progress">1 / 1</span><button data-action="next">下一页</button><button data-action="first">封面</button><span></span><button data-action="last">末页</button></div>
+<nav class="nav" id="nav"><a href="#cover"><span class="num">01</span><span>封面与使用方法</span></a>
+<a href="#map"><span class="num">02</span><span>本章考什么、怎么学</span></a>
+<a href="#dfs-intro"><span class="num">03</span><span>通用 DFS：发现时间与结束时间</span></a>
+<a href="#dfs-code"><span class="num">04</span><span>DFS 代码与复杂度</span></a>
+<a href="#topo"><span class="num">05</span><span>拓扑排序</span></a>
+<a href="#scc-def"><span class="num">06</span><span>强连通分支 SCC</span></a>
+<a href="#kosaraju"><span class="num">07</span><span>Kosaraju 算法</span></a>
+<a href="#dijkstra"><span class="num">08</span><span>Dijkstra 最短路径</span></a>
+<a href="#dijkstra-code"><span class="num">09</span><span>Dijkstra 代码与复杂度</span></a>
+<a href="#mst"><span class="num">10</span><span>最小生成树 MST</span></a>
+<a href="#prim"><span class="num">11</span><span>Prim 算法</span></a>
+<a href="#compare"><span class="num">12</span><span>图算法综合对比</span></a>
+<a href="#flash"><span class="num">13</span><span>嵌入式速记卡与自测</span></a>
+<a href="#sources"><span class="num">14</span><span>资料标准与筛选说明</span></a></nav>
+<div class="tip">可点击目录翻页，也可以按键盘 <span class="kbd">←</span> / <span class="kbd">→</span>。速记卡页按 <span class="kbd">Space</span> 翻面。</div>
+</aside>
+<main class="main">
+<section class="notes-page cover-page" id="cover">
+<h1>数据结构与算法B（Python版）<br/>709-714 复习笔记</h1>
+
+<div class="subtitle">通用 DFS、拓扑排序、强连通分支、Dijkstra 最短路径、Prim 最小生成树</div>
+<div class="meta">
+<p><b>适用范围：</b>本份笔记以 <b>pydsa-709-714 合并版</b>为标准，整理图算法（下）的核心知识、Python 实现思路和典型应用题。</p>
+<p><b>学习目标：</b>这章要从“会背算法名字”变成“知道算法解决什么问题、为什么这样做、代码里哪些变量在起作用”。</p>
+<p><b>阅读建议：</b>先把 DFS 的颜色、前驱、发现时间、结束时间搞清楚；后面的拓扑排序和强连通分支都依赖 DFS。再学 Dijkstra 与 Prim，它们都用优先队列，但目标不同。</p>
+</div>
+<div class="toc"><h2>目录</h2><ol>
+<li>本章考什么、怎么学</li><li>通用 DFS：发现时间与结束时间</li><li>DFS 代码与复杂度</li><li>拓扑排序</li><li>强连通分支 SCC</li><li>Kosaraju 算法</li><li>Dijkstra 最短路径</li><li>Dijkstra 代码与复杂度</li><li>最小生成树 MST</li><li>Prim 算法</li><li>图算法综合对比</li><li>考前速记卡</li><li>资料标准与筛选说明</li>
+</ol></div>
+
+</section><section class="notes-page" id="map">
+<h1>一、本章考什么、怎么学</h1>
+
+<div class="key"><b>本章主线：</b>701-708 学了图的表示、BFS、DFS 入门；709-714 继续学习更通用的 DFS，以及基于图的几个典型算法：拓扑排序、强连通分支、Dijkstra、Prim。</div>
+<div class="algo-list"><div><b>DFS</b>深度优先森林</div><div><b>拓扑排序</b>DAG 的依赖顺序</div><div><b>SCC</b>互相可达的最大顶点群</div><div><b>Dijkstra</b>正权最短路径</div><div><b>Prim</b>最小生成树</div></div>
+<h2>1. 这章算法在解决什么问题</h2>
+<table><thead><tr><th>算法</th><th>输入是什么</th><th>输出/目标是什么</th><th>一句话理解</th></tr></thead><tbody>
+<tr><td>通用 DFS</td><td>任意图</td><td>DFS 树/森林、发现时间、结束时间</td><td>一条路尽量走到底，走不动再回退。</td></tr>
+<tr><td>拓扑排序</td><td>有向无圈图 DAG</td><td>满足依赖关系的线性序列</td><td>谁必须先做，就排在前面。</td></tr>
+<tr><td>强连通分支</td><td>有向图</td><td>若干互相可达的顶点集合</td><td>把“内部来回都通”的点分成一组。</td></tr>
+<tr><td>Dijkstra</td><td>带正权图 + 起点</td><td>起点到各顶点的最短距离</td><td>每次先确定当前距离最短的点。</td></tr>
+<tr><td>Prim</td><td>带权连通无向图</td><td>连接所有顶点且总权重最小的树</td><td>从一棵小树开始，每次接最便宜的安全边。</td></tr>
+</tbody></table>
+<h2>2. 学习顺序</h2>
+<div class="flow"><span class="step">通用 DFS</span><span class="arrow">→</span><span class="step">结束时间</span><span class="arrow">→</span><span class="step">拓扑排序</span><span class="arrow">→</span><span class="step">强连通分支</span><span class="arrow">→</span><span class="step">Dijkstra / Prim</span></div>
+<div class="warn"><b>易混提醒：</b>Dijkstra 和 Prim 都常用优先队列，但 Dijkstra 关心“从起点到某点的最短距离 dist”，Prim 关心“把树外某点接进当前树的最小边权”。</div>
+
+</section><section class="notes-page" id="dfs-intro">
+<h1>二、通用 DFS：发现时间与结束时间</h1>
+
+<h2>1. 通用 DFS 和骑士周游 DFS 有什么区别</h2>
+<div class="grid2"><div class="card"><h3>骑士周游中的 DFS</h3><p>目标是找一条包含所有格子的路径，像一棵没有分支的“退化树”。走不通就回溯，换下一条路。</p></div><div class="card"><h3>通用 DFS</h3><p>目标是在图中尽量深入搜索，连接尽量多的顶点。图可能不连通，所以可能生成多棵树，叫 DFS 森林。</p></div></div>
+<div class="key"><b>通用 DFS 的核心：</b>把每个顶点从白色（未发现）变成灰色（已发现，正在探索），最后变成黑色（探索完成）。同时记录前驱、发现时间和结束时间。</div>
+<h2>2. 三个状态与三个属性</h2>
+<table><thead><tr><th>内容</th><th>含义</th><th>代码中常见名字</th></tr></thead><tbody>
+<tr><td>颜色 color</td><td>white 未发现；gray 已发现但还没完成；black 已完成。</td><td><code>color</code></td></tr>
+<tr><td>前驱 predecessor</td><td>从哪个顶点走到当前顶点，用来形成 DFS 树/森林。</td><td><code>pred</code></td></tr>
+<tr><td>发现时间 discovery</td><td>第一次访问到这个顶点的时间。</td><td><code>disc</code></td></tr>
+<tr><td>结束时间 finish</td><td>当前顶点的所有邻接点都处理完的时间。</td><td><code>fin</code></td></tr>
+</tbody></table>
+<div class="diagram"><svg viewBox="0 0 940 310" width="100%"><defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs><text x="470" y="36" text-anchor="middle" fill="#64748b" font-size="18">DFS 颜色变化：白 → 灰 → 黑</text><circle cx="220" cy="140" r="54" fill="#fff" stroke="#94a3b8" stroke-width="3"/><text x="220" y="147" text-anchor="middle" font-size="22" font-weight="700">白</text><circle cx="470" cy="140" r="54" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text x="470" y="147" text-anchor="middle" font-size="22" font-weight="700">灰</text><circle cx="720" cy="140" r="54" fill="#111827" stroke="#111827" stroke-width="3"/><text x="720" y="147" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">黑</text><path d="M282 140 L405 140" stroke="#166534" stroke-width="3" marker-end="url(#arrow)"/><path d="M532 140 L655 140" stroke="#166534" stroke-width="3" marker-end="url(#arrow)"/><text x="345" y="118" text-anchor="middle" fill="#14532d">发现顶点</text><text x="595" y="118" text-anchor="middle" fill="#14532d">邻接点处理完</text><text x="220" y="230" text-anchor="middle" fill="#64748b">未访问</text><text x="470" y="230" text-anchor="middle" fill="#64748b">正在递归访问</text><text x="720" y="230" text-anchor="middle" fill="#64748b">完成探索</text></svg></div>
+<h2>3. 发现时间和结束时间的括号性质</h2>
+<div class="explain"><b>括号性质：</b>如果 v 是 u 的 DFS 子孙，那么 u 会比 v 更早被发现，也会比 v 更晚结束。也就是 <code>u.discovery &lt; v.discovery &lt; v.finish &lt; u.finish</code>。这像一对外层括号包住内层括号。</div>
+<div class="exam"><h3>例题1：判断 DFS 时间关系</h3><p><b>题目：</b>如果在 DFS 树中，B 是 A 的子节点，那么 A 和 B 的发现/结束时间有什么关系？</p><p><b>答案：</b>A 先被发现，B 后被发现；B 先结束，A 后结束。写成不等式是 <code>A.d &lt; B.d &lt; B.f &lt; A.f</code>。</p></div>
+
+</section><section class="notes-page" id="dfs-code">
+<h1>三、DFS 代码与复杂度</h1>
+
+<h2>1. 通用 DFS 代码框架</h2>
+<div class="codebox"><div class="code-title">代码解释：DFSGraph</div><pre><code>class DFSGraph(Graph):
+    def __init__(self):
+        super().__init__()
+        self.time = 0
+
+    def dfs(self):
+        # 先把所有顶点初始化为未发现
+        for aVertex in self:
+            aVertex.setColor('white')
+            aVertex.setPred(-1)
+
+        # 图可能不连通，所以要从每个白色顶点尝试开始
+        for aVertex in self:
+            if aVertex.getColor() == 'white':
+                self.dfsvisit(aVertex)
+
+    def dfsvisit(self, startVertex):
+        startVertex.setColor('gray')
+        self.time += 1
+        startVertex.setDiscovery(self.time)
+
+        for nextVertex in startVertex.getConnections():
+            if nextVertex.getColor() == 'white':
+                nextVertex.setPred(startVertex)
+                self.dfsvisit(nextVertex)
+
+        startVertex.setColor('black')
+        self.time += 1
+        startVertex.setFinish(self.time)</code></pre></div>
+<h2>2. 这段代码每一步在做什么</h2>
+<div class="flow"><span class="step">初始化颜色</span><span class="arrow">→</span><span class="step">遇到白点就开一棵 DFS 树</span><span class="arrow">→</span><span class="step">标灰并记发现时间</span><span class="arrow">→</span><span class="step">递归访问白色邻居</span><span class="arrow">→</span><span class="step">标黑并记结束时间</span></div>
+<div class="warn"><b>BFS 和 DFS 的关键区别：</b>BFS 用队列显式保存“待访问顶点”；DFS 通过递归调用隐式使用了函数调用栈。</div>
+<h2>3. 复杂度</h2>
+<ul><li><code>dfs()</code> 中初始化和检查顶点，数量级是 <code>O(|V|)</code>。</li><li><code>dfsvisit()</code> 中每条边最多被检查一次，数量级是 <code>O(|E|)</code>。</li><li>合起来：<span class="formula">O(|V| + |E|)</span>。</li></ul>
+<div class="exam"><h3>例题2：DFS 为什么会生成森林？</h3><p><b>题目：</b>为什么通用 DFS 代码里，外层要对每个顶点都判断一次是否为白色？</p><p><b>答案：</b>因为图可能不是连通的。从一个起点出发只能访问它能到达的部分；如果还有白色顶点，说明它属于另一块区域，需要再从它开始建立新的 DFS 树，所以整体可能是 DFS 森林。</p></div>
+
+</section><section class="notes-page" id="topo">
+<h1>四、拓扑排序：把依赖关系排成线性顺序</h1>
+
+<h2>1. 拓扑排序解决什么问题</h2>
+<div class="key"><b>拓扑排序：</b>把一个 DAG（有向无圈图）中的顶点排成一条线性序列，使得如果图中有边 <code>v → w</code>，那么在线性序列里 <code>v</code> 一定排在 <code>w</code> 前面。</div>
+<div class="grid2"><div class="card"><h3>适合的问题</h3><p>课程先修关系、任务依赖、项目排期、工作流程。</p></div><div class="card"><h3>不适合的问题</h3><p>有循环依赖的问题。例如 A 依赖 B，B 又依赖 A，这时无法排出合法顺序。</p></div></div>
+<h2>2. DFS 实现拓扑排序</h2>
+<table><thead><tr><th>步骤</th><th>做法</th><th>原因</th></tr></thead><tbody>
+<tr><td>建图</td><td>工作项/课程作为顶点，先后依赖作为有向边。</td><td>边 <code>v → w</code> 表示 v 必须在 w 之前。</td></tr>
+<tr><td>调用 DFS</td><td>得到每个顶点的结束时间。</td><td>一个顶点的后续依赖通常会更早完成探索。</td></tr>
+<tr><td>排序输出</td><td>按结束时间从大到小排列顶点。</td><td>结束时间大的顶点排在前面。</td></tr>
+</tbody></table>
+<div class="codebox"><div class="code-title">代码解释：拓扑排序简化写法</div><pre><code>def topological_sort(graph):
+    graph.dfs()
+    vertices = list(graph)
+    vertices.sort(key=lambda v: v.getFinish(), reverse=True)
+    return [v.getId() for v in vertices]</code></pre></div>
+<h2>3. 小例子</h2>
+<div class="diagram"><svg viewBox="0 0 940 270" width="100%"><defs><marker id="arr2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker></defs><g fill="#ecfdf5" stroke="#86caa0" stroke-width="2"><rect x="120" y="90" width="110" height="50" rx="12"/><rect x="330" y="50" width="110" height="50" rx="12"/><rect x="330" y="150" width="110" height="50" rx="12"/><rect x="560" y="90" width="120" height="50" rx="12"/><rect x="760" y="90" width="90" height="50" rx="12"/></g><g text-anchor="middle" font-size="16" fill="#14532d" font-weight="700"><text x="175" y="122">买材料</text><text x="385" y="82">热锅</text><text x="385" y="182">调面糊</text><text x="620" y="122">煎饼</text><text x="805" y="122">吃</text></g><path d="M230 115 L330 75" stroke="#166534" stroke-width="3" marker-end="url(#arr2)"/><path d="M230 115 L330 175" stroke="#166534" stroke-width="3" marker-end="url(#arr2)"/><path d="M440 75 L560 105" stroke="#166534" stroke-width="3" marker-end="url(#arr2)"/><path d="M440 175 L560 125" stroke="#166534" stroke-width="3" marker-end="url(#arr2)"/><path d="M680 115 L760 115" stroke="#166534" stroke-width="3" marker-end="url(#arr2)"/></svg><div class="diagram-cap">一种合法顺序：买材料 → 热锅 → 调面糊 → 煎饼 → 吃。热锅和调面糊的相对顺序可以互换，只要都在煎饼之前即可。</div></div>
+<div class="exam"><h3>例题3：判断拓扑序列是否合理</h3><p><b>题目：</b>若有边 <code>A → C</code>、<code>B → C</code>、<code>C → D</code>，序列 <code>B, A, C, D</code> 是否是合法拓扑排序？</p><p><b>答案：</b>合法。A 和 B 都在 C 前面，C 在 D 前面；A 与 B 之间没有依赖，所以谁先谁后都可以。</p></div>
+
+</section><section class="notes-page" id="scc-def">
+<h1>五、强连通分支 SCC：有向图里的“互相可达群”</h1>
+
+<h2>1. 什么是强连通分支</h2>
+<div class="key"><b>强连通分支 SCC：</b>在有向图中，如果一个顶点集合 C 里任意两个顶点 v、w 都能互相到达，即 v 到 w 有路径，w 到 v 也有路径，而且 C 已经不能再扩大，那么 C 就是一个强连通分支。</div>
+<div class="warn"><b>只在有向图里重点讨论：</b>因为无向图里“连通”本身就是双向的；强连通强调的是有向边限制下的“来回都通”。</div>
+<h2>2. 为什么有用</h2>
+<ul><li>网页链接网络中，可以发现高度聚集的网站群。</li><li>大型有向图中，可以把互相可达的一组点压缩成一个点，从而简化图。</li><li>强连通分支之间形成的压缩图通常更容易分析。</li></ul>
+<div class="diagram"><svg viewBox="0 0 940 320" width="100%"><defs><marker id="sccGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#166534"/></marker><marker id="sccBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker><marker id="sccGray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#64748b"/></marker></defs><rect x="80" y="55" width="270" height="210" rx="22" fill="#ecfdf5" stroke="#86caa0" stroke-width="2"/><text x="215" y="285" text-anchor="middle" fill="#14532d">SCC 1</text><rect x="460" y="55" width="180" height="120" rx="22" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/><text x="550" y="197" text-anchor="middle" fill="#1d4ed8">SCC 2</text><rect x="720" y="150" width="130" height="100" rx="22" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/><text x="785" y="275" text-anchor="middle" fill="#9a3412">SCC 3</text><g fill="#fff" stroke="#166534" stroke-width="2"><circle cx="150" cy="120" r="26"/><circle cx="280" cy="120" r="26"/><circle cx="215" cy="210" r="26"/></g><g font-size="16" text-anchor="middle"><text x="150" y="126">A</text><text x="280" y="126">B</text><text x="215" y="216">C</text></g><path d="M176 120 L254 120" stroke="#166534" stroke-width="3" marker-end="url(#sccGreen)"/><path d="M267 143 L230 190" stroke="#166534" stroke-width="3" marker-end="url(#sccGreen)"/><path d="M200 190 L160 142" stroke="#166534" stroke-width="3" marker-end="url(#sccGreen)"/><g fill="#fff" stroke="#2563eb" stroke-width="2"><circle cx="510" cy="115" r="25"/><circle cx="590" cy="115" r="25"/></g><text x="510" y="121" text-anchor="middle">D</text><text x="590" y="121" text-anchor="middle">E</text><path d="M535 106 L565 106" stroke="#2563eb" stroke-width="3" marker-end="url(#sccBlue)"/><path d="M565 128 L535 128" stroke="#2563eb" stroke-width="3" marker-end="url(#sccBlue)"/><circle cx="785" cy="200" r="25" fill="#fff" stroke="#f97316" stroke-width="2"/><text x="785" y="206" text-anchor="middle">F</text><path d="M350 160 L460 120" stroke="#64748b" stroke-width="2" marker-end="url(#sccGray)"/><path d="M640 135 L720 185" stroke="#64748b" stroke-width="2" marker-end="url(#sccGray)"/></svg></div>
+<div class="exam"><h3>例题4：判断是否强连通</h3><p><b>题目：</b>若 A 能到 B，B 能到 C，C 能回到 A，那么 A、B、C 是否在同一个强连通分支中？</p><p><b>答案：</b>是。因为 A、B、C 任意两点之间都可以沿着有向路径相互到达。</p></div>
+
+</section><section class="notes-page" id="kosaraju">
+<h1>六、Kosaraju 算法：用两趟 DFS 找 SCC</h1>
+
+<h2>1. 转置图是什么</h2>
+<div class="key"><b>图的转置：</b>把有向图 G 中所有边方向反过来，得到 <code>Gᵀ</code>。例如原来有 <code>v → w</code>，转置后变成 <code>w → v</code>。</div>
+<div class="explain"><b>重要性质：</b>原图 G 和转置图 <code>Gᵀ</code> 的强连通分支划分相同。因为如果一组点在原图里能互相到达，把所有边反过来后，仍然能互相到达。</div>
+<h2>2. Kosaraju 算法思路</h2>
+<table><thead><tr><th>步骤</th><th>做法</th><th>记忆</th></tr></thead><tbody>
+<tr><td>第一趟 DFS</td><td>在原图 G 上运行 DFS，记录每个顶点的结束时间。</td><td>先拿到“结束时间顺序”。</td></tr>
+<tr><td>转置</td><td>把 G 的所有边反向，得到 <code>Gᵀ</code>。</td><td>把边全部倒过来。</td></tr>
+<tr><td>第二趟 DFS</td><td>在 <code>Gᵀ</code> 上按原图结束时间从大到小的顺序启动 DFS。</td><td>按“最晚结束的先搜”。</td></tr>
+<tr><td>得到结果</td><td>第二趟 DFS 森林中的每棵树就是一个强连通分支。</td><td>一棵树 = 一个 SCC。</td></tr>
+</tbody></table>
+<div class="codebox"><div class="code-title">代码解释：Kosaraju 的核心框架</div><pre><code>def kosaraju_scc(graph):
+    # 1. 原图 DFS，得到 finish 时间
+    graph.dfs()
+    order = sorted(list(graph), key=lambda v: v.getFinish(), reverse=True)
+
+    # 2. 构造转置图
+    gt = transpose(graph)
+
+    # 3. 在转置图中按 order 开始 DFS
+    # 每次从一个白色顶点开始搜到的一整棵树，就是一个 SCC
+    sccs = []
+    for v in gt.vertices_in_order(order):
+        if v.getColor() == 'white':
+            component = []
+            dfs_collect(gt, v, component)
+            sccs.append(component)
+    return sccs</code></pre></div>
+<div class="warn"><b>考试记忆：</b>Kosaraju 不是“随便 DFS 两次”，而是：原图 DFS 记结束时间 → 转置图 → 按结束时间倒序 DFS。</div>
+<div class="exam"><h3>例题5：Kosaraju 四步填空</h3><p><b>题目：</b>Kosaraju 算法先对原图做 DFS 计算什么？然后对什么图做第二趟 DFS？</p><p><b>答案：</b>先计算每个顶点的结束时间；然后对转置图 <code>Gᵀ</code> 做第二趟 DFS，并按第一趟结束时间从大到小选择起点。</p></div>
+
+</section><section class="notes-page" id="dijkstra">
+<h1>七、Dijkstra：带正权图的最短路径</h1>
+
+<h2>1. 最短路径问题</h2>
+<div class="key"><b>带权最短路径：</b>图中每条边都有权重，路径长度是边权重之和。Dijkstra 算法用于从一个起点出发，求到其它所有顶点的最短带权路径。</div>
+<div class="grid2"><div class="card"><h3>BFS 适合什么</h3><p>无权图，或者所有边权相同。每走一条边代价一样。</p></div><div class="card"><h3>Dijkstra 适合什么</h3><p>带正权图。不同边的代价不同，需要累计权重。</p></div></div>
+<h2>2. Dijkstra 的核心变量</h2>
+<table><thead><tr><th>变量/结构</th><th>含义</th><th>作用</th></tr></thead><tbody>
+<tr><td><code>dist</code></td><td>从起点到当前顶点的目前已知最短距离。</td><td>作为优先级。</td></tr>
+<tr><td><code>pred</code></td><td>最短路径上当前顶点的前驱顶点。</td><td>用于回溯路径。</td></tr>
+<tr><td>优先队列</td><td>按 <code>dist</code> 从小到大取顶点。</td><td>每次先处理目前最近的顶点。</td></tr>
+<tr><td><code>decreaseKey</code></td><td>某顶点距离变小后，更新它在优先队列中的优先级。</td><td>让更近的顶点更早出队。</td></tr>
+</tbody></table>
+<h2>3. 算法过程</h2>
+<div class="flow"><span class="step">起点 dist=0</span><span class="arrow">→</span><span class="step">其它点 dist=∞</span><span class="arrow">→</span><span class="step">取出 dist 最小点</span><span class="arrow">→</span><span class="step">用它更新邻接点</span><span class="arrow">→</span><span class="step">重复直到队列空</span></div>
+<div class="warn"><b>限制：</b>课件强调 Dijkstra 只能用于正权重图；如果有负权边，就不应使用 Dijkstra。</div>
+<div class="exam"><h3>例题6：手算一次 Dijkstra 更新</h3><p><b>题目：</b>从 A 出发，已知 <code>dist[A]=0</code>，有边 <code>A→B</code> 权重 4，<code>A→C</code> 权重 2。初始其它点为 ∞，第一次从 A 出队后，B 和 C 的 dist 变成多少？</p><p><b>答案：</b><code>dist[B]=4</code>，<code>dist[C]=2</code>。下一次应优先处理 C，因为 C 的 dist 更小。</p></div>
+
+</section><section class="notes-page" id="dijkstra-code">
+<h1>八、Dijkstra 代码与复杂度</h1>
+
+<h2>1. Python 简化实现</h2>
+<div class="codebox"><div class="code-title">代码解释：用 heapq 写 Dijkstra</div><pre><code>import heapq
+
+def dijkstra(graph, start):
+    # graph[u] = [(v, weight), ...]
+    dist = {v: float('inf') for v in graph}
+    pred = {v: None for v in graph}
+    dist[start] = 0
+
+    pq = [(0, start)]  # (当前距离, 顶点)
+
+    while pq:
+        cur_dist, u = heapq.heappop(pq)
+
+        # 如果这条记录已经不是最新的，就跳过
+        if cur_dist > dist[u]:
+            continue
+
+        for v, weight in graph[u]:
+            new_dist = dist[u] + weight
+            if new_dist < dist[v]:
+                dist[v] = new_dist
+                pred[v] = u
+                heapq.heappush(pq, (new_dist, v))
+
+    return dist, pred</code></pre></div>
+<div class="explain"><b>代码里的松弛 relax：</b><code>new_dist = dist[u] + weight</code>。如果从起点到 u，再从 u 走到 v，比原来记录的 <code>dist[v]</code> 更短，就更新 <code>dist[v]</code> 和 <code>pred[v]</code>。</div>
+<h2>2. 复杂度</h2>
+<table><thead><tr><th>部分</th><th>数量级</th><th>原因</th></tr></thead><tbody>
+<tr><td>建堆/初始化</td><td><code>O(|V|)</code></td><td>每个顶点初始化一次。</td></tr>
+<tr><td>顶点出队</td><td><code>O(|V| log |V|)</code></td><td>每个顶点出队一次，每次堆操作约 <code>log |V|</code>。</td></tr>
+<tr><td>边的更新</td><td><code>O(|E| log |V|)</code></td><td>每条边可能引起一次优先级更新。</td></tr>
+<tr><td>总复杂度</td><td><code>O((|V|+|E|) log |V|)</code></td><td>合并顶点和边的堆操作。</td></tr>
+</tbody></table>
+<h2>3. 用 pred 回溯路径</h2>
+<div class="codebox"><div class="code-title">代码解释：从 pred 恢复 start 到 end 的路径</div><pre><code>def shortest_path(pred, start, end):
+    path = []
+    cur = end
+    while cur is not None:
+        path.append(cur)
+        if cur == start:
+            break
+        cur = pred[cur]
+    path.reverse()
+    return path</code></pre></div>
+<div class="exam"><h3>例题7：Dijkstra 和 BFS 的关系</h3><p><b>题目：</b>如果图中所有边权都相同，最短路径问题可以用什么算法理解？</p><p><b>答案：</b>可以还原为 BFS。因为每条边代价一样，BFS 按层扩展时，第一次到达某顶点就是边数最少的路径。</p></div>
+
+</section><section class="notes-page" id="mst">
+<h1>九、最小生成树 MST：用最低总费用连通所有顶点</h1>
+
+<h2>1. 信息广播问题为什么引出 MST</h2>
+<div class="grid3"><div class="card"><h3>单播</h3><p>广播源分别给每个接收者发送一份，可能在共享路由上重复传输同一消息。</p></div><div class="card"><h3>洪水</h3><p>每个路由器向所有邻居转发，若不限制会造成大量重复；通常要加 TTL。</p></div><div class="card"><h3>最小生成树</h3><p>只沿一棵覆盖所有顶点且总费用最小的树传播，既连通又避免重复圈。</p></div></div>
+<h2>2. 生成树与最小生成树</h2>
+<div class="key"><b>生成树：</b>包含图中所有顶点，并用最少数量的边保持连通的子图。若有 <code>|V|</code> 个顶点，生成树有 <code>|V|-1</code> 条边。</div>
+<div class="key"><b>最小生成树 MST：</b>在所有生成树中，边权重之和最小的那棵树。</div>
+<table><thead><tr><th>概念</th><th>要求</th><th>不能有什么</th></tr></thead><tbody>
+<tr><td>生成树</td><td>包含所有顶点；连通；边数最少。</td><td>不能有圈；有圈就说明边多了。</td></tr>
+<tr><td>最小生成树</td><td>在生成树基础上，总权重最小。</td><td>不能为了省一条局部小边而破坏连通。</td></tr>
+</tbody></table>
+<div class="warn"><b>Dijkstra vs MST：</b>Dijkstra 解决“从一个起点到各点的最短路径”；MST 解决“用总费用最小的一组边把所有点连起来”。目标不同，结果也可能不同。</div>
+<div class="exam"><h3>例题8：生成树边数</h3><p><b>题目：</b>一个连通图有 6 个顶点，它的一棵生成树应该有多少条边？</p><p><b>答案：</b>5 条。生成树若有 <code>|V|</code> 个顶点，就有 <code>|V|-1</code> 条边。</p></div>
+
+</section><section class="notes-page" id="prim">
+<h1>十、Prim 算法：每次接入最便宜的安全边</h1>
+
+<h2>1. Prim 是贪心算法</h2>
+<div class="key"><b>Prim 算法：</b>从一个起点开始维护一棵正在扩张的树 T。只要 T 还没包含所有顶点，就找一条权重最小且可以安全添加的边，把树外的新顶点接进来。</div>
+<div class="explain"><b>安全添加的边：</b>一端在当前树 T 里，另一端不在 T 里。这样加进去不会形成圈，还能让树多包含一个顶点。</div>
+<h2>2. Prim 的过程</h2>
+<div class="flow"><span class="step">选起点</span><span class="arrow">→</span><span class="step">看从树内到树外的边</span><span class="arrow">→</span><span class="step">选权重最小的安全边</span><span class="arrow">→</span><span class="step">加入新顶点</span><span class="arrow">→</span><span class="step">直到包含所有顶点</span></div>
+<h2>3. Python 简化实现</h2>
+<div class="codebox"><div class="code-title">代码解释：用优先队列实现 Prim</div><pre><code>import heapq
+
+def prim(graph, start):
+    # graph[u] = [(weight, v), ...]
+    visited = set()
+    mst_edges = []
+    pq = [(0, start, None)]  # (边权, 当前点, 从哪个点来)
+    total = 0
+
+    while pq and len(visited) < len(graph):
+        weight, u, parent = heapq.heappop(pq)
+        if u in visited:
+            continue
+
+        visited.add(u)
+        total += weight
+        if parent is not None:
+            mst_edges.append((parent, u, weight))
+
+        for w, v in graph[u]:
+            if v not in visited:
+                heapq.heappush(pq, (w, v, u))
+
+    return total, mst_edges</code></pre></div>
+<div class="warn"><b>代码理解：</b>优先队列里放的是“把某个树外顶点接进来的候选边”。每次弹出最小边，如果终点已经在树里就跳过，否则加入 MST。</div>
+<div class="exam"><h3>例题9：Prim 中什么边不能加</h3><p><b>题目：</b>当前树 T 已经包含 A、B、C。一条边连接 B 和 C，权重很小，这条边能加入 Prim 的树吗？</p><p><b>答案：</b>不能。因为 B 和 C 都已经在树里，加这条边会形成圈；Prim 只能加“一端在树内，另一端在树外”的安全边。</p></div>
+
+</section><section class="notes-page" id="compare">
+<h1>十一、图算法综合对比</h1>
+
+<h2>1. 本章图算法总表</h2>
+<table><thead><tr><th>算法</th><th>解决问题</th><th>关键数据/思想</th><th>复杂度</th></tr></thead><tbody>
+<tr><td>DFS</td><td>深度搜索、建 DFS 树/森林</td><td>颜色、前驱、发现/结束时间、递归栈</td><td><code>O(|V|+|E|)</code></td></tr>
+<tr><td>拓扑排序</td><td>DAG 的依赖顺序</td><td>DFS 结束时间倒序</td><td><code>O(|V|+|E|)</code></td></tr>
+<tr><td>Kosaraju</td><td>强连通分支</td><td>原图 DFS、转置图、结束时间倒序 DFS</td><td><code>O(|V|+|E|)</code></td></tr>
+<tr><td>Dijkstra</td><td>正权图单源最短路径</td><td><code>dist</code>、<code>pred</code>、优先队列、松弛</td><td><code>O((|V|+|E|)log|V|)</code></td></tr>
+<tr><td>Prim</td><td>最小生成树</td><td>贪心、安全边、优先队列</td><td>常见堆实现约 <code>O((|V|+|E|)log|V|)</code></td></tr>
+</tbody></table>
+<h2>2. 易混点集中对比</h2>
+<div class="grid2"><div class="card"><h3>BFS / DFS</h3><p>BFS 一层层扩展，适合无权最短路径；DFS 一条路尽量深入，适合拓扑排序、强连通分支等。</p></div><div class="card"><h3>Dijkstra / Prim</h3><p>Dijkstra 的优先级是“起点到当前点的累计距离”；Prim 的优先级是“把新点接进树的边权”。</p></div><div class="card"><h3>拓扑排序 / SCC</h3><p>拓扑排序要求 DAG；SCC 专门处理有向图中的互相可达分组。</p></div><div class="card"><h3>最短路径 / 最小生成树</h3><p>最短路径关注从一个源点到目标的路；最小生成树关注用最小总边权连通全图。</p></div></div>
+<div class="exam"><h3>例题10：选算法</h3><p><b>题目：</b>课程 A 必须先于课程 B，课程 B 必须先于课程 C，要给课程安排学习顺序，用什么算法思想？</p><p><b>答案：</b>拓扑排序。课程是顶点，先修关系是有向边，输出满足依赖的线性序列。</p></div>
+<div class="exam"><h3>例题11：选算法</h3><p><b>题目：</b>给定城市道路图，每条路有通行时间，要求从学校到所有地点的最短时间，用什么算法？</p><p><b>答案：</b>Dijkstra。因为这是带正权图上的单源最短路径问题。</p></div>
+
+</section><section class="notes-page" id="flash">
+<h1>十二、考前速记与自测</h1>
+
+<div class="flash-intro"><b>速记卡：</b>支持浏览 / 默写 / 填空。只有确实适合填关键词的卡片才设置填空，不强行挖空。键盘：<code>←</code><code>→</code> 切卡，<code>Space</code> 翻面，<code>M</code> 标记掌握。</div>
+<div class="flash-lab" id="flashlab"><div class="flash-topbar"><div class="flash-modes"><button class="flash-chip active" data-mode="browse" type="button">浏览</button><button class="flash-chip" data-mode="write" type="button">默写</button><button class="flash-chip" data-mode="fill" type="button">填空</button></div><div class="flash-status"><span class="flash-progress" id="flashProgress">已掌握 0/0 · 0%</span><span class="flash-progress" id="flashPosition">1 / 1</span></div></div><div class="study-card" id="studyCard" tabindex="0" aria-live="polite"><div class="study-inner" id="studyInner"><div class="study-face study-front"><div class="study-meta"><span class="study-badge" id="frontType">概念</span><span class="study-count" id="frontCount">第 1 题</span></div><h3 id="frontTitle">加载中…</h3><div id="frontBody"></div><div class="study-help" id="frontHelp">点击卡片或按 Space 翻面</div></div><div class="study-face study-back"><div class="study-meta"><span class="study-badge">答案</span><span class="study-count" id="backCount">核对答案</span></div><h3 id="backTitle">参考答案</h3><div id="backBody"></div><div class="study-help">按 <b>M</b> 可标记“已掌握”，再次按可取消。</div></div></div></div><div class="flash-topbar" style="margin-top:14px"><div class="flash-actions"><button class="flash-btn" id="prevCard" type="button">◀ 上一张</button><button class="flash-btn primary" id="flipCard" type="button">翻转</button><button class="flash-btn" id="nextCard" type="button">下一张 ▶</button></div><div class="flash-actions"><button class="flash-btn" id="masterCard" type="button">⭐ 标记已掌握</button><button class="flash-btn" id="resetMastery" type="button">重置进度</button></div></div><div class="flash-keys">这一页中，<code>←</code><code>→</code> 控制切卡，<code>Space</code> 翻面，<code>M</code> 标记已掌握。</div></div>
+
+</section><section class="notes-page" id="sources">
+<h1>十三、资料标准与筛选说明</h1>
+
+<h2>整理依据</h2>
+<ul><li>以用户提供的 <b>pydsa-709-714-合并版.pdf</b> 为本章知识点标准。</li><li>收入范围覆盖：通用 DFS、拓扑排序、强连通分支、Kosaraju 算法、Dijkstra 最短路径、最小生成树、Prim 算法和图结构小结。</li><li>代码部分以课件中的算法思想为基础，用更适合复习和代码题理解的 Python 简化实现表达。</li></ul>
+<h2>内容压缩与取舍</h2>
+<div class="warn">互联网路由、网页链接、早餐煎饼、信息广播等背景例子只保留用于理解算法应用的部分，不展开成网络工程或项目管理专题。</div>
+<h2>例题放置原则</h2>
+<div class="key">例题均放在对应知识点后面：DFS 例题放在发现/结束时间后；拓扑排序例题放在 DAG 与结束时间倒序后；Dijkstra 和 Prim 例题放在各自算法过程与代码解释后。</div>
+
+</section>
+</main></div>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.main > .notes-page')];
+  const nav=[...document.querySelectorAll('.nav a')];
+  const progress=document.getElementById('progress');
+  const buttons=[...document.querySelectorAll('[data-action]')];
+  let current=0; const hash=decodeURIComponent(location.hash||'').replace('#','');
+  if(hash){const target=document.getElementById(hash); const idx=pages.indexOf(target); if(idx>=0) current=idx;}
+  function show(i,hashUpdate=true){ current=Math.max(0,Math.min(pages.length-1,i)); pages.forEach((p,k)=>p.classList.toggle('active',k===current)); nav.forEach((a,k)=>a.classList.toggle('active',k===current)); progress.textContent=(current+1)+' / '+pages.length; buttons.forEach(btn=>{const a=btn.dataset.action;btn.disabled=(current===0&&(a==='prev'||a==='first'))||(current===pages.length-1&&(a==='next'||a==='last'));}); if(hashUpdate) history.replaceState(null,'','#'+pages[current].id); document.querySelector('.main').scrollIntoView({behavior:'smooth',block:'start'}); }
+  nav.forEach((a,i)=>a.addEventListener('click',e=>{e.preventDefault();show(i,true);}));
+  buttons.forEach(btn=>btn.addEventListener('click',()=>{const a=btn.dataset.action;if(a==='prev')show(current-1);if(a==='next')show(current+1);if(a==='first')show(0);if(a==='last')show(pages.length-1);}));
+
+  const cards = [{"type": "DFS", "title": "通用 DFS 记录哪两个时间？", "answer": "记录发现时间 discovery 和结束时间 finish。发现时间是顶点从白色变灰色的时刻；结束时间是该顶点所有邻接点都处理完、从灰色变黑色的时刻。", "cloze": "DFS 中，顶点第一次变灰时记录____时间，变黑时记录____时间。", "fillAnswer": "发现；结束"}, {"type": "DFS", "title": "DFS 为什么可能生成森林？", "answer": "因为图可能不连通。从一个起点 DFS 只能访问它能到达的顶点；若还有白色顶点，就要从它重新开始一棵 DFS 树，多棵树合起来就是 DFS 森林。", "cloze": null, "fillAnswer": null}, {"type": "DFS", "title": "DFS 的括号性质是什么？", "answer": "如果 v 是 u 的 DFS 子孙，则 u 先被发现，v 后被发现；v 先结束，u 后结束：u.d < v.d < v.f < u.f。", "cloze": "若 v 是 u 的 DFS 子孙，则 u 比 v 更早____，更晚____。", "fillAnswer": "发现；结束"}, {"type": "拓扑排序", "title": "拓扑排序处理什么图？", "answer": "拓扑排序处理 DAG，即有向无圈图。它输出一个顶点线性序列，使得每条边 v→w 中，v 都排在 w 前面。", "cloze": "拓扑排序处理的是____图。", "fillAnswer": "DAG/有向无圈"}, {"type": "拓扑排序", "title": "用 DFS 做拓扑排序时按什么排序？", "answer": "先对 DAG 调用 DFS，得到每个顶点的结束时间；然后按结束时间从大到小排列顶点。", "cloze": "拓扑排序可按 DFS 的____时间从大到小输出。", "fillAnswer": "结束"}, {"type": "强连通", "title": "什么是强连通分支？", "answer": "在有向图中，一个最大顶点集合 C 内任意两个顶点都能互相到达，则 C 是强连通分支。关键词是：有向图、互相可达、最大子集。", "cloze": "强连通分支要求集合内任意两个顶点都能____到达。", "fillAnswer": "互相"}, {"type": "强连通", "title": "Kosaraju 算法的步骤是什么？", "answer": "第一趟在原图 G 上 DFS，记录结束时间；第二步把图转置得到 Gᵀ；第三步在 Gᵀ 上按原结束时间倒序 DFS；第二趟 DFS 森林中的每棵树就是一个强连通分支。", "cloze": "Kosaraju：原图 DFS 记结束时间，转置图，再按结束时间____序 DFS。", "fillAnswer": "倒/从大到小"}, {"type": "最短路径", "title": "Dijkstra 解决什么问题？", "answer": "Dijkstra 解决带正权图上的单源最短路径问题：给定起点，求它到其它顶点的最短路径长度，并可通过前驱恢复路径。", "cloze": "Dijkstra 解决带正权图的____最短路径问题。", "fillAnswer": "单源"}, {"type": "最短路径", "title": "Dijkstra 中 dist 表示什么？", "answer": "dist 表示从起点到当前顶点的目前已知最短带权路径长度。优先队列通常按 dist 从小到大取顶点。", "cloze": "Dijkstra 中，优先队列通常按顶点的____值排序。", "fillAnswer": "dist"}, {"type": "限制", "title": "Dijkstra 为什么不能用于负权图？", "answer": "Dijkstra 的贪心前提是：当前 dist 最小的顶点一旦出队，其最短距离就确定了。负权边可能在之后把已经确定的距离变小，破坏这个前提。", "cloze": null, "fillAnswer": null}, {"type": "最小生成树", "title": "生成树有什么特点？", "answer": "生成树包含原图所有顶点，并用最少边保持连通，因此没有圈。若有 |V| 个顶点，生成树有 |V|-1 条边。", "cloze": "有 |V| 个顶点的生成树有____条边。", "fillAnswer": "|V|-1"}, {"type": "Prim", "title": "Prim 算法每一步选什么边？", "answer": "Prim 每一步选择权重最小的安全边。安全边指一端在当前树中、另一端不在当前树中的边，这样加入后不会形成圈。", "cloze": "Prim 每步选择权重最小的____边。", "fillAnswer": "安全"}, {"type": "综合", "title": "Dijkstra 和 Prim 的核心区别是什么？", "answer": "Dijkstra 关心从起点到各顶点的累计最短距离；Prim 关心把树外顶点接入当前树的最小边权。二者都可用优先队列，但优先级含义不同。", "cloze": null, "fillAnswer": null}];
+  const storageKey='dsa709714_flash_mastered_v1'; let mastered=new Set(JSON.parse(localStorage.getItem(storageKey)||'[]')); let cardIndex=0; let mode='browse';
+  const studyCard=document.getElementById('studyCard'), frontType=document.getElementById('frontType'), frontCount=document.getElementById('frontCount'), frontTitle=document.getElementById('frontTitle'), frontBody=document.getElementById('frontBody'), backBody=document.getElementById('backBody'), flashProgress=document.getElementById('flashProgress'), flashPosition=document.getElementById('flashPosition'), masterBtn=document.getElementById('masterCard');
+  function saveMastered(){localStorage.setItem(storageKey,JSON.stringify([...mastered]));}
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+  function updateProgress(){const done=mastered.size,total=cards.length,pct=total?Math.round(done*100/total):0; flashProgress.textContent=`已掌握 ${done}/${total} · ${pct}%`; flashPosition.textContent=`${cardIndex+1} / ${cards.length}`; masterBtn.textContent=mastered.has(cardIndex)?'⭐ 取消已掌握':'⭐ 标记已掌握';}
+  function renderCard(){const c=cards[cardIndex]; studyCard.classList.remove('flipped'); frontType.textContent=c.type; frontCount.textContent=`第 ${cardIndex+1} 题`+(mastered.has(cardIndex)?' · 已掌握':''); frontTitle.textContent=c.title; let body=''; if(mode==='browse'){body='<p>先自己回忆，再翻面核对。</p>';} else if(mode==='write'){body='<p><b>默写模式：</b>先自己写完整答案，再翻面核对。</p><div class="study-write"><label>你的答案：</label><textarea rows="6" placeholder="在这里默写。"></textarea></div>';} else { if(c.cloze&&c.fillAnswer){body=`<p><b>填空模式：</b>先补关键词，再翻面核对。</p><div class="study-fill"><div class="card" style="margin:8px 0 0;padding:12px 14px">${esc(c.cloze)}</div><label>你填写的关键词：</label><input id="fillInput" type="text" placeholder="写关键词"/><div class="fill-feedback" id="fillFeedback"></div></div>`;} else {body='<p><b>这张卡不强行设置填空。</b></p><p>这类问题更适合用“浏览”或“默写”完整理解。</p>';} } frontBody.innerHTML=body; backBody.innerHTML=`<p>${esc(c.answer)}</p>`+(c.fillAnswer?`<div class="card" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);margin-top:12px"><b>填空关键词：</b>${esc(c.fillAnswer)}</div>`:''); updateProgress(); const fillInput=document.getElementById('fillInput'); if(fillInput){fillInput.addEventListener('input',()=>{const fb=document.getElementById('fillFeedback'); const v=fillInput.value.trim().toLowerCase(); if(!v){fb.textContent='';return;} const ans=(c.fillAnswer||'').replace(/；/g,';').replace(/\//g,';').toLowerCase(); const ok=ans.split(/[;；]/).some(part=>part.trim()&&v.includes(part.trim())); fb.textContent=ok?'关键词有对上的部分，可以翻面核对完整表述。':'先继续想想关键词，再翻面核对也可以。';});} }
+  function flipCard(){studyCard.classList.toggle('flipped');} function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard();} function nextCard(){cardIndex=(cardIndex+1)%cards.length;renderCard();} function toggleMaster(){if(mastered.has(cardIndex)) mastered.delete(cardIndex); else mastered.add(cardIndex); saveMastered(); renderCard();}
+  function isSpaceKey(e){return e.key===' '||e.key==='Spacebar'||e.code==='Space';} function isTypingTarget(t){const tag=(t&&t.tagName||'').toLowerCase(); return ['input','textarea','select'].includes(tag)||!!(t&&t.isContentEditable);}
+  document.querySelectorAll('.flash-chip').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.flash-chip').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); mode=btn.dataset.mode; renderCard();}));
+  studyCard?.addEventListener('click',e=>{if(e.target.closest('textarea,input,label,button,.study-write,.study-fill')) return; flipCard();});
+  document.getElementById('flipCard')?.addEventListener('click',flipCard); document.getElementById('prevCard')?.addEventListener('click',prevCard); document.getElementById('nextCard')?.addEventListener('click',nextCard); document.getElementById('masterCard')?.addEventListener('click',toggleMaster); document.getElementById('resetMastery')?.addEventListener('click',()=>{mastered=new Set();saveMastered();renderCard();});
+  document.addEventListener('keydown',e=>{const onFlash=pages[current]&&pages[current].id==='flash'; const typing=isTypingTarget(e.target||document.activeElement); if(onFlash){ if(typing)return; if(e.key==='ArrowRight'){e.preventDefault();nextCard();return;} if(e.key==='ArrowLeft'){e.preventDefault();prevCard();return;} if(isSpaceKey(e)){e.preventDefault();flipCard();return;} if(e.key==='m'||e.key==='M'){e.preventDefault();toggleMaster();return;} } if(typing)return; if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();show(current+1);} if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(current-1);} }, true);
+  renderCard(); show(current,false);
+})();
+</script>
+</body>
+</html>
